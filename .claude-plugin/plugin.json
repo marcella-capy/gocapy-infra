@@ -1,0 +1,8 @@
+{
+  "name": "gocapy-infra",
+  "description": "Go Capy infrastructure plugin: SiteGround mailbox account creation + Porkbun domain ideation, availability checks, registration, and nameserver management. Self-contained tools for one-time per-client setup work.",
+  "author": {
+    "name": "Marcella @ Go Capy",
+    "email": "marcella@gocapy.com"
+  }
+}
