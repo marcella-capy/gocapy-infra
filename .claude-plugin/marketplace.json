@@ -1,0 +1,15 @@
+{
+  "name": "gocapy-infra",
+  "owner": {
+    "name": "Go Capy",
+    "url": "https://gocapy.com"
+  },
+  "plugins": [
+    {
+      "name": "gocapy-infra",
+      "source": ".",
+      "description": "Go Capy infrastructure plugin: SiteGround mailbox creation + Porkbun domain ideation, availability, registration, and nameserver management. Self-contained per-client setup tools.",
+      "category": "infrastructure"
+    }
+  ]
+}
