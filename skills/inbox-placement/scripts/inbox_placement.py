@@ -134,6 +134,20 @@ def cmd_create(args, api_key, ws):
     print(json.dumps(resp, indent=2))
 
 
+def cmd_duplicate(args, api_key, ws):
+    """Clone a fully-configured 'golden' parent test into a new one.
+
+    The duplicate INHERITS the source's UI config (send-as-plain-text, weekday
+    schedule, Random selection mode, 5% sample, automation-off, start date) — the
+    create API can't set any of those, so duplicating a configured template is the
+    only way to replicate them. The copy lands as DRAFT and still points at the
+    SOURCE's tag + campaign, so re-point those (UI-only) and start it. See SKILL.md.
+    """
+    resp = api("POST", "/email-placement/duplicate/parent-test", api_key,
+               body={"workspace_id": ws, "parent_test_id": args.parent_test_id, "name": args.name})
+    print(json.dumps(resp, indent=2))
+
+
 def cmd_result(args, api_key, ws):
     resp = api("GET", "/email-placement/get/test-automatic-result", api_key,
                query={"workspace_id": ws, "test_id": args.test_id, "sender_acc_id": args.sender_acc_id})
@@ -165,6 +179,11 @@ def main() -> int:
     pc = sub.add_parser("create"); pc.add_argument("--name", required=True)
     pc.add_argument("--type", choices=["AUTOMATIC", "MANUAL"], default="AUTOMATIC")
     pc.set_defaults(func=cmd_create)
+
+    pdup = sub.add_parser("duplicate", help="clone a configured golden test (inherits UI config)")
+    pdup.add_argument("--parent-test-id", required=True, help="source (golden) test id to clone")
+    pdup.add_argument("--name", required=True, help="new test name, e.g. 'Alpha Grainger - Jun'")
+    pdup.set_defaults(func=cmd_duplicate)
 
     pr = sub.add_parser("result"); pr.add_argument("--test-id", required=True)
     pr.add_argument("--sender-acc-id", required=True); pr.set_defaults(func=cmd_result)
