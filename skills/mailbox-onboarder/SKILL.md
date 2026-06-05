@@ -24,6 +24,18 @@ verified credentials and the standard Go Capy settings. The non-negotiable rule:
 This prevents the HotHawk `GATHERING` stall and the SiteGround IP-block that wrong
 credentials cause (silent auth retries against a host that doesn't whitelist our IPs).
 
+### ⚠️ The host, not just the password, must match (domain-match gate)
+A confirmed root cause of HotHawk `GATHERING` stalls is a **wrong host**, not a wrong
+password: onboarding CSVs sometimes list an `imap_host`/`smtp_host` that points at the
+wrong domain (observed 2026-06-05 — every "Stephanie" row listed
+`imap_host=mail.techmaxmfg.com` regardless of the address's actual domain; IMAP auth was
+rejected there even though the password was valid on the address's own server). **The
+address's own-domain host `mail.<domain>` is authoritative; treat the CSV's host columns
+as untrusted.** `check_login.py` enforces this: if a protocol fails on the provided host
+and that host differs from `mail.<domain>`, it retries that protocol once on the domain
+host and reports the correction. **Always add to PlusVibe/HotHawk using the host that
+`check_login` actually verified (the corrected `mail.<domain>`), not the CSV value.**
+
 ## Prerequisites (not in scope here)
 - Mailboxes exist in **SiteGround** (the `siteground` skill creates them; default password
   `NewAirton@19642026!`). SiteGround is SSL-only: host `mail.<domain>`, IMAP 993 / SMTP 465,
@@ -62,7 +74,8 @@ Source: client screenshots, 2026-06-04. Applies to every client.
 ## Signatures
 Per-client templates live in `gocapy-infra/shared-references/signatures/<slug>.md`. Each:
 - starts with `{{sender_first_name}} {{sender_last_name}}` (PlusVibe merge tags — never a literal name);
-- contains exactly one of the **3 allowed phone numbers** baked in (`949-524-5765`, `949-436-6696`, `949-820-8005`).
+- contains exactly one of the **2 allowed phone numbers** baked in (`949-524-5765`, `949-436-6696`).
+  (`949-820-8005` was removed 2026-06-05; the 4 signatures that used it were reassigned to `949-524-5765`.)
 PlusVibe stores signatures as HTML — wrap the file's lines as `<div><br>line1<br>line2…</div>`.
 
 ## The batch workflow
@@ -71,12 +84,32 @@ Run as stages over the whole list (not one mailbox at a time).
 ### Step 0 — Credential pre-check (MANDATORY, first)
 `scripts/check_login.py` does one IMAP + one SMTP SSL login per mailbox (no retry).
 ```
-py scripts/check_login.py --csv <accounts.csv>           # email,password[,imap_host,smtp_host]
-py scripts/check_login.py --email a@b.com --password 'pw' # single
+py scripts/check_login.py --csv <accounts.csv> --delay 6 --max-consecutive-timeouts 3
+py scripts/check_login.py --email a@b.com --password 'pw'    # single
 ```
 Needs outbound network (993/465); if the Bash sandbox blocks egress, run with the sandbox
-disabled. **Drop and report any FAIL** ("password wrong — fix in SiteGround"); only PASS
-mailboxes continue. Never loop a failed login (IP-block risk).
+disabled. **Drop and report any `auth rejected` FAIL** (mailbox deleted or wrong password — fix in
+SiteGround); only PASS mailboxes continue. Never loop a failed login.
+
+⚠️ **SiteGround brute-force protection — throttle big batches.** Too many failed logins from one IP
+in a short window gets that **IP blocked** by SiteGround server protection (unblock via the SiteGround
+support page → "I have other technical issues" → Unblock IP). A blocked IP then makes EVERY further
+login **time out**. So for a large list:
+- always pass `--delay` (e.g. 6s) and `--max-consecutive-timeouts 3` so the batch **auto-aborts** the
+  moment the block trips instead of digging in deeper (exit code 2 = aborted);
+- a **`connection error`/timeout is NOT a bad mailbox** — it means "couldn't reach the server" (likely
+  the block). Only `auth rejected` proves a deleted/invalid mailbox. Treat timeouts as UNVERIFIED, never
+  as failures or deletions;
+- **skip mailboxes already known-good**: cross-reference HotHawk — any mailbox `CONNECTED` there is
+  already proven valid, so don't re-test it (fewer logins = less block risk);
+- if you do get blocked, wait for the unblock, then re-check only the still-unverified subset with `--delay`.
+
+### Step 0.5 — Dedup pre-check (before ANY add)
+List the existing emails on **both** platforms first and add only what's missing — do not rely on
+platform-side dedupe. PlusVibe: `accounts.py list -w <ws> --tags <client>` (or `list_email_accounts`).
+HotHawk: `mailboxes_list` for the client workspace. Compute `toPlusVibe`/`toHotHawk` independently (a
+mailbox may already be in one platform but not the other). This makes duplicates impossible regardless
+of platform behavior, and keeps re-runs idempotent.
 
 ### Step 1 — Bulk-add PASS mailboxes to PlusVibe (warmup disabled)
 Build a JSON array of account objects (canonical delivery values, `enable_warmup=no`,
