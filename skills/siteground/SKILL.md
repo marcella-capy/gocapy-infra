@@ -66,11 +66,12 @@ email prefixes (see below).
 | General Foundry   | Luciana Reis       |
 | VRC               | Larissa Tavares    |
 | Megatech          | Carine Oliveira    |
-| Harvey Vogel      | Julia Brown        |
+| Harvey Vogel      | Julia Brooks       |
 | Shellcast         | Luiza Campos       |
 | Franklin Casting  | Camila Andrade     |
 | Patriot Forge     | Juliana Matos      |
 | L&P Machining     | Sofia Alvarez      |
+| Alpha Grainger    | Diana Brunel       |
 
 If the client isn't in the table, ask the user for the BDR's full name before
 proceeding.
