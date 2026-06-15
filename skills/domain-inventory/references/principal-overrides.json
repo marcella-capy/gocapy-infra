@@ -1,0 +1,77 @@
+{
+  "_comment": "Persistent config for the domain-inventory skill. Edit this when a domain's principal changes, a client is added/dropped, or registrar prices change. The script applies these on top of the live client-domains.json sending-domain map.",
+
+  "prices": {
+    "_comment": "Per-domain annual renewal price by registrar. Porkbun is normally pulled live from pricing/get; this is only the fallback if the API price is missing. SiteGround + GoDaddy export no price, so these flat rates are used.",
+    "porkbun_fallback": 11.08,
+    "siteground": 19.99,
+    "godaddy": 22.19
+  },
+
+  "slug_display": {
+    "tmx": "TMX (Tech-Max)",
+    "general-foundry": "General Foundry",
+    "vrc": "VRC",
+    "shellcast": "Shellcast",
+    "franklin": "Franklin Casting",
+    "patriot-forge": "Patriot Forge",
+    "alpha-grainger": "Alpha Grainger",
+    "atw": "ATW (Parmatech / Judson Smith / ATWall)",
+    "harvey-vogel": "Harvey Vogel",
+    "megatech": "Megatech",
+    "lnp-machining": "LNP Machining",
+    "usa-industrials": "USA Industrials"
+  },
+
+  "capy_principals": ["Internal / Capy"],
+
+  "internal_hints": [
+    "capycapital", "capyequity", "capyfunds", "capyengineering", "capymfg",
+    "gocapy", "gocapp", "gokapy", "gokappy", "capy-patch",
+    "aveela", "sassysage", "menopower", "wellgen", "jonmarcella", "orlandoprecision"
+  ],
+
+  "domain_overrides": {
+    "_comment": "Manual principal assignments from Marcella (2026-06-15). DROP-* principals = let lapse / turn off auto-renew.",
+    "forge-precision.com": "Patriot Forge",
+    "forge-machining.com": "Patriot Forge",
+    "aerospace-forging.com": "Patriot Forge",
+    "machined-forgings.com": "Patriot Forge",
+    "industrialforging.com": "Patriot Forge",
+    "metalaeroparts.com": "Patriot Forge",
+    "componentforging.com": "Patriot Forge",
+    "highprecisionforge.com": "Patriot Forge",
+    "advancedforging.com": "Patriot Forge",
+    "aeroforging.com": "Patriot Forge",
+    "aerospaceforge.com": "Patriot Forge",
+    "advmetalproduct.com": "AMP",
+    "advmetalproducts.com": "AMP",
+    "advantagemetalfab.com": "AMP",
+    "axiscades-mfg.com": "DROP - Axiscades never hired us",
+    "axiscadeshq.com": "DROP - Axiscades never hired us",
+    "axiscades-eng.com": "DROP - Axiscades never hired us",
+    "axiscades-aero.com": "DROP - Axiscades never hired us",
+    "axiscadesmfg.com": "DROP - Axiscades never hired us",
+    "stanekmachining.com": "DROP - Stanek bankrupt",
+    "stanekmanufacturing.com": "DROP - Stanek bankrupt"
+  },
+
+  "keyword_fallback": {
+    "_comment": "Last-resort substring -> principal for un-mapped lookalikes. Checked only if a domain matches neither client-domains.json nor an override. Order matters (first hit wins).",
+    "rules": [
+      ["patriotforg", "Patriot Forge"], ["patriot-forg", "Patriot Forge"],
+      ["techmax", "TMX (Tech-Max)"], ["tech-max", "TMX (Tech-Max)"],
+      ["shellcast", "Shellcast"], ["franklin", "Franklin Casting"],
+      ["genfoundry", "General Foundry"], ["gen-foundry", "General Foundry"],
+      ["general-foundry", "General Foundry"], ["vrc", "VRC"],
+      ["megatech", "Megatech"], ["mega-tech", "Megatech"], ["megamachining", "Megatech"],
+      ["lnp", "LNP Machining"], ["agmi", "Alpha Grainger"], ["agrainer", "Alpha Grainger"],
+      ["alpha-grainger", "Alpha Grainger"], ["harveyvogel", "Harvey Vogel"],
+      ["harvey-vogel", "Harvey Vogel"], ["metalstamp", "Harvey Vogel"],
+      ["parmatech", "ATW (Parmatech / Judson Smith / ATWall)"],
+      ["judsonsmith", "ATW (Parmatech / Judson Smith / ATWall)"],
+      ["atwall", "ATW (Parmatech / Judson Smith / ATWall)"],
+      ["aeca", "AECA"], ["metalproduct", "USA Industrials"]
+    ]
+  }
+}
