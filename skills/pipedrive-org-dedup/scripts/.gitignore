@@ -1,0 +1,4 @@
+# Generated run artifacts — regenerated each run, not source.
+dedup_orgs_dryrun_*.csv
+dedup_orgs_dryrun_*.json
+dedup_orgs_results_*.json

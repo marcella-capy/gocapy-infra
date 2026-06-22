@@ -28,3 +28,6 @@ Open the skill's `SKILL.md` for the detailed steps.
   only needed when a brand-new workspace is created.
 - **domain-inventory** — read-only reconciliation of every domain across all registrars.
   A few-times-a-year housekeeping check, not part of onboarding.
+- **pipedrive-org-dedup** — find and merge duplicate organization records in Pipedrive
+  (exact-domain match, dry-run-first, human-approved). A **monthly** maintenance run, not part
+  of onboarding.
