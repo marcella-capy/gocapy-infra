@@ -85,6 +85,23 @@ def load_blocklist() -> set[str]:
     return {str(d).strip().lower() for d in domains if d and not str(d).startswith("_")}
 
 
+def load_org_exclusions() -> list[str]:
+    """Org-name substrings (lowercased) that must NEVER be merged — any domain group containing
+    one is skipped entirely and left for a human (e.g. large primes with intentional division
+    records). Comment keys (leading '_') are ignored."""
+    path = REFERENCES / "dedup-org-exclusions.json"
+    if not path.exists():
+        return []
+    data = json.loads(path.read_text(encoding="utf-8"))
+    names = data.get("names", data) if isinstance(data, dict) else data
+    return [str(n).strip().lower() for n in names if n and not str(n).startswith("_")]
+
+
+def is_excluded(org: dict, exclusions: list[str]) -> bool:
+    name = (org.get("name") or "").lower()
+    return any(ex in name for ex in exclusions)
+
+
 def has_research(org: dict, research_key: "str | None") -> bool:
     if not research_key:
         return False
@@ -106,7 +123,7 @@ def pick_survivor(group: list[dict], research_key: "str | None") -> dict:
     )[0]
 
 
-def build_plan(orgs: dict, normalize, research_key, blocklist):
+def build_plan(orgs: dict, normalize, research_key, blocklist, exclusions):
     """Group orgs by exact normalized domain; return (merges, stats).
 
     merges: [{"domain","survivor":{...},"losers":[{...}]}]   stats: counts for the report.
@@ -124,8 +141,13 @@ def build_plan(orgs: dict, normalize, research_key, blocklist):
         by_domain[domain].append(org)
 
     merges = []
+    excluded = 0
     for domain, group in by_domain.items():
         if len(group) < 2:
+            continue
+        if any(is_excluded(o, exclusions) for o in group):
+            excluded += 1
+            log(f"[dup-excluded] {domain} — protected org name, skipped (left for human)")
             continue
         survivor = pick_survivor(group, research_key)
         losers = [o for o in group if int(o["id"]) != int(survivor["id"])]
@@ -150,6 +172,7 @@ def build_plan(orgs: dict, normalize, research_key, blocklist):
         "planned_merges": sum(len(m["losers"]) for m in merges),
         "no_domain_skipped": no_domain,
         "blocklist_skipped": blocklisted,
+        "excluded_groups_skipped": excluded,
     }
     return merges, stats
 
@@ -166,6 +189,7 @@ def print_report(merges, stats):
     log(f"  planned merges .......... {stats['planned_merges']}")
     log(f"  skipped (no domain) ..... {stats['no_domain_skipped']}")
     log(f"  skipped (blocklist) ..... {stats['blocklist_skipped']}")
+    log(f"  skipped (excluded orgs) . {stats.get('excluded_groups_skipped', 0)}")
     log("=" * 70)
 
 
@@ -287,8 +311,11 @@ def main() -> int:
     (_, _), (_org_by_key, org_by_name) = pd_cache.get_field_maps()
     research_key = (org_by_name.get("Company Research") or {}).get("key")
     blocklist = load_blocklist()
+    exclusions = load_org_exclusions()
+    if exclusions:
+        log(f"[dedup] protected org names (never merged): {', '.join(exclusions)}")
 
-    merges, stats = build_plan(orgs, normalize_domain, research_key, blocklist)
+    merges, stats = build_plan(orgs, normalize_domain, research_key, blocklist, exclusions)
     print_report(merges, stats)
 
     base = Path(args.out) if args.out else Path(f"dedup_orgs_dryrun_{today}")

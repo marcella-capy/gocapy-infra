@@ -1,0 +1,9 @@
+{
+  "_comment": "Organizations that must NEVER be auto-deduped/merged by this skill, even when they share an exact domain. Matching is case-insensitive substring against the org name. Use this for large primes/groups that intentionally have multiple distinct division records, or whose merges must be handled manually. Any duplicate-domain group containing one of these names is skipped entirely (reported as excluded_skipped) and left for a human. History: added 2026-06-22 at Marcella's request — do not dedup Lockheed Martin, Northrop Grumman, Raytheon, or Safran.",
+  "names": [
+    "Lockheed Martin",
+    "Northrop Grumman",
+    "Raytheon",
+    "Safran"
+  ]
+}

@@ -43,6 +43,11 @@ lowest org id (oldest)**. All other orgs in the group merge into it.
 - Domains in `references/dedup-domain-blocklist.json` (gmail, parked pages, site builders, etc.)
   are skipped so unrelated companies sharing a generic host don't get merged. Add to that file
   whenever a dry run surfaces a bogus group.
+- **Protected org names** in `references/dedup-org-exclusions.json` are NEVER merged: any
+  duplicate-domain group containing one of these names is skipped entirely and left for a human
+  (logged `[dup-excluded]`, counted as `excluded_groups_skipped`). Currently protected (added
+  2026-06-22 at Marcella's request): **Lockheed Martin, Northrop Grumman, Raytheon, Safran.**
+  These large primes keep intentional division records / need manual handling.
 
 ## Files
 - `scripts/dedup_orgs.py` — the runner (dry-run by default; `--execute` to merge).
