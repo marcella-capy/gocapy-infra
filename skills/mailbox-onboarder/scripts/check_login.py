@@ -199,6 +199,11 @@ def main() -> int:
                     help="abort the batch after N consecutive connection-error/timeout mailboxes "
                          "(0=off). A run of timeouts means the SiteGround IP block has tripped — stop "
                          "rather than dig in deeper.")
+    ap.add_argument("--skip-domain-on-errors", type=int, default=0,
+                    help="after N consecutive connection-errors within ONE domain, skip the rest "
+                         "of that domain's mailboxes (UNVERIFIED) and move on to the next domain "
+                         "(0=off). Use instead of --max-consecutive-timeouts when one bad domain "
+                         "should not stop the whole batch.")
     ap.add_argument("--json", action="store_true", help="emit JSON results")
     args = ap.parse_args()
 
@@ -212,12 +217,31 @@ def main() -> int:
     else:
         sys.exit("error: provide --email and --password, or --csv")
 
+    def domain_of(email: str) -> str:
+        return email.rsplit("@", 1)[-1].lower()
+
     results = []
     aborted = False
-    consec_conn_err = 0
-    for i, r in enumerate(rows):
-        if i and args.delay:
+    consec_conn_err = 0          # consecutive conn-errors across the whole batch (global abort)
+    dom_consec_conn_err = 0      # consecutive conn-errors within the current domain
+    cur_domain = None
+    skipped_domains = set()      # domains we gave up on; remaining rows -> UNVERIFIED
+    skipped = []                 # emails skipped because their domain was given up on
+    slept_once = False
+    for r in rows:
+        dom = domain_of(r["email"])
+        if dom != cur_domain:
+            cur_domain = dom
+            dom_consec_conn_err = 0
+
+        # this domain was already declared dead — skip without touching the server
+        if dom in skipped_domains:
+            skipped.append(r["email"])
+            continue
+
+        if slept_once and args.delay:
             time.sleep(args.delay)
+        slept_once = True
         imap_host = r["imap_host"] or host_for(r["email"], args.host)
         smtp_host = r["smtp_host"] or host_for(r["email"], args.host)
         res = check_one(r["email"], r["password"], imap_host, smtp_host,
@@ -225,7 +249,22 @@ def main() -> int:
                         domain_fallback=not args.no_domain_fallback)
         results.append(res)
 
-        consec_conn_err = consec_conn_err + 1 if is_connection_error(res) else 0
+        if is_connection_error(res):
+            consec_conn_err += 1
+            dom_consec_conn_err += 1
+        else:
+            consec_conn_err = 0
+            dom_consec_conn_err = 0
+
+        # per-domain skip: one flaky domain shouldn't stop the rest of the batch
+        if args.skip_domain_on_errors and dom_consec_conn_err >= args.skip_domain_on_errors:
+            skipped_domains.add(dom)
+            sys.stderr.write(
+                f"\n⏭️  SKIPPING domain '{dom}' after {dom_consec_conn_err} consecutive "
+                f"connection errors — moving on to the next domain. Its remaining mailboxes "
+                f"are UNVERIFIED (not failed).\n")
+            continue
+
         if args.max_consecutive_timeouts and consec_conn_err >= args.max_consecutive_timeouts:
             aborted = True
             sys.stderr.write(
@@ -238,7 +277,8 @@ def main() -> int:
     checked = len(results)
     passed = [x for x in results if x["pass"]]
     failed = [x for x in results if not x["pass"]]
-    unverified = [r["email"] for r in rows[checked:]]
+    checked_emails = {x["email"] for x in results}
+    unverified = [r["email"] for r in rows if r["email"] not in checked_emails]
 
     if args.json:
         print(json.dumps({"results": results,
