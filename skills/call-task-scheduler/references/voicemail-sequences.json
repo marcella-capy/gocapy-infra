@@ -1,0 +1,16 @@
+{
+  "franklin": {
+    "display_name": "Franklin Casting",
+    "workspace_id": "0bb515e2-fb32-4676-83ad-ea72e5e909fe",
+    "workspace_name": "Bottom Shelf",
+    "sequence_id": "47e2d481-c72f-4712-8067-6c046456e467",
+    "sequence_name": "Franklin Casting (Evergreen)"
+  },
+  "lnp": {
+    "display_name": "LNP Machining",
+    "workspace_id": "04972960-6538-4472-b94e-36d87481b1c5",
+    "workspace_name": "LNP Machining",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "sequence_name": "LNP_Post-Voicemail Sequence_070726"
+  }
+}
