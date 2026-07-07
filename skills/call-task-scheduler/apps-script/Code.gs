@@ -26,6 +26,43 @@ var ICP_KEY = '1a8684b9333f530c727f9bff307391d3d200c897';      // Person ICP (Ye
 var TITLE_KEY = 'ef54f66e8242d193fd263fa16ac83850271b2794';    // Person Job Title
 var LINKEDIN_KEY = 'cf2472711fcbe2a22cef32aea82f1a5a555761a8'; // Person LinkedIn Page
 var OWNERS = { 'Marcella': 22638704, 'Jonathan': 20845253, 'Sam': 20845572, 'Ericka': 23490137 };
+
+// ICP job-title classifier — mirrors people-icp-classifier (default-Yes; positives win over excludes)
+var ICP_POS_PHRASES = ['supply chain manager', 'supply chain', 'product development engineer',
+  'program manager', 'category manager', 'contract manager'];
+var ICP_POS_WORDS = ['procurement', 'sourcing', 'supplier', 'buyer', 'purchasing', 'buy', 'commodity',
+  'forging', 'forged', 'forgings', 'machining', 'machined', 'casting', 'plastic', 'rubber'];
+var ICP_NEG_PHRASES = ['human resources', 'm&a', 'e-commerce'];
+var ICP_NEG_WORDS = ['janitor', 'custodian', 'babysitter', 'machinist', 'ceo', 'coo', 'chief',
+  'marketing', 'hr', 'inventory', 'warehouse', 'payroll', 'sales', 'compliance', 'cloud', 'digital',
+  'oracle', 'cnc', 'accounting', 'accountant', 'designer', 'logistics', 'logistic', 'logisti',
+  'staff', 'cybersecurity', 'integration', 'finance', 'indirect', 'commercial', 'quality',
+  'shipping', 'receiving', 'human', 'welder', 'assembly', 'assembler', 'customer', 'service',
+  'mro', 'technology', 'software', 'board', 'qa', 'business', 'account', 'financial', 'talent',
+  'acquisition', 'process', 'electronics', 'learning', 'information', 'avionics', 'structures',
+  'stress', 'field', 'fleet', 'transportation', 'technician', 'foreman', 'control', 'cost',
+  'intern', 'schedule', 'traffic', 'freight', 'workers', 'recruiter', 'capital', 'capex',
+  'expeditor', 'test', 'repair', 'flight', 'handler', 'scheduling', 'aftermarket', 'systems',
+  'airport', 'scheduler', 'crew', 'electrical', 'substation', 'transformation', 'building',
+  'training', 'education', 'investor', 'climate', 'medical', 'culture', 'delivery', 'pmo',
+  'data', 'analytics', 'commerce', 'facilities', 'composites', 'engineering', 'maintenance',
+  'administrator', 'assistant', 'developer', 'additive', 'raw', 'cyber', 'it', 'chemicals',
+  'contractor'];
+
+function classifyTitle(title) {
+  var t = String(title || '').trim().toLowerCase();
+  if (!t) return '';  // empty title -> leave ICP blank
+  var phraseHit = function (ph) {
+    return new RegExp('(^|[^a-z0-9])' + ph.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '($|[^a-z0-9])').test(t);
+  };
+  var tokens = {};
+  (t.match(/[a-z0-9]+/g) || []).forEach(function (w) { tokens[w] = true; });
+  for (var i = 0; i < ICP_POS_PHRASES.length; i++) if (phraseHit(ICP_POS_PHRASES[i])) return 'Yes';
+  for (var j = 0; j < ICP_POS_WORDS.length; j++) if (tokens[ICP_POS_WORDS[j]]) return 'Yes';
+  for (var k = 0; k < ICP_NEG_PHRASES.length; k++) if (phraseHit(ICP_NEG_PHRASES[k])) return 'No';
+  for (var l = 0; l < ICP_NEG_WORDS.length; l++) if (tokens[ICP_NEG_WORDS[l]]) return 'No';
+  return 'Yes';  // default Yes
+}
 var MIN_CALLABLE = 5;   // orgs with fewer callable people get pushed to the Clay company table
 var COL = { PRINCIPAL: 1, ORG: 2, OWNER: 3, TEST: 4, CREATE: 5, STATUS: 6, RESULT: 7 };
 
@@ -81,17 +118,61 @@ function handleEdit(e) {
   statusCell.setValue('processing…');
   SpreadsheetApp.flush();
   try {
-    var summary = runWorkflowA({
+    var input = {
       principal: String(sheet.getRange(row, COL.PRINCIPAL).getValue()).trim().toLowerCase(),
       org: String(sheet.getRange(row, COL.ORG).getValue()).trim(),
       owner: String(sheet.getRange(row, COL.OWNER).getValue()).trim(),
       test: sheet.getRange(row, COL.TEST).getValue() === true,
-    });
+    };
+    var summary = runWorkflowA(input);
     statusCell.setValue('ok');
     sheet.getRange(row, COL.RESULT).setValue(summary);
+    // if people went to Clay for phone enrichment, re-run this row once in ~12 min to pick
+    // up the phones Clay writes back to Pipedrive
+    if (!input.test && summary.indexOf('clay: 0p') < 0 && summary.indexOf('clay: ') >= 0) {
+      scheduleSecondPass(row, input);
+      sheet.getRange(row, COL.RESULT).setValue(summary + ' | 2nd pass in ~12 min');
+    }
   } catch (err) {
     statusCell.setValue('error');
     sheet.getRange(row, COL.RESULT).setValue(String(err.message || err));
+  }
+}
+
+// ── Clay second pass ─────────────────────────────────────────────────────────────────────────
+// Clay usually finds phones within ~5 min and writes them back to Pipedrive. When a run pushed
+// people to Clay, we schedule a ONE-SHOT re-run of the same row ~12 min later: the live re-read
+// picks up the new phones, and the idempotency gate means only newly-phoned people get tasks.
+
+var SECOND_PASS_DELAY_MS = 12 * 60 * 1000;
+
+function scheduleSecondPass(row, input) {
+  var props = PropertiesService.getScriptProperties();
+  var pending = JSON.parse(props.getProperty('PENDING_SECOND_PASS') || '{}');
+  pending[String(row)] = input;
+  props.setProperty('PENDING_SECOND_PASS', JSON.stringify(pending));
+  ScriptApp.newTrigger('secondPass').timeBased().after(SECOND_PASS_DELAY_MS).create();
+}
+
+function secondPass() {
+  // remove any fired one-shot triggers for this handler
+  ScriptApp.getProjectTriggers().forEach(function (t) {
+    if (t.getHandlerFunction() === 'secondPass') ScriptApp.deleteTrigger(t);
+  });
+  var props = PropertiesService.getScriptProperties();
+  var pending = JSON.parse(props.getProperty('PENDING_SECOND_PASS') || '{}');
+  props.deleteProperty('PENDING_SECOND_PASS');
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Requests');
+  for (var row in pending) {
+    var input = pending[row];
+    input.secondPass = true;
+    var resultCell = sheet.getRange(Number(row), COL.RESULT);
+    try {
+      var summary = runWorkflowA(input);
+      resultCell.setValue(resultCell.getValue() + ' | 2nd pass: ' + summary);
+    } catch (err) {
+      resultCell.setValue(resultCell.getValue() + ' | 2nd pass error: ' + String(err.message || err));
+    }
   }
 }
 
@@ -108,6 +189,20 @@ function runWorkflowA(input) {
 
   var org = resolveOrg(input.org);
   var persons = orgPersons(org.id);
+
+  // classify blank-ICP people from their job title and write the verdict back to Pipedrive
+  var classified = 0;
+  persons.forEach(function (p) {
+    if (String(p[ICP_KEY] || '').trim() !== '') return;
+    var verdict = classifyTitle(p[TITLE_KEY]);
+    if (!verdict) return;  // empty title stays blank
+    var body = {};
+    body[ICP_KEY] = verdict;
+    pd('PUT', '/api/v1/persons/' + p.id, null, body);
+    p[ICP_KEY] = verdict;
+    classified++;
+  });
+
   var icpYes = persons.filter(function (p) {
     return String(p[ICP_KEY] || '').trim().toLowerCase() === 'yes';
   });
@@ -146,7 +241,7 @@ function runWorkflowA(input) {
   });
 
   var noteMade = 0, clayPeople = 0, clayCompany = 0;
-  if (!input.test) {
+  if (!input.test && !input.secondPass) {  // second pass never re-pushes to Clay
     if (noPhone.length) noteMade = postNoPhoneNote(org, noPhone, reg.display_name, input.owner);
     noPhone.forEach(function (p) {
       var email = primaryEmail(p);
@@ -169,6 +264,7 @@ function runWorkflowA(input) {
 
   return (input.test ? 'TEST: ' : '') + todo.length + ' people, ' + createdCount + ' tasks, '
     + skipped + ' skipped, ' + noPhone.length + ' no-phone'
+    + (classified ? ', ' + classified + ' ICP-classified' : '')
     + (noteMade ? ' (note posted)' : '')
     + (clayPeople || clayCompany ? ', clay: ' + clayPeople + 'p/' + clayCompany + 'c' : '');
 }

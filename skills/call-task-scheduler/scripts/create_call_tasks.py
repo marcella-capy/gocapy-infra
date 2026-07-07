@@ -148,6 +148,48 @@ def _open_call_activity_person_ids(registry: dict) -> set:
     return ids
 
 
+# ── ICP job-title classifier (mirrors people-icp-classifier/classify_people_icp.py) ────────────
+# Default-Yes; positive procurement keywords win over overlapping excludes; empty title -> blank.
+
+ICP_POS_PHRASES = ["supply chain manager", "supply chain", "product development engineer",
+                   "program manager", "category manager", "contract manager"]
+ICP_POS_WORDS = ["procurement", "sourcing", "supplier", "buyer", "purchasing", "buy", "commodity",
+                 "forging", "forged", "forgings", "machining", "machined", "casting", "plastic", "rubber"]
+ICP_NEG_PHRASES = ["human resources", "m&a", "e-commerce"]
+ICP_NEG_WORDS = ["janitor", "custodian", "babysitter", "machinist", "ceo", "coo", "chief", "marketing",
+                 "hr", "inventory", "warehouse", "payroll", "sales", "compliance", "cloud", "digital",
+                 "oracle", "cnc", "accounting", "accountant", "designer", "logistics", "logistic",
+                 "logisti", "staff", "cybersecurity", "integration", "finance", "indirect", "commercial",
+                 "quality", "shipping", "receiving", "human", "welder", "assembly", "assembler",
+                 "customer", "service", "mro", "technology", "software", "board", "qa", "business",
+                 "account", "financial", "talent", "acquisition", "process", "electronics", "learning",
+                 "information", "avionics", "structures", "stress", "field", "fleet", "transportation",
+                 "technician", "foreman", "control", "cost", "intern", "schedule", "traffic", "freight",
+                 "workers", "recruiter", "capital", "capex", "expeditor", "test", "repair", "flight",
+                 "handler", "scheduling", "aftermarket", "systems", "airport", "scheduler", "crew",
+                 "electrical", "substation", "transformation", "building", "training", "education",
+                 "investor", "climate", "medical", "culture", "delivery", "pmo", "data", "analytics",
+                 "commerce", "facilities", "composites", "engineering", "maintenance", "administrator",
+                 "assistant", "developer", "additive", "raw", "cyber", "it", "chemicals", "contractor"]
+
+
+def classify_title(title: str) -> str:
+    """'Yes' / 'No' / '' (blank for empty title)."""
+    t = (title or "").strip().lower()
+    if not t:
+        return ""
+
+    def phrase_hit(ph):
+        return re.search(r"(?<![a-z0-9])" + re.escape(ph) + r"(?![a-z0-9])", t) is not None
+
+    tokens = set(re.findall(r"[a-z0-9]+", t))
+    if any(phrase_hit(ph) for ph in ICP_POS_PHRASES) or tokens & set(ICP_POS_WORDS):
+        return "Yes"
+    if any(phrase_hit(ph) for ph in ICP_NEG_PHRASES) or tokens & set(ICP_NEG_WORDS):
+        return "No"
+    return "Yes"
+
+
 # ── snapshot helpers ────────────────────────────────────────────────────────────────────────────
 
 def _resolve_orgs(org_name: "str | None", org_ids: "str | None") -> "dict[str, dict]":
@@ -251,6 +293,24 @@ def main() -> int:
     orgs = _resolve_orgs(a.org_name, a.org_ids)
     display = a.display_name or registry[a.principal].get("display_name") or a.principal
     persons = pd_cache.persons_by_org_ids(list(orgs))
+
+    # classify blank-ICP people from their job title; write the verdict back on --apply
+    classified = 0
+    for p in persons:
+        if str(p.get(ICP_KEY) or "").strip():
+            continue
+        verdict = classify_title(p.get(TITLE_KEY) or "")
+        if not verdict:
+            continue
+        if a.apply:
+            _pd("PUT", f"/persons/{p['id']}", body={ICP_KEY: verdict}, version="v1")
+            pd_cache.apply_local_write("persons", p["id"], {ICP_KEY: verdict})
+        p[ICP_KEY] = verdict
+        classified += 1
+    if classified:
+        print(f"  ICP-classified {classified} blank people from job titles"
+              + ("" if a.apply else " (DRY-RUN, not written back)"))
+
     icp_yes = [p for p in persons if str(p.get(ICP_KEY) or "").strip().lower() == "yes"]
     with_phone = [p for p in icp_yes if _phones(p)]
     no_phone = [p for p in icp_yes if not _phones(p)]

@@ -42,6 +42,15 @@ claude.ai cloud routine "Call Task Reconcile" (weekday mornings)
   exists in the workspace tagged `voicemail`. Remaining open call tasks are marked done with an
   audit note — never deleted.
 - People with no email are reported, not subscribed.
+- **Blank-ICP people are classified from their job title at run time** (rules ported verbatim
+  from `people-icp-classifier`: default-Yes; positive procurement/sourcing/buyer/supply-chain
+  keywords beat overlapping excludes; negative role keywords → No; empty title stays blank) and
+  the verdict is WRITTEN BACK to Pipedrive (v1 `PUT /persons/{id}`). Keep the keyword lists in
+  Code.gs and create_call_tasks.py in sync with that skill.
+- **Clay second pass**: when a run pushes people to the Clay People table, the Apps Script
+  schedules a one-shot re-run of the row ~12 min later — Clay writes found phones back to
+  Pipedrive within ~5 min, and the re-run creates tasks for the newly-phoned people only
+  (idempotency gate). The second pass never re-pushes to Clay.
 - HotHawk lead create ignores name-splitting: PATCH firstName/lastName after create.
 - Clay pushes (references/clay-webhooks.json): every no-phone ICP-Yes person → People table;
   every org with fewer than 5 callable people → Company table.
