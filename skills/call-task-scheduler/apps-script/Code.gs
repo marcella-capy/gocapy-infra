@@ -206,11 +206,36 @@ function runWorkflowA(input) {
   var icpYes = persons.filter(function (p) {
     return String(p[ICP_KEY] || '').trim().toLowerCase() === 'yes';
   });
+
+  // idempotency source: person_ids that already have an open call task from this skill
+  var already = openSkillPersonIds(registry);
+
+  // duplicate-record guard: same human twice at one org (same normalized name, since duplicate
+  // records rarely share an email) -> keep ONE record per human. Preference: a record that
+  // already has open tasks (so re-runs stay idempotent) > has email > more phones > older id.
+  // The losing duplicates are listed on the org note so they can be merged later.
+  var byHuman = {}, dupPairs = [];
+  icpYes.forEach(function (p) {
+    // last name + first initial, so "Reggie West" and "Reginald West" collide too
+    var key = lastName(p).toLowerCase().replace(/[^a-z]/g, '') + '|'
+      + firstName(p).slice(0, 1).toLowerCase();
+    var cur = byHuman[key];
+    if (!cur) { byHuman[key] = p; return; }
+    var score = function (x) {
+      return [(already[String(x.id)] ? 1 : 0), (primaryEmail(x) ? 1 : 0),
+              phones(x).length, -Number(x.id)];
+    };
+    var a = score(p), b = score(cur), better = 0;
+    for (var s = 0; s < a.length && !better; s++) better = a[s] - b[s];
+    if (better > 0) { dupPairs.push({ kept: p, ignored: cur }); byHuman[key] = p; }
+    else dupPairs.push({ kept: cur, ignored: p });
+  });
+  var dedupedOut = dupPairs.length;
+  icpYes = Object.keys(byHuman).map(function (k) { return byHuman[k]; });
+
   var withPhone = icpYes.filter(function (p) { return phones(p).length > 0; });
   var noPhone = icpYes.filter(function (p) { return phones(p).length === 0; });
 
-  // idempotency: skip people who already have an open call task from this skill
-  var already = openSkillPersonIds(registry);
   var todo = withPhone.filter(function (p) { return !already[String(p.id)]; });
   var skipped = withPhone.length - todo.length;
   if (input.test) {
@@ -243,6 +268,7 @@ function runWorkflowA(input) {
   var noteMade = 0, clayPeople = 0, clayCompany = 0;
   if (!input.test && !input.secondPass) {  // second pass never re-pushes to Clay
     if (noPhone.length) noteMade = postNoPhoneNote(org, noPhone, reg.display_name, input.owner);
+    if (dupPairs.length) postDuplicatesNote(org, dupPairs, input.owner);
     noPhone.forEach(function (p) {
       var email = primaryEmail(p);
       var ok = clayPost(CLAY_PEOPLE_WEBHOOK, {
@@ -265,6 +291,7 @@ function runWorkflowA(input) {
   return (input.test ? 'TEST: ' : '') + todo.length + ' people, ' + createdCount + ' tasks, '
     + skipped + ' skipped, ' + noPhone.length + ' no-phone'
     + (classified ? ', ' + classified + ' ICP-classified' : '')
+    + (dedupedOut ? ', ' + dedupedOut + ' duplicate record(s) ignored' : '')
     + (noteMade ? ' (note posted)' : '')
     + (clayPeople || clayCompany ? ', clay: ' + clayPeople + 'p/' + clayCompany + 'c' : '');
 }
@@ -364,6 +391,20 @@ function postNoPhoneNote(org, noPhone, display, ownerName) {
   }).join('');
   pd('POST', '/api/v1/notes', null, { content: header + '<ul>' + rows + '</ul>', org_id: org.id });
   return 1;
+}
+
+function postDuplicatesNote(org, dupPairs, ownerName) {
+  var header = '<b>Duplicate person records to merge — @' + ownerName + '</b>';
+  var existing = pd('GET', '/api/v1/notes', { org_id: org.id, limit: 100 }).data || [];
+  for (var i = 0; i < existing.length; i++) {
+    if ((existing[i].content || '').indexOf(header) >= 0) return;  // dedupe
+  }
+  var rows = dupPairs.map(function (d) {
+    return '<li>' + d.ignored.name + ' (id ' + d.ignored.id + ') looks like a duplicate of '
+      + d.kept.name + ' (id ' + d.kept.id + ') — call tasks were created on id '
+      + d.kept.id + ' only</li>';
+  }).join('');
+  pd('POST', '/api/v1/notes', null, { content: header + '<ul>' + rows + '</ul>', org_id: org.id });
 }
 
 // ── small utils ──────────────────────────────────────────────────────────────────────────────

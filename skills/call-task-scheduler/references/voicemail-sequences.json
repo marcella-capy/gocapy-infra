@@ -4,7 +4,8 @@
     "workspace_id": "0bb515e2-fb32-4676-83ad-ea72e5e909fe",
     "workspace_name": "Bottom Shelf",
     "sequence_id": "47e2d481-c72f-4712-8067-6c046456e467",
-    "sequence_name": "Franklin Casting (Evergreen)"
+    "sequence_name": "Franklin Casting (Evergreen)",
+    "note": "New draft replacement 'Franklin Casting_Post-Voicemail Sequence_070726' (d5d9f027-e9b2-4b3e-97b8-f2ca16321c5e, also Bottom Shelf) created 2026-07-07 — flip this entry to it once reviewed and activated."
   },
   "lnp": {
     "display_name": "LNP Machining",
@@ -12,5 +13,68 @@
     "workspace_name": "LNP Machining",
     "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
     "sequence_name": "LNP_Post-Voicemail Sequence_070726"
+  },
+  "tmx": {
+    "display_name": "Tech-Max",
+    "workspace_id": "56508f2a-ed5f-44b9-a11f-d86b81c8f172",
+    "workspace_name": "Tech-Max",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "sequence_name": "Tech-Max_Post-Voicemail Sequence_070726"
+  },
+  "alpha-grainger": {
+    "display_name": "Alpha Grainger",
+    "workspace_id": "0bb515e2-fb32-4676-83ad-ea72e5e909fe",
+    "workspace_name": "Bottom Shelf",
+    "sequence_id": "ef431dd5-e43f-493a-aaaf-f5c31025f386",
+    "sequence_name": "Alpha Grainger_Post-Voicemail Sequence_070726"
+  },
+  "shellcast": {
+    "display_name": "Shellcast",
+    "workspace_id": "0bb515e2-fb32-4676-83ad-ea72e5e909fe",
+    "workspace_name": "Bottom Shelf",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "sequence_name": "Shellcast_Post-Voicemail Sequence_070726"
+  },
+  "patriot-forge": {
+    "display_name": "Patriot Forge",
+    "workspace_id": "95997af8-edf7-4a97-8227-cb826bc3e46d",
+    "workspace_name": "Patriot",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "sequence_name": "Patriot Forge_Post-Voicemail Sequence_070726"
+  },
+  "general-foundry": {
+    "display_name": "General Foundry",
+    "workspace_id": "9e14ce45-dca8-4c46-b30a-c17652222d2d",
+    "workspace_name": "General Foundry",
+    "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+    "sequence_name": "General Foundry_Post-Voicemail Sequence_070726"
+  },
+  "harvey-vogel": {
+    "display_name": "Harvey Vogel",
+    "workspace_id": "0bb515e2-fb32-4676-83ad-ea72e5e909fe",
+    "workspace_name": "Bottom Shelf",
+    "sequence_id": "7a9922cc-9213-4e2b-8b28-875b17689057",
+    "sequence_name": "Harvey Vogel_Post-Voicemail Sequence_070726"
+  },
+  "vrc": {
+    "display_name": "VRC",
+    "workspace_id": "10e0bbb6-91e1-46dc-9826-67140c8204ce",
+    "workspace_name": "VRC",
+    "sequence_id": "eeadc336-f1a4-4676-a8db-86d0201457a3",
+    "sequence_name": "VRC_Post-Voicemail Sequence_070726"
+  },
+  "megatech": {
+    "display_name": "Megatech",
+    "workspace_id": "0bb515e2-fb32-4676-83ad-ea72e5e909fe",
+    "workspace_name": "Bottom Shelf",
+    "sequence_id": "0b077c76-e88f-434c-883d-b1e2420df30f",
+    "sequence_name": "Megatech_Post-Voicemail Sequence_070726"
+  },
+  "atw": {
+    "display_name": "A.T. Wall",
+    "workspace_id": "0bb515e2-fb32-4676-83ad-ea72e5e909fe",
+    "workspace_name": "Bottom Shelf",
+    "sequence_id": "b4ca2d70-6dae-4d87-ad45-07638c075587",
+    "sequence_name": "A.T. Wall_Post-Voicemail Sequence_070726"
   }
 }

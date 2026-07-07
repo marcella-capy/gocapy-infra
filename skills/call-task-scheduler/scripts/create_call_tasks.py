@@ -312,14 +312,41 @@ def main() -> int:
               + ("" if a.apply else " (DRY-RUN, not written back)"))
 
     icp_yes = [p for p in persons if str(p.get(ICP_KEY) or "").strip().lower() == "yes"]
+
+    already = _open_call_activity_person_ids(registry) if (a.apply or icp_yes) else set()
+
+    # duplicate-record guard: same human twice at one org (same normalized name) -> keep ONE
+    # record per human. Preference: already has open tasks (idempotency) > has email > more
+    # phones > older id. Losing duplicates are reported so they can be merged later.
+    by_human: dict = {}
+    dup_pairs = []
+    for p in icp_yes:
+        # last name + first initial, so "Reggie West" and "Reginald West" collide too
+        first, last = _split_name(p)
+        key = re.sub(r"[^a-z]", "", last.lower()) + "|" + (first[:1].lower() if first else "")
+        cur = by_human.get(key)
+        if cur is None:
+            by_human[key] = p
+            continue
+        def score(x):
+            return (int(x["id"]) in already, bool(_primary_email(x)), len(_phones(x)), -int(x["id"]))
+        if score(p) > score(cur):
+            dup_pairs.append((p, cur))
+            by_human[key] = p
+        else:
+            dup_pairs.append((cur, p))
+    icp_yes = list(by_human.values())
+    for kept, ignored in dup_pairs:
+        print(f"  duplicate record ignored: {ignored.get('name')} (id {ignored['id']}) "
+              f"-> tasks only on id {kept['id']}")
+
     with_phone = [p for p in icp_yes if _phones(p)]
     no_phone = [p for p in icp_yes if not _phones(p)]
 
     print(f"principal={a.principal} orgs={[o.get('name') for o in orgs.values()]} "
           f"persons={len(persons)} icp_yes={len(icp_yes)} with_phone={len(with_phone)} "
-          f"no_phone={len(no_phone)} owner={USERS.get(a.owner_id, a.owner_id)}")
-
-    already = _open_call_activity_person_ids(registry) if (a.apply or with_phone) else set()
+          f"no_phone={len(no_phone)} dupes_ignored={len(dup_pairs)} "
+          f"owner={USERS.get(a.owner_id, a.owner_id)}")
     # also skip anyone already pushed to a HotHawk sequence by the reconcile
     state_file = HERE / "_reconcile_state.json"
     if state_file.exists():
