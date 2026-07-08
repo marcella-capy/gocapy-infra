@@ -56,6 +56,7 @@ from business_days import add_business_days  # noqa: E402
 ICP_KEY = "1a8684b9333f530c727f9bff307391d3d200c897"      # Person ICP (Yes/No)
 TITLE_KEY = "ef54f66e8242d193fd263fa16ac83850271b2794"    # Person Job Title
 LINKEDIN_KEY = "cf2472711fcbe2a22cef32aea82f1a5a555761a8"  # Person LinkedIn Page
+ORG_EMAIL_PATTERN_KEY = "3ceb3b7c740bde695671e7cf393cb520e2fa7a65"  # Org Email Pattern
 CLAY_WEBHOOKS = HERE.parent / "references" / "clay-webhooks.json"
 MIN_CALLABLE_DEFAULT = 5  # orgs with fewer callable people go to the Clay company table
 # Subject doubles as the machine marker; group(1) = call number, group(2) = principal display name.
@@ -461,6 +462,7 @@ def main() -> int:
                 org_payload = {
                     "company_name": org.get("name") or "",
                     "company_domain": _org_domain(org),
+                    "email_pattern": str(org.get(ORG_EMAIL_PATTERN_KEY) or ""),
                     "pipedrive_org_id": int(oid),
                     "icp_yes_count": len(icp_yes), "with_phone_count": callable_n,
                     "no_phone_count": len(no_phone),

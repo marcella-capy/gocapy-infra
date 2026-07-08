@@ -25,6 +25,7 @@ var CLAY_COMPANY_WEBHOOK = 'https://api.clay.com/v3/sources/webhook/pull-in-data
 var ICP_KEY = '1a8684b9333f530c727f9bff307391d3d200c897';      // Person ICP (Yes/No)
 var TITLE_KEY = 'ef54f66e8242d193fd263fa16ac83850271b2794';    // Person Job Title
 var LINKEDIN_KEY = 'cf2472711fcbe2a22cef32aea82f1a5a555761a8'; // Person LinkedIn Page
+var ORG_EMAIL_PATTERN_KEY = '3ceb3b7c740bde695671e7cf393cb520e2fa7a65'; // Org Email Pattern
 var OWNERS = { 'Marcella': 22638704, 'Jonathan': 20845253, 'Sam': 20845572, 'Ericka': 23490137 };
 
 // ICP job-title classifier — mirrors people-icp-classifier (default-Yes; positives win over excludes)
@@ -283,6 +284,7 @@ function runWorkflowA(input) {
     if (withPhone.length < MIN_CALLABLE) {
       if (clayPost(CLAY_COMPANY_WEBHOOK, {
         company_name: org.name, company_domain: org.domain, pipedrive_org_id: org.id,
+        email_pattern: org.email_pattern || '',
         icp_yes_count: icpYes.length, with_phone_count: withPhone.length, no_phone_count: noPhone.length,
       })) clayCompany++;
     }
@@ -323,7 +325,8 @@ function resolveOrg(nameOrId) {
   if (/^\d+$/.test(nameOrId)) {
     var d = pd('GET', '/api/v1/organizations/' + nameOrId).data;
     if (!d) throw new Error('Org id ' + nameOrId + ' not found');
-    return { id: Number(d.id), name: d.name, domain: cleanDomain(d.website) };
+    return { id: Number(d.id), name: d.name, domain: cleanDomain(d.website),
+             email_pattern: String(d[ORG_EMAIL_PATTERN_KEY] || '') };
   }
   var items = (pd('GET', '/api/v2/organizations/search', { term: nameOrId, limit: 20 }).data || {}).items || [];
   var hits = items.map(function (i) { return i.item; });
@@ -336,7 +339,8 @@ function resolveOrg(nameOrId) {
       + ' — put the org ID in the Organization cell');
   }
   var full = pd('GET', '/api/v1/organizations/' + hits[0].id).data || {};
-  return { id: Number(hits[0].id), name: hits[0].name, domain: cleanDomain(full.website) };
+  return { id: Number(hits[0].id), name: hits[0].name, domain: cleanDomain(full.website),
+           email_pattern: String(full[ORG_EMAIL_PATTERN_KEY] || '') };
 }
 
 function orgPersons(orgId) {
