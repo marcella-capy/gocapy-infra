@@ -26,7 +26,7 @@ var ICP_KEY = '1a8684b9333f530c727f9bff307391d3d200c897';      // Person ICP (Ye
 var TITLE_KEY = 'ef54f66e8242d193fd263fa16ac83850271b2794';    // Person Job Title
 var LINKEDIN_KEY = 'cf2472711fcbe2a22cef32aea82f1a5a555761a8'; // Person LinkedIn Page
 var ORG_EMAIL_PATTERN_KEY = '3ceb3b7c740bde695671e7cf393cb520e2fa7a65'; // Org Email Pattern
-var OWNERS = { 'Marcella': 22638704, 'Jonathan': 20845253, 'Sam': 20845572, 'Ericka': 23490137 };
+var OWNERS = { 'Marcella': 22638704, 'Jonathan': 20845253, 'Sam': 20845572, 'Ericka': 23490137, 'Mark': 25200747 };
 
 // ICP job-title classifier — mirrors people-icp-classifier (default-Yes; positives win over excludes)
 var ICP_POS_PHRASES = ['supply chain manager', 'supply chain', 'product development engineer',

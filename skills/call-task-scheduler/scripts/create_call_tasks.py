@@ -85,7 +85,8 @@ def principal_of(act: dict, registry: dict) -> "str | None":
 REGISTRY = HERE.parent / "references" / "voicemail-sequences.json"
 CALL_OFFSETS = (1, 5, 7)  # business days from today
 
-USERS = {22638704: "Marcella", 20845253: "Jonathan", 20845572: "Sam", 23490137: "Ericka"}
+USERS = {22638704: "Marcella", 20845253: "Jonathan", 20845572: "Sam", 23490137: "Ericka",
+         25200747: "Mark"}
 
 
 # ── live Pipedrive HTTP (writes + activity listing; mirrors pd_cache._pd_get) ──────────────────

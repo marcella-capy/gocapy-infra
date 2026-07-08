@@ -40,7 +40,8 @@
     "workspace_id": "95997af8-edf7-4a97-8227-cb826bc3e46d",
     "workspace_name": "Patriot",
     "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
-    "sequence_name": "Patriot Forge_Post-Voicemail Sequence_070726"
+    "sequence_name": "Patriot Forge_Post-Voicemail Sequence_070726",
+    "note": "campaign status DRAFT as of 2026-07-08 - activate in HotHawk before the reconcile can enroll leads"
   },
   "general-foundry": {
     "display_name": "General Foundry",
