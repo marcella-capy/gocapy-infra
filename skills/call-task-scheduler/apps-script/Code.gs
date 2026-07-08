@@ -240,7 +240,8 @@ function runWorkflowA(input) {
   var todo = withPhone.filter(function (p) { return !already[String(p.id)]; });
   var skipped = withPhone.length - todo.length;
   if (input.test) {
-    if (skipped > 0) return 'TEST skipped: ' + skipped + ' person(s) already have open call tasks';
+    if (skipped > 0) return 'org ' + org.id + ' (' + org.name + '): TEST skipped: ' + skipped
+      + ' person(s) already have open call tasks';
     todo = todo.slice(0, 1);
   }
 
@@ -290,7 +291,8 @@ function runWorkflowA(input) {
     }
   }
 
-  return (input.test ? 'TEST: ' : '') + todo.length + ' people, ' + createdCount + ' tasks, '
+  return 'org ' + org.id + ' (' + org.name + '): ' + (input.test ? 'TEST: ' : '')
+    + todo.length + ' people, ' + createdCount + ' tasks, '
     + skipped + ' skipped, ' + noPhone.length + ' no-phone'
     + (classified ? ', ' + classified + ' ICP-classified' : '')
     + (dedupedOut ? ', ' + dedupedOut + ' duplicate record(s) ignored' : '')

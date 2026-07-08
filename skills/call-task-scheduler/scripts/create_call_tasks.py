@@ -483,7 +483,8 @@ def main() -> int:
     out.write_text(json.dumps(ledger, indent=2), encoding="utf-8")
 
     mode = "TEST " if a.test else ""
-    print(f"RESULT: ok - {mode}{len(todo)} persons, {len(created)} activities created, "
+    org_tag = ", ".join(f"org {i} ({o.get('name')})" for i, o in orgs.items())
+    print(f"RESULT: ok - {org_tag}: {mode}{len(todo)} persons, {len(created)} activities created, "
           f"{skipped} skipped-existing, {len(no_phone)} no-phone noted ({len(note_ids)} notes), "
           f"clay: {clay_people} people / {clay_companies} companies")
     return 0
