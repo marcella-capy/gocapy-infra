@@ -1,0 +1,1058 @@
+open skill activities: 2380
+
+org 2576 (General Dynamics Mission Systems) [patriot-forge]: 79 people with open tasks
+  DELETE Robert Knight (state VA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72238, 72239, 72240]
+  DELETE Stephanie Robertson (state VA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72241, 72242, 72243]
+  DELETE Chad Jordan (state VA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72247, 72248, 72249]
+  DELETE Cody Lingel (state VA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72256, 72257, 72258]
+  DELETE Larry Ness (state VA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72262, 72263, 72264]
+  DELETE Sandra Barajas (state VA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72265, 72266, 72267]
+  DELETE Jackie Belisle (state VA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72268, 72269, 72270]
+  DELETE Jennifer Fuchs (state VA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72271, 72272, 72273]
+  DELETE Christopher Beamesderfer (state PA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72274, 72275, 72276]
+  DELETE Elizabeth Taranto (state MN not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72574, 72575, 72576]
+  DELETE Robert Rudd, Jr. (state VA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72577, 72578, 72579]
+  DELETE Kimberly  Reynolds (state PA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72580, 72581, 72582]
+  DELETE Brian Fraser (state MA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72583, 72584, 72585]
+  DELETE Roberta MacDonald (state MA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72586, 72587, 72588]
+  DELETE Martin Radzio (state VA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72589, 72590, 72591]
+  DELETE Samantha Pieri (state IN not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72592, 72593, 72594]
+  DELETE Denise Henry (state MN not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72595, 72596, 72597]
+  DELETE Laurie Campbell-DeRosa (state MA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72598, 72599, 72600]
+  DELETE Valerie Forbes (state FL not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72601, 72602, 72603]
+  DELETE George Boccelli (state MA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72604, 72605, 72606]
+  DELETE Brian Slaughter (state TN not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72607, 72608, 72609]
+  DELETE Rachel Unterkofler (state TN not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72610, 72611, 72612]
+  DELETE Donna Jacobelli (state NC not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72613, 72614, 72615]
+  DELETE Paul Smith (state MA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72616, 72617, 72618]
+  DELETE Joellen Sirgany Isambert (state FL not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72619, 72620, 72621]
+  DELETE Stephanne Stiglic (tier 3, over cap 25) -> activities [72445, 72446, 72447]
+  DELETE Warren Opstad (tier 3, over cap 25) -> activities [72448, 72449, 72450]
+  DELETE Amber Berian (tier 3, over cap 25) -> activities [72460, 72461, 72462]
+  DELETE Sheila Vick (tier 3, over cap 25) -> activities [72463, 72464, 72465]
+  DELETE Dianna Vickers (tier 3, over cap 25) -> activities [72466, 72467, 72468]
+  DELETE Casey Peterson (tier 3, over cap 25) -> activities [72472, 72473, 72474]
+  DELETE Luis Rivera (tier 3, over cap 25) -> activities [72475, 72476, 72477]
+  DELETE Lenilza Lane (tier 3, over cap 25) -> activities [72478, 72479, 72480]
+  DELETE Emily Sleiman (tier 3, over cap 25) -> activities [72481, 72482, 72483]
+  DELETE Nazia Karim (tier 3, over cap 25) -> activities [72484, 72485, 72486]
+  DELETE Jeanne. MacLaughlin (tier 3, over cap 25) -> activities [72487, 72488, 72489]
+  DELETE Peter LaMagna (tier 3, over cap 25) -> activities [72490, 72491, 72492]
+  DELETE Ian Terry (tier 3, over cap 25) -> activities [72493, 72494, 72495]
+  DELETE Vicky Schrage (tier 3, over cap 25) -> activities [72496, 72497, 72498]
+  DELETE Sean Prus (tier 3, over cap 25) -> activities [72499, 72500, 72501]
+  DELETE Angela Williams (tier 3, over cap 25) -> activities [72502, 72503, 72504]
+  DELETE Karen Berry (tier 3, over cap 25) -> activities [72508, 72509, 72510]
+  DELETE Rachel Thaxton (tier 3, over cap 25) -> activities [72511, 72512, 72513]
+  DELETE Brett Adams (tier 3, over cap 25) -> activities [72514, 72515, 72516]
+  DELETE Israel Ruiz (tier 3, over cap 25) -> activities [72517, 72518, 72519]
+  DELETE Kim Rodhouse (tier 3, over cap 25) -> activities [72523, 72524, 72525]
+  DELETE Kennedy Kile (tier 3, over cap 25) -> activities [72526, 72527, 72528]
+  DELETE Lindsey Danno (tier 3, over cap 25) -> activities [72532, 72533, 72534]
+  DELETE Stephanie Moran (tier 3, over cap 25) -> activities [72538, 72539, 72540]
+  DELETE Preston Gallagher (tier 3, over cap 25) -> activities [72541, 72542, 72543]
+  DELETE Susan W. (tier 3, over cap 25) -> activities [72547, 72548, 72549]
+  DELETE Christian Chinchen, CSCP (tier 3, over cap 25) -> activities [72553, 72554, 72555]
+  DELETE David Garcia (tier 3, over cap 25) -> activities [72556, 72557, 72558]
+  DELETE Ted Martin (tier 3, over cap 25) -> activities [72559, 72560, 72561]
+  redate Mike Leger (tier 1) Call 1: 2026-07-09 -> 2026-07-10
+  redate Mike Leger (tier 1) Call 2: 2026-07-15 -> 2026-07-16
+  redate Mike Leger (tier 1) Call 3: 2026-07-17 -> 2026-07-20
+  redate Susan Carpenter (tier 1) Call 1: 2026-07-09 -> 2026-07-10
+  redate Susan Carpenter (tier 1) Call 2: 2026-07-15 -> 2026-07-16
+  redate Susan Carpenter (tier 1) Call 3: 2026-07-17 -> 2026-07-20
+  redate Kristin Ehricke (tier 1) Call 1: 2026-07-09 -> 2026-07-10
+  redate Kristin Ehricke (tier 1) Call 2: 2026-07-15 -> 2026-07-16
+  redate Kristin Ehricke (tier 1) Call 3: 2026-07-17 -> 2026-07-20
+  redate Seitzer, Brad (tier 1) Call 1: 2026-07-09 -> 2026-07-10
+  redate Seitzer, Brad (tier 1) Call 2: 2026-07-15 -> 2026-07-16
+  redate Seitzer, Brad (tier 1) Call 3: 2026-07-17 -> 2026-07-20
+  redate Roxanne Tebow (tier 1) Call 1: 2026-07-09 -> 2026-07-10
+  redate Roxanne Tebow (tier 1) Call 2: 2026-07-15 -> 2026-07-16
+  redate Roxanne Tebow (tier 1) Call 3: 2026-07-17 -> 2026-07-20
+  redate Kathleen Clemons (tier 1) Call 1: 2026-07-09 -> 2026-07-13
+  redate Kathleen Clemons (tier 1) Call 2: 2026-07-15 -> 2026-07-17
+  redate Kathleen Clemons (tier 1) Call 3: 2026-07-17 -> 2026-07-21
+  redate Elizabeth Robillard (tier 1) Call 1: 2026-07-09 -> 2026-07-13
+  redate Elizabeth Robillard (tier 1) Call 2: 2026-07-15 -> 2026-07-17
+  redate Elizabeth Robillard (tier 1) Call 3: 2026-07-17 -> 2026-07-21
+  redate Avery Johnson, MBA (tier 1) Call 1: 2026-07-09 -> 2026-07-13
+  redate Avery Johnson, MBA (tier 1) Call 2: 2026-07-15 -> 2026-07-17
+  redate Avery Johnson, MBA (tier 1) Call 3: 2026-07-17 -> 2026-07-21
+  redate Darin Peckham (tier 1) Call 1: 2026-07-09 -> 2026-07-13
+  redate Darin Peckham (tier 1) Call 2: 2026-07-15 -> 2026-07-17
+  redate Darin Peckham (tier 1) Call 3: 2026-07-17 -> 2026-07-21
+  redate Kelly Carter (tier 1) Call 1: 2026-07-09 -> 2026-07-13
+  redate Kelly Carter (tier 1) Call 2: 2026-07-15 -> 2026-07-17
+  redate Kelly Carter (tier 1) Call 3: 2026-07-17 -> 2026-07-21
+  redate Troy Larson (tier 2) Call 1: 2026-07-09 -> 2026-07-14
+  redate Troy Larson (tier 2) Call 2: 2026-07-15 -> 2026-07-20
+  redate Troy Larson (tier 2) Call 3: 2026-07-17 -> 2026-07-22
+  redate Kristin Miller (tier 3) Call 1: 2026-07-09 -> 2026-07-14
+  redate Kristin Miller (tier 3) Call 2: 2026-07-15 -> 2026-07-20
+  redate Kristin Miller (tier 3) Call 3: 2026-07-17 -> 2026-07-22
+  redate Jared Godfrey (tier 3) Call 1: 2026-07-09 -> 2026-07-14
+  redate Jared Godfrey (tier 3) Call 2: 2026-07-15 -> 2026-07-20
+  redate Jared Godfrey (tier 3) Call 3: 2026-07-17 -> 2026-07-22
+  redate Jan Gilmore (tier 3) Call 1: 2026-07-09 -> 2026-07-14
+  redate Jan Gilmore (tier 3) Call 2: 2026-07-15 -> 2026-07-20
+  redate Jan Gilmore (tier 3) Call 3: 2026-07-17 -> 2026-07-22
+  redate Jack Smith (tier 3) Call 1: 2026-07-09 -> 2026-07-14
+  redate Jack Smith (tier 3) Call 2: 2026-07-15 -> 2026-07-20
+  redate Jack Smith (tier 3) Call 3: 2026-07-17 -> 2026-07-22
+  redate Maureen West (tier 3) Call 1: 2026-07-09 -> 2026-07-15
+  redate Maureen West (tier 3) Call 2: 2026-07-15 -> 2026-07-21
+  redate Maureen West (tier 3) Call 3: 2026-07-17 -> 2026-07-23
+  redate Justin gauthier (tier 3) Call 1: 2026-07-09 -> 2026-07-15
+  redate Justin gauthier (tier 3) Call 2: 2026-07-15 -> 2026-07-21
+  redate Justin gauthier (tier 3) Call 3: 2026-07-17 -> 2026-07-23
+  redate Shane Niimi (tier 3) Call 1: 2026-07-09 -> 2026-07-15
+  redate Shane Niimi (tier 3) Call 2: 2026-07-15 -> 2026-07-21
+  redate Shane Niimi (tier 3) Call 3: 2026-07-17 -> 2026-07-23
+  redate Mary Rose (tier 3) Call 1: 2026-07-09 -> 2026-07-15
+  redate Mary Rose (tier 3) Call 2: 2026-07-15 -> 2026-07-21
+  redate Mary Rose (tier 3) Call 3: 2026-07-17 -> 2026-07-23
+  redate ZoÃ« Castillo (tier 3) Call 1: 2026-07-09 -> 2026-07-15
+  redate ZoÃ« Castillo (tier 3) Call 2: 2026-07-15 -> 2026-07-21
+  redate ZoÃ« Castillo (tier 3) Call 3: 2026-07-17 -> 2026-07-23
+
+org 4188 (BWXT) [tmx]: 9 people with open tasks
+  DELETE Brian Quick (excluded state FL) -> activities [72766, 72767, 72768]
+  redate Tamara Adkins (tier 3) Call 1: 2026-07-09 -> 2026-07-10
+  redate Tamara Adkins (tier 3) Call 2: 2026-07-15 -> 2026-07-16
+  redate Tamara Adkins (tier 3) Call 3: 2026-07-17 -> 2026-07-20
+  redate Amanda Long (tier 3) Call 1: 2026-07-09 -> 2026-07-10
+  redate Amanda Long (tier 3) Call 2: 2026-07-15 -> 2026-07-16
+  redate Amanda Long (tier 3) Call 3: 2026-07-17 -> 2026-07-20
+  redate Rokesh Thothiyana (tier 3) Call 1: 2026-07-09 -> 2026-07-10
+  redate Rokesh Thothiyana (tier 3) Call 2: 2026-07-15 -> 2026-07-16
+  redate Rokesh Thothiyana (tier 3) Call 3: 2026-07-17 -> 2026-07-20
+
+org 5526 (AEVEX Aerospace) [lnp]: 12 people with open tasks
+  redate Doug Edwards (tier 1) Call 1: 2026-07-08 -> 2026-07-09
+  redate Doug Edwards (tier 1) Call 2: 2026-07-14 -> 2026-07-15
+  redate Doug Edwards (tier 1) Call 3: 2026-07-16 -> 2026-07-17
+  redate Reggie West (tier 1) Call 1: 2026-07-08 -> 2026-07-09
+  redate Reggie West (tier 1) Call 2: 2026-07-14 -> 2026-07-15
+  redate Reggie West (tier 1) Call 3: 2026-07-16 -> 2026-07-17
+  redate Susan Koehler (tier 1) Call 1: 2026-07-08 -> 2026-07-09
+  redate Susan Koehler (tier 1) Call 2: 2026-07-14 -> 2026-07-15
+  redate Susan Koehler (tier 1) Call 3: 2026-07-16 -> 2026-07-17
+  redate Corina Anderson (tier 3) Call 1: 2026-07-08 -> 2026-07-09
+  redate Corina Anderson (tier 3) Call 2: 2026-07-14 -> 2026-07-15
+  redate Corina Anderson (tier 3) Call 3: 2026-07-16 -> 2026-07-17
+  redate Lazaro Arriete (tier 3) Call 1: 2026-07-08 -> 2026-07-09
+  redate Lazaro Arriete (tier 3) Call 2: 2026-07-14 -> 2026-07-15
+  redate Lazaro Arriete (tier 3) Call 3: 2026-07-16 -> 2026-07-17
+  redate Kevin Courtney (tier 3) Call 1: 2026-07-08 -> 2026-07-10
+  redate Kevin Courtney (tier 3) Call 2: 2026-07-14 -> 2026-07-16
+  redate Kevin Courtney (tier 3) Call 3: 2026-07-16 -> 2026-07-20
+  redate Jesse Babendreier (tier 3) Call 1: 2026-07-08 -> 2026-07-10
+  redate Jesse Babendreier (tier 3) Call 2: 2026-07-14 -> 2026-07-16
+  redate Jesse Babendreier (tier 3) Call 3: 2026-07-16 -> 2026-07-20
+  redate Kelsey Sylvestro (tier 3) Call 1: 2026-07-08 -> 2026-07-10
+  redate Kelsey Sylvestro (tier 3) Call 2: 2026-07-14 -> 2026-07-16
+  redate Kelsey Sylvestro (tier 3) Call 3: 2026-07-16 -> 2026-07-20
+  redate Mykia Thrower (tier 3) Call 1: 2026-07-08 -> 2026-07-10
+  redate Mykia Thrower (tier 3) Call 2: 2026-07-14 -> 2026-07-16
+  redate Mykia Thrower (tier 3) Call 3: 2026-07-16 -> 2026-07-20
+  redate Admiral Ridley (tier 3) Call 1: 2026-07-08 -> 2026-07-10
+  redate Admiral Ridley (tier 3) Call 2: 2026-07-14 -> 2026-07-16
+  redate Admiral Ridley (tier 3) Call 3: 2026-07-16 -> 2026-07-20
+  2 people already started (Call 1 done) — untouched
+
+org 6339 (Arconic Corporation) [patriot-forge]: 32 people with open tasks
+  DELETE Karen Davis (state PA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72134, 72135, 72136]
+  DELETE Benjamin Franck (state PA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72137, 72138, 72139]
+  DELETE Pranish Kantak (state PA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72140, 72141, 72142]
+  DELETE Randal Ruble (state PA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72143, 72144, 72145]
+  DELETE Allison Ryals (state GA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72149, 72150, 72151]
+  DELETE Paul Clarke (state NJ not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72152, 72153, 72154]
+  DELETE Jeremiah Libby (state PA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72155, 72156, 72157]
+  DELETE Emily Jones (state GA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72158, 72159, 72160]
+  DELETE Lindsay Faddish (state PA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72161, 72162, 72163]
+  DELETE Sandi Shunkwiler (state AR not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72164, 72165, 72166]
+  DELETE Aaron Sexton (state AR not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72167, 72168, 72169]
+  DELETE Orlando Canales (state PA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72176, 72177, 72178]
+  DELETE Carlos Davis (state PA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72179, 72180, 72181]
+  DELETE Greg Munoz, MBA (state PA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72182, 72183, 72184]
+  DELETE Loïc Koensgen (state PA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72185, 72186, 72187]
+  DELETE Angie Maher (state PA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72188, 72189, 72190]
+  DELETE John Boyle, CPSM (state PA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72191, 72192, 72193]
+  DELETE Magdalena Kolacz (state PA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72194, 72195, 72196]
+  DELETE Lina Wilkinson - BA, MBA, MCIPS (state PA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72197, 72198, 72199]
+  DELETE Nicole Jones (state PA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72200, 72201, 72202]
+  DELETE Stephen Burda (state PA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72203, 72204, 72205]
+  DELETE Chris Lindke (state PA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72206, 72207, 72208]
+  DELETE Nathan McCollom (state PA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72209, 72210, 72211]
+  DELETE Roger Bailey (state PA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72212, 72213, 72214]
+  DELETE Aurelia Hoffman (state PA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72215, 72216, 72217]
+  DELETE Shawn Eisler (state PA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72218, 72219, 72220]
+  DELETE Michael Gallup (state PA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72221, 72222, 72223]
+  DELETE Thomas O'Toole (state PA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72224, 72225, 72226]
+  DELETE Kirk McBane (state PA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72227, 72228, 72229]
+  DELETE Mike Norris (state PA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72230, 72231, 72232]
+  DELETE Tamieka S. (state PA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72233, 72234, 72235]
+
+org 13234 (Helion Energy Inc) [tmx]: 16 people with open tasks
+  redate Connor Adams (tier 3) Call 1: 2026-07-09 -> 2026-07-10
+  redate Connor Adams (tier 3) Call 2: 2026-07-15 -> 2026-07-16
+  redate Connor Adams (tier 3) Call 3: 2026-07-17 -> 2026-07-20
+  redate Olivia Deitz (tier 3) Call 1: 2026-07-09 -> 2026-07-10
+  redate Olivia Deitz (tier 3) Call 2: 2026-07-15 -> 2026-07-16
+  redate Olivia Deitz (tier 3) Call 3: 2026-07-17 -> 2026-07-20
+  redate Vidhya Rao (tier 3) Call 1: 2026-07-09 -> 2026-07-10
+  redate Vidhya Rao (tier 3) Call 2: 2026-07-15 -> 2026-07-16
+  redate Vidhya Rao (tier 3) Call 3: 2026-07-17 -> 2026-07-20
+  redate Jesse Lambrecht (tier 3) Call 1: 2026-07-09 -> 2026-07-10
+  redate Jesse Lambrecht (tier 3) Call 2: 2026-07-15 -> 2026-07-16
+  redate Jesse Lambrecht (tier 3) Call 3: 2026-07-17 -> 2026-07-20
+  redate Elayne Ashley (tier 3) Call 1: 2026-07-09 -> 2026-07-10
+  redate Elayne Ashley (tier 3) Call 2: 2026-07-15 -> 2026-07-16
+  redate Elayne Ashley (tier 3) Call 3: 2026-07-17 -> 2026-07-20
+  redate Jonathan Sebastian (tier 3) Call 1: 2026-07-09 -> 2026-07-13
+  redate Jonathan Sebastian (tier 3) Call 2: 2026-07-15 -> 2026-07-17
+  redate Jonathan Sebastian (tier 3) Call 3: 2026-07-17 -> 2026-07-21
+  redate Jackson Baker (tier 3) Call 1: 2026-07-09 -> 2026-07-13
+  redate Jackson Baker (tier 3) Call 2: 2026-07-15 -> 2026-07-17
+  redate Jackson Baker (tier 3) Call 3: 2026-07-17 -> 2026-07-21
+  redate Jake Wills (tier 3) Call 1: 2026-07-09 -> 2026-07-13
+  redate Jake Wills (tier 3) Call 2: 2026-07-15 -> 2026-07-17
+  redate Jake Wills (tier 3) Call 3: 2026-07-17 -> 2026-07-21
+  redate Ister Wu (tier 3) Call 1: 2026-07-09 -> 2026-07-13
+  redate Ister Wu (tier 3) Call 2: 2026-07-15 -> 2026-07-17
+  redate Ister Wu (tier 3) Call 3: 2026-07-17 -> 2026-07-21
+  redate Boopathy Kombaiah (tier 3) Call 1: 2026-07-09 -> 2026-07-13
+  redate Boopathy Kombaiah (tier 3) Call 2: 2026-07-15 -> 2026-07-17
+  redate Boopathy Kombaiah (tier 3) Call 3: 2026-07-17 -> 2026-07-21
+  redate Cecile Mejean, PhD (tier 3) Call 1: 2026-07-09 -> 2026-07-14
+  redate Cecile Mejean, PhD (tier 3) Call 2: 2026-07-15 -> 2026-07-20
+  redate Cecile Mejean, PhD (tier 3) Call 3: 2026-07-17 -> 2026-07-22
+
+org 14154 (Sierra Nevada Corporation) [lnp]: 279 people with open tasks
+  DELETE Matt Vander Weg (tier 1, over cap 25) -> activities [72859, 72860, 72861]
+  DELETE Monica Balancier Cortinas (tier 1, over cap 25) -> activities [72361, 72362, 72363]
+  DELETE Rondolf Moreno (tier 1, over cap 25) -> activities [72364, 72365, 72366]
+  DELETE CJ Gallatin (tier 1, over cap 25) -> activities [72886, 72887, 72888]
+  DELETE Kevin Mosher (tier 1, over cap 25) -> activities [72889, 72890, 72891]
+  DELETE Matthew Gaudu (tier 1, over cap 25) -> activities [72898, 72899, 72900]
+  DELETE Nicholas Johnson, CPCM, CFCM (tier 1, over cap 25) -> activities [72901, 72902, 72903]
+  DELETE Colton Black (tier 1, over cap 25) -> activities [72910, 72911, 72912]
+  DELETE Chris K. (tier 1, over cap 25) -> activities [72922, 72923, 72924]
+  DELETE Nate I. (tier 1, over cap 25) -> activities [72928, 72929, 72930]
+  DELETE Johnathan Hines (tier 1, over cap 25) -> activities [72970, 72971, 72972]
+  DELETE Melissa Taylor (tier 1, over cap 25) -> activities [73051, 73052, 73053]
+  DELETE Jamie Vigil (tier 1, over cap 25) -> activities [73207, 73208, 73209]
+  DELETE Anna Enriquez-Lee (tier 1, over cap 25) -> activities [73399, 73400, 73401]
+  DELETE Kyle Van Horn (tier 3, over cap 25) -> activities [72280, 72281, 72282]
+  DELETE Judy Woodham (tier 3, over cap 25) -> activities [72283, 72284, 72285]
+  DELETE April Shults (tier 3, over cap 25) -> activities [72292, 72293, 72294]
+  DELETE Scott Harris (tier 3, over cap 25) -> activities [72298, 72299, 72300]
+  DELETE Jerry Bodeker (tier 3, over cap 25) -> activities [72301, 72302, 72303]
+  DELETE Katarina Scully (tier 3, over cap 25) -> activities [72304, 72305, 72306]
+  DELETE Cary Parvin (tier 3, over cap 25) -> activities [72307, 72308, 72309]
+  DELETE Emily Walsh (tier 3, over cap 25) -> activities [72310, 72311, 72312]
+  DELETE Adan Flores (tier 3, over cap 25) -> activities [72313, 72314, 72315]
+  DELETE Cindy Hinds (tier 3, over cap 25) -> activities [72319, 72320, 72321]
+  DELETE David Greenwood (tier 3, over cap 25) -> activities [72322, 72323, 72324]
+  DELETE Kurt Nicholson (tier 3, over cap 25) -> activities [72325, 72326, 72327]
+  DELETE Matt Hoechlin (tier 3, over cap 25) -> activities [72328, 72329, 72330]
+  DELETE Megan Henriksen (tier 3, over cap 25) -> activities [72331, 72332, 72333]
+  DELETE Pamela Garcia (tier 3, over cap 25) -> activities [72334, 72335, 72336]
+  DELETE Andrew Schatzman (tier 3, over cap 25) -> activities [72790, 72791, 72792]
+  DELETE Brady Rolen (tier 3, over cap 25) -> activities [72793, 72794, 72795]
+  DELETE Donald Hoffmann (tier 3, over cap 25) -> activities [72355, 72356, 72357]
+  DELETE dean raymond (tier 3, over cap 25) -> activities [72799, 72800, 72801]
+  DELETE Evan Bernhagen (tier 3, over cap 25) -> activities [72802, 72803, 72804]
+  DELETE Gina Olindo (tier 3, over cap 25) -> activities [72805, 72806, 72807]
+  DELETE Mindy Menk (tier 3, over cap 25) -> activities [72817, 72818, 72819]
+  DELETE Barry Smith (tier 3, over cap 25) -> activities [72820, 72821, 72822]
+  DELETE Joseph Thomas, PMP (tier 3, over cap 25) -> activities [72832, 72833, 72834]
+  DELETE Ray Traffis (tier 3, over cap 25) -> activities [72853, 72854, 72855]
+  DELETE David Angers (tier 3, over cap 25) -> activities [72862, 72863, 72864]
+  DELETE Natosha Park (tier 3, over cap 25) -> activities [72358, 72359, 72360]
+  DELETE Jared Lincoln (tier 3, over cap 25) -> activities [72865, 72866, 72867]
+  DELETE Simon Muller (tier 3, over cap 25) -> activities [72868, 72869, 72870]
+  DELETE Sindhu Sharma (tier 3, over cap 25) -> activities [72871, 72872, 72873]
+  DELETE Nikoletta Kosa (tier 3, over cap 25) -> activities [72874, 72875, 72876]
+  DELETE April Pearson (tier 3, over cap 25) -> activities [72877, 72878, 72879]
+  DELETE Chip Autry (tier 3, over cap 25) -> activities [72880, 72881, 72882]
+  DELETE Lisa Crump (tier 3, over cap 25) -> activities [72883, 72884, 72885]
+  DELETE Kyle Strasser (tier 3, over cap 25) -> activities [72892, 72893, 72894]
+  DELETE Phil Brooks, M.S.SCM (tier 3, over cap 25) -> activities [72895, 72896, 72897]
+  DELETE Terrel Respass, MBA, MS, CIBE (tier 3, over cap 25) -> activities [72904, 72905, 72906]
+  DELETE Brian Stuhrenberg (tier 3, over cap 25) -> activities [72907, 72908, 72909]
+  DELETE Todd Lytle MBA (tier 3, over cap 25) -> activities [72913, 72914, 72915]
+  DELETE Dana Kirchmar (tier 3, over cap 25) -> activities [72916, 72917, 72918]
+  DELETE Jason Kornfeld (tier 3, over cap 25) -> activities [72919, 72920, 72921]
+  DELETE Marc DesLauriers (tier 3, over cap 25) -> activities [72925, 72926, 72927]
+  DELETE Jacob Hensch, CPCM, CFCM (tier 3, over cap 25) -> activities [72931, 72932, 72933]
+  DELETE Roberto Muniz (tier 3, over cap 25) -> activities [72934, 72935, 72936]
+  DELETE Mohamad Obeid (tier 3, over cap 25) -> activities [72937, 72938, 72939]
+  DELETE Brandon Arther (tier 3, over cap 25) -> activities [72940, 72941, 72942]
+  DELETE Amanda Mize (tier 3, over cap 25) -> activities [72943, 72944, 72945]
+  DELETE Megan Glass (tier 3, over cap 25) -> activities [72946, 72947, 72948]
+  DELETE Marissa Hyde (tier 3, over cap 25) -> activities [72949, 72950, 72951]
+  DELETE Jim Pancoe (tier 3, over cap 25) -> activities [72952, 72953, 72954]
+  DELETE Hudson Amaro (tier 3, over cap 25) -> activities [72955, 72956, 72957]
+  DELETE Camille Mullis (tier 3, over cap 25) -> activities [72958, 72959, 72960]
+  DELETE April Toms (tier 3, over cap 25) -> activities [72961, 72962, 72963]
+  DELETE Justin Knutzen (tier 3, over cap 25) -> activities [72964, 72965, 72966]
+  DELETE John Marlow (tier 3, over cap 25) -> activities [72967, 72968, 72969]
+  DELETE Grant Henderson (tier 3, over cap 25) -> activities [72973, 72974, 72975]
+  DELETE Shane Lindsey (tier 3, over cap 25) -> activities [72976, 72977, 72978]
+  DELETE John Newbanks (tier 3, over cap 25) -> activities [72979, 72980, 72981]
+  DELETE Brenda Lucente (tier 3, over cap 25) -> activities [72982, 72983, 72984]
+  DELETE Sai Xiong (tier 3, over cap 25) -> activities [72985, 72986, 72987]
+  DELETE Greg Shetler (tier 3, over cap 25) -> activities [72988, 72989, 72990]
+  DELETE Brock Martin (tier 3, over cap 25) -> activities [72991, 72992, 72993]
+  DELETE Jaime Regis (tier 3, over cap 25) -> activities [72994, 72995, 72996]
+  DELETE Chris Knaak (tier 3, over cap 25) -> activities [72997, 72998, 72999]
+  DELETE Sonia Palomino (tier 3, over cap 25) -> activities [73000, 73001, 73002]
+  DELETE Chris Sisneros (tier 3, over cap 25) -> activities [73003, 73004, 73005]
+  DELETE Amanda Campbell (tier 3, over cap 25) -> activities [73006, 73007, 73008]
+  DELETE Erika Pierce (tier 3, over cap 25) -> activities [73009, 73010, 73011]
+  DELETE William Booth (tier 3, over cap 25) -> activities [73012, 73013, 73014]
+  DELETE Charles Cruz (tier 3, over cap 25) -> activities [73015, 73016, 73017]
+  DELETE Ronda Sabio (tier 3, over cap 25) -> activities [73018, 73019, 73020]
+  DELETE Andy Fowler (tier 3, over cap 25) -> activities [73021, 73022, 73023]
+  DELETE Lynzie Offutt (tier 3, over cap 25) -> activities [73024, 73025, 73026]
+  DELETE Jefrey Bobgan (tier 3, over cap 25) -> activities [73027, 73028, 73029]
+  DELETE Kelly McMenamin (tier 3, over cap 25) -> activities [73030, 73031, 73032]
+  DELETE Ryan Malensek (tier 3, over cap 25) -> activities [73033, 73034, 73035]
+  DELETE Gillian Lougeman (tier 3, over cap 25) -> activities [73036, 73037, 73038]
+  DELETE Jason Odle (tier 3, over cap 25) -> activities [73039, 73040, 73041]
+  DELETE Kyle Sheetz (tier 3, over cap 25) -> activities [73042, 73043, 73044]
+  DELETE Jason Newlin (tier 3, over cap 25) -> activities [73045, 73046, 73047]
+  DELETE Amy Cox (tier 3, over cap 25) -> activities [73048, 73049, 73050]
+  DELETE Jackson Wilhelm (tier 3, over cap 25) -> activities [73054, 73055, 73056]
+  DELETE Jason Wilson (tier 3, over cap 25) -> activities [73057, 73058, 73059]
+  DELETE Andrew Banks (tier 3, over cap 25) -> activities [73060, 73061, 73062]
+  DELETE Jessica Adolfino (tier 3, over cap 25) -> activities [73063, 73064, 73065]
+  DELETE Michael Weiner (tier 3, over cap 25) -> activities [73066, 73067, 73068]
+  DELETE Ashley Parker (tier 3, over cap 25) -> activities [73069, 73070, 73071]
+  DELETE Fernando Jauregui (tier 3, over cap 25) -> activities [73072, 73073, 73074]
+  DELETE Peggy Navarrete (tier 3, over cap 25) -> activities [73075, 73076, 73077]
+  DELETE Allen Jacobson (tier 3, over cap 25) -> activities [73078, 73079, 73080]
+  DELETE Kristen Kutzleb (tier 3, over cap 25) -> activities [73081, 73082, 73083]
+  DELETE Braeden Pugh (tier 3, over cap 25) -> activities [73084, 73085, 73086]
+  DELETE Justin Carreiro (tier 3, over cap 25) -> activities [73087, 73088, 73089]
+  DELETE David Russell (tier 3, over cap 25) -> activities [73090, 73091, 73092]
+  DELETE Alice Norris (tier 3, over cap 25) -> activities [73093, 73094, 73095]
+  DELETE Levi Almond (tier 3, over cap 25) -> activities [73096, 73097, 73098]
+  DELETE Steven Garcia (tier 3, over cap 25) -> activities [73099, 73100, 73101]
+  DELETE Jamie Knies (tier 3, over cap 25) -> activities [73102, 73103, 73104]
+  DELETE Melanie Cochran (tier 3, over cap 25) -> activities [73105, 73106, 73107]
+  DELETE Coby Smith (tier 3, over cap 25) -> activities [73108, 73109, 73110]
+  DELETE Sean Kirby (tier 3, over cap 25) -> activities [73111, 73112, 73113]
+  DELETE Carrie Schlett (tier 3, over cap 25) -> activities [73114, 73115, 73116]
+  DELETE Emily Sok (tier 3, over cap 25) -> activities [73117, 73118, 73119]
+  DELETE Pedro Crespo (tier 3, over cap 25) -> activities [73120, 73121, 73122]
+  DELETE Mike Burns (tier 3, over cap 25) -> activities [73123, 73124, 73125]
+  DELETE Anthony Negrete (tier 3, over cap 25) -> activities [73126, 73127, 73128]
+  DELETE Jeremy Carlson (tier 3, over cap 25) -> activities [73129, 73130, 73131]
+  DELETE Matthew Martin (tier 3, over cap 25) -> activities [73132, 73133, 73134]
+  DELETE Zac Bridges (tier 3, over cap 25) -> activities [73135, 73136, 73137]
+  DELETE Courtney Dalton (tier 3, over cap 25) -> activities [73138, 73139, 73140]
+  DELETE Shari Ballardo (tier 3, over cap 25) -> activities [73141, 73142, 73143]
+  DELETE Melissa Alleman (tier 3, over cap 25) -> activities [73144, 73145, 73146]
+  DELETE Aaron Haecker (tier 3, over cap 25) -> activities [73147, 73148, 73149]
+  DELETE Sean Sarsfield (tier 3, over cap 25) -> activities [73150, 73151, 73152]
+  DELETE Justine Manning (tier 3, over cap 25) -> activities [73153, 73154, 73155]
+  DELETE Jennifer Mendicino (tier 3, over cap 25) -> activities [73156, 73157, 73158]
+  DELETE Kevin McDonald (tier 3, over cap 25) -> activities [73159, 73160, 73161]
+  DELETE Scott Waters (tier 3, over cap 25) -> activities [73162, 73163, 73164]
+  DELETE Jeff Tesik (tier 3, over cap 25) -> activities [73165, 73166, 73167]
+  DELETE Duston Thompson (tier 3, over cap 25) -> activities [73168, 73169, 73170]
+  DELETE Kyle English (tier 3, over cap 25) -> activities [73171, 73172, 73173]
+  DELETE Paul Schuttinger (tier 3, over cap 25) -> activities [73174, 73175, 73176]
+  DELETE Jay Valdez (tier 3, over cap 25) -> activities [73177, 73178, 73179]
+  DELETE Jeffrey Ellis (tier 3, over cap 25) -> activities [73180, 73181, 73182]
+  DELETE Samuel Nusbaum (tier 3, over cap 25) -> activities [73183, 73184, 73185]
+  DELETE John Blumthal (tier 3, over cap 25) -> activities [73186, 73187, 73188]
+  DELETE Samantha Wilcoxson (tier 3, over cap 25) -> activities [73189, 73190, 73191]
+  DELETE Daniel Hubert (tier 3, over cap 25) -> activities [73192, 73193, 73194]
+  DELETE Johan Lee (tier 3, over cap 25) -> activities [73195, 73196, 73197]
+  DELETE Juan Rodriguez (tier 3, over cap 25) -> activities [73198, 73199, 73200]
+  DELETE Jon DeWald (tier 3, over cap 25) -> activities [73201, 73202, 73203]
+  DELETE Daniel Munson (tier 3, over cap 25) -> activities [73204, 73205, 73206]
+  DELETE Andrew Sheriff (tier 3, over cap 25) -> activities [73210, 73211, 73212]
+  DELETE James Coudeyras (tier 3, over cap 25) -> activities [73213, 73214, 73215]
+  DELETE Ryan Chaump (tier 3, over cap 25) -> activities [73216, 73217, 73218]
+  DELETE Lindsay Vargas (tier 3, over cap 25) -> activities [73219, 73220, 73221]
+  DELETE Michael Fulfer (tier 3, over cap 25) -> activities [73222, 73223, 73224]
+  DELETE Kodi Norris (tier 3, over cap 25) -> activities [73225, 73226, 73227]
+  DELETE Andrew Spurgeon (tier 3, over cap 25) -> activities [73228, 73229, 73230]
+  DELETE Madison Trumble (tier 3, over cap 25) -> activities [73231, 73232, 73233]
+  DELETE Sean Smith (tier 3, over cap 25) -> activities [73234, 73235, 73236]
+  DELETE Emma Chaney (tier 3, over cap 25) -> activities [73237, 73238, 73239]
+  DELETE David Toepher (tier 3, over cap 25) -> activities [73240, 73241, 73242]
+  DELETE Hunter Ferrell (tier 3, over cap 25) -> activities [73243, 73244, 73245]
+  DELETE Tim Zeigler (tier 3, over cap 25) -> activities [73246, 73247, 73248]
+  DELETE Breah Sanders (tier 3, over cap 25) -> activities [73249, 73250, 73251]
+  DELETE Anders Olsen (tier 3, over cap 25) -> activities [73252, 73253, 73254]
+  DELETE Heather Spitz (tier 3, over cap 25) -> activities [73255, 73256, 73257]
+  DELETE Jessica Hesketh (tier 3, over cap 25) -> activities [73258, 73259, 73260]
+  DELETE John Cabrera (tier 3, over cap 25) -> activities [73261, 73262, 73263]
+  DELETE Bart Spendley (tier 3, over cap 25) -> activities [73264, 73265, 73266]
+  DELETE Jackie Boucher (tier 3, over cap 25) -> activities [73267, 73268, 73269]
+  DELETE Justin Cummings (tier 3, over cap 25) -> activities [73270, 73271, 73272]
+  DELETE Luke Spurgeon (tier 3, over cap 25) -> activities [73273, 73274, 73275]
+  DELETE Erin Hopkins (tier 3, over cap 25) -> activities [73276, 73277, 73278]
+  DELETE Liani Stevenson (tier 3, over cap 25) -> activities [73279, 73280, 73281]
+  DELETE Amanda Sevall (tier 3, over cap 25) -> activities [73282, 73283, 73284]
+  DELETE Ryan Sheridan (tier 3, over cap 25) -> activities [73285, 73286, 73287]
+  DELETE Travis Holmes (tier 3, over cap 25) -> activities [73288, 73289, 73290]
+  DELETE Sam Anderson (tier 3, over cap 25) -> activities [73291, 73292, 73293]
+  DELETE Christopher Parnell (tier 3, over cap 25) -> activities [73294, 73295, 73296]
+  DELETE Janice Oldham (tier 3, over cap 25) -> activities [73297, 73298, 73299]
+  DELETE Naomi Chacon (tier 3, over cap 25) -> activities [73300, 73301, 73302]
+  DELETE Eric Konrad (tier 3, over cap 25) -> activities [73303, 73304, 73305]
+  DELETE Colby Weishaar (tier 3, over cap 25) -> activities [73306, 73307, 73308]
+  DELETE Dana Daly (tier 3, over cap 25) -> activities [73309, 73310, 73311]
+  DELETE Charles Reagan (tier 3, over cap 25) -> activities [73312, 73313, 73314]
+  DELETE Justin Ruth (tier 3, over cap 25) -> activities [73315, 73316, 73317]
+  DELETE Phillip Dougher (tier 3, over cap 25) -> activities [73318, 73319, 73320]
+  DELETE Kacy Beard (tier 3, over cap 25) -> activities [73321, 73322, 73323]
+  DELETE Stephen Daley (tier 3, over cap 25) -> activities [73324, 73325, 73326]
+  DELETE Ron Gomer (tier 3, over cap 25) -> activities [73327, 73328, 73329]
+  DELETE Tim Rowe (tier 3, over cap 25) -> activities [73330, 73331, 73332]
+  DELETE Edward Sitzman (tier 3, over cap 25) -> activities [73333, 73334, 73335]
+  DELETE Dana Regan (tier 3, over cap 25) -> activities [73336, 73337, 73338]
+  DELETE Marc Pajaud (tier 3, over cap 25) -> activities [73339, 73340, 73341]
+  DELETE Kyle Knerr (tier 3, over cap 25) -> activities [73342, 73343, 73344]
+  DELETE Cara Dopf (tier 3, over cap 25) -> activities [73345, 73346, 73347]
+  DELETE Adrian Martinez (tier 3, over cap 25) -> activities [73348, 73349, 73350]
+  DELETE Randy Parker (tier 3, over cap 25) -> activities [73351, 73352, 73353]
+  DELETE Gabrielle Spees (tier 3, over cap 25) -> activities [73354, 73355, 73356]
+  DELETE Stephen Fullam (tier 3, over cap 25) -> activities [73357, 73358, 73359]
+  DELETE Jamie Hooten (tier 3, over cap 25) -> activities [73360, 73361, 73362]
+  DELETE Kevin Cunnane (tier 3, over cap 25) -> activities [73363, 73364, 73365]
+  DELETE Stacy Ury (tier 3, over cap 25) -> activities [73366, 73367, 73368]
+  DELETE Daniel Poh (tier 3, over cap 25) -> activities [73369, 73370, 73371]
+  DELETE Eric Krueger (tier 3, over cap 25) -> activities [73372, 73373, 73374]
+  DELETE Bryan EMBA (tier 3, over cap 25) -> activities [73375, 73376, 73377]
+  DELETE Brian W. (tier 3, over cap 25) -> activities [73378, 73379, 73380]
+  DELETE Blake Walker (tier 3, over cap 25) -> activities [73381, 73382, 73383]
+  DELETE Richard H. (tier 3, over cap 25) -> activities [73384, 73385, 73386]
+  DELETE Sheryl MSODL (tier 3, over cap 25) -> activities [73387, 73388, 73389]
+  DELETE Dan R. (tier 3, over cap 25) -> activities [73390, 73391, 73392]
+  DELETE Daniel Rathburn (tier 3, over cap 25) -> activities [73393, 73394, 73395]
+  DELETE Kevin Piper (tier 3, over cap 25) -> activities [73396, 73397, 73398]
+  DELETE Matt BRMP (tier 3, over cap 25) -> activities [73402, 73403, 73404]
+  DELETE Stephen White (tier 3, over cap 25) -> activities [73405, 73406, 73407]
+  DELETE Justin Buckles (tier 3, over cap 25) -> activities [73408, 73409, 73410]
+  DELETE Philip TSSCI (tier 3, over cap 25) -> activities [73411, 73412, 73413]
+  DELETE Caroman Goldstein (tier 3, over cap 25) -> activities [73414, 73415, 73416]
+  DELETE Nicholas Disney (tier 3, over cap 25) -> activities [73417, 73418, 73419]
+  DELETE Arturo Nuñez (tier 3, over cap 25) -> activities [73420, 73421, 73422]
+  DELETE R. Saxton (tier 3, over cap 25) -> activities [73423, 73424, 73425]
+  DELETE Daniel Reuster (tier 3, over cap 25) -> activities [73426, 73427, 73428]
+  DELETE Siegfried Schoepf (tier 3, over cap 25) -> activities [73429, 73430, 73431]
+  DELETE Jeremy Gardner (tier 3, over cap 25) -> activities [73432, 73433, 73434]
+  DELETE Heather CUSECO (tier 3, over cap 25) -> activities [73435, 73436, 73437]
+  DELETE Eric Tebbano (tier 3, over cap 25) -> activities [73438, 73439, 73440]
+  DELETE Brandon MSc (tier 3, over cap 25) -> activities [73441, 73442, 73443]
+  DELETE Elizabeth Dissel (tier 3, over cap 25) -> activities [73444, 73445, 73446]
+  DELETE Tanner Durfee (tier 3, over cap 25) -> activities [73447, 73448, 73449]
+  DELETE Eric Muller (tier 3, over cap 25) -> activities [73450, 73451, 73452]
+  DELETE Victor Pagan-Diaz (tier 3, over cap 25) -> activities [73453, 73454, 73455]
+  DELETE Katie McCormick (tier 3, over cap 25) -> activities [73456, 73457, 73458]
+  DELETE Cheyenne Bode (tier 3, over cap 25) -> activities [73459, 73460, 73461]
+  DELETE Joshua Patterson (tier 3, over cap 25) -> activities [73462, 73463, 73464]
+  DELETE Ryan C. (tier 3, over cap 25) -> activities [73465, 73466, 73467]
+  DELETE Brian B. (tier 3, over cap 25) -> activities [73468, 73469, 73470]
+  DELETE Steve Bernard (tier 3, over cap 25) -> activities [73471, 73472, 73473]
+  DELETE Rob England (tier 3, over cap 25) -> activities [73474, 73475, 73476]
+  DELETE Taylor M. (tier 3, over cap 25) -> activities [73477, 73478, 73479]
+  DELETE Brie Beeler-Pate (tier 3, over cap 25) -> activities [73480, 73481, 73482]
+  DELETE Robert North (tier 3, over cap 25) -> activities [73483, 73484, 73485]
+  DELETE Erik Davis (tier 3, over cap 25) -> activities [73486, 73487, 73488]
+  DELETE Elizabeth Hundley (tier 3, over cap 25) -> activities [73489, 73490, 73491]
+  DELETE Jeffrey Sammis (tier 3, over cap 25) -> activities [73492, 73493, 73494]
+  DELETE Michael Botyarov (tier 3, over cap 25) -> activities [73495, 73496, 73497]
+  DELETE Steven Bush (tier 3, over cap 25) -> activities [73498, 73499, 73500]
+  DELETE Rob Houge (tier 3, over cap 25) -> activities [73501, 73502, 73503]
+  DELETE Lea L. (tier 3, over cap 25) -> activities [73504, 73505, 73506]
+  DELETE Kelly W. (tier 3, over cap 25) -> activities [73507, 73508, 73509]
+  DELETE Jonathan Ohman (tier 3, over cap 25) -> activities [73510, 73511, 73512]
+  DELETE Alexandro Perez-Tovar (tier 3, over cap 25) -> activities [73513, 73514, 73515]
+  DELETE Kenneth Leeper (tier 3, over cap 25) -> activities [73516, 73517, 73518]
+  DELETE Steven A. (tier 3, over cap 25) -> activities [73519, 73520, 73521]
+  DELETE Shane R. (tier 3, over cap 25) -> activities [73522, 73523, 73524]
+  DELETE David F. (tier 3, over cap 25) -> activities [73525, 73526, 73527]
+  DELETE Alex Ruzicka (tier 3, over cap 25) -> activities [73528, 73529, 73530]
+  DELETE George Macomber (tier 3, over cap 25) -> activities [73531, 73532, 73533]
+  DELETE Chris Rehm (tier 3, over cap 25) -> activities [73534, 73535, 73536]
+  redate Robert Cooney (tier 1) Call 1: 2026-07-09 -> 2026-07-10
+  redate Robert Cooney (tier 1) Call 2: 2026-07-15 -> 2026-07-16
+  redate Robert Cooney (tier 1) Call 3: 2026-07-17 -> 2026-07-20
+  redate Robert Hauser (tier 1) Call 1: 2026-07-09 -> 2026-07-10
+  redate Robert Hauser (tier 1) Call 2: 2026-07-15 -> 2026-07-16
+  redate Robert Hauser (tier 1) Call 3: 2026-07-17 -> 2026-07-20
+  redate Tate Wazenegger (tier 1) Call 1: 2026-07-09 -> 2026-07-10
+  redate Tate Wazenegger (tier 1) Call 2: 2026-07-15 -> 2026-07-16
+  redate Tate Wazenegger (tier 1) Call 3: 2026-07-17 -> 2026-07-20
+  redate Troy Voorhees (tier 1) Call 1: 2026-07-09 -> 2026-07-10
+  redate Troy Voorhees (tier 1) Call 2: 2026-07-15 -> 2026-07-16
+  redate Troy Voorhees (tier 1) Call 3: 2026-07-17 -> 2026-07-20
+  redate Clint Lovato (tier 1) Call 1: 2026-07-09 -> 2026-07-10
+  redate Clint Lovato (tier 1) Call 2: 2026-07-15 -> 2026-07-16
+  redate Clint Lovato (tier 1) Call 3: 2026-07-17 -> 2026-07-20
+  redate Pamela Golding (tier 1) Call 1: 2026-07-09 -> 2026-07-13
+  redate Pamela Golding (tier 1) Call 2: 2026-07-15 -> 2026-07-17
+  redate Pamela Golding (tier 1) Call 3: 2026-07-17 -> 2026-07-21
+  redate Phil K. (tier 1) Call 1: 2026-07-09 -> 2026-07-13
+  redate Phil K. (tier 1) Call 2: 2026-07-15 -> 2026-07-17
+  redate Phil K. (tier 1) Call 3: 2026-07-17 -> 2026-07-21
+  redate James Livingston (tier 1) Call 1: 2026-07-09 -> 2026-07-13
+  redate James Livingston (tier 1) Call 2: 2026-07-15 -> 2026-07-17
+  redate James Livingston (tier 1) Call 3: 2026-07-17 -> 2026-07-21
+  redate Jennifer Walker (tier 1) Call 1: 2026-07-09 -> 2026-07-13
+  redate Jennifer Walker (tier 1) Call 2: 2026-07-15 -> 2026-07-17
+  redate Jennifer Walker (tier 1) Call 3: 2026-07-17 -> 2026-07-21
+  redate John Delgado (tier 1) Call 1: 2026-07-09 -> 2026-07-13
+  redate John Delgado (tier 1) Call 2: 2026-07-15 -> 2026-07-17
+  redate John Delgado (tier 1) Call 3: 2026-07-17 -> 2026-07-21
+  redate Paula Jones (tier 1) Call 1: 2026-07-09 -> 2026-07-14
+  redate Paula Jones (tier 1) Call 2: 2026-07-15 -> 2026-07-20
+  redate Paula Jones (tier 1) Call 3: 2026-07-17 -> 2026-07-22
+  redate Craig LaGiusa (tier 1) Call 1: 2026-07-09 -> 2026-07-14
+  redate Craig LaGiusa (tier 1) Call 2: 2026-07-15 -> 2026-07-20
+  redate Craig LaGiusa (tier 1) Call 3: 2026-07-17 -> 2026-07-22
+  redate Holly Knott, MBA (tier 1) Call 1: 2026-07-09 -> 2026-07-14
+  redate Holly Knott, MBA (tier 1) Call 2: 2026-07-15 -> 2026-07-20
+  redate Holly Knott, MBA (tier 1) Call 3: 2026-07-17 -> 2026-07-22
+  redate Alex Cawthon (tier 1) Call 1: 2026-07-09 -> 2026-07-14
+  redate Alex Cawthon (tier 1) Call 2: 2026-07-15 -> 2026-07-20
+  redate Alex Cawthon (tier 1) Call 3: 2026-07-17 -> 2026-07-22
+  redate Colby Moulder (tier 1) Call 1: 2026-07-09 -> 2026-07-14
+  redate Colby Moulder (tier 1) Call 2: 2026-07-15 -> 2026-07-20
+  redate Colby Moulder (tier 1) Call 3: 2026-07-17 -> 2026-07-22
+  redate Robert Vaninger (tier 1) Call 1: 2026-07-09 -> 2026-07-15
+  redate Robert Vaninger (tier 1) Call 2: 2026-07-15 -> 2026-07-21
+  redate Robert Vaninger (tier 1) Call 3: 2026-07-17 -> 2026-07-23
+  redate Don Malcom (tier 1) Call 1: 2026-07-09 -> 2026-07-15
+  redate Don Malcom (tier 1) Call 2: 2026-07-15 -> 2026-07-21
+  redate Don Malcom (tier 1) Call 3: 2026-07-17 -> 2026-07-23
+  redate Harry Krishnamoorthy, PMP (tier 1) Call 1: 2026-07-09 -> 2026-07-15
+  redate Harry Krishnamoorthy, PMP (tier 1) Call 2: 2026-07-15 -> 2026-07-21
+  redate Harry Krishnamoorthy, PMP (tier 1) Call 3: 2026-07-17 -> 2026-07-23
+  redate Jeannie Carter (tier 1) Call 1: 2026-07-09 -> 2026-07-15
+  redate Jeannie Carter (tier 1) Call 2: 2026-07-15 -> 2026-07-21
+  redate Jeannie Carter (tier 1) Call 3: 2026-07-17 -> 2026-07-23
+  redate Blake Jackson (tier 1) Call 1: 2026-07-09 -> 2026-07-15
+  redate Blake Jackson (tier 1) Call 2: 2026-07-15 -> 2026-07-21
+  redate Blake Jackson (tier 1) Call 3: 2026-07-17 -> 2026-07-23
+
+org 14178 (Mercury Systems) [shellcast]: 30 people with open tasks
+  DELETE Elizabeth Davis (tier 3, over cap 25) -> activities [72120, 72121, 72122]
+  DELETE Maria Gamble (tier 3, over cap 25) -> activities [72123, 72124, 72125]
+  DELETE Kirsten Stanley (tier 3, over cap 25) -> activities [72126, 72127, 72128]
+  DELETE Rob Rios (tier 3, over cap 25) -> activities [72090, 72091, 72092]
+  DELETE Jonette Oneto (tier 3, over cap 25) -> activities [72129, 72130, 72131]
+  redate Darrin Duffy (tier 1) Call 1: 2026-07-09 -> 2026-07-10
+  redate Darrin Duffy (tier 1) Call 2: 2026-07-15 -> 2026-07-16
+  redate Darrin Duffy (tier 1) Call 3: 2026-07-17 -> 2026-07-20
+  redate Ken Grove (tier 1) Call 1: 2026-07-09 -> 2026-07-10
+  redate Ken Grove (tier 1) Call 2: 2026-07-15 -> 2026-07-16
+  redate Ken Grove (tier 1) Call 3: 2026-07-17 -> 2026-07-20
+  redate Nick Valueff (tier 1) Call 1: 2026-07-09 -> 2026-07-10
+  redate Nick Valueff (tier 1) Call 2: 2026-07-15 -> 2026-07-16
+  redate Nick Valueff (tier 1) Call 3: 2026-07-17 -> 2026-07-20
+  redate Pamela Lundy (tier 1) Call 1: 2026-07-09 -> 2026-07-10
+  redate Pamela Lundy (tier 1) Call 2: 2026-07-15 -> 2026-07-16
+  redate Pamela Lundy (tier 1) Call 3: 2026-07-17 -> 2026-07-20
+  redate Thomas Hall (tier 1) Call 1: 2026-07-09 -> 2026-07-10
+  redate Thomas Hall (tier 1) Call 2: 2026-07-15 -> 2026-07-16
+  redate Thomas Hall (tier 1) Call 3: 2026-07-17 -> 2026-07-20
+  redate Suzanne Maddux (tier 2) Call 1: 2026-07-09 -> 2026-07-13
+  redate Suzanne Maddux (tier 2) Call 2: 2026-07-15 -> 2026-07-17
+  redate Suzanne Maddux (tier 2) Call 3: 2026-07-17 -> 2026-07-21
+  redate Simin Nasiri (tier 3) Call 1: 2026-07-09 -> 2026-07-13
+  redate Simin Nasiri (tier 3) Call 2: 2026-07-15 -> 2026-07-17
+  redate Simin Nasiri (tier 3) Call 3: 2026-07-17 -> 2026-07-21
+  redate Stephen Marasigan (tier 3) Call 1: 2026-07-09 -> 2026-07-13
+  redate Stephen Marasigan (tier 3) Call 2: 2026-07-15 -> 2026-07-17
+  redate Stephen Marasigan (tier 3) Call 3: 2026-07-17 -> 2026-07-21
+  redate Milagros Valentine (tier 3) Call 1: 2026-07-09 -> 2026-07-13
+  redate Milagros Valentine (tier 3) Call 2: 2026-07-15 -> 2026-07-17
+  redate Milagros Valentine (tier 3) Call 3: 2026-07-17 -> 2026-07-21
+  redate Chris Hake (tier 3) Call 1: 2026-07-09 -> 2026-07-13
+  redate Chris Hake (tier 3) Call 2: 2026-07-15 -> 2026-07-17
+  redate Chris Hake (tier 3) Call 3: 2026-07-17 -> 2026-07-21
+  redate Kate Chan (tier 3) Call 1: 2026-07-09 -> 2026-07-14
+  redate Kate Chan (tier 3) Call 2: 2026-07-15 -> 2026-07-20
+  redate Kate Chan (tier 3) Call 3: 2026-07-17 -> 2026-07-22
+  redate Andrew Youkhana (tier 3) Call 1: 2026-07-09 -> 2026-07-14
+  redate Andrew Youkhana (tier 3) Call 2: 2026-07-15 -> 2026-07-20
+  redate Andrew Youkhana (tier 3) Call 3: 2026-07-17 -> 2026-07-22
+  redate Cathy Marino (tier 3) Call 1: 2026-07-09 -> 2026-07-14
+  redate Cathy Marino (tier 3) Call 2: 2026-07-15 -> 2026-07-20
+  redate Cathy Marino (tier 3) Call 3: 2026-07-17 -> 2026-07-22
+  redate Brenda Tonks (tier 3) Call 1: 2026-07-09 -> 2026-07-14
+  redate Brenda Tonks (tier 3) Call 2: 2026-07-15 -> 2026-07-20
+  redate Brenda Tonks (tier 3) Call 3: 2026-07-17 -> 2026-07-22
+  redate Pauline Brown (tier 3) Call 1: 2026-07-09 -> 2026-07-14
+  redate Pauline Brown (tier 3) Call 2: 2026-07-15 -> 2026-07-20
+  redate Pauline Brown (tier 3) Call 3: 2026-07-17 -> 2026-07-22
+  redate Raymond Valenzuela (tier 3) Call 1: 2026-07-09 -> 2026-07-15
+  redate Raymond Valenzuela (tier 3) Call 2: 2026-07-15 -> 2026-07-21
+  redate Raymond Valenzuela (tier 3) Call 3: 2026-07-17 -> 2026-07-23
+  redate Sabrina Sklar (tier 3) Call 1: 2026-07-09 -> 2026-07-15
+  redate Sabrina Sklar (tier 3) Call 2: 2026-07-15 -> 2026-07-21
+  redate Sabrina Sklar (tier 3) Call 3: 2026-07-17 -> 2026-07-23
+  redate Ken Mazurowski (tier 3) Call 1: 2026-07-09 -> 2026-07-15
+  redate Ken Mazurowski (tier 3) Call 2: 2026-07-15 -> 2026-07-21
+  redate Ken Mazurowski (tier 3) Call 3: 2026-07-17 -> 2026-07-23
+  redate Adriana McMahon (tier 3) Call 1: 2026-07-09 -> 2026-07-15
+  redate Adriana McMahon (tier 3) Call 2: 2026-07-15 -> 2026-07-21
+  redate Adriana McMahon (tier 3) Call 3: 2026-07-17 -> 2026-07-23
+  redate Tony Trinh (tier 3) Call 1: 2026-07-09 -> 2026-07-15
+  redate Tony Trinh (tier 3) Call 2: 2026-07-15 -> 2026-07-21
+  redate Tony Trinh (tier 3) Call 3: 2026-07-17 -> 2026-07-23
+
+org 50822 (Hutchinson) [tmx]: 3 people with open tasks
+  DELETE John Beck (excluded state FL) -> activities [71098, 71099]
+  2 people already started (Call 1 done) — untouched
+
+org 64962 (Lawrence Livermore National Laboratory) [patriot-forge]: 43 people with open tasks
+  DELETE Ibrahim Saleh (tier 3, over cap 25) -> activities [71285, 71286, 71287]
+  DELETE Megan Santos (tier 3, over cap 25) -> activities [71288, 71289, 71290]
+  DELETE Stephen Schuster (tier 3, over cap 25) -> activities [71291, 71292, 71293]
+  DELETE Nicole Sullivan (tier 3, over cap 25) -> activities [71294, 71295, 71296]
+  DELETE Swan Ray (tier 3, over cap 25) -> activities [71297, 71298, 71299]
+  DELETE Scott Wagnon (tier 3, over cap 25) -> activities [71300, 71301, 71302]
+  DELETE Conor Harrigan (tier 3, over cap 25) -> activities [71303, 71304, 71305]
+  DELETE Janet Nguyen (tier 3, over cap 25) -> activities [71312, 71313, 71314]
+  DELETE Lisa Ann Cabral (tier 3, over cap 25) -> activities [71315, 71316, 71317]
+  DELETE David Lee (tier 3, over cap 25) -> activities [71318, 71319, 71320]
+  DELETE Alan Badran (tier 3, over cap 25) -> activities [71321, 71322, 71323]
+  DELETE Lloyd Mills (tier 3, over cap 25) -> activities [71454, 71455, 71456]
+  DELETE Charles Duff (tier 3, over cap 25) -> activities [71324, 71325, 71326]
+  DELETE Ashley Kent (tier 3, over cap 25) -> activities [71460, 71461, 71462]
+  DELETE Jerry Lundy (tier 3, over cap 25) -> activities [71463, 71464, 71465]
+  DELETE Randy Gilbert (tier 3, over cap 25) -> activities [71327, 71328, 71329]
+  DELETE Christopher Stolz (tier 3, over cap 25) -> activities [71469, 71470, 71471]
+  DELETE Carrie Holden (tier 3, over cap 25) -> activities [71330, 71331, 71332]
+  redate Allen Cuenca (tier 3) Call 1: 2026-07-09 -> 2026-07-10
+  redate Allen Cuenca (tier 3) Call 2: 2026-07-15 -> 2026-07-16
+  redate Allen Cuenca (tier 3) Call 3: 2026-07-17 -> 2026-07-20
+  redate Reni Hanh (tier 3) Call 1: 2026-07-09 -> 2026-07-10
+  redate Reni Hanh (tier 3) Call 2: 2026-07-15 -> 2026-07-16
+  redate Reni Hanh (tier 3) Call 3: 2026-07-17 -> 2026-07-20
+  redate Irene Akers (tier 3) Call 1: 2026-07-09 -> 2026-07-10
+  redate Irene Akers (tier 3) Call 2: 2026-07-15 -> 2026-07-16
+  redate Irene Akers (tier 3) Call 3: 2026-07-17 -> 2026-07-20
+  redate Jennifer Alexander (tier 3) Call 1: 2026-07-09 -> 2026-07-10
+  redate Jennifer Alexander (tier 3) Call 2: 2026-07-15 -> 2026-07-16
+  redate Jennifer Alexander (tier 3) Call 3: 2026-07-17 -> 2026-07-20
+  redate Lorena Alvarado (tier 3) Call 1: 2026-07-09 -> 2026-07-10
+  redate Lorena Alvarado (tier 3) Call 2: 2026-07-15 -> 2026-07-16
+  redate Lorena Alvarado (tier 3) Call 3: 2026-07-17 -> 2026-07-20
+  redate Nick Calta (tier 3) Call 1: 2026-07-09 -> 2026-07-13
+  redate Nick Calta (tier 3) Call 2: 2026-07-15 -> 2026-07-17
+  redate Nick Calta (tier 3) Call 3: 2026-07-17 -> 2026-07-21
+  redate Mauro Cerda (tier 3) Call 1: 2026-07-09 -> 2026-07-13
+  redate Mauro Cerda (tier 3) Call 2: 2026-07-15 -> 2026-07-17
+  redate Mauro Cerda (tier 3) Call 3: 2026-07-17 -> 2026-07-21
+  redate Caitlyn Cook (tier 3) Call 1: 2026-07-09 -> 2026-07-13
+  redate Caitlyn Cook (tier 3) Call 2: 2026-07-15 -> 2026-07-17
+  redate Caitlyn Cook (tier 3) Call 3: 2026-07-17 -> 2026-07-21
+  redate John Elmer (tier 3) Call 1: 2026-07-09 -> 2026-07-13
+  redate John Elmer (tier 3) Call 2: 2026-07-15 -> 2026-07-17
+  redate John Elmer (tier 3) Call 3: 2026-07-17 -> 2026-07-21
+  redate Shari Ellis (tier 3) Call 1: 2026-07-09 -> 2026-07-13
+  redate Shari Ellis (tier 3) Call 2: 2026-07-15 -> 2026-07-17
+  redate Shari Ellis (tier 3) Call 3: 2026-07-17 -> 2026-07-21
+  redate Bill Hamilton (tier 3) Call 1: 2026-07-09 -> 2026-07-14
+  redate Bill Hamilton (tier 3) Call 2: 2026-07-15 -> 2026-07-20
+  redate Bill Hamilton (tier 3) Call 3: 2026-07-17 -> 2026-07-22
+  redate Kristi Haataja (tier 3) Call 1: 2026-07-09 -> 2026-07-14
+  redate Kristi Haataja (tier 3) Call 2: 2026-07-15 -> 2026-07-20
+  redate Kristi Haataja (tier 3) Call 3: 2026-07-17 -> 2026-07-22
+  redate Can Huang (tier 3) Call 1: 2026-07-09 -> 2026-07-14
+  redate Can Huang (tier 3) Call 2: 2026-07-15 -> 2026-07-20
+  redate Can Huang (tier 3) Call 3: 2026-07-17 -> 2026-07-22
+  redate Norman Klino (tier 3) Call 1: 2026-07-09 -> 2026-07-14
+  redate Norman Klino (tier 3) Call 2: 2026-07-15 -> 2026-07-20
+  redate Norman Klino (tier 3) Call 3: 2026-07-17 -> 2026-07-22
+  redate Coleton Meyer (tier 3) Call 1: 2026-07-09 -> 2026-07-14
+  redate Coleton Meyer (tier 3) Call 2: 2026-07-15 -> 2026-07-20
+  redate Coleton Meyer (tier 3) Call 3: 2026-07-17 -> 2026-07-22
+  redate Vicki Myers (tier 3) Call 1: 2026-07-09 -> 2026-07-15
+  redate Vicki Myers (tier 3) Call 2: 2026-07-15 -> 2026-07-21
+  redate Vicki Myers (tier 3) Call 3: 2026-07-17 -> 2026-07-23
+  redate Peter Oleson (tier 3) Call 1: 2026-07-09 -> 2026-07-15
+  redate Peter Oleson (tier 3) Call 2: 2026-07-15 -> 2026-07-21
+  redate Peter Oleson (tier 3) Call 3: 2026-07-17 -> 2026-07-23
+  redate Cynthia Panas (tier 3) Call 1: 2026-07-09 -> 2026-07-15
+  redate Cynthia Panas (tier 3) Call 2: 2026-07-15 -> 2026-07-21
+  redate Cynthia Panas (tier 3) Call 3: 2026-07-17 -> 2026-07-23
+  redate Regina Paladino (tier 3) Call 1: 2026-07-09 -> 2026-07-15
+  redate Regina Paladino (tier 3) Call 2: 2026-07-15 -> 2026-07-21
+  redate Regina Paladino (tier 3) Call 3: 2026-07-17 -> 2026-07-23
+  redate Tara Ruchonnet (tier 3) Call 1: 2026-07-09 -> 2026-07-15
+  redate Tara Ruchonnet (tier 3) Call 2: 2026-07-15 -> 2026-07-21
+  redate Tara Ruchonnet (tier 3) Call 3: 2026-07-17 -> 2026-07-23
+
+org 68683 (PCC Structurals, Inc.) [patriot-forge]: 66 people with open tasks
+  DELETE Bruce Wagner (state CT not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72400, 72401, 72402]
+  DELETE Galen Robinson (state KS not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72403, 72404, 72405]
+  DELETE Wendy Magaw (state UT not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72409, 72410, 72411]
+  DELETE Scott Gallie (state CT not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72424, 72425, 72426]
+  DELETE Charles Frost (state NH not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72625, 72626, 72627]
+  DELETE Zachary Burton (state OK not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72637, 72638, 72639]
+  DELETE Mason Lewis (state NH not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [72640, 72641, 72642]
+  DELETE Darren Marti (tier 3, over cap 25) -> activities [72658, 72659, 72660]
+  DELETE Arnold S. (tier 3, over cap 25) -> activities [72661, 72662, 72663]
+  DELETE Nolan Hoffmann (tier 3, over cap 25) -> activities [72664, 72665, 72666]
+  DELETE Luther Eubanks (tier 3, over cap 25) -> activities [72667, 72668, 72669]
+  DELETE Dana Perryman (tier 3, over cap 25) -> activities [72670, 72671, 72672]
+  DELETE Sandi Arnold (tier 3, over cap 25) -> activities [72673, 72674, 72675]
+  DELETE Daniel Moreland (tier 3, over cap 25) -> activities [72676, 72677, 72678]
+  DELETE Mark Springgate (tier 3, over cap 25) -> activities [72679, 72680, 72681]
+  DELETE Brian Evans (tier 3, over cap 25) -> activities [72682, 72683, 72684]
+  DELETE Aditya Hoskere (tier 3, over cap 25) -> activities [72685, 72686, 72687]
+  DELETE Jerry Corwin (tier 3, over cap 25) -> activities [72688, 72689, 72690]
+  DELETE KREE Meth (tier 3, over cap 25) -> activities [72691, 72692, 72693]
+  DELETE Brett Neimann (tier 3, over cap 25) -> activities [72694, 72695, 72696]
+  DELETE Ewan Bradley (tier 3, over cap 25) -> activities [72697, 72698, 72699]
+  DELETE Nathaniel Hannan (tier 3, over cap 25) -> activities [72700, 72701, 72702]
+  DELETE Mykalah DeSio (tier 3, over cap 25) -> activities [72703, 72704, 72705]
+  DELETE Thinh Tu (tier 3, over cap 25) -> activities [72706, 72707, 72708]
+  DELETE Gregory Haefele (tier 3, over cap 25) -> activities [72709, 72710, 72711]
+  DELETE Josh Norris (tier 3, over cap 25) -> activities [72712, 72713, 72714]
+  DELETE Christopher Duarte (tier 3, over cap 25) -> activities [72715, 72716, 72717]
+  DELETE Marcus Irwin (tier 3, over cap 25) -> activities [72718, 72719, 72720]
+  DELETE Frank Williams (tier 3, over cap 25) -> activities [72721, 72722, 72723]
+  DELETE Dom Green (tier 3, over cap 25) -> activities [72724, 72725, 72726]
+  DELETE Jessica M. (tier 3, over cap 25) -> activities [72727, 72728, 72729]
+  DELETE Jazzmin Greene (tier 3, over cap 25) -> activities [72733, 72734, 72735]
+  DELETE James Corliss (tier 3, over cap 25) -> activities [72736, 72737, 72738]
+  DELETE Kathy Storment (tier 3, over cap 25) -> activities [72739, 72740, 72741]
+  DELETE Zahar Baklamov (tier 3, over cap 25) -> activities [72742, 72743, 72744]
+  DELETE Evan Winebrenner (tier 3, over cap 25) -> activities [72745, 72746, 72747]
+  DELETE Renly Liu (tier 3, over cap 25) -> activities [72748, 72749, 72750]
+  DELETE Julene Wagner (tier 3, over cap 25) -> activities [72751, 72752, 72753]
+  DELETE Katerina Puglisi (tier 3, over cap 25) -> activities [72754, 72755, 72756]
+  DELETE Daniel Tran (tier 3, over cap 25) -> activities [72760, 72761, 72762]
+  DELETE Derek Morey (tier 3, over cap 25) -> activities [72763, 72764, 72765]
+  redate Julian F. (tier 1) Call 1: 2026-07-09 -> 2026-07-10
+  redate Julian F. (tier 1) Call 2: 2026-07-15 -> 2026-07-16
+  redate Julian F. (tier 1) Call 3: 2026-07-17 -> 2026-07-20
+  redate Jessica H. (tier 1) Call 1: 2026-07-09 -> 2026-07-10
+  redate Jessica H. (tier 1) Call 2: 2026-07-15 -> 2026-07-16
+  redate Jessica H. (tier 1) Call 3: 2026-07-17 -> 2026-07-20
+  redate Liang Zhou (tier 3) Call 1: 2026-07-09 -> 2026-07-10
+  redate Liang Zhou (tier 3) Call 2: 2026-07-15 -> 2026-07-16
+  redate Liang Zhou (tier 3) Call 3: 2026-07-17 -> 2026-07-20
+  redate Jarrett Natalie (tier 3) Call 1: 2026-07-09 -> 2026-07-10
+  redate Jarrett Natalie (tier 3) Call 2: 2026-07-15 -> 2026-07-16
+  redate Jarrett Natalie (tier 3) Call 3: 2026-07-17 -> 2026-07-20
+  redate Joseph Mulder (tier 3) Call 1: 2026-07-09 -> 2026-07-10
+  redate Joseph Mulder (tier 3) Call 2: 2026-07-15 -> 2026-07-16
+  redate Joseph Mulder (tier 3) Call 3: 2026-07-17 -> 2026-07-20
+  redate Gina Corona (tier 3) Call 1: 2026-07-09 -> 2026-07-13
+  redate Gina Corona (tier 3) Call 2: 2026-07-15 -> 2026-07-17
+  redate Gina Corona (tier 3) Call 3: 2026-07-17 -> 2026-07-21
+  redate Shelly Jones (tier 3) Call 1: 2026-07-09 -> 2026-07-13
+  redate Shelly Jones (tier 3) Call 2: 2026-07-15 -> 2026-07-17
+  redate Shelly Jones (tier 3) Call 3: 2026-07-17 -> 2026-07-21
+  redate Christine Koc (tier 3) Call 1: 2026-07-09 -> 2026-07-13
+  redate Christine Koc (tier 3) Call 2: 2026-07-15 -> 2026-07-17
+  redate Christine Koc (tier 3) Call 3: 2026-07-17 -> 2026-07-21
+  redate Eric Fuller (tier 3) Call 1: 2026-07-09 -> 2026-07-13
+  redate Eric Fuller (tier 3) Call 2: 2026-07-15 -> 2026-07-17
+  redate Eric Fuller (tier 3) Call 3: 2026-07-17 -> 2026-07-21
+  redate Bobby Wasabi (tier 3) Call 1: 2026-07-09 -> 2026-07-13
+  redate Bobby Wasabi (tier 3) Call 2: 2026-07-15 -> 2026-07-17
+  redate Bobby Wasabi (tier 3) Call 3: 2026-07-17 -> 2026-07-21
+  redate Britani Jurado (tier 3) Call 1: 2026-07-09 -> 2026-07-14
+  redate Britani Jurado (tier 3) Call 2: 2026-07-15 -> 2026-07-20
+  redate Britani Jurado (tier 3) Call 3: 2026-07-17 -> 2026-07-22
+  redate Anthony Spencer (tier 3) Call 1: 2026-07-09 -> 2026-07-14
+  redate Anthony Spencer (tier 3) Call 2: 2026-07-15 -> 2026-07-20
+  redate Anthony Spencer (tier 3) Call 3: 2026-07-17 -> 2026-07-22
+  redate Sandra Hopkins (tier 3) Call 1: 2026-07-09 -> 2026-07-14
+  redate Sandra Hopkins (tier 3) Call 2: 2026-07-15 -> 2026-07-20
+  redate Sandra Hopkins (tier 3) Call 3: 2026-07-17 -> 2026-07-22
+  redate Alma Langford (tier 3) Call 1: 2026-07-09 -> 2026-07-14
+  redate Alma Langford (tier 3) Call 2: 2026-07-15 -> 2026-07-20
+  redate Alma Langford (tier 3) Call 3: 2026-07-17 -> 2026-07-22
+  redate Maria Maqueda (tier 3) Call 1: 2026-07-09 -> 2026-07-14
+  redate Maria Maqueda (tier 3) Call 2: 2026-07-15 -> 2026-07-20
+  redate Maria Maqueda (tier 3) Call 3: 2026-07-17 -> 2026-07-22
+  redate Christine K. (tier 3) Call 1: 2026-07-09 -> 2026-07-15
+  redate Christine K. (tier 3) Call 2: 2026-07-15 -> 2026-07-21
+  redate Christine K. (tier 3) Call 3: 2026-07-17 -> 2026-07-23
+  redate Jan Haberman (tier 3) Call 1: 2026-07-09 -> 2026-07-15
+  redate Jan Haberman (tier 3) Call 2: 2026-07-15 -> 2026-07-21
+  redate Jan Haberman (tier 3) Call 3: 2026-07-17 -> 2026-07-23
+  redate Jule Ellis (tier 3) Call 1: 2026-07-09 -> 2026-07-15
+  redate Jule Ellis (tier 3) Call 2: 2026-07-15 -> 2026-07-21
+  redate Jule Ellis (tier 3) Call 3: 2026-07-17 -> 2026-07-23
+  redate Brad Scott (tier 3) Call 1: 2026-07-09 -> 2026-07-15
+  redate Brad Scott (tier 3) Call 2: 2026-07-15 -> 2026-07-21
+  redate Brad Scott (tier 3) Call 3: 2026-07-17 -> 2026-07-23
+  redate David Campos (tier 3) Call 1: 2026-07-09 -> 2026-07-15
+  redate David Campos (tier 3) Call 2: 2026-07-15 -> 2026-07-21
+  redate David Campos (tier 3) Call 3: 2026-07-17 -> 2026-07-23
+
+org 68954 (Safran) [patriot-forge]: 227 people with open tasks
+  DELETE Christopher Jackson (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71348, 71349, 71350]
+  DELETE Ricky Paginton (state RI not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71402, 71403, 71404]
+  DELETE Chloe Fichaux (country France outside US state allow-list) -> activities [71414, 71415, 71416]
+  DELETE Nicolas Renoir (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71420, 71421, 71422]
+  DELETE Diana Villanueva (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71423, 71424, 71425]
+  DELETE Josh Silfies (state OH not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71426, 71427, 71428]
+  DELETE Roberto Matos (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71429, 71430, 71431]
+  DELETE Jose Cordoba (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71432, 71433, 71434]
+  DELETE Randy Young (state KY not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71441, 71442, 71443]
+  DELETE Bryan Yu (state OH not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71447, 71448, 71449]
+  DELETE Todd Sickles (state FL not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71450, 71451, 71452]
+  DELETE Bill Hradek (state OH not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71490, 71491, 71492]
+  DELETE Brice Westhoven (state OH not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71493, 71494, 71495]
+  DELETE Jonathan Huntoon (state FL not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71496, 71497, 71498]
+  DELETE Kay Adamski (state FL not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71502, 71503, 71504]
+  DELETE Michael Varricchio (state OH not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71505, 71506, 71507]
+  DELETE Johnathan Griffen (country Dallas-Fort Worth Metroplex outside US state allow-list) -> activities [71508, 71509, 71510]
+  DELETE Jesse Tijerina (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71514, 71515, 71516]
+  DELETE Lee Jones (state RI not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71520, 71521, 71522]
+  DELETE Robin Hough (state RI not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71523, 71524, 71525]
+  DELETE Mon Charoen, MBA (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71529, 71530, 71531]
+  DELETE David Whipple (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71532, 71533, 71534]
+  DELETE Kevin Callari (state OH not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71544, 71545, 71546]
+  DELETE Carlos Alvear (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71547, 71548, 71549]
+  DELETE Daniel Legouest (state OH not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71550, 71551, 71552]
+  DELETE Anne-Lucie Salaud (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71553, 71554, 71555]
+  DELETE Ed Julius (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71556, 71557, 71558]
+  DELETE Hermes Salcido Ortega (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71565, 71566, 71567]
+  DELETE Esteban Salcido de los RÃ­os (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71568, 71569, 71570]
+  DELETE Diana Villanueva, CPIM, PMP, LSSBB (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71577, 71578, 71579]
+  DELETE Toan Tran (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71580, 71581, 71582]
+  DELETE Antonio Rodriguez, III (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71586, 71587, 71588]
+  DELETE Ludovic Jaspart (state OH not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71589, 71590, 71591]
+  DELETE Joe Szostakowski (state OH not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71595, 71596, 71597]
+  DELETE Soizic LEASON (state OH not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71601, 71602, 71603]
+  DELETE Thad Stoerger (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71607, 71608, 71609]
+  DELETE Philip Goyet (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71610, 71611, 71612]
+  DELETE Matt Smith (state FL not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71613, 71614, 71615]
+  DELETE Christina Otto HARALSON (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71616, 71617, 71618]
+  DELETE ZLAKOWSKI William (state MD not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71619, 71620, 71621]
+  DELETE Lilia Henn (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71622, 71623, 71624]
+  DELETE Mia Thomton (state MN not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71625, 71626, 71627]
+  DELETE Manuel Ayala (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71628, 71629, 71630]
+  DELETE Ken Kinn (state KY not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71631, 71632, 71633]
+  DELETE Jenny Huchton (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71634, 71635, 71636]
+  DELETE Diane Jump (state MD not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71643, 71644, 71645]
+  DELETE Kelly Schmidt (state NJ not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71646, 71647, 71648]
+  DELETE Chad Howard (state KY not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71649, 71650, 71651]
+  DELETE Jeff Colbert Senior Manager Supply Chain (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71655, 71656, 71657]
+  DELETE John Marechal (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71658, 71659, 71660]
+  DELETE Romain Delerry (state OH not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71661, 71662, 71663]
+  DELETE Danielle O'Donohue (state OH not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71664, 71665, 71666]
+  DELETE Tiffany Bynum, MBA, PMP (state OH not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71670, 71671, 71672]
+  DELETE Sarah Reed (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71676, 71677, 71678]
+  DELETE DorothÃ©e LAFITTE (state OH not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71679, 71680, 71681]
+  DELETE Cyril CAZALBON (state NJ not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71682, 71683, 71684]
+  DELETE Dave Tew (state RI not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71688, 71689, 71690]
+  DELETE Lisa Louise Garwood (state FL not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71697, 71698, 71699]
+  DELETE Roberto Carlos Matos (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71700, 71701, 71702]
+  DELETE Jonathan Troup, MBA, CPIM (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71703, 71704, 71705]
+  DELETE Esteban Salcido de los Ríos (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71709, 71710, 71711]
+  DELETE Miguel Velasquez (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71733, 71734, 71735]
+  DELETE Silvio Oliveira (state NJ not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71742, 71743, 71744]
+  DELETE Karen Guaderrama (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71748, 71749, 71750]
+  DELETE David Sagot (state OH not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71751, 71752, 71753]
+  DELETE Hannah Whitaker (state KY not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71754, 71755, 71756]
+  DELETE Tom PATAINE (state KY not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71757, 71758, 71759]
+  DELETE Dylan Maulik (state MN not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71760, 71761, 71762]
+  DELETE Dan Perlmutter (state OH not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71766, 71767, 71768]
+  DELETE Kenneth Petillo (state GA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71772, 71773, 71774]
+  DELETE Kia Xiong (state MN not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71775, 71776, 71777]
+  DELETE Roxanne Maugy (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71790, 71791, 71792]
+  DELETE Morade Chaalal (state OH not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71793, 71794, 71795]
+  DELETE Hermes Salcido (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71796, 71797, 71798]
+  DELETE Justin Parmer (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71799, 71800, 71801]
+  DELETE Jennifer M. (state FL not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71802, 71803, 71804]
+  DELETE Mathis Duchêne (state OH not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71808, 71809, 71810]
+  DELETE David Wang (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71817, 71818, 71819]
+  DELETE Patrick Villanueva (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71823, 71824, 71825]
+  DELETE Brian Yu, MBA (state OH not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71826, 71827, 71828]
+  DELETE Ralph Alima (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71832, 71833, 71834]
+  DELETE Houmam MOUSSA, Ph. D. (state OH not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71838, 71839, 71840]
+  DELETE David Solanas, PMP, MBA (state FL not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71847, 71848, 71849]
+  DELETE Bryant Pepin (state MN not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71856, 71857, 71858]
+  DELETE Maria Velazquez (state OH not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71865, 71866, 71867]
+  DELETE Miranda Flores (state TX not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71868, 71869, 71870]
+  DELETE Anthony Lee (state OH not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71871, 71872, 71873]
+  DELETE Samuel C. (state GA not in ['AZ', 'CA', 'NV', 'OR', 'WA']) -> activities [71880, 71881, 71882]
+  DELETE Jose Carbajal, MSSCM (tier 1, over cap 25) -> activities [71667, 71668, 71669]
+  DELETE Mary Anasco (tier 1, over cap 25) -> activities [71673, 71674, 71675]
+  DELETE Gerardo L. (tier 1, over cap 25) -> activities [71694, 71695, 71696]
+  DELETE Awan Ibrahim (tier 1, over cap 25) -> activities [71706, 71707, 71708]
+  DELETE Chad Lucius (tier 1, over cap 25) -> activities [71405, 71406, 71407]
+  DELETE Jason Hu (tier 1, over cap 25) -> activities [71408, 71409, 71410]
+  DELETE Clayton Rodrigues (tier 1, over cap 25) -> activities [71411, 71412, 71413]
+  DELETE Gerardo Loredo (tier 1, over cap 25) -> activities [71417, 71418, 71419]
+  DELETE Nalinee Treerat (tier 1, over cap 25) -> activities [71715, 71716, 71717]
+  DELETE Javier Fierro (tier 1, over cap 25) -> activities [71435, 71436, 71437]
+  DELETE Grove Haentjens (tier 1, over cap 25) -> activities [71718, 71719, 71720]
+  DELETE Brady Boyd (tier 1, over cap 25) -> activities [71438, 71439, 71440]
+  DELETE Erick Calderon (tier 1, over cap 25) -> activities [71444, 71445, 71446]
+  DELETE Rodney Alexander (tier 1, over cap 25) -> activities [71730, 71731, 71732]
+  DELETE Samantha Camilleri (tier 1, over cap 25) -> activities [71736, 71737, 71738]
+  DELETE Guillermo Anaya (tier 1, over cap 25) -> activities [71739, 71740, 71741]
+  DELETE Jessica Nahra (tier 1, over cap 25) -> activities [71745, 71746, 71747]
+  DELETE François PALANCADE (tier 1, over cap 25) -> activities [71778, 71779, 71780]
+  DELETE Mahroo Mahmoodi (tier 1, over cap 25) -> activities [71784, 71785, 71786]
+  DELETE Julien Dechamps (tier 1, over cap 25) -> activities [71787, 71788, 71789]
+  DELETE Erika Estrada (tier 1, over cap 25) -> activities [71805, 71806, 71807]
+  DELETE Christopher Pappas (tier 1, over cap 25) -> activities [71811, 71812, 71813]
+  DELETE Aude Szklarz (tier 1, over cap 25) -> activities [71814, 71815, 71816]
+  DELETE Andrew Diaz (tier 1, over cap 25) -> activities [71820, 71821, 71822]
+  DELETE Mickael Szymanski (tier 1, over cap 25) -> activities [71850, 71851, 71852]
+  DELETE Brice Baudrey (tier 1, over cap 25) -> activities [71859, 71860, 71861]
+  DELETE Bastien J. (tier 1, over cap 25) -> activities [71862, 71863, 71864]
+  DELETE Cynthia Montero (tier 1, over cap 25) -> activities [71874, 71875, 71876]
+  DELETE Terry M. Inglis (tier 1, over cap 25) -> activities [71904, 71905, 71906]
+  DELETE Bunya Tran (tier 1, over cap 25) -> activities [71988, 71989, 71990]
+  DELETE April Aldrich (tier 1, over cap 25) -> activities [72012, 72013, 72014]
+  DELETE Tanguy Boete (tier 1, over cap 25) -> activities [72015, 72016, 72017]
+  DELETE Martin Pacteau (tier 1, over cap 25) -> activities [72018, 72019, 72020]
+  DELETE Nirali Patel (tier 1, over cap 25) -> activities [72021, 72022, 72023]
+  DELETE Yanhuby Rojas (tier 1, over cap 25) -> activities [72024, 72025, 72026]
+  DELETE Albert Troncoso, CPM, CPSM. (tier 2, over cap 25) -> activities [71541, 71542, 71543]
+  DELETE Kevin Pearson (tier 2, over cap 25) -> activities [71685, 71686, 71687]
+  DELETE Bart Biernat (tier 2, over cap 25) -> activities [72036, 72037, 72038]
+  DELETE Jarod Jenks (tier 3, over cap 25) -> activities [71472, 71473, 71474]
+  DELETE Darlene Masek (tier 3, over cap 25) -> activities [71475, 71476, 71477]
+  DELETE Kelvin Benn (tier 3, over cap 25) -> activities [71478, 71479, 71480]
+  DELETE Eileen Hongo (tier 3, over cap 25) -> activities [71481, 71482, 71483]
+  DELETE Nick Utitus (tier 3, over cap 25) -> activities [71484, 71485, 71486]
+  DELETE Michael Lazarin (tier 3, over cap 25) -> activities [71354, 71355, 71356]
+  DELETE Manuel Gay (tier 3, over cap 25) -> activities [71357, 71358, 71359]
+  DELETE Sarah Michael Nakhla (tier 3, over cap 25) -> activities [71360, 71361, 71362]
+  DELETE Benoit Bienfait (tier 3, over cap 25) -> activities [71487, 71488, 71489]
+  DELETE Doline Peterson (tier 3, over cap 25) -> activities [71363, 71364, 71365]
+  DELETE Deepti Chauhan (tier 3, over cap 25) -> activities [71366, 71367, 71368]
+  DELETE Landen Ashdown (tier 3, over cap 25) -> activities [71372, 71373, 71374]
+  DELETE Luis Garcia (tier 3, over cap 25) -> activities [71375, 71376, 71377]
+  DELETE Christopher Bartolo (tier 3, over cap 25) -> activities [71378, 71379, 71380]
+  DELETE Joseph Tiseo (tier 3, over cap 25) -> activities [71499, 71500, 71501]
+  DELETE Lonnie (tier 3, over cap 25) -> activities [71396, 71397, 71398]
+  DELETE Michelle Rainey (tier 3, over cap 25) -> activities [71535, 71536, 71537]
+  DELETE Bunya Neang (tier 3, over cap 25) -> activities [71583, 71584, 71585]
+  DELETE Laure Silvestri (tier 3, over cap 25) -> activities [71691, 71692, 71693]
+  DELETE Rod Wackerman (tier 3, over cap 25) -> activities [71712, 71713, 71714]
+  DELETE Yair Valverde (tier 3, over cap 25) -> activities [71721, 71722, 71723]
+  DELETE John Iszard (tier 3, over cap 25) -> activities [71724, 71725, 71726]
+  DELETE Marco Garcia (tier 3, over cap 25) -> activities [71727, 71728, 71729]
+  DELETE Daniel Kim (tier 3, over cap 25) -> activities [71763, 71764, 71765]
+  DELETE Jessica Grzybowski (tier 3, over cap 25) -> activities [71769, 71770, 71771]
+  DELETE Henry Taylor MCIPS (tier 3, over cap 25) -> activities [71781, 71782, 71783]
+  DELETE Gauthier Trarieux (tier 3, over cap 25) -> activities [71829, 71830, 71831]
+  DELETE Jason Mullins (tier 3, over cap 25) -> activities [71835, 71836, 71837]
+  DELETE Patrick O'Connell (tier 3, over cap 25) -> activities [71841, 71842, 71843]
+  DELETE Logan Kunkel (tier 3, over cap 25) -> activities [71844, 71845, 71846]
+  DELETE Daniel Luong (tier 3, over cap 25) -> activities [71853, 71854, 71855]
+  DELETE Adrian W. (tier 3, over cap 25) -> activities [71877, 71878, 71879]
+  DELETE Haley Swingler (tier 3, over cap 25) -> activities [71883, 71884, 71885]
+  DELETE James Velilla (tier 3, over cap 25) -> activities [71886, 71887, 71888]
+  DELETE Melissa Barlow (tier 3, over cap 25) -> activities [71889, 71890, 71891]
+  DELETE John McNeil (tier 3, over cap 25) -> activities [71892, 71893, 71894]
+  DELETE Marco Cohen - MSSCM (tier 3, over cap 25) -> activities [71895, 71896, 71897]
+  DELETE Devin Haber (tier 3, over cap 25) -> activities [71898, 71899, 71900]
+  DELETE Shane Ingalls (tier 3, over cap 25) -> activities [71901, 71902, 71903]
+  DELETE Julio Cesar Martinez Garcia (tier 3, over cap 25) -> activities [71907, 71908, 71909]
+  DELETE Alice Cassidy Piferi (tier 3, over cap 25) -> activities [71910, 71911, 71912]
+  DELETE Mike Diehl (tier 3, over cap 25) -> activities [71913, 71914, 71915]
+  DELETE Peter Disney (tier 3, over cap 25) -> activities [71916, 71917, 71918]
+  DELETE Mike Marthaller (tier 3, over cap 25) -> activities [71919, 71920, 71921]
+  DELETE Burcu Ozmen (tier 3, over cap 25) -> activities [71922, 71923, 71924]
+  DELETE Leilani Hubbs (tier 3, over cap 25) -> activities [71925, 71926, 71927]
+  DELETE Ben Pauly (tier 3, over cap 25) -> activities [71928, 71929, 71930]
+  DELETE Philip S. Lee (tier 3, over cap 25) -> activities [71931, 71932, 71933]
+  DELETE Justin To (tier 3, over cap 25) -> activities [71934, 71935, 71936]
+  DELETE Michelle Resetar (tier 3, over cap 25) -> activities [71937, 71938, 71939]
+  DELETE Julieta Rivera (tier 3, over cap 25) -> activities [71940, 71941, 71942]
+  DELETE Benoit Porte (tier 3, over cap 25) -> activities [71943, 71944, 71945]
+  DELETE Carolina Rodrigues Costa Mattos (tier 3, over cap 25) -> activities [71946, 71947, 71948]
+  DELETE Sabeena Sebastian, MBA (tier 3, over cap 25) -> activities [71949, 71950, 71951]
+  DELETE Adrian Silva (tier 3, over cap 25) -> activities [71952, 71953, 71954]
+  DELETE YANTAO ZHU (tier 3, over cap 25) -> activities [71955, 71956, 71957]
+  DELETE James Rauch (tier 3, over cap 25) -> activities [71958, 71959, 71960]
+  DELETE Ryan Yarton (tier 3, over cap 25) -> activities [71961, 71962, 71963]
+  DELETE David Chong (tier 3, over cap 25) -> activities [71964, 71965, 71966]
+  DELETE August Giering (tier 3, over cap 25) -> activities [71967, 71968, 71969]
+  DELETE Terry Bryant (tier 3, over cap 25) -> activities [71970, 71971, 71972]
+  DELETE Carlos S. Perez (tier 3, over cap 25) -> activities [71973, 71974, 71975]
+  DELETE Thais Vicchiarelli (tier 3, over cap 25) -> activities [71976, 71977, 71978]
+  DELETE Avery Fuller (tier 3, over cap 25) -> activities [71979, 71980, 71981]
+  DELETE Thomas Ho, MBA, PMP (tier 3, over cap 25) -> activities [71982, 71983, 71984]
+  DELETE Jennifer R. (tier 3, over cap 25) -> activities [71985, 71986, 71987]
+  DELETE Maxime Camuset (tier 3, over cap 25) -> activities [71991, 71992, 71993]
+  DELETE Shelby Sygitowicz (tier 3, over cap 25) -> activities [71994, 71995, 71996]
+  DELETE Karim Chafroud, PMP (tier 3, over cap 25) -> activities [71997, 71998, 71999]
+  DELETE Parham Khansari (tier 3, over cap 25) -> activities [72000, 72001, 72002]
+  DELETE Robert Goodwin (tier 3, over cap 25) -> activities [72003, 72004, 72005]
+  DELETE steve daleo (tier 3, over cap 25) -> activities [72006, 72007, 72008]
+  DELETE Boly N. (tier 3, over cap 25) -> activities [72009, 72010, 72011]
+  DELETE Vivian Mai (tier 3, over cap 25) -> activities [72027, 72028, 72029]
+  DELETE Swarda Deshmukh (tier 3, over cap 25) -> activities [72030, 72031, 72032]
+  DELETE Febin T. (tier 3, over cap 25) -> activities [72033, 72034, 72035]
+  redate David Stabile (tier 1) Call 1: 2026-07-09 -> 2026-07-10
+  redate David Stabile (tier 1) Call 2: 2026-07-15 -> 2026-07-16
+  redate David Stabile (tier 1) Call 3: 2026-07-17 -> 2026-07-20
+  redate Jim Arndt (tier 1) Call 1: 2026-07-09 -> 2026-07-10
+  redate Jim Arndt (tier 1) Call 2: 2026-07-15 -> 2026-07-16
+  redate Jim Arndt (tier 1) Call 3: 2026-07-17 -> 2026-07-20
+  redate Michael Borges (tier 1) Call 1: 2026-07-09 -> 2026-07-10
+  redate Michael Borges (tier 1) Call 2: 2026-07-15 -> 2026-07-16
+  redate Michael Borges (tier 1) Call 3: 2026-07-17 -> 2026-07-20
+  redate Terry M. Inglis (tier 1) Call 1: 2026-07-09 -> 2026-07-10
+  redate Terry M. Inglis (tier 1) Call 2: 2026-07-15 -> 2026-07-16
+  redate Terry M. Inglis (tier 1) Call 3: 2026-07-17 -> 2026-07-20
+  redate Daniel Choi (tier 1) Call 1: 2026-07-09 -> 2026-07-10
+  redate Daniel Choi (tier 1) Call 2: 2026-07-15 -> 2026-07-16
+  redate Daniel Choi (tier 1) Call 3: 2026-07-17 -> 2026-07-20
+  redate Aiah Salgado (tier 1) Call 1: 2026-07-09 -> 2026-07-13
+  redate Aiah Salgado (tier 1) Call 2: 2026-07-15 -> 2026-07-17
+  redate Aiah Salgado (tier 1) Call 3: 2026-07-17 -> 2026-07-21
+  redate Rose Morgan (tier 1) Call 1: 2026-07-09 -> 2026-07-13
+  redate Rose Morgan (tier 1) Call 2: 2026-07-15 -> 2026-07-17
+  redate Rose Morgan (tier 1) Call 3: 2026-07-17 -> 2026-07-21
+  redate Anthony Herrell (tier 1) Call 1: 2026-07-09 -> 2026-07-13
+  redate Anthony Herrell (tier 1) Call 2: 2026-07-15 -> 2026-07-17
+  redate Anthony Herrell (tier 1) Call 3: 2026-07-17 -> 2026-07-21
+  redate Jeffry K. Pearson (tier 1) Call 1: 2026-07-09 -> 2026-07-13
+  redate Jeffry K. Pearson (tier 1) Call 2: 2026-07-15 -> 2026-07-17
+  redate Jeffry K. Pearson (tier 1) Call 3: 2026-07-17 -> 2026-07-21
+  redate Joe Roth (tier 1) Call 1: 2026-07-09 -> 2026-07-13
+  redate Joe Roth (tier 1) Call 2: 2026-07-15 -> 2026-07-17
+  redate Joe Roth (tier 1) Call 3: 2026-07-17 -> 2026-07-21
+  redate Rene Barba (tier 1) Call 1: 2026-07-09 -> 2026-07-14
+  redate Rene Barba (tier 1) Call 2: 2026-07-15 -> 2026-07-20
+  redate Rene Barba (tier 1) Call 3: 2026-07-17 -> 2026-07-22
+  redate Humberto Reaza (tier 1) Call 1: 2026-07-09 -> 2026-07-14
+  redate Humberto Reaza (tier 1) Call 2: 2026-07-15 -> 2026-07-20
+  redate Humberto Reaza (tier 1) Call 3: 2026-07-17 -> 2026-07-22
+  redate Riana Sutton (tier 1) Call 1: 2026-07-09 -> 2026-07-14
+  redate Riana Sutton (tier 1) Call 2: 2026-07-15 -> 2026-07-20
+  redate Riana Sutton (tier 1) Call 3: 2026-07-17 -> 2026-07-22
+  redate Malik Amdouni Perez (tier 1) Call 1: 2026-07-09 -> 2026-07-14
+  redate Malik Amdouni Perez (tier 1) Call 2: 2026-07-15 -> 2026-07-20
+  redate Malik Amdouni Perez (tier 1) Call 3: 2026-07-17 -> 2026-07-22
+  redate Mike Glennon (tier 1) Call 1: 2026-07-09 -> 2026-07-14
+  redate Mike Glennon (tier 1) Call 2: 2026-07-15 -> 2026-07-20
+  redate Mike Glennon (tier 1) Call 3: 2026-07-17 -> 2026-07-22
+  redate Paola Milan (tier 1) Call 1: 2026-07-09 -> 2026-07-15
+  redate Paola Milan (tier 1) Call 2: 2026-07-15 -> 2026-07-21
+  redate Paola Milan (tier 1) Call 3: 2026-07-17 -> 2026-07-23
+  redate Dan Bohnas (tier 1) Call 1: 2026-07-09 -> 2026-07-15
+  redate Dan Bohnas (tier 1) Call 2: 2026-07-15 -> 2026-07-21
+  redate Dan Bohnas (tier 1) Call 3: 2026-07-17 -> 2026-07-23
+  3 people already started (Call 1 done) — untouched
+
+RESULT: ok - DRY-RUN: 1820 activities deleted (out-of-territory), 423 due dates changed

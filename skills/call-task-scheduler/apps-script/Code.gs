@@ -209,10 +209,13 @@ var FUNC_RE = /(sourcing|commodit|purchasing|supplier|procurement|supply\s*chain
 var SENIOR_RE = /(manager|mgr\.?|sr\.?(\s|$)|senior|director)/;
 var VP_RE = /(vp|v\.p\.|vice\s*president)/;
 var TIER1_EXCLUDE_RE = /(program\s*manager|engineer|buyer|specialist|associate|junior|jr\.?(\s|$)|coordinator|analyst|intern(\s|$)|assistant|chief|c[pes]o(\s|$)|president)/;
+// engineer titles Marcella explicitly wants in tier 1 despite the engineer exclusion
+var TIER1_EXCEPTION_RE = /(supplier\s*development\s*engineer|sourcing\s*engineer)/;
 
 function tierOf(p) {
   var t = String(p[TITLE_KEY] || '').toLowerCase();
   if (!t) return 3;
+  if (TIER1_EXCEPTION_RE.test(t)) return 1;
   if (FUNC_RE.test(t)) {
     if (VP_RE.test(t) && !TIER1_EXCLUDE_RE.test(t.replace(VP_RE, ''))) return 2;
     if (SENIOR_RE.test(t) && !VP_RE.test(t) && !TIER1_EXCLUDE_RE.test(t)) return 1;

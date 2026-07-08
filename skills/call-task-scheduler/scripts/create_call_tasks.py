@@ -178,12 +178,16 @@ VP_RE = re.compile(r"(vp|v\.p\.|vice\s*president)")
 TIER1_EXCLUDE_RE = re.compile(
     r"(program\s*manager|engineer|buyer|specialist|associate|junior|jr\.?(\s|$)|coordinator"
     r"|analyst|intern(\s|$)|assistant|chief|c[pes]o(\s|$)|president)")
+# engineer titles Marcella explicitly wants in tier 1 despite the engineer exclusion
+TIER1_EXCEPTION_RE = re.compile(r"(supplier\s*development\s*engineer|sourcing\s*engineer)")
 
 
 def tier_of(p: dict) -> int:
     t = (p.get(TITLE_KEY) or "").lower()
     if not t:
         return 3
+    if TIER1_EXCEPTION_RE.search(t):
+        return 1
     if FUNC_RE.search(t):
         if VP_RE.search(t) and not TIER1_EXCLUDE_RE.search(VP_RE.sub("", t)):
             return 2
