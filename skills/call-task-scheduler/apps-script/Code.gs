@@ -5,9 +5,13 @@
  *
  * How it works: ticking the "Create" checkbox on a row runs the workflow immediately in
  * Google's cloud (no laptop involved): pulls the org's ICP-Yes people from Pipedrive LIVE,
- * creates 3 call activities per person with a phone (D+1 / +5bd / +7bd), posts the no-phone
- * note on the org, pushes no-phone people to the Clay People table and thin orgs (<5 callable)
- * to the Clay Company table, then writes the outcome into Status/Result.
+ * drops out-of-territory people (per-principal rules), ranks by job-title tier (mgmt-level
+ * sourcing/procurement titles first), caps at 25 people per run (re-run rotates to the next 25;
+ * a person is re-eligible 45 days after their last call task), creates 3 call activities per
+ * person (Call 1s paced 5 per business day; Call 2/3 at +5/+7bd from each person's Call 1),
+ * posts the no-phone note on the org, pushes up to 10 tier-1-title no-phone people to the Clay
+ * People table and thin orgs (<5 callable) to the Clay Company table, then writes the outcome
+ * into Status/Result.
  *
  * ONE-TIME SETUP (after pasting this file into Extensions → Apps Script):
  *   1. Project Settings → Script Properties → add:
@@ -65,7 +69,171 @@ function classifyTitle(title) {
   return 'Yes';  // default Yes
 }
 var MIN_CALLABLE = 5;   // orgs with fewer callable people get pushed to the Clay company table
+var MAX_PEOPLE_PER_RUN = 25;      // hard cap per run; re-run within ROTATION_DAYS gets the NEXT 25
+var ROTATION_DAYS = 45;           // a person with any call task in this window is not re-tasked
+var CALLS_PER_DAY = 5;            // Call-1s per company per business day
+var TIER3_MAX_WITHPHONE = 100;    // >100 phoned people -> only tier 1/2 titles get tasks
+var CLAY_PEOPLE_MAX = 10;         // phone-finder table: tier-1 titles only, max 10 per run
 var COL = { PRINCIPAL: 1, ORG: 2, OWNER: 3, TEST: 4, CREATE: 5, STATUS: 6, RESULT: 7 };
+
+var PERSON_STATE_KEY = '67e678e89a3a8eb69a576f550d6446b224f17980';   // Person Contact State
+var PERSON_CITY_KEY = '6ddd2290f7538daf39859ad788295374aa1ae5f9';    // Person Contact City
+var PERSON_COUNTRY_KEY = 'cec25dc64c9744b2f1c5109572ef6285eef4cf27'; // Person Contact Country
+var ORG_STATE_KEY = '997336778f6e562b0d0db2578037c30125e72f85';      // Company State (fallback)
+
+// ── territory rules (mirror of go-capy-outreach/shared-references/client-territories.json) ────
+// Keyed by principal display name (lowercase). Principals absent -> no restriction.
+// Only a CONFIRMED out-of-territory location drops a person, except strict_unknown clients.
+var TERRITORIES = {
+  'patriot forge': { include_countries: ['United States'], include_states: ['WA', 'OR', 'CA', 'AZ', 'NV'], exclude_countries: ['Canada'] },
+  'tech-max': { exclude_states: ['FL', 'MA', 'IL', 'PA', 'VT'] },
+  'general foundry': { exclude_states: ['NV', 'UT', 'CO', 'MA', 'CT'] },
+  'harvey vogel': { include_states: ['CA'], socal_only: true, strict_unknown: true },
+  'megatech': { include_countries: ['United States'], exclude_countries: ['Canada'] },
+};
+
+var STATE_ABBR = { 'alabama': 'AL', 'alaska': 'AK', 'arizona': 'AZ', 'arkansas': 'AR',
+  'california': 'CA', 'colorado': 'CO', 'connecticut': 'CT', 'delaware': 'DE', 'florida': 'FL',
+  'georgia': 'GA', 'hawaii': 'HI', 'idaho': 'ID', 'illinois': 'IL', 'indiana': 'IN', 'iowa': 'IA',
+  'kansas': 'KS', 'kentucky': 'KY', 'louisiana': 'LA', 'maine': 'ME', 'maryland': 'MD',
+  'massachusetts': 'MA', 'michigan': 'MI', 'minnesota': 'MN', 'mississippi': 'MS',
+  'missouri': 'MO', 'montana': 'MT', 'nebraska': 'NE', 'nevada': 'NV', 'new hampshire': 'NH',
+  'new jersey': 'NJ', 'new mexico': 'NM', 'new york': 'NY', 'north carolina': 'NC',
+  'north dakota': 'ND', 'ohio': 'OH', 'oklahoma': 'OK', 'oregon': 'OR', 'pennsylvania': 'PA',
+  'rhode island': 'RI', 'south carolina': 'SC', 'south dakota': 'SD', 'tennessee': 'TN',
+  'texas': 'TX', 'utah': 'UT', 'vermont': 'VT', 'virginia': 'VA', 'washington': 'WA',
+  'west virginia': 'WV', 'wisconsin': 'WI', 'wyoming': 'WY', 'district of columbia': 'DC',
+  'washington dc': 'DC', 'puerto rico': 'PR' };
+var US_ABBRS = {};
+for (var _sk in STATE_ABBR) US_ABBRS[STATE_ABBR[_sk]] = true;
+var CA_PROVINCES = { 'ontario': 1, 'on': 1, 'quebec': 1, 'québec': 1, 'qc': 1,
+  'british columbia': 1, 'bc': 1, 'alberta': 1, 'ab': 1, 'manitoba': 1, 'mb': 1,
+  'saskatchewan': 1, 'sk': 1, 'nova scotia': 1, 'ns': 1, 'new brunswick': 1, 'nb': 1,
+  'newfoundland and labrador': 1, 'nl': 1, 'prince edward island': 1, 'pe': 1, 'pei': 1,
+  'northwest territories': 1, 'nt': 1, 'yukon': 1, 'yt': 1, 'nunavut': 1, 'nu': 1 };
+var COUNTRY_ALIASES = { 'us': 'United States', 'u.s.': 'United States', 'u.s.a.': 'United States',
+  'usa': 'United States', 'united states of america': 'United States',
+  'united states': 'United States', 'america': 'United States', 'canada': 'Canada',
+  'mexico': 'Mexico', 'méxico': 'Mexico' };
+var SOCAL_CITIES = ['los angeles', 'long beach', 'glendale', 'santa clarita', 'lancaster',
+  'palmdale', 'pomona', 'torrance', 'pasadena', 'el monte', 'downey', 'inglewood', 'west covina',
+  'norwalk', 'burbank', 'compton', 'carson', 'santa monica', 'hawthorne', 'whittier', 'alhambra',
+  'lakewood', 'bellflower', 'baldwin park', 'lynwood', 'redondo beach', 'pico rivera',
+  'montebello', 'monterey park', 'gardena', 'huntington park', 'arcadia', 'diamond bar',
+  'paramount', 'rosemead', 'cerritos', 'covina', 'azusa', 'glendora', 'culver city',
+  'san gabriel', 'rancho palos verdes', 'la mirada', 'el segundo', 'manhattan beach',
+  'beverly hills', 'calabasas', 'west hollywood', 'santa fe springs', 'industry', 'commerce',
+  'vernon', 'agoura hills', 'claremont', 'san dimas', 'walnut', 'temple city', 'monrovia',
+  'duarte', 'south pasadena', 'hermosa beach', 'sierra madre', 'malibu', 'lawndale', 'bell',
+  'maywood', 'cudahy', 'san fernando', 'la verne', 'signal hill', 'hawaiian gardens', 'artesia',
+  'westlake village', 'lomita', 'la puente', 'la canada flintridge', 'la cañada flintridge',
+  'south gate', 'irwindale', 'avalon', 'anaheim', 'santa ana', 'irvine', 'huntington beach',
+  'garden grove', 'orange', 'fullerton', 'costa mesa', 'mission viejo', 'westminster',
+  'newport beach', 'buena park', 'lake forest', 'tustin', 'yorba linda', 'san clemente',
+  'laguna niguel', 'la habra', 'fountain valley', 'anaheim hills', 'placentia',
+  'rancho santa margarita', 'aliso viejo', 'cypress', 'brea', 'stanton', 'dana point',
+  'laguna hills', 'san juan capistrano', 'seal beach', 'laguna beach', 'la palma',
+  'los alamitos', 'villa park', 'san diego', 'chula vista', 'oceanside', 'escondido',
+  'carlsbad', 'el cajon', 'vista', 'san marcos', 'encinitas', 'national city', 'la mesa',
+  'santee', 'poway', 'coronado', 'imperial beach', 'lemon grove', 'solana beach', 'del mar',
+  'riverside', 'moreno valley', 'corona', 'temecula', 'murrieta', 'jurupa valley', 'menifee',
+  'hemet', 'indio', 'perris', 'eastvale', 'cathedral city', 'palm desert', 'lake elsinore',
+  'palm springs', 'coachella', 'beaumont', 'san jacinto', 'wildomar', 'la quinta', 'banning',
+  'norco', 'desert hot springs', 'rancho mirage', 'canyon lake', 'calimesa', 'blythe',
+  'san bernardino', 'fontana', 'rancho cucamonga', 'ontario', 'victorville', 'rialto',
+  'hesperia', 'chino', 'chino hills', 'upland', 'apple valley', 'redlands', 'highland',
+  'colton', 'yucaipa', 'montclair', 'adelanto', 'twentynine palms', 'loma linda', 'barstow',
+  'grand terrace', 'big bear lake', 'needles', 'oxnard', 'thousand oaks', 'simi valley',
+  'ventura', 'san buenaventura', 'camarillo', 'moorpark', 'santa paula', 'port hueneme',
+  'fillmore', 'ojai', 'el centro', 'calexico', 'brawley', 'imperial', 'holtville',
+  'westmorland', 'calipatria'];
+var SOCAL_SET = {};
+SOCAL_CITIES.forEach(function (c) { SOCAL_SET[c] = true; });
+
+function normState(raw) {
+  var s = String(raw || '').trim();
+  if (!s) return { abbr: '', isUS: false, isCA: false };
+  var low = s.toLowerCase();
+  if (CA_PROVINCES[low]) return { abbr: '', isUS: false, isCA: true };
+  if (s.length === 2 && US_ABBRS[s.toUpperCase()]) return { abbr: s.toUpperCase(), isUS: true, isCA: false };
+  if (STATE_ABBR[low]) return { abbr: STATE_ABBR[low], isUS: true, isCA: false };
+  return { abbr: '', isUS: false, isCA: false };
+}
+
+function normCountry(raw) {
+  var s = String(raw || '').trim();
+  if (!s) return '';
+  return COUNTRY_ALIASES[s.toLowerCase()] || s;
+}
+
+// Port of territory_filter.py keep(): true = person may be called for this principal.
+function keepInTerritory(rule, person, orgState) {
+  if (!rule) return true;
+  var st = normState(person[PERSON_STATE_KEY] || orgState);
+  var country = normCountry(person[PERSON_COUNTRY_KEY]);
+  if (!country) { if (st.isUS) country = 'United States'; else if (st.isCA) country = 'Canada'; }
+  var city = String(person[PERSON_CITY_KEY] || '').trim().toLowerCase();
+  var strict = !!rule.strict_unknown;
+  var i;
+  if (rule.exclude_states && st.abbr) {
+    for (i = 0; i < rule.exclude_states.length; i++) if (rule.exclude_states[i] === st.abbr) return false;
+  }
+  if (rule.exclude_countries && country) {
+    for (i = 0; i < rule.exclude_countries.length; i++) if (normCountry(rule.exclude_countries[i]) === country) return false;
+  }
+  if (rule.include_states) {
+    if (st.abbr) {
+      if (rule.include_states.indexOf(st.abbr) < 0) return false;
+    } else if (country && country !== 'United States') return false;
+    else if (strict) return false;
+  }
+  if (rule.include_countries) {
+    if (country) {
+      if (rule.include_countries.map(normCountry).indexOf(country) < 0) return false;
+    } else if (strict) return false;
+  }
+  if (rule.socal_only) {
+    if (st.abbr && st.abbr !== 'CA') return false;
+    if (city) { if (!SOCAL_SET[city]) return false; }
+    else if (strict) return false;
+  }
+  return true;
+}
+
+// ── title prioritization (rules confirmed by Marcella 2026-07-08) ─────────────────────────────
+// Tier 1: functional keyword + manager/sr/senior/director, minus program managers, engineers,
+//         buyers, specialists, entry-level, VP, C-level.
+// Tier 2: VP-level with the same functional keywords (used only when tier 1 < 25).
+// Tier 3: everyone else (buyers land here) — skipped entirely when org has >100 phoned people.
+var FUNC_RE = /(sourcing|commodit|purchasing|supplier|procurement|supply\s*chain|category)/;
+var SENIOR_RE = /(manager|mgr\.?|sr\.?(\s|$)|senior|director)/;
+var VP_RE = /(vp|v\.p\.|vice\s*president)/;
+var TIER1_EXCLUDE_RE = /(program\s*manager|engineer|buyer|specialist|associate|junior|jr\.?(\s|$)|coordinator|analyst|intern(\s|$)|assistant|chief|c[pes]o(\s|$)|president)/;
+
+function tierOf(p) {
+  var t = String(p[TITLE_KEY] || '').toLowerCase();
+  if (!t) return 3;
+  if (FUNC_RE.test(t)) {
+    if (VP_RE.test(t) && !TIER1_EXCLUDE_RE.test(t.replace(VP_RE, ''))) return 2;
+    if (SENIOR_RE.test(t) && !VP_RE.test(t) && !TIER1_EXCLUDE_RE.test(t)) return 1;
+  }
+  return 3;
+}
+
+// Order people tier1 -> (tier2 if tier1 phoned < 25) -> tier3 (only when org is not huge),
+// cap at MAX_PEOPLE_PER_RUN. Returns { list, deprioritized }.
+function prioritize(people, totalWithPhone) {
+  var t1 = [], t2 = [], t3 = [];
+  people.forEach(function (p) {
+    var t = tierOf(p);
+    (t === 1 ? t1 : t === 2 ? t2 : t3).push(p);
+  });
+  var ordered = t1.slice();
+  if (t1.length < 25) ordered = ordered.concat(t2);
+  if (totalWithPhone <= TIER3_MAX_WITHPHONE) ordered = ordered.concat(t3);
+  var list = ordered.slice(0, MAX_PEOPLE_PER_RUN);
+  return { list: list, deprioritized: people.length - list.length };
+}
 
 // ── one-time setup ────────────────────────────────────────────────────────────────────────────
 
@@ -208,8 +376,21 @@ function runWorkflowA(input) {
     return String(p[ICP_KEY] || '').trim().toLowerCase() === 'yes';
   });
 
-  // idempotency source: person_ids that already have an open call task from this skill
-  var already = openSkillPersonIds(registry);
+  // territory gate: out-of-territory people are skipped ENTIRELY (no tasks, no Clay)
+  var territoryRule = TERRITORIES[reg.display_name.toLowerCase()];
+  var outOfTerritory = 0;
+  if (territoryRule) {
+    var orgState = String((pd('GET', '/api/v1/organizations/' + org.id).data || {})[ORG_STATE_KEY] || '');
+    icpYes = icpYes.filter(function (p) {
+      if (keepInTerritory(territoryRule, p, orgState)) return true;
+      outOfTerritory++;
+      return false;
+    });
+  }
+
+  // rotation source: person_ids with any call task from this skill that is still open OR was
+  // completed in the last ROTATION_DAYS — they are skipped, so re-runs get the NEXT 25 people
+  var already = recentSkillPersonIds(registry);
 
   // duplicate-record guard: same human twice at one org (same normalized name, since duplicate
   // records rarely share an email) -> keep ONE record per human. Preference: a record that
@@ -237,18 +418,26 @@ function runWorkflowA(input) {
   var withPhone = icpYes.filter(function (p) { return phones(p).length > 0; });
   var noPhone = icpYes.filter(function (p) { return phones(p).length === 0; });
 
-  var todo = withPhone.filter(function (p) { return !already[String(p.id)]; });
-  var skipped = withPhone.length - todo.length;
+  var fresh = withPhone.filter(function (p) { return !already[String(p.id)]; });
+  var skipped = withPhone.length - fresh.length;
+
+  // priority order (tier 1 mgmt titles first) + hard cap per run
+  var pri = prioritize(fresh, withPhone.length);
+  var todo = pri.list;
+  var deprioritized = pri.deprioritized;
+
   if (input.test) {
     if (skipped > 0) return 'org ' + org.id + ' (' + org.name + '): TEST skipped: ' + skipped
-      + ' person(s) already have open call tasks';
+      + ' person(s) already have recent call tasks';
     todo = todo.slice(0, 1);
   }
 
-  var dueDates = [1, 5, 7].map(function (n) { return addBusinessDays(new Date(), n); });
+  // pacing: CALLS_PER_DAY Call-1s per business day, in priority order; each person's
+  // Call 2/3 shift with their own Call 1
   var seqCount = input.test ? 1 : 3;
-  var createdCount = 0;
-  todo.forEach(function (p) {
+  var createdCount = 0, offsets = [1, 5, 7];
+  todo.forEach(function (p, idx) {
+    var batch = Math.floor(idx / CALLS_PER_DAY);
     var note = 'Call ' + p.name + ' - ' + (p[TITLE_KEY] || 'no title') + ' @ ' + phones(p).join(', ');
     for (var n = 1; n <= seqCount; n++) {
       var body = {
@@ -256,7 +445,7 @@ function runWorkflowA(input) {
         type: 'call',
         owner_id: ownerId,
         org_id: org.id,
-        due_date: isoDate(dueDates[n - 1]),
+        due_date: isoDate(addBusinessDays(new Date(), offsets[n - 1] + batch)),
         participants: [{ person_id: Number(p.id), primary: true }],
         note: n === 1
           ? note + '<br><br>[Clicking "Mark As Done" moves lead to a Voicemail Email Sequence in HotHawk]'
@@ -266,12 +455,16 @@ function runWorkflowA(input) {
       createdCount++;
     }
   });
+  var call1Days = Math.ceil(todo.length / CALLS_PER_DAY);
 
   var noteMade = 0, clayPeople = 0, clayCompany = 0;
+  // phone-finder table: only no-phone people with TIER-1 titles, max CLAY_PEOPLE_MAX per run
+  var clayCandidates = noPhone.filter(function (p) { return tierOf(p) === 1; })
+    .slice(0, CLAY_PEOPLE_MAX);
   if (!input.test && !input.secondPass) {  // second pass never re-pushes to Clay
     if (noPhone.length) noteMade = postNoPhoneNote(org, noPhone, reg.display_name, input.owner);
     if (dupPairs.length) postDuplicatesNote(org, dupPairs, input.owner);
-    noPhone.forEach(function (p) {
+    clayCandidates.forEach(function (p) {
       var email = primaryEmail(p);
       var ok = clayPost(CLAY_PEOPLE_WEBHOOK, {
         name: p.name, first_name: firstName(p), last_name: lastName(p),
@@ -292,12 +485,18 @@ function runWorkflowA(input) {
   }
 
   return 'org ' + org.id + ' (' + org.name + '): ' + (input.test ? 'TEST: ' : '')
-    + todo.length + ' people, ' + createdCount + ' tasks, '
+    + todo.length + ' people, ' + createdCount + ' tasks'
+    + (call1Days > 1 ? ' (Call 1s over ' + call1Days + ' days)' : '') + ', '
     + skipped + ' skipped, ' + noPhone.length + ' no-phone'
+    + (outOfTerritory ? ', ' + outOfTerritory + ' out-of-territory' : '')
+    + (deprioritized ? ', ' + deprioritized + ' deprioritized (cap ' + MAX_PEOPLE_PER_RUN + ')' : '')
     + (classified ? ', ' + classified + ' ICP-classified' : '')
     + (dedupedOut ? ', ' + dedupedOut + ' duplicate record(s) ignored' : '')
     + (noteMade ? ' (note posted)' : '')
-    + (clayPeople || clayCompany ? ', clay: ' + clayPeople + 'p/' + clayCompany + 'c' : '');
+    + (clayPeople || clayCompany
+        ? ', clay: ' + clayPeople + 'p' + (noPhone.length > clayPeople ? ' (of ' + noPhone.length + ' no-phone)' : '')
+          + '/' + clayCompany + 'c'
+        : '');
 }
 
 // ── pipedrive helpers ────────────────────────────────────────────────────────────────────────
@@ -358,24 +557,34 @@ function orgPersons(orgId) {
   return out;
 }
 
-function openSkillPersonIds(registry) {
+// People with a skill call task that is still OPEN, or was COMPLETED within ROTATION_DAYS —
+// both are excluded from new runs, so a re-run rotates to the next batch of people.
+function recentSkillPersonIds(registry) {
   var displays = {};
   for (var slug in registry) displays[registry[slug].display_name.toLowerCase()] = true;
-  var ids = {}, cursor = null;
-  while (true) {
-    var params = { done: 'false', limit: 500 };
-    if (cursor) params.cursor = cursor;
-    var r = pd('GET', '/api/v2/activities', params);
-    (r.data || []).forEach(function (act) {
-      if (act.type !== 'call') return;
-      var m = /^Call [123]: .+ from .+ for (.+)$/.exec(act.subject || '');
-      if (!m || !displays[m[1].trim().toLowerCase()]) return;
-      var pid = activityPersonId(act);
-      if (pid) ids[String(pid)] = true;
-    });
-    cursor = r.additional_data && r.additional_data.next_cursor;
-    if (!cursor) break;
-  }
+  var ids = {};
+  var since = new Date();
+  since.setDate(since.getDate() - ROTATION_DAYS);
+  var sinceIso = Utilities.formatDate(since, 'UTC', "yyyy-MM-dd'T'HH:mm:ss'Z'");
+
+  [{ done: 'false' }, { done: 'true', updated_since: sinceIso }].forEach(function (extra) {
+    var cursor = null;
+    while (true) {
+      var params = { limit: 500 };
+      for (var k in extra) params[k] = extra[k];
+      if (cursor) params.cursor = cursor;
+      var r = pd('GET', '/api/v2/activities', params);
+      (r.data || []).forEach(function (act) {
+        if (act.type !== 'call') return;
+        var m = /^Call [123]: .+ from .+ for (.+)$/.exec(act.subject || '');
+        if (!m || !displays[m[1].trim().toLowerCase()]) return;
+        var pid = activityPersonId(act);
+        if (pid) ids[String(pid)] = true;
+      });
+      cursor = r.additional_data && r.additional_data.next_cursor;
+      if (!cursor) break;
+    }
+  });
   return ids;
 }
 

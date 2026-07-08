@@ -51,14 +51,27 @@ OUTREACH_SCRIPTS = Path.home() / ".claude" / "plugins" / "marketplaces" / "gocap
 sys.path.insert(0, str(OUTREACH_SCRIPTS))  # pd_cache snapshot lives in the outreach plugin
 import capy_env  # noqa: E402
 import pd_cache  # noqa: E402
+import territory_filter  # noqa: E402  (shared with the research pipeline)
 from business_days import add_business_days  # noqa: E402
 
 ICP_KEY = "1a8684b9333f530c727f9bff307391d3d200c897"      # Person ICP (Yes/No)
 TITLE_KEY = "ef54f66e8242d193fd263fa16ac83850271b2794"    # Person Job Title
 LINKEDIN_KEY = "cf2472711fcbe2a22cef32aea82f1a5a555761a8"  # Person LinkedIn Page
 ORG_EMAIL_PATTERN_KEY = "3ceb3b7c740bde695671e7cf393cb520e2fa7a65"  # Org Email Pattern
+PERSON_STATE_KEY = "67e678e89a3a8eb69a576f550d6446b224f17980"    # Person Contact State
+PERSON_CITY_KEY = "6ddd2290f7538daf39859ad788295374aa1ae5f9"     # Person Contact City
+PERSON_COUNTRY_KEY = "cec25dc64c9744b2f1c5109572ef6285eef4cf27"  # Person Contact Country
+ORG_STATE_KEY = "997336778f6e562b0d0db2578037c30125e72f85"       # Company State (fallback)
 CLAY_WEBHOOKS = HERE.parent / "references" / "clay-webhooks.json"
 MIN_CALLABLE_DEFAULT = 5  # orgs with fewer callable people go to the Clay company table
+MAX_PEOPLE_PER_RUN = 25   # hard cap; a re-run within ROTATION_DAYS gets the NEXT 25 people
+ROTATION_DAYS = 45        # person with any call task in this window is not re-tasked
+CALLS_PER_DAY = 5         # Call-1s per company per business day
+TIER3_MAX_WITHPHONE = 100  # >100 phoned people -> only tier 1/2 titles get tasks
+CLAY_PEOPLE_MAX = 10      # phone-finder table: tier-1 titles only, max 10 per run
+
+# skill registry slug -> client-territories.json slug (identity when absent)
+TERRITORY_SLUGS = {"lnp": "lnp-machining"}
 # Subject doubles as the machine marker; group(1) = call number, group(2) = principal display name.
 SUBJECT_RE = re.compile(r"^Call ([123]): .+ from .+ for (.+)$")
 # Legacy marker (activities created before 2026-07-07 title change) — still honored when matching.
@@ -133,21 +146,65 @@ def activity_person_id(act: dict) -> "int | None":
     return int(pid) if pid else None
 
 
-def _open_call_activity_person_ids(registry: dict) -> set:
-    """person_ids that already have an OPEN activity created by this skill (v2 cursor pagination;
-    v2 has no type/subject filter, so match the subject contract client-side)."""
-    ids, cursor = set(), None
-    while True:
-        r = _pd("GET", "/activities", {"done": "false", "limit": 500, "cursor": cursor})
-        for a in r.get("data") or []:
-            if principal_of(a, registry):
-                pid = activity_person_id(a)
-                if pid:
-                    ids.add(pid)
-        cursor = (r.get("additional_data") or {}).get("next_cursor")
-        if not cursor:
-            break
+def _recent_call_activity_person_ids(registry: dict) -> set:
+    """person_ids with a skill activity that is still OPEN or was COMPLETED within ROTATION_DAYS
+    — both are excluded from new runs so re-runs rotate to the next batch of people.
+    (v2 cursor pagination; v2 has no type/subject filter, so match the contract client-side)."""
+    since = (_dt.datetime.utcnow() - _dt.timedelta(days=ROTATION_DAYS)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    ids = set()
+    for extra in ({"done": "false"}, {"done": "true", "updated_since": since}):
+        cursor = None
+        while True:
+            r = _pd("GET", "/activities", {"limit": 500, "cursor": cursor, **extra})
+            for a in r.get("data") or []:
+                if principal_of(a, registry):
+                    pid = activity_person_id(a)
+                    if pid:
+                        ids.add(pid)
+            cursor = (r.get("additional_data") or {}).get("next_cursor")
+            if not cursor:
+                break
     return ids
+
+
+# ── title prioritization (rules confirmed by Marcella 2026-07-08; mirror of Code.gs) ───────────
+# Tier 1: functional keyword + manager/sr/senior/director, minus program managers, engineers,
+#         buyers, specialists, entry-level, VP, C-level.
+# Tier 2: VP-level with the same functional keywords (used only when tier 1 < 25).
+# Tier 3: everyone else (buyers land here) — skipped when the org has >100 phoned people.
+FUNC_RE = re.compile(r"(sourcing|commodit|purchasing|supplier|procurement|supply\s*chain|category)")
+SENIOR_RE = re.compile(r"(manager|mgr\.?|sr\.?(\s|$)|senior|director)")
+VP_RE = re.compile(r"(vp|v\.p\.|vice\s*president)")
+TIER1_EXCLUDE_RE = re.compile(
+    r"(program\s*manager|engineer|buyer|specialist|associate|junior|jr\.?(\s|$)|coordinator"
+    r"|analyst|intern(\s|$)|assistant|chief|c[pes]o(\s|$)|president)")
+
+
+def tier_of(p: dict) -> int:
+    t = (p.get(TITLE_KEY) or "").lower()
+    if not t:
+        return 3
+    if FUNC_RE.search(t):
+        if VP_RE.search(t) and not TIER1_EXCLUDE_RE.search(VP_RE.sub("", t)):
+            return 2
+        if SENIOR_RE.search(t) and not VP_RE.search(t) and not TIER1_EXCLUDE_RE.search(t):
+            return 1
+    return 3
+
+
+def prioritize(people: list, total_with_phone: int) -> "tuple[list, int]":
+    """Order tier1 -> (tier2 if tier1 < 25) -> tier3 (only when org not huge); cap at
+    MAX_PEOPLE_PER_RUN. Returns (list, deprioritized_count)."""
+    tiers = {1: [], 2: [], 3: []}
+    for p in people:
+        tiers[tier_of(p)].append(p)
+    ordered = list(tiers[1])
+    if len(tiers[1]) < 25:
+        ordered += tiers[2]
+    if total_with_phone <= TIER3_MAX_WITHPHONE:
+        ordered += tiers[3]
+    capped = ordered[:MAX_PEOPLE_PER_RUN]
+    return capped, len(people) - len(capped)
 
 
 # ── ICP job-title classifier (mirrors people-icp-classifier/classify_people_icp.py) ────────────
@@ -315,7 +372,27 @@ def main() -> int:
 
     icp_yes = [p for p in persons if str(p.get(ICP_KEY) or "").strip().lower() == "yes"]
 
-    already = _open_call_activity_person_ids(registry) if (a.apply or icp_yes) else set()
+    # territory gate: out-of-territory people skipped ENTIRELY (no tasks, no Clay)
+    terr_slug = TERRITORY_SLUGS.get(a.principal, a.principal)
+    out_of_territory = 0
+    kept = []
+    for p in icp_yes:
+        rel = p.get("org_id")
+        oid = rel.get("value") if isinstance(rel, dict) else rel
+        org = orgs.get(str(oid), {})
+        ok, reason = territory_filter.keep(terr_slug, {
+            "state": p.get(PERSON_STATE_KEY) or org.get(ORG_STATE_KEY) or "",
+            "city": p.get(PERSON_CITY_KEY) or "",
+            "country": p.get(PERSON_COUNTRY_KEY) or "",
+        })
+        if ok:
+            kept.append(p)
+        else:
+            out_of_territory += 1
+            print(f"  out-of-territory: {p.get('name')} ({reason})")
+    icp_yes = kept
+
+    already = _recent_call_activity_person_ids(registry) if (a.apply or icp_yes) else set()
 
     # duplicate-record guard: same human twice at one org (same normalized name) -> keep ONE
     # record per human. Preference: already has open tasks (idempotency) > has email > more
@@ -356,22 +433,26 @@ def main() -> int:
             already |= {int(k) for k in json.loads(state_file.read_text(encoding="utf-8-sig"))}
         except (json.JSONDecodeError, OSError, ValueError):
             pass
-    todo = [p for p in with_phone if int(p["id"]) not in already]
-    skipped = len(with_phone) - len(todo)
+    fresh = [p for p in with_phone if int(p["id"]) not in already]
+    skipped = len(with_phone) - len(fresh)
+
+    # priority order (tier-1 mgmt titles first) + hard cap per run
+    todo, deprioritized = prioritize(fresh, len(with_phone))
+
     if a.test:
         if skipped:
             # test mode is a first-run trial; if this skill already has open call tasks here,
             # re-running the test should prove idempotency, not move on to the next person
-            print(f"RESULT: ok - TEST skipped: {skipped} person(s) already have open call tasks")
+            print(f"RESULT: ok - TEST skipped: {skipped} person(s) already have recent call tasks")
             return 0
         todo = todo[:1]
 
     today = _dt.date.today()
-    due_dates = [add_business_days(today, n) for n in CALL_OFFSETS]
     seq_count = 1 if a.test else 3
 
     plan = []
-    for p in todo:
+    for idx, p in enumerate(todo):
+        batch = idx // CALLS_PER_DAY  # pacing: CALLS_PER_DAY Call-1s per business day
         org_rel = p.get("org_id")
         oid = org_rel.get("value") if isinstance(org_rel, dict) else org_rel
         org_name = orgs.get(str(oid), {}).get("name") or p.get("org_name") or ""
@@ -385,7 +466,7 @@ def main() -> int:
                 "owner_id": a.owner_id,
                 "person_id": int(p["id"]),  # bookkeeping only — sent as participants (v2 rule)
                 "org_id": int(oid) if oid else None,
-                "due_date": due_dates[n - 1].isoformat(),
+                "due_date": add_business_days(today, CALL_OFFSETS[n - 1] + batch).isoformat(),
                 "note": note,
             })
 
@@ -396,7 +477,8 @@ def main() -> int:
             print(f"  DRY-RUN note on org(s) for {len(no_phone)} people without phones: "
                   + "; ".join(f"{p.get('name')} ({p.get(TITLE_KEY) or 'no title'})" for p in no_phone))
         print(f"RESULT: ok - DRY-RUN {len(todo)} persons, {len(plan)} activities planned, "
-              f"{skipped} skipped-existing, {len(no_phone)} no-phone")
+              f"{skipped} skipped-existing, {out_of_territory} out-of-territory, "
+              f"{deprioritized} deprioritized (cap {MAX_PEOPLE_PER_RUN}), {len(no_phone)} no-phone")
         return 0
 
     env = capy_env.load()
@@ -436,9 +518,11 @@ def main() -> int:
     # Clay enrichment pushes (skip in test mode): no-phone people -> People table;
     # orgs short on callable people -> Company table (so Clay can source more people).
     clay_people = clay_companies = 0
+    # phone-finder table: only tier-1 titles, max CLAY_PEOPLE_MAX per run
+    clay_candidates = [p for p in no_phone if tier_of(p) == 1][:CLAY_PEOPLE_MAX]
     if not a.test:
         clay = json.loads(CLAY_WEBHOOKS.read_text(encoding="utf-8"))
-        for p in no_phone:
+        for p in clay_candidates:
             first, last = _split_name(p)
             rel = p.get("org_id")
             oid = rel.get("value") if isinstance(rel, dict) else rel
@@ -473,7 +557,8 @@ def main() -> int:
                     print(f"  pushed org {org.get('name')} to Clay company table "
                           f"({callable_n} callable < {a.min_callable})")
         if clay_people:
-            print(f"  pushed {clay_people} no-phone people to Clay people table")
+            print(f"  pushed {clay_people} tier-1 no-phone people to Clay people table "
+                  f"(of {len(no_phone)} no-phone total)")
 
     ledger = {"date": today.isoformat(), "principal": a.principal, "owner_id": a.owner_id,
               "test": a.test, "activities": created, "note_ids": note_ids,
@@ -484,9 +569,13 @@ def main() -> int:
 
     mode = "TEST " if a.test else ""
     org_tag = ", ".join(f"org {i} ({o.get('name')})" for i, o in orgs.items())
-    print(f"RESULT: ok - {org_tag}: {mode}{len(todo)} persons, {len(created)} activities created, "
-          f"{skipped} skipped-existing, {len(no_phone)} no-phone noted ({len(note_ids)} notes), "
-          f"clay: {clay_people} people / {clay_companies} companies")
+    call1_days = -(-len(todo) // CALLS_PER_DAY) if todo else 0
+    print(f"RESULT: ok - {org_tag}: {mode}{len(todo)} persons, {len(created)} activities created"
+          f"{f' (Call 1s over {call1_days} days)' if call1_days > 1 else ''}, "
+          f"{skipped} skipped-existing, {out_of_territory} out-of-territory, "
+          f"{deprioritized} deprioritized (cap {MAX_PEOPLE_PER_RUN}), "
+          f"{len(no_phone)} no-phone noted ({len(note_ids)} notes), "
+          f"clay: {clay_people} people (of {len(no_phone)} no-phone) / {clay_companies} companies")
     return 0
 
 
