@@ -56,7 +56,12 @@ claude.ai cloud routine "Call Task Reconcile" (weekday mornings)
   the recent-task scan covers OPEN + DONE-within-45-days, so a re-run rotates to the next 25.
 - **Pacing**: 5 Call-1s per company per business day (priority order); each person's Call 2/3 =
   +5/+7 business days from their own Call 1.
-- **Clay People push throttle**: only tier-1-title no-phone people, max 10 per run.
+- **Clay People push throttle**: only tier-1-title no-phone people, max 10 per run, minus the
+  **CLAY_EXCLUDE blocklist** (2026-07-08): program manager, contract(s) manager, machine operator,
+  engineer (any), production manager, planner (any), materials coordinator, facilitator,
+  investment casting, area manager, subcontract. Exception: any title containing
+  "supplier development" is always eligible, even with "engineer" in it. The blocklist is a hard
+  gate — it applies even when the org has ZERO people with phone numbers.
 - **Blank-ICP people are classified from their job title at run time** (rules ported verbatim
   from `people-icp-classifier`: default-Yes; positive procurement/sourcing/buyer/supply-chain
   keywords beat overlapping excludes; negative role keywords → No; empty title stays blank) and
@@ -67,8 +72,9 @@ claude.ai cloud routine "Call Task Reconcile" (weekday mornings)
   Pipedrive within ~5 min, and the re-run creates tasks for the newly-phoned people only
   (idempotency gate). The second pass never re-pushes to Clay.
 - HotHawk lead create ignores name-splitting: PATCH firstName/lastName after create.
-- Clay pushes (references/clay-webhooks.json): every no-phone ICP-Yes person → People table;
-  every org with fewer than 5 callable people → Company table.
+- Clay pushes (references/clay-webhooks.json): no-phone ICP-Yes in-territory tier-1 people not
+  on the CLAY_EXCLUDE blocklist → People table; every org with fewer than 5 callable people →
+  Company table.
 
 ## Pieces
 

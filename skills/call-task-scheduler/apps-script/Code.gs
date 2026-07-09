@@ -209,8 +209,21 @@ var FUNC_RE = /(sourcing|commodit|purchasing|supplier|procurement|supply\s*chain
 var SENIOR_RE = /(manager|mgr\.?|sr\.?(\s|$)|senior|director)/;
 var VP_RE = /(vp|v\.p\.|vice\s*president)/;
 var TIER1_EXCLUDE_RE = /(program\s*manager|engineer|buyer|specialist|associate|junior|jr\.?(\s|$)|coordinator|analyst|intern(\s|$)|assistant|chief|c[pes]o(\s|$)|president)/;
-// engineer titles Marcella explicitly wants in tier 1 despite the engineer exclusion
-var TIER1_EXCEPTION_RE = /(supplier\s*development\s*engineer|sourcing\s*engineer)/;
+// titles Marcella explicitly wants in tier 1 despite the engineer exclusion
+// ("anything with Supplier Development goes, even with the word engineer")
+var TIER1_EXCEPTION_RE = /(supplier\s*development|sourcing\s*engineer)/;
+
+// hard blocklist for the Clay phone-finder webhook (Marcella 2026-07-08):
+// never send these titles to Clay, even when the org has zero phoned people.
+var CLAY_EXCLUDE_RE = /(program\s*manager|contracts?\s*manager|machine\s*operator|engineer|production\s*manager|planner|materials?\s*coordinator|facilitator|investment\s*casting|area\s*manager|subcontract)/;
+// exception: anything with "supplier development" goes, even with "engineer" in it
+var CLAY_ALLOW_RE = /supplier\s*development/;
+
+function clayEligible(p) {
+  var t = String(p[TITLE_KEY] || '').toLowerCase();
+  if (CLAY_ALLOW_RE.test(t)) return true;
+  return !CLAY_EXCLUDE_RE.test(t);
+}
 
 function tierOf(p) {
   var t = String(p[TITLE_KEY] || '').toLowerCase();
@@ -461,8 +474,9 @@ function runWorkflowA(input) {
   var call1Days = Math.ceil(todo.length / CALLS_PER_DAY);
 
   var noteMade = 0, clayPeople = 0, clayCompany = 0;
-  // phone-finder table: only no-phone people with TIER-1 titles, max CLAY_PEOPLE_MAX per run
-  var clayCandidates = noPhone.filter(function (p) { return tierOf(p) === 1; })
+  // phone-finder table: only no-phone TIER-1 titles minus the CLAY_EXCLUDE blocklist,
+  // max CLAY_PEOPLE_MAX per run
+  var clayCandidates = noPhone.filter(function (p) { return tierOf(p) === 1 && clayEligible(p); })
     .slice(0, CLAY_PEOPLE_MAX);
   if (!input.test && !input.secondPass) {  // second pass never re-pushes to Clay
     if (noPhone.length) noteMade = postNoPhoneNote(org, noPhone, reg.display_name, input.owner);

@@ -178,8 +178,25 @@ VP_RE = re.compile(r"(vp|v\.p\.|vice\s*president)")
 TIER1_EXCLUDE_RE = re.compile(
     r"(program\s*manager|engineer|buyer|specialist|associate|junior|jr\.?(\s|$)|coordinator"
     r"|analyst|intern(\s|$)|assistant|chief|c[pes]o(\s|$)|president)")
-# engineer titles Marcella explicitly wants in tier 1 despite the engineer exclusion
-TIER1_EXCEPTION_RE = re.compile(r"(supplier\s*development\s*engineer|sourcing\s*engineer)")
+# titles Marcella explicitly wants in tier 1 despite the engineer exclusion
+# ("anything with Supplier Development goes, even with the word engineer")
+TIER1_EXCEPTION_RE = re.compile(r"(supplier\s*development|sourcing\s*engineer)")
+
+# hard blocklist for the Clay phone-finder webhook (Marcella 2026-07-08):
+# never send these titles to Clay, even when the org has zero phoned people.
+CLAY_EXCLUDE_RE = re.compile(
+    r"(program\s*manager|contracts?\s*manager|machine\s*operator|engineer"
+    r"|production\s*manager|planner|materials?\s*coordinator|facilitator"
+    r"|investment\s*casting|area\s*manager|subcontract)")
+# exception: anything with "supplier development" goes, even with "engineer" in it
+CLAY_ALLOW_RE = re.compile(r"supplier\s*development")
+
+
+def clay_eligible(p: dict) -> bool:
+    t = (p.get(TITLE_KEY) or "").lower()
+    if CLAY_ALLOW_RE.search(t):
+        return True
+    return not CLAY_EXCLUDE_RE.search(t)
 
 
 def tier_of(p: dict) -> int:
@@ -522,8 +539,9 @@ def main() -> int:
     # Clay enrichment pushes (skip in test mode): no-phone people -> People table;
     # orgs short on callable people -> Company table (so Clay can source more people).
     clay_people = clay_companies = 0
-    # phone-finder table: only tier-1 titles, max CLAY_PEOPLE_MAX per run
-    clay_candidates = [p for p in no_phone if tier_of(p) == 1][:CLAY_PEOPLE_MAX]
+    # phone-finder table: only tier-1 titles minus the CLAY_EXCLUDE blocklist, max CLAY_PEOPLE_MAX
+    clay_candidates = [p for p in no_phone
+                       if tier_of(p) == 1 and clay_eligible(p)][:CLAY_PEOPLE_MAX]
     if not a.test:
         clay = json.loads(CLAY_WEBHOOKS.read_text(encoding="utf-8"))
         for p in clay_candidates:
