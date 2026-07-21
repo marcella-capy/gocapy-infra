@@ -1,0 +1,2 @@
+# out/ holds upload JSON with PLAINTEXT mailbox passwords — never commit it.
+out/

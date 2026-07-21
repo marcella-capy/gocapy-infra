@@ -1,0 +1,111 @@
+{
+  "date": "2026-07-16",
+  "done_calls": 8,
+  "to_subscribe": [
+    {
+      "person_id": 42381,
+      "principal": "general-foundry",
+      "first_name": "Jessica",
+      "last_name": "Fleck",
+      "email": "jfleck@plugpower.com",
+      "company_name": "Plug Power",
+      "phone": "+13175021437",
+      "title": "Senior Manager, Energy Procurement",
+      "workspace_id": "9e14ce45-dca8-4c46-b30a-c17652222d2d",
+      "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+      "done_activity_id": 74154
+    },
+    {
+      "person_id": 31745,
+      "principal": "general-foundry",
+      "first_name": "Kevin",
+      "last_name": "H.",
+      "email": "kevin.h@chartindustries.com",
+      "company_name": "Chart Industries",
+      "phone": "+16023541416",
+      "title": "Regional Category Manager",
+      "workspace_id": "9e14ce45-dca8-4c46-b30a-c17652222d2d",
+      "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+      "done_activity_id": 74157
+    },
+    {
+      "person_id": 34721,
+      "principal": "vrc",
+      "first_name": "Jim",
+      "last_name": "Kirkpatrick",
+      "email": "jim@donaldson.co.za",
+      "company_name": "Donaldson Company",
+      "phone": "+17156845300",
+      "title": "Senior Manager Procurement",
+      "workspace_id": "10e0bbb6-91e1-46dc-9826-67140c8204ce",
+      "sequence_id": "eeadc336-f1a4-4676-a8db-86d0201457a3",
+      "done_activity_id": 74169
+    },
+    {
+      "person_id": 60943,
+      "principal": "alpha-grainger",
+      "first_name": "Michael",
+      "last_name": "Fitzsimmons",
+      "email": "mfitzsimmons@sigsauer.com",
+      "company_name": "Sig Sauer",
+      "phone": "+16036103708",
+      "title": "Senior Global Sourcing Manager",
+      "workspace_id": "0bb515e2-fb32-4676-83ad-ea72e5e909fe",
+      "sequence_id": "ef431dd5-e43f-493a-aaaf-f5c31025f386",
+      "done_activity_id": 74175
+    },
+    {
+      "person_id": 61132,
+      "principal": "alpha-grainger",
+      "first_name": "Brandon",
+      "last_name": "Green",
+      "email": "brandon.green@sigsauer.com",
+      "company_name": "Sig Sauer",
+      "phone": "+15019932866",
+      "title": "Sr. Manager, Supply Chain",
+      "workspace_id": "0bb515e2-fb32-4676-83ad-ea72e5e909fe",
+      "sequence_id": "ef431dd5-e43f-493a-aaaf-f5c31025f386",
+      "done_activity_id": 74178
+    },
+    {
+      "person_id": 64855,
+      "principal": "alpha-grainger",
+      "first_name": "Christopher",
+      "last_name": "Treadwell",
+      "email": "christopher.treadwell@sigsauer.com",
+      "company_name": "Sig Sauer",
+      "phone": "(603) 973-3550",
+      "title": "Sr. Supplier Development Engineer",
+      "workspace_id": "0bb515e2-fb32-4676-83ad-ea72e5e909fe",
+      "sequence_id": "ef431dd5-e43f-493a-aaaf-f5c31025f386",
+      "done_activity_id": 74181
+    },
+    {
+      "person_id": 89827,
+      "principal": "alpha-grainger",
+      "first_name": "Alisha",
+      "last_name": "Chaffee",
+      "email": "achaffee@savagearms.com",
+      "company_name": "Savage Arms",
+      "phone": "+14132629289",
+      "title": "Purchasing Manager",
+      "workspace_id": "0bb515e2-fb32-4676-83ad-ea72e5e909fe",
+      "sequence_id": "ef431dd5-e43f-493a-aaaf-f5c31025f386",
+      "done_activity_id": 74184
+    },
+    {
+      "person_id": 97940,
+      "principal": "alpha-grainger",
+      "first_name": "Kevin",
+      "last_name": "DeMartino",
+      "email": "kdemartino@savagearms.com",
+      "company_name": "Savage Arms",
+      "phone": "+12034828168",
+      "title": "Director, Supply Chain",
+      "workspace_id": "0bb515e2-fb32-4676-83ad-ea72e5e909fe",
+      "sequence_id": "ef431dd5-e43f-493a-aaaf-f5c31025f386",
+      "done_activity_id": 74187
+    }
+  ],
+  "skipped": []
+}

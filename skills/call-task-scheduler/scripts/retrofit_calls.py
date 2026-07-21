@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
-"""One-off retrofit (2026-07-08): make the call tasks created 07-07/07-08 match the new rules.
+"""Retrofit open call tasks to the current rules (template; first used 2026-07-08).
 
 For every OPEN activity matching the skill's subject contract:
-  1. Territory: for principals with a territory rule (Patriot Forge, Tech-Max, General Foundry,
+  1. --rename (2026-07-10): rewrite legacy subjects "Call <n>: <Last> from <Org> for <Display>"
+     to the principal-first format "<Display>: Call <n> - <Last> from <Org>".
+  2. Territory: for principals with a territory rule (Patriot Forge, Tech-Max, General Foundry,
      Harvey Vogel, Megatech), DELETE all open tasks of out-of-territory people.
-  2. Pacing: per org, sort remaining people by title tier (tier-1 mgmt sourcing titles first)
-     and re-date their open Call 1/2/3 to the 5-per-day batch scheme starting next business day
-     (Call n due = today + [1,5,7][n-1] + batch business days, batch = index // 5).
+  3. Pacing: per org, sort remaining people by title tier (tier-1 mgmt sourcing titles first)
+     and re-date their open Call 1/2/3 to the CALLS_PER_DAY batch scheme starting next business
+     day (Call n due = today + [1,5,7][n-1] + batch business days, batch = index // CALLS_PER_DAY).
      People whose Call 1 is no longer open (started calling) are left untouched.
 
-Default is a DRY-RUN report; pass --apply to write.
+Default is a DRY-RUN report; pass --apply to write. --rename-only skips territory/pacing.
 """
 from __future__ import annotations
 
@@ -36,7 +38,7 @@ from business_days import add_business_days  # noqa: E402
 from create_call_tasks import (  # noqa: E402
     _pd, activity_person_id, principal_of, tier_of, CALLS_PER_DAY, CALL_OFFSETS,
     MAX_PEOPLE_PER_RUN, PERSON_STATE_KEY, PERSON_CITY_KEY, PERSON_COUNTRY_KEY, ORG_STATE_KEY,
-    TERRITORY_SLUGS, TITLE_KEY, REGISTRY,
+    TERRITORY_SLUGS, TITLE_KEY, REGISTRY, SUBJECT_RE, OLD_SUBJECT_RE,
 )
 
 
@@ -55,27 +57,61 @@ def _open_skill_activities(registry):
     return out
 
 
+import re
+
+# legacy subject with the tail split out so it can be re-assembled principal-first;
+# greedy (.+) makes the LAST " for " the separator, so org names containing " for " survive
+_LEGACY_PARTS_RE = re.compile(r"^Call ([123]): (.+) for (.+)$")
+
+
+def _call_n(subject: str) -> "int | None":
+    m = SUBJECT_RE.match(subject)
+    if m:
+        return int(m.group(2))
+    m = OLD_SUBJECT_RE.match(subject)
+    return int(m.group(1)) if m else None
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--apply", action="store_true", help="write (default: dry-run report)")
+    ap.add_argument("--rename", action="store_true",
+                    help="rewrite legacy subjects to the principal-first format")
+    ap.add_argument("--rename-only", action="store_true",
+                    help="only rename; skip territory deletes and re-pacing")
     a = ap.parse_args()
 
     registry = json.loads(REGISTRY.read_text(encoding="utf-8"))
     acts = _open_skill_activities(registry)
     print(f"open skill activities: {len(acts)}")
 
+    total_renamed = 0
+    if a.rename or a.rename_only:
+        for act in acts:
+            m = _LEGACY_PARTS_RE.match(act.get("subject") or "")
+            if not m:
+                continue  # already principal-first (or not ours — filtered earlier)
+            new_subject = f"{m.group(3)}: Call {m.group(1)} - {m.group(2)}"
+            print(f"  rename {act['id']}: {act['subject']!r} -> {new_subject!r}")
+            if a.apply:
+                _pd("PATCH", f"/activities/{act['id']}", body={"subject": new_subject})
+            act["subject"] = new_subject
+            total_renamed += 1
+        print(f"renamed: {total_renamed}{'' if a.apply else ' (DRY-RUN)'}")
+        if a.rename_only:
+            print(f"RESULT: ok - {'APPLIED' if a.apply else 'DRY-RUN'}: {total_renamed} subjects renamed")
+            return 0
+
     # group: org -> person -> {call_n: activity}
     by_org = defaultdict(lambda: defaultdict(dict))
     org_slug = {}
-    import re
-    call_n_re = re.compile(r"^Call ([123]):")
     for act in acts:
         oid = act.get("org_id")
         pid = activity_person_id(act)
-        m = call_n_re.match(act.get("subject") or "")
-        if not oid or not pid or not m:
+        n = _call_n(act.get("subject") or "")
+        if not oid or not pid or not n:
             continue
-        by_org[int(oid)][int(pid)][int(m.group(1))] = act
+        by_org[int(oid)][int(pid)][n] = act
         org_slug[int(oid)] = act["_slug"]
 
     persons_cache, orgs_cache = {}, {}
@@ -157,7 +193,8 @@ def main() -> int:
             print(f"  {started} people already started (Call 1 done) — untouched")
 
     mode = "APPLIED" if a.apply else "DRY-RUN"
-    print(f"\nRESULT: ok - {mode}: {total_del} activities deleted (out-of-territory), "
+    print(f"\nRESULT: ok - {mode}: {total_renamed} subjects renamed, "
+          f"{total_del} activities deleted (out-of-territory), "
           f"{total_redated} due dates changed")
     return 0
 

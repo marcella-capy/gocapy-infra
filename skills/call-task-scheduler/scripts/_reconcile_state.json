@@ -3,5 +3,2415 @@
     "subscribed_at": "2026-07-07T12:49:03",
     "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
     "closed_activities": []
+  },
+  "8974": {
+    "subscribed_at": "2026-07-10T09:00:33",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": [
+      71039,
+      71040
+    ]
+  },
+  "8984": {
+    "subscribed_at": "2026-07-10T09:00:33",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": [
+      71042,
+      71043
+    ]
+  },
+  "3383": {
+    "subscribed_at": "2026-07-10T09:00:33",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": [
+      71091,
+      71092
+    ]
+  },
+  "43828": {
+    "subscribed_at": "2026-07-10T09:00:33",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": [
+      71094,
+      71095
+    ]
+  },
+  "33380": {
+    "subscribed_at": "2026-07-10T09:00:33",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "43788": {
+    "subscribed_at": "2026-07-10T09:00:33",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "2188": {
+    "subscribed_at": "2026-07-10T09:00:33",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "2701": {
+    "subscribed_at": "2026-07-10T09:00:33",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": [
+      71337,
+      71338
+    ]
+  },
+  "3824": {
+    "subscribed_at": "2026-07-10T09:00:33",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": [
+      71340,
+      71341
+    ]
+  },
+  "3840": {
+    "subscribed_at": "2026-07-10T09:00:33",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": [
+      71343,
+      71344
+    ]
+  },
+  "3855": {
+    "subscribed_at": "2026-07-10T09:00:33",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "11934": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": [
+      71167,
+      71168
+    ]
+  },
+  "20698": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": [
+      71170,
+      71171
+    ]
+  },
+  "41761": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": [
+      71173,
+      71174
+    ]
+  },
+  "84726": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "2806": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": [
+      72368,
+      72369
+    ]
+  },
+  "33185": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": [
+      72770,
+      72771
+    ]
+  },
+  "33934": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "2605": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": [
+      73558,
+      73559
+    ]
+  },
+  "2802": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": [
+      73564,
+      73565
+    ]
+  },
+  "22250": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": [
+      73570,
+      73571
+    ]
+  },
+  "33044": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": [
+      73699,
+      73700
+    ]
+  },
+  "63647": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "63897": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "63920": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": [
+      73708,
+      73709
+    ]
+  },
+  "65853": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": [
+      73711,
+      73712
+    ]
+  },
+  "6203": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": [
+      71223,
+      71224
+    ]
+  },
+  "35376": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "35386": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": [
+      71310,
+      71311
+    ]
+  },
+  "5781": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": [
+      71352,
+      71353
+    ]
+  },
+  "5851": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": [
+      71370,
+      71371
+    ]
+  },
+  "17898": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": [
+      71385,
+      71386
+    ]
+  },
+  "17910": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": [
+      71388,
+      71389
+    ]
+  },
+  "88989": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "88994": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": [
+      71467,
+      71468
+    ]
+  },
+  "10251": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": [
+      72147,
+      72148
+    ]
+  },
+  "2192": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": [
+      72374,
+      72375
+    ]
+  },
+  "60990": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": [
+      72380,
+      72381
+    ]
+  },
+  "73463": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": [
+      72398,
+      72399
+    ]
+  },
+  "54593": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": [
+      72437,
+      72438
+    ]
+  },
+  "54598": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": [
+      72452,
+      72453
+    ]
+  },
+  "54599": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "60984": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "16716": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": [
+      73541,
+      73542
+    ]
+  },
+  "16726": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": [
+      73544,
+      73545
+    ]
+  },
+  "33090": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": [
+      73633,
+      73634
+    ]
+  },
+  "69338": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": [
+      73645,
+      73646
+    ]
+  },
+  "3830": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": [
+      72049,
+      72050
+    ]
+  },
+  "24415": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": [
+      72079,
+      72080
+    ]
+  },
+  "6898": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": [
+      72287,
+      72288
+    ]
+  },
+  "6944": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": [
+      72290,
+      72291
+    ]
+  },
+  "18365": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": [
+      72296,
+      72297
+    ]
+  },
+  "18396": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": [
+      72317,
+      72318
+    ]
+  },
+  "19236": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": [
+      72788,
+      72789
+    ]
+  },
+  "66697": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": [
+      73657,
+      73658
+    ]
+  },
+  "67119": {
+    "subscribed_at": "2026-07-10T09:03:32",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": [
+      73660,
+      73661
+    ]
+  },
+  "22539": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "22548": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "22617": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "23500": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "23948": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "57943": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "57929": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "57931": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "57933": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "57946": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "4921": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "4944": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "22737": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "41530": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "83764": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "83766": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "83767": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "83768": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "54645": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "43222": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "4761": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "4769": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "4784": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "4816": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "4820": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "87027": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "87031": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "87034": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "4745": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "42499": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "42504": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "42531": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "6848": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "3842": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "4738": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "4744": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "2780": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "2783": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "2786": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "3043": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "3633": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "3846": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "7760": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "60576": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "66266": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "72670": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "72671": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "72673": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "72676": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "72678": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "58171": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": []
+  },
+  "58172": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": []
+  },
+  "58173": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": []
+  },
+  "58175": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": []
+  },
+  "58176": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": []
+  },
+  "66923": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "70265": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "73376": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "77412": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "77517": {
+    "subscribed_at": "2026-07-15T15:37:03",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "24177": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "24314": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "24324": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "57947": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "57951": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "54590": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "54592": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "54594": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "54595": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "85925": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "86128": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "86171": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "86183": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "94231": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "43328": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "43343": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "43505": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "4830": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "4831": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "4833": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "4854": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "4862": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "4757": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "4760": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "4764": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "6377": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "42542": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "42545": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "42546": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "42549": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "11868": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "13121": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "17756": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "22891": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "23039": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "35929": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "41551": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "59172": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "59173": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "59185": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "59255": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "59282": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "63581": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "64748": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "24531": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "24843": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "3813": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "4549": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "9535": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "66275": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "72661": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "72663": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "72679": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "72681": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "72683": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "58177": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": []
+  },
+  "58178": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": []
+  },
+  "58179": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": []
+  },
+  "58180": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": []
+  },
+  "58182": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": []
+  },
+  "21008": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "23706": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "23740": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "25289": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "25438": {
+    "subscribed_at": "2026-07-16T10:41:25",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "42381": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+    "closed_activities": []
+  },
+  "31745": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+    "closed_activities": []
+  },
+  "34721": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "eeadc336-f1a4-4676-a8db-86d0201457a3",
+    "closed_activities": []
+  },
+  "60943": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "ef431dd5-e43f-493a-aaaf-f5c31025f386",
+    "closed_activities": []
+  },
+  "61132": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "ef431dd5-e43f-493a-aaaf-f5c31025f386",
+    "closed_activities": []
+  },
+  "64855": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "ef431dd5-e43f-493a-aaaf-f5c31025f386",
+    "closed_activities": []
+  },
+  "89827": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "ef431dd5-e43f-493a-aaaf-f5c31025f386",
+    "closed_activities": []
+  },
+  "97940": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "ef431dd5-e43f-493a-aaaf-f5c31025f386",
+    "closed_activities": []
+  },
+  "76025": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": []
+  },
+  "24671": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": []
+  },
+  "25248": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": []
+  },
+  "25460": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": []
+  },
+  "26340": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": []
+  },
+  "87085": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": []
+  },
+  "87115": {
+    "subscribed_at": "2026-07-17T15:19:16",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": []
+  },
+  "87119": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": []
+  },
+  "87135": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": []
+  },
+  "87148": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": []
+  },
+  "50078": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "73411": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "73412": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "84746": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "39942": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "49786": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "23987": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "24131": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "25011": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "41837": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "63925": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "44817": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "66512": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "66911": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "70258": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "9864": {
+    "subscribed_at": "2026-07-17T15:19:16",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "20961": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "21022": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "21050": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "21946": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "35552": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "57899": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "57901": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "57904": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "60985": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "73416": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "54605": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "54619": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "54624": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "54627": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "54629": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "73422": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "96584": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "97727": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "69391": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "28442": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "34215": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "38571": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "44201": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "47357": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "3045": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "834": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "33655": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "60737": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "43925": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "43961": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "43976": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "43987": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "9490": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "11603": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "25573": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "29788": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "69400": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "17916": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "33972": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "60551": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "60552": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "60553": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "29992": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+    "closed_activities": []
+  },
+  "30006": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+    "closed_activities": []
+  },
+  "79988": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+    "closed_activities": []
+  },
+  "30003": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+    "closed_activities": []
+  },
+  "30490": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+    "closed_activities": []
+  },
+  "14568": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+    "closed_activities": []
+  },
+  "73512": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "7a9922cc-9213-4e2b-8b28-875b17689057",
+    "closed_activities": []
+  },
+  "8998": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "eeadc336-f1a4-4676-a8db-86d0201457a3",
+    "closed_activities": []
+  },
+  "667": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "eeadc336-f1a4-4676-a8db-86d0201457a3",
+    "closed_activities": []
+  },
+  "14974": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "eeadc336-f1a4-4676-a8db-86d0201457a3",
+    "closed_activities": []
+  },
+  "75819": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "ef431dd5-e43f-493a-aaaf-f5c31025f386",
+    "closed_activities": []
+  },
+  "99473": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "ef431dd5-e43f-493a-aaaf-f5c31025f386",
+    "closed_activities": []
+  },
+  "67014": {
+    "subscribed_at": "2026-07-16T10:46:28",
+    "sequence_id": "ef431dd5-e43f-493a-aaaf-f5c31025f386",
+    "closed_activities": []
+  },
+  "21510": {
+    "subscribed_at": "2026-07-17T15:19:16",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "21581": {
+    "subscribed_at": "2026-07-17T15:19:16",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "21757": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "22242": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "57908": {
+    "subscribed_at": "2026-07-17T15:19:16",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "57915": {
+    "subscribed_at": "2026-07-17T15:19:16",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "57921": {
+    "subscribed_at": "2026-07-17T15:19:16",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "57922": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "73430": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "73440": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "73446": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "54633": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "54636": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "54641": {
+    "subscribed_at": "2026-07-17T15:19:16",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "54646": {
+    "subscribed_at": "2026-07-17T15:19:16",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "54647": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "4737": {
+    "subscribed_at": "2026-07-17T15:19:16",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "4750": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "4768": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "11872": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "21103": {
+    "subscribed_at": "2026-07-17T15:19:16",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "2197": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "2799": {
+    "subscribed_at": "2026-07-17T15:19:16",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "4739": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "73605": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "60704": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "60713": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "60716": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "25513": {
+    "subscribed_at": "2026-07-17T15:19:16",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "26900": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "42492": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "42493": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "42498": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "159": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "2703": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "3648": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "3655": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "6088": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "11924": {
+    "subscribed_at": "2026-07-17T15:19:16",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "33156": {
+    "subscribed_at": "2026-07-17T15:19:16",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "33169": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "33509": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "33842": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "672": {
+    "subscribed_at": "2026-07-17T15:19:16",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "937": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "4719": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "664": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "674": {
+    "subscribed_at": "2026-07-17T15:19:16",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "73051": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "73052": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "73054": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "79957": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "2776": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "60739": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "63430": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "66270": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "72674": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "44396": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "88471": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "73056": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "80653": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "60554": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "60555": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "60556": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "60562": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "60564": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "32879": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": []
+  },
+  "33303": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": []
+  },
+  "42014": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": []
+  },
+  "43990": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": []
+  },
+  "87153": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": []
+  },
+  "99003": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": []
+  },
+  "99030": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": []
+  },
+  "99746": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": []
+  },
+  "65857": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "65858": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "66827": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "66907": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "70261": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "70262": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "70264": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "30511": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+    "closed_activities": []
+  },
+  "87843": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+    "closed_activities": []
+  },
+  "94432": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+    "closed_activities": []
+  },
+  "94433": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+    "closed_activities": []
+  },
+  "94436": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+    "closed_activities": []
+  },
+  "94689": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+    "closed_activities": []
+  },
+  "96823": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+    "closed_activities": []
+  },
+  "96860": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+    "closed_activities": []
+  },
+  "97348": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+    "closed_activities": []
+  },
+  "97367": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+    "closed_activities": []
+  },
+  "42389": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+    "closed_activities": []
+  },
+  "34708": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "eeadc336-f1a4-4676-a8db-86d0201457a3",
+    "closed_activities": []
+  },
+  "60930": {
+    "subscribed_at": "2026-07-16T10:51:01",
+    "sequence_id": "ef431dd5-e43f-493a-aaaf-f5c31025f386",
+    "closed_activities": []
+  },
+  "6139": {
+    "subscribed_at": "2026-07-16T10:51:37",
+    "sequence_id": "d5d9f027-e9b2-4b3e-97b8-f2ca16321c5e",
+    "closed_activities": []
+  },
+  "43662": {
+    "subscribed_at": "2026-07-16T10:51:37",
+    "sequence_id": "d5d9f027-e9b2-4b3e-97b8-f2ca16321c5e",
+    "closed_activities": []
+  },
+  "75921": {
+    "subscribed_at": "2026-07-16T10:51:37",
+    "sequence_id": "d5d9f027-e9b2-4b3e-97b8-f2ca16321c5e",
+    "closed_activities": []
+  },
+  "75953": {
+    "subscribed_at": "2026-07-16T10:51:37",
+    "sequence_id": "d5d9f027-e9b2-4b3e-97b8-f2ca16321c5e",
+    "closed_activities": []
+  },
+  "76080": {
+    "subscribed_at": "2026-07-16T10:51:37",
+    "sequence_id": "d5d9f027-e9b2-4b3e-97b8-f2ca16321c5e",
+    "closed_activities": []
+  },
+  "40505": {
+    "subscribed_at": "2026-07-16T10:51:37",
+    "sequence_id": "d5d9f027-e9b2-4b3e-97b8-f2ca16321c5e",
+    "closed_activities": []
+  },
+  "40514": {
+    "subscribed_at": "2026-07-16T10:51:37",
+    "sequence_id": "d5d9f027-e9b2-4b3e-97b8-f2ca16321c5e",
+    "closed_activities": []
+  },
+  "99877": {
+    "subscribed_at": "2026-07-16T10:51:37",
+    "sequence_id": "d5d9f027-e9b2-4b3e-97b8-f2ca16321c5e",
+    "closed_activities": []
+  },
+  "99893": {
+    "subscribed_at": "2026-07-16T10:51:37",
+    "sequence_id": "d5d9f027-e9b2-4b3e-97b8-f2ca16321c5e",
+    "closed_activities": []
+  },
+  "99898": {
+    "subscribed_at": "2026-07-16T10:51:37",
+    "sequence_id": "d5d9f027-e9b2-4b3e-97b8-f2ca16321c5e",
+    "closed_activities": []
+  },
+  "101613": {
+    "subscribed_at": "2026-07-16T10:51:37",
+    "sequence_id": "d5d9f027-e9b2-4b3e-97b8-f2ca16321c5e",
+    "closed_activities": []
+  },
+  "101614": {
+    "subscribed_at": "2026-07-16T10:51:37",
+    "sequence_id": "d5d9f027-e9b2-4b3e-97b8-f2ca16321c5e",
+    "closed_activities": []
+  },
+  "101616": {
+    "subscribed_at": "2026-07-16T10:51:37",
+    "sequence_id": "d5d9f027-e9b2-4b3e-97b8-f2ca16321c5e",
+    "closed_activities": []
+  },
+  "101617": {
+    "subscribed_at": "2026-07-16T10:51:37",
+    "sequence_id": "d5d9f027-e9b2-4b3e-97b8-f2ca16321c5e",
+    "closed_activities": []
+  },
+  "101619": {
+    "subscribed_at": "2026-07-16T10:51:37",
+    "sequence_id": "d5d9f027-e9b2-4b3e-97b8-f2ca16321c5e",
+    "closed_activities": []
+  },
+  "101621": {
+    "subscribed_at": "2026-07-16T10:51:37",
+    "sequence_id": "d5d9f027-e9b2-4b3e-97b8-f2ca16321c5e",
+    "closed_activities": []
+  },
+  "101622": {
+    "subscribed_at": "2026-07-16T10:51:37",
+    "sequence_id": "d5d9f027-e9b2-4b3e-97b8-f2ca16321c5e",
+    "closed_activities": []
+  },
+  "43208": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "43570": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "69540": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "73539": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "76789": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "77012": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "4734": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "4868": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "14499": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "14848": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "21543": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "66068": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "11889": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "11899": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "11912": {
+    "subscribed_at": "2026-07-17T15:19:16",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "21849": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "22360": {
+    "subscribed_at": "2026-07-17T15:19:16",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "42557": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "42579": {
+    "subscribed_at": "2026-07-17T15:19:16",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "42582": {
+    "subscribed_at": "2026-07-17T15:19:16",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "42596": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "42598": {
+    "subscribed_at": "2026-07-17T15:19:16",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "41554": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "41561": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "41562": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "59273": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "64943": {
+    "subscribed_at": "2026-07-17T15:19:16",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "73501": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "73538": {
+    "subscribed_at": "2026-07-17T15:19:16",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "73620": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "73621": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "73629": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "73714": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "72665": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "72667": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "72668": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "72669": {
+    "subscribed_at": "2026-07-17T15:08:17",
+    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
+    "closed_activities": []
+  },
+  "84775": {
+    "subscribed_at": "2026-07-20T10:10:22",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "84778": {
+    "subscribed_at": "2026-07-20T10:10:22",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "84785": {
+    "subscribed_at": "2026-07-20T10:10:22",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "84793": {
+    "subscribed_at": "2026-07-20T10:10:22",
+    "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
+    "closed_activities": []
+  },
+  "84203": {
+    "subscribed_at": "2026-07-20T10:10:22",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": [
+      74359,
+      74360
+    ]
+  },
+  "3862": {
+    "subscribed_at": "2026-07-20T10:10:22",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": [
+      74362,
+      74363
+    ]
+  },
+  "4714": {
+    "subscribed_at": "2026-07-20T10:10:22",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": [
+      74365,
+      74366
+    ]
+  },
+  "4727": {
+    "subscribed_at": "2026-07-20T10:10:22",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": [
+      74368,
+      74369
+    ]
+  },
+  "4735": {
+    "subscribed_at": "2026-07-20T10:10:22",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": [
+      74371,
+      74372
+    ]
+  },
+  "21932": {
+    "subscribed_at": "2026-07-20T10:10:22",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": [
+      74434,
+      74435
+    ]
+  },
+  "22319": {
+    "subscribed_at": "2026-07-20T10:10:22",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": [
+      74437,
+      74438
+    ]
+  },
+  "23271": {
+    "subscribed_at": "2026-07-20T10:10:22",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": [
+      74440,
+      74441
+    ]
+  },
+  "23606": {
+    "subscribed_at": "2026-07-20T10:10:22",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": [
+      74443,
+      74444
+    ]
+  },
+  "25415": {
+    "subscribed_at": "2026-07-20T10:10:22",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": [
+      74446,
+      74447
+    ]
+  },
+  "22396": {
+    "subscribed_at": "2026-07-20T10:10:22",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": [
+      74512,
+      74513
+    ]
+  },
+  "23339": {
+    "subscribed_at": "2026-07-20T10:10:22",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": [
+      74518,
+      74519
+    ]
+  },
+  "2690": {
+    "subscribed_at": "2026-07-20T10:10:22",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": [
+      75041,
+      75042
+    ]
+  },
+  "3114": {
+    "subscribed_at": "2026-07-20T10:10:22",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": [
+      75044,
+      75045
+    ]
+  },
+  "5105": {
+    "subscribed_at": "2026-07-20T10:10:22",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": [
+      75047,
+      75048
+    ]
+  },
+  "13725": {
+    "subscribed_at": "2026-07-20T10:10:22",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": [
+      75116,
+      75117
+    ]
+  },
+  "21255": {
+    "subscribed_at": "2026-07-20T10:10:22",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": [
+      75119,
+      75120
+    ]
+  },
+  "23734": {
+    "subscribed_at": "2026-07-20T10:10:22",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": [
+      75122,
+      75123
+    ]
+  },
+  "34312": {
+    "subscribed_at": "2026-07-20T10:10:22",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": [
+      75206,
+      75207
+    ]
+  },
+  "34317": {
+    "subscribed_at": "2026-07-20T10:10:22",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": [
+      75209,
+      75210
+    ]
+  },
+  "101528": {
+    "subscribed_at": "2026-07-20T10:10:22",
+    "sequence_id": "ef431dd5-e43f-493a-aaaf-f5c31025f386",
+    "closed_activities": [
+      75308,
+      75309
+    ]
   }
 }

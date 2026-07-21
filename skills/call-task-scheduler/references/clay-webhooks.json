@@ -1,4 +1,6 @@
 {
   "people_no_phone": "https://api.clay.com/v3/sources/webhook/pull-in-data-from-a-webhook-09215211-803a-4bdd-b557-614dd39d381e",
-  "companies_need_people": "https://api.clay.com/v3/sources/webhook/pull-in-data-from-a-webhook-b03a3389-0f3b-4405-94e3-ed61dd599cc9"
+  "companies_need_people": "https://api.clay.com/v3/sources/webhook/pull-in-data-from-a-webhook-b03a3389-0f3b-4405-94e3-ed61dd599cc9",
+  "phone_validation": "https://api.clay.com/v3/sources/webhook/pull-in-data-from-a-webhook-e9466b81-4a89-4e30-9eca-8f8eae5aeb19",
+  "_phone_validation_note": "standalone Clay phone live/disconnected table — Marcella updates the Pipedrive record from the Clay table (no local writeback). Fed by Code.gs on every checkbox create (all tasked people) and by verify_call_contacts.py; payload = {name, phones, pipedrive_person_id, company_name}"
 }

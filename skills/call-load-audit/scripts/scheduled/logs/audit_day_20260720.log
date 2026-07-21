@@ -1,0 +1,66 @@
+﻿=== 2026-07-20T08:50:08.8748622-05:00 call-load-audit DAY START ===
+≡ƒô₧ Call ΓåÆ HotHawk Load Audit ΓÇö Daily ΓÇö 2026-07-17
+ΓÜá∩╕Å 27 NOT loaded  ┬╖  88 calls / 87 people  ┬╖  60 loaded, 27 missing
+```
+principal        User          Company Name                            # of Calls
+---------------  ------------  --------------------------------------  ----------
+alpha-grainger   Mark          Smiths Interconnect                     1
+franklin         Ericka        Flowserve                               2
+general-foundry  Ericka        Bloom Energy                            4
+lnp              Ericka        Sierra Nevada Corporation               5
+lnp              Mark          Moog                                    5
+lnp              Mark          Rocket Lab                              3
+patriot-forge    Ericka        Lawrence Livermore National Laboratory  3
+patriot-forge    Mark          General Dynamics Mission Systems        3
+patriot-forge    Mark          Lockheed Martin                         15
+patriot-forge    Mark          Northrop Grumman                        8
+patriot-forge    Mark          PCC Structurals, Inc.                   4
+patriot-forge    Mark          Safran                                  4
+shellcast        Ericka        Leonardo DRS                            8
+shellcast        Ericka        Mercury Systems                         4
+shellcast        Ericka        Teledyne FLIR                           7
+tmx              Ericka        BWXT                                    1
+tmx              Ericka        Helion Energy Inc                       4
+tmx              Ericka        Woodward                                7
+-                -             -                                       -
+                 TOTAL Ericka                                          45
+                 TOTAL Mark                                            43
+```
+ΓÜá∩╕Å NOT LOADED (27) ΓÇö done calls that never reached HotHawk:
+```
+principal       User    Company                Person                                              why
+--------------  ------  ---------------------  --------------------------------------------------  ---------------------------------------------
+alpha-grainger  Mark    Smiths Interconnect    Virginia Hook <ginger.hook@smithsinterconnect.com>  not-enrolled (on list only / draft campaign?)
+lnp             Mark    Moog                   Walid Banayot <wbanayot@moog.com>                   not-enrolled (on list only / draft campaign?)
+lnp             Mark    Moog                   Daniel Wood <dwood2@moog.com>                       not-enrolled (on list only / draft campaign?)
+lnp             Mark    Moog                   Jamie Hesslau <jhesslau@moog.com>                   not-enrolled (on list only / draft campaign?)
+lnp             Mark    Moog                   Ormaun Lewis <olewis@moog.com>                      not-enrolled (on list only / draft campaign?)
+lnp             Mark    Moog                   Jarrad Mendel <jmendel@moog.com>                    not-enrolled (on list only / draft campaign?)
+lnp             Mark    Rocket Lab             Ricardo Silva <r.silva@rocketlabusa.com>            not-enrolled (on list only / draft campaign?)
+lnp             Mark    Rocket Lab             Brian Rogers <b.rogers@rocketlabusa.com>            not-enrolled (on list only / draft campaign?)
+lnp             Mark    Rocket Lab             Michael Guymon <m.guymon@rocketlabusa.com>          not-enrolled (on list only / draft campaign?)
+patriot-forge   Mark    Lockheed Martin        Jim Mostek <james.c.mostek@lmco.com>                not-enrolled (on list only / draft campaign?)
+patriot-forge   Mark    Lockheed Martin        Michael Dolan <michael.t.dolan@lmco.com>            not-enrolled (on list only / draft campaign?)
+patriot-forge   Mark    Lockheed Martin        Joe Ribeiro <joe.b.ribeiro@lmco.com>                not-enrolled (on list only / draft campaign?)
+patriot-forge   Mark    Lockheed Martin        Alex Vazquez <alex.vazquez@lmco.com>                not-enrolled (on list only / draft campaign?)
+patriot-forge   Mark    Lockheed Martin        Rajbir Rai <rajbir.s.rai@lmco.com>                  not-enrolled (on list only / draft campaign?)
+patriot-forge   Mark    Lockheed Martin        Garry Miyashiro <garry.miyashiro@lmco.com>          not-enrolled (on list only / draft campaign?)
+patriot-forge   Mark    Lockheed Martin        Katy Wong <katy.wong@lmco.com>                      not-enrolled (on list only / draft campaign?)
+patriot-forge   Mark    Northrop Grumman       Dave Holiday <david.holiday@ngc.com>                not-enrolled (on list only / draft campaign?)
+patriot-forge   Mark    Northrop Grumman       Evan Zhang <evan.zhang@ngc.com>                     not-enrolled (on list only / draft campaign?)
+patriot-forge   Mark    Northrop Grumman       Julio Ramirez <julio.ramirez@orbitalatk.com>        not-enrolled (on list only / draft campaign?)
+patriot-forge   Mark    Northrop Grumman       Lauren Parker <lauren.parker@ngc.com>               not-enrolled (on list only / draft campaign?)
+patriot-forge   Mark    Northrop Grumman       Tony Gonzalez <tony.gonzalez@ngc.com>               not-enrolled (on list only / draft campaign?)
+patriot-forge   Mark    PCC Structurals, Inc.  Bobby Wasabi                                        no-email
+tmx             Ericka  BWXT                   Nathan Wright                                       no-email
+tmx             Ericka  Helion Energy Inc      Jackson Baker <jbaker@helionenergy.com>             not-enrolled (on list only / draft campaign?)
+tmx             Ericka  Helion Energy Inc      Jake Wills <jake.wills@helionenergy.com>            not-enrolled (on list only / draft campaign?)
+tmx             Ericka  Helion Energy Inc      Ister Wu <ister.wu@helionenergy.com>                not-enrolled (on list only / draft campaign?)
+tmx             Ericka  Helion Energy Inc      Boopathy Kombaiah <boopathy.kombaiah@inl.gov>       not-enrolled (on list only / draft campaign?)
+```
+Fix: activate/enroll the campaign in HotHawk, or re-run the reconcile (`reconcile_done_calls.py --since <date> --apply`) for these people.
+
+discord: posted
+
+RESULT: ok - {"mode": "day", "window": ["2026-07-17", "2026-07-17"], "total_calls": 88, "people": 87, "loaded": 60, "missing": 27}
+=== 2026-07-20T08:51:11.9951333-05:00 call-load-audit DAY END (exit 0) ===

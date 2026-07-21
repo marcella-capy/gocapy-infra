@@ -33,8 +33,11 @@ claude.ai cloud routine "Call Task Reconcile" (weekday mornings)
 
 ## Contracts (do not change without updating Apps Script + routine + scripts together)
 
-- Activity subject: `Call <n>: <Last Name> from <Organization> for <Principal display name>`
-  — this IS the machine marker; n∈1..3; principal resolved by display name via the registry.
+- Activity subject: `<Principal display name>: Call <n> - <Last Name> from <Organization>`
+  — principal-first since 2026-07-10 (rep feedback: group tasks by principal at a glance).
+  This IS the machine marker; n∈1..3; principal resolved by display name via the registry.
+  The legacy pre-2026-07-10 format `Call <n>: <Last> from <Org> for <Display>` is still
+  parsed everywhere (rotation scan + reconcile) for the 45-day window.
 - Person on the activity = primary participant (v2 API rejects person_id on create).
 - Note (human-only): `Call <Full Name> - <Title> @ <phones>`; Call 1 additionally carries
   `[Clicking "Mark As Done" moves lead to a Voicemail Email Sequence in HotHawk]`.
@@ -54,8 +57,20 @@ claude.ai cloud routine "Call Task Reconcile" (weekday mornings)
   entry-level, VP, C-level; tier 2 = VP with the same keywords (used only if tier 1 < 25);
   tier 3 = the rest (skipped entirely when org has >100 phoned people). Max 25 people per run;
   the recent-task scan covers OPEN + DONE-within-45-days, so a re-run rotates to the next 25.
-- **Pacing**: 5 Call-1s per company per business day (priority order); each person's Call 2/3 =
-  +5/+7 business days from their own Call 1.
+- **Pacing**: 3 Call-1s per company per business day (5 → 3 per rep feedback 2026-07-10;
+  priority order); each person's Call 2/3 = +5/+7 business days from their own Call 1.
+- **Phone format gate** (2026-07-10): a person whose every phone fails `phone_format_ok`
+  (strip `ext/x/#` extensions; accept 10 digits, 1+10(+glued ext), `+`international 8-15) is
+  moved to the no-phone bucket BEFORE the 25-cap selection, so garbage numbers never consume a
+  slot. Snapshot trial: excludes 0.43% of phoned people, all genuinely uncallable strings.
+- **Pre-call verification sweep** (`scripts/verify_call_contacts.py`, run daily): covers open
+  Call-1s due in the next 3 business days only (never the whole org). LinkedIn present →
+  Bright Data enrich; departed → flag + auto-close the person's open call tasks (audit note,
+  never delete) so re-runs rotate replacements in; title drift → informational flag. LinkedIn
+  missing → Clay People push (tier-1/CLAY_EXCLUDE/≤10 guardrails; table's LinkedIn data point
+  writes back). Valid phones → standalone Clay phone-validation webhook (`phone_validation` in
+  references/clay-webhooks.json; null until the table is built — free format check still runs).
+  Idempotent via a `[verified YYYY-MM-DD]` note marker; Bright Data spend capped 25/sweep.
 - **Clay People push throttle**: only tier-1-title no-phone people, max 10 per run, minus the
   **CLAY_EXCLUDE blocklist** (2026-07-08): program manager, contract(s) manager, machine operator,
   engineer (any), production manager, planner (any), materials coordinator, facilitator,
@@ -84,6 +99,14 @@ claude.ai cloud routine "Call Task Reconcile" (weekday mornings)
 - `scripts/` — Python manual fallback (same logic, snapshot-based reads via the outreach
   plugin's pd_cache): `create_call_tasks.py`, `reconcile_done_calls.py`, `hothawk_subscribe.py`,
   `business_days.py`. Run with `--apply` after a dry-run; `--test` = one activity trial.
+  `reconcile_done_calls.py --since YYYY-MM-DD` (2026-07-16) reconciles a date RANGE (through
+  `--date`/today) — ALWAYS use it for catch-ups after missed days; single `--date` catch-ups are
+  how the 7/10+7/13 done calls fell through and never reached HotHawk.
+  `hothawk_subscribe.py` (2026-07-16) skips leads whose email has no `@` (reports the person id
+  for a PD fix) and isolates campaign failures per principal group (deleted campaign → 404 /
+  400 "Internal server error"; leads stay on the list, persons NOT marked, RESULT: partial)
+  instead of aborting the run. Franklin's old sequence 47e2d481-… was DELETED in HotHawk —
+  registry + routine now point at d5d9f027-… (draft; activate then enroll).
   `retrofit_calls.py` was the one-off 2026-07-08 cleanup that applied territory/cap/pacing to
   pre-existing open tasks (kept as a template for future rule retrofits).
 

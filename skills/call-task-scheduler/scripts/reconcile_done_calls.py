@@ -55,10 +55,11 @@ def _load_state() -> dict:
     return {}
 
 
-def _done_marker_activities(date: _dt.date, registry: dict) -> list:
-    """This skill's call activities marked done on `date`, as (activity, principal_slug) pairs
-    (client-side filtered on the subject contract)."""
+def _done_marker_activities(date: _dt.date, registry: dict, end: "_dt.date | None" = None) -> list:
+    """This skill's call activities marked done on `date` (or in [date, end] when `end` is given),
+    as (activity, principal_slug) pairs (client-side filtered on the subject contract)."""
     out, cursor = [], None
+    end = end or date
     since = f"{date.isoformat()}T00:00:00Z"
     while True:
         r = _pd("GET", "/activities",
@@ -68,7 +69,7 @@ def _done_marker_activities(date: _dt.date, registry: dict) -> list:
             if not slug:
                 continue
             done_ts = act.get("marked_as_done_time") or act.get("update_time") or ""
-            if str(done_ts)[:10] == date.isoformat():
+            if date.isoformat() <= str(done_ts)[:10] <= end.isoformat():
                 out.append((act, slug))
         cursor = (r.get("additional_data") or {}).get("next_cursor")
         if not cursor:
@@ -112,12 +113,13 @@ def _sequence_for(pid: int) -> "str | None":
     return None
 
 
-def _mark_subscribed(person_ids: list, delete_remaining: bool, apply: bool) -> int:
+def _mark_subscribed(person_ids: list, delete_remaining: bool, apply: bool,
+                     close_siblings: bool = True) -> int:
     state = _load_state()
     closed = 0
     now = _dt.datetime.now().isoformat(timespec="seconds")
     for pid in person_ids:
-        sibs = _open_sibling_ids(pid)
+        sibs = _open_sibling_ids(pid) if close_siblings else []
         for aid in sibs:
             if not apply:
                 print(f"  DRY-RUN would auto-close activity {aid} for person {pid}")
@@ -142,23 +144,32 @@ def _mark_subscribed(person_ids: list, delete_remaining: bool, apply: bool) -> i
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--date", help="target day (YYYY-MM-DD); default: previous business day")
+    ap.add_argument("--since", help="start of a date RANGE (YYYY-MM-DD, inclusive through --date/"
+                                    "today) — use for catch-ups so skipped days can't fall through")
     ap.add_argument("--apply", action="store_true")
     ap.add_argument("--mark-subscribed", help="comma-separated person_ids the agent just subscribed")
     ap.add_argument("--delete-remaining", action="store_true",
                     help="delete sibling call tasks instead of marking done (default: mark done)")
+    ap.add_argument("--no-close-siblings", action="store_true",
+                    help="record subscribed state only; leave the person's other open call tasks untouched")
     a = ap.parse_args()
 
     if a.mark_subscribed:
         pids = [int(s) for s in a.mark_subscribed.split(",") if s.strip()]
-        return _mark_subscribed(pids, a.delete_remaining, a.apply)
+        return _mark_subscribed(pids, a.delete_remaining, a.apply,
+                                close_siblings=not a.no_close_siblings)
 
     date = _dt.date.fromisoformat(a.date) if a.date else previous_business_day(_dt.date.today())
+    if a.since:
+        start, end = _dt.date.fromisoformat(a.since), (date if a.date else _dt.date.today())
+    else:
+        start, end = date, date
     state = _load_state()
     registry = json.loads(REGISTRY.read_text(encoding="utf-8"))
     persons_idx = {str(p.get("id")): p for p in pd_cache.get_persons()}
     orgs = pd_cache.get_orgs()
 
-    done = _done_marker_activities(date, registry)
+    done = _done_marker_activities(start, registry, end=end)
     to_subscribe, skipped = [], []
     seen: set = set()
     for act, principal in done:
@@ -194,8 +205,9 @@ def main() -> int:
             "done_activity_id": act.get("id"),
         })
 
-    artifact = HERE / f"_reconcile_{date.strftime('%Y%m%d')}.json"
-    payload = {"date": date.isoformat(), "done_calls": len(done),
+    artifact = HERE / (f"_reconcile_{start.strftime('%Y%m%d')}.json" if start == end else
+                       f"_reconcile_{start.strftime('%Y%m%d')}-{end.strftime('%Y%m%d')}.json")
+    payload = {"date": start.isoformat(), "date_end": end.isoformat(), "done_calls": len(done),
                "to_subscribe": to_subscribe, "skipped": skipped}
     artifact.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
@@ -204,7 +216,8 @@ def main() -> int:
               f"-> seq {e['sequence_id']} [{e['principal']}]")
     for s in skipped:
         print(f"  skipped: {s}")
-    print(f"RESULT: ok - {len(done)} done calls on {date}, {len(to_subscribe)} to-subscribe, "
+    span = start.isoformat() if start == end else f"{start}..{end}"
+    print(f"RESULT: ok - {len(done)} done calls on {span}, {len(to_subscribe)} to-subscribe, "
           f"{len(skipped)} skipped -> {artifact.name}")
     return 0
 

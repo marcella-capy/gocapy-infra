@@ -34,6 +34,13 @@ Label names are matched case-insensitively by the edge function's `classifyLabel
 | **Blacklis Contact All** *(no "t" — 20-char cap)* | global: PlusVibe blocklist (all workspaces) + Pipedrive **Person ICP -> No** + `_global-contacts.md` | edge function |
 | **Blacklist Domain** | per-principal domain blacklist (`<slug>-domains.md`) | edge function |
 | **Blacklist Contact** | per-principal contact blacklist (`<slug>-contacts.md`) | edge function |
+
+On a SHARED HotHawk workspace (Bottom Shelf hosts 6 principals) the workspace id can't identify the
+principal, so per-principal labels resolve it from the message's from/to/cc **mailbox domains** matched
+against `workspaces.sending_domains` (seeded from `voices/client-domains.json`, 2026-07-15). No/ambiguous
+match → `skip:no-principal` + a `processing_errors` row (`step='resolve-principal'`) — never a guess.
+Unshared workspaces keep the plain workspace-id lookup. New Bottom Shelf principal or new lookalike
+domain ⇒ update that workspace row's `sending_domains`.
 | **Wrong Person** | per-principal contact blacklist | edge function |
 | **Not Interested** | per-principal contact blacklist | edge function |
 | **Indication Interest** / **Meeting Request** | create HotHawk opportunity in "Indication of Interest" + mark the company (by email domain) Complete in the principal's PlusVibe sequence | enqueued -> `hothawk-crm-action` skill |

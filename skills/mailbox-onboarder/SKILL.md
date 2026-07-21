@@ -73,9 +73,12 @@ Source: client screenshots, 2026-06-04. Applies to every client.
 
 ## Signatures
 Per-client templates live in `gocapy-infra/shared-references/signatures/<slug>.md`. Each:
-- starts with `{{sender_first_name}} {{sender_last_name}}` (PlusVibe merge tags — never a literal name);
-- contains exactly one of the **2 allowed phone numbers** baked in (`949-524-5765`, `949-436-6696`).
-  (`949-820-8005` was removed 2026-06-05; the 4 signatures that used it were reassigned to `949-524-5765`.)
+- starts with the BDR's **literal full name** (e.g. `Juliana Matos`) — NEVER the
+  `{{sender_first_name}} {{sender_last_name}}` merge tags (Marcella's rule, re-confirmed 2026-07-20;
+  each client has one fixed BDR, see the client → BDR table in the `siteground` skill). If a
+  signature file still starts with merge tags, replace them with the client's BDR name before applying;
+- contains exactly one of the **3 allowed phone numbers** baked in (`949-209-9625`, `949-524-5765`,
+  `949-820-8005` — Marcella's live set 2026-07-17).
 PlusVibe stores signatures as HTML — wrap the file's lines as `<div><br>line1<br>line2…</div>`.
 
 ## The batch workflow
@@ -130,12 +133,27 @@ warmup_randomize_num:20, warmup_business_type:"Manufacturing Companies", warmup_
 ### Step 3 — Assign the principal/client tag
 `accounts.py bulk-assign-tags -w <ws> --ids <new ids> --tag-id <client tag> --action ASSIGN`.
 
-### Step 4 — Bulk-add the same mailboxes to HotHawk
-For each, HotHawk MCP `mailboxes_connect_imap_create` (workspace from `workspaces_short_list`;
-`imapHost`/`smtpHost`=`mail.<domain>`, 993/465, username=email, password=verified pwd). Then
-`mailboxes_list` by email to watch status. **No separate PlusVibe-auth check — step 0 already
-proved the credentials.** GATHERING is normal up to ~30 min; only `GATHERING > 6 h` is the stall
-bug → stop, do not re-add in a loop (see the `hothawk-mailbox-connect` health-check rationale).
+### Step 4 — Bulk-add the same mailboxes to HotHawk (REST API, not MCP)
+Use the **REST API** (`POST /v1/mailboxes/connect-imap`) so this works in headless/cron runs too —
+the HotHawk MCP server is only present in interactive sessions. Script:
+`scripts/connect_hothawk.py` (`HOTHAWK_API_TOKEN` via `capy_env`):
+```
+py scripts/connect_hothawk.py --workspace-id <uuid> --csv <accounts.csv>   # email,password columns
+```
+`imapHost`/`smtpHost`=`mail.<domain>`, 993/465, username=email, password=verified pwd. The script
+skips mailboxes already in the workspace (idempotent) and makes ONE login attempt each. **No separate
+PlusVibe-auth check — step 0 already proved the credentials.** GATHERING is normal up to ~30 min; only
+`GATHERING > 6 h` is the stall bug → stop, do not re-add in a loop. (The MCP `mailboxes_connect_imap_create`
+tool remains a valid interactive alternative when the MCP server is connected.)
+
+### Step 4.5 — Test send (SMTP smoke test)
+PlusVibe has **no ad-hoc test-send endpoint** (only warmup + email-placement seed tests). To prove a
+mailbox delivers, send one real email over its own SMTP via `scripts/test_send.py`:
+```
+py scripts/test_send.py --from <mailbox> --password 'NewAirton@19642026!' --to marcella@gocapy.com \
+   --display-name "<BDR name>" --subject "<Client> test send (please ignore)"
+```
+One send from the first mailbox, no retries; confirm arrival (inbox vs spam).
 
 ### Step 5 — Ensure the warmup tag in HotHawk
 Read the PlusVibe `warmup_custom_words` for the client; HotHawk `warmups_tags_list`, and

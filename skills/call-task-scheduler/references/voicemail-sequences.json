@@ -3,23 +3,25 @@
     "display_name": "Franklin Casting",
     "workspace_id": "0bb515e2-fb32-4676-83ad-ea72e5e909fe",
     "workspace_name": "Bottom Shelf",
-    "sequence_id": "47e2d481-c72f-4712-8067-6c046456e467",
-    "sequence_name": "Franklin Casting (Evergreen)",
-    "note": "New draft replacement 'Franklin Casting_Post-Voicemail Sequence_070726' (d5d9f027-e9b2-4b3e-97b8-f2ca16321c5e, also Bottom Shelf) created 2026-07-07 — flip this entry to it once reviewed and activated."
+    "sequence_id": "d5d9f027-e9b2-4b3e-97b8-f2ca16321c5e",
+    "sequence_name": "Franklin Casting_Post-Voicemail Sequence_070726",
+    "note": "Flipped 2026-07-16: old 'Franklin Casting (Evergreen)' (47e2d481-…) was DELETED in HotHawk (404) and broke the 7/10 backfill. This replacement is still DRAFT — Marcella must activate, then enroll waiting list members."
   },
   "lnp": {
     "display_name": "LNP Machining",
     "workspace_id": "04972960-6538-4472-b94e-36d87481b1c5",
     "workspace_name": "LNP Machining",
     "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
-    "sequence_name": "LNP_Post-Voicemail Sequence_070726"
+    "sequence_name": "LNP_Post-Voicemail Sequence_070726",
+    "note": "campaign status PAUSED as of 2026-07-09 - activate in HotHawk before leads will send"
   },
   "tmx": {
     "display_name": "Tech-Max",
     "workspace_id": "56508f2a-ed5f-44b9-a11f-d86b81c8f172",
     "workspace_name": "Tech-Max",
     "sequence_id": "d573850c-19c0-46ff-b5e8-845a173ccea6",
-    "sequence_name": "Tech-Max_Post-Voicemail Sequence_070726"
+    "sequence_name": "Tech-Max_Post-Voicemail Sequence_070726",
+    "note": "campaign status DRAFT as of 2026-07-09 - activate in HotHawk before leads will send"
   },
   "alpha-grainger": {
     "display_name": "Alpha Grainger",

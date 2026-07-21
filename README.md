@@ -7,19 +7,28 @@ up, and confirm they land in the inbox.
 Each step below is a skill under `skills/`. Run them top to bottom for a new client.
 Open the skill's `SKILL.md` for the detailed steps.
 
-## Onboarding a new client, in order
+## Onboarding a new client
+
+**Start with the `new-client-onboarding` skill** — it is the standard runbook
+(updated 2026-07-17) and orchestrates the others. Trigger: "New client <url>"
+or "More domains for <client>".
 
 1. **purchasing-domains-porkbun** — generate cold-email sending-domain ideas from the
-   client's website, check availability on Porkbun, register them, and point the
-   nameservers at SiteGround.
-2. **siteground** — create the cold-email mailboxes in SiteGround and export the import CSV.
-3. **mailbox-onboarder** — the core step: verify every mailbox login (IMAP + SMTP), then
-   bulk-load them into PlusVibe **and** HotHawk with the standard settings, signature,
-   client tag, and warmup turned on.
-4. **hothawk-mailbox-connect** — confirm the mailboxes actually reached CONNECTED in
-   HotHawk (and a daily scan that reconnects or removes dead accounts).
-5. **inbox-placement** — run this **last, after warmup has had time to progress**: a
-   deliverability test that shows whether the accounts land in Inbox vs Spam.
+   client's website (honoring per-client naming restrictions), check availability on
+   Porkbun, register the ones the user approves, and point the nameservers at SiteGround.
+2. **siteground** — generate the standard 5-prefix mailbox list per domain plus a
+   browser-console JS snippet per domain that creates the accounts in Site Tools.
+3. **mailbox-onboarder (PlusVibe stages)** — verify every mailbox login (IMAP + SMTP),
+   bulk-load into the chosen PlusVibe workspace (Forge or Machining), warmup ON, one
+   shared warmup tag, user-approved signature.
+4. **mailbox-onboarder (HotHawk stages)** — add the same mailboxes to HotHawk via the
+   **REST API** (`connect_hothawk.py`, works headless; Bottom Shelf for new clients).
+5. **mailbox-onboarder test send** — one SMTP smoke-test email from a mailbox
+   (`test_send.py`); PlusVibe has no ad-hoc test-send API.
+
+No longer part of the standard: ClickUp handoff, MailToaster CSV, browser-console JS,
+`hothawk-mailbox-connect` verification step, and `inbox-placement` (those skills still
+exist for ad-hoc use).
 
 ## Maintenance / utilities
 

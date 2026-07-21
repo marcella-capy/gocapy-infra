@@ -8,10 +8,11 @@
  * drops out-of-territory people (per-principal rules), ranks by job-title tier (mgmt-level
  * sourcing/procurement titles first), caps at 25 people per run (re-run rotates to the next 25;
  * a person is re-eligible 45 days after their last call task), creates 3 call activities per
- * person (Call 1s paced 5 per business day; Call 2/3 at +5/+7bd from each person's Call 1),
+ * person (Call 1s paced 3 per business day; Call 2/3 at +5/+7bd from each person's Call 1),
  * posts the no-phone note on the org, pushes up to 10 tier-1-title no-phone people to the Clay
- * People table and thin orgs (<5 callable) to the Clay Company table, then writes the outcome
- * into Status/Result.
+ * People table and thin orgs (<5 callable) to the Clay Company table, pushes every tasked
+ * person to the Clay phone-validation table (Marcella updates the Pipedrive record from that
+ * table), then writes the outcome into Status/Result.
  *
  * ONE-TIME SETUP (after pasting this file into Extensions → Apps Script):
  *   1. Project Settings → Script Properties → add:
@@ -21,11 +22,16 @@
  *      It builds the Requests + Registry tabs, dropdowns, checkboxes, and installs the trigger.
  *
  * Title contract (the daily reconcile routine parses this — keep in sync with the skill):
- *   "Call <n>: <Last Name> from <Organization> for <Principal display name>"
+ *   "<Principal display name>: Call <n> - <Last Name> from <Organization>"
+ *   (principal-first since 2026-07-10; the legacy pre-2026-07-10 format
+ *   "Call <n>: <Last> from <Org> for <Display>" is still recognized when scanning.)
  */
 
 var CLAY_PEOPLE_WEBHOOK = 'https://api.clay.com/v3/sources/webhook/pull-in-data-from-a-webhook-09215211-803a-4bdd-b557-614dd39d381e';
 var CLAY_COMPANY_WEBHOOK = 'https://api.clay.com/v3/sources/webhook/pull-in-data-from-a-webhook-b03a3389-0f3b-4405-94e3-ed61dd599cc9';
+// phone-validation table: every tasked person's numbers go here for live/disconnected checking;
+// Marcella updates the Pipedrive record FROM the Clay table (this script never writes phones back)
+var CLAY_PHONE_VALIDATION_WEBHOOK = 'https://api.clay.com/v3/sources/webhook/pull-in-data-from-a-webhook-e9466b81-4a89-4e30-9eca-8f8eae5aeb19';
 var ICP_KEY = '1a8684b9333f530c727f9bff307391d3d200c897';      // Person ICP (Yes/No)
 var TITLE_KEY = 'ef54f66e8242d193fd263fa16ac83850271b2794';    // Person Job Title
 var LINKEDIN_KEY = 'cf2472711fcbe2a22cef32aea82f1a5a555761a8'; // Person LinkedIn Page
@@ -71,7 +77,7 @@ function classifyTitle(title) {
 var MIN_CALLABLE = 5;   // orgs with fewer callable people get pushed to the Clay company table
 var MAX_PEOPLE_PER_RUN = 25;      // hard cap per run; re-run within ROTATION_DAYS gets the NEXT 25
 var ROTATION_DAYS = 45;           // a person with any call task in this window is not re-tasked
-var CALLS_PER_DAY = 5;            // Call-1s per company per business day
+var CALLS_PER_DAY = 3;            // Call-1s per company per business day (5 -> 3, rep feedback 2026-07-10)
 var TIER3_MAX_WITHPHONE = 100;    // >100 phoned people -> only tier 1/2 titles get tasks
 var CLAY_PEOPLE_MAX = 10;         // phone-finder table: tier-1 titles only, max 10 per run
 var COL = { PRINCIPAL: 1, ORG: 2, OWNER: 3, TEST: 4, CREATE: 5, STATUS: 6, RESULT: 7 };
@@ -431,8 +437,11 @@ function runWorkflowA(input) {
   var dedupedOut = dupPairs.length;
   icpYes = Object.keys(byHuman).map(function (k) { return byHuman[k]; });
 
-  var withPhone = icpYes.filter(function (p) { return phones(p).length > 0; });
-  var noPhone = icpYes.filter(function (p) { return phones(p).length === 0; });
+  // phone format gate BEFORE the 25-cap selection: someone with only garbage numbers must not
+  // consume a cap slot — they join the no-phone bucket (org note + Clay phone-finder) instead.
+  var withPhone = icpYes.filter(function (p) { return validPhones(p).length > 0; });
+  var noPhone = icpYes.filter(function (p) { return validPhones(p).length === 0; });
+  var badFormat = noPhone.filter(function (p) { return phones(p).length > 0; }).length;
 
   var fresh = withPhone.filter(function (p) { return !already[String(p.id)]; });
   var skipped = withPhone.length - fresh.length;
@@ -454,10 +463,10 @@ function runWorkflowA(input) {
   var createdCount = 0, offsets = [1, 5, 7];
   todo.forEach(function (p, idx) {
     var batch = Math.floor(idx / CALLS_PER_DAY);
-    var note = 'Call ' + p.name + ' - ' + (p[TITLE_KEY] || 'no title') + ' @ ' + phones(p).join(', ');
+    var note = 'Call ' + p.name + ' - ' + (p[TITLE_KEY] || 'no title') + ' @ ' + validPhones(p).join(', ');
     for (var n = 1; n <= seqCount; n++) {
       var body = {
-        subject: 'Call ' + n + ': ' + lastName(p) + ' from ' + org.name + ' for ' + reg.display_name,
+        subject: reg.display_name + ': Call ' + n + ' - ' + lastName(p) + ' from ' + org.name,
         type: 'call',
         owner_id: ownerId,
         org_id: org.id,
@@ -472,6 +481,18 @@ function runWorkflowA(input) {
     }
   });
   var call1Days = Math.ceil(todo.length / CALLS_PER_DAY);
+
+  // every tasked person also goes to the phone-validation table (runs on the 2nd pass too —
+  // those are different people; TEST rows are excluded)
+  var verifySent = 0;
+  if (!input.test) {
+    todo.forEach(function (p) {
+      if (clayPost(CLAY_PHONE_VALIDATION_WEBHOOK, {
+        name: p.name, phones: validPhones(p),
+        pipedrive_person_id: Number(p.id), company_name: org.name,
+      })) verifySent++;
+    });
+  }
 
   var noteMade = 0, clayPeople = 0, clayCompany = 0;
   // phone-finder table: only no-phone TIER-1 titles minus the CLAY_EXCLUDE blocklist,
@@ -505,10 +526,12 @@ function runWorkflowA(input) {
     + todo.length + ' people, ' + createdCount + ' tasks'
     + (call1Days > 1 ? ' (Call 1s over ' + call1Days + ' days)' : '') + ', '
     + skipped + ' skipped, ' + noPhone.length + ' no-phone'
+    + (badFormat ? ' (' + badFormat + ' bad-format phone)' : '')
     + (outOfTerritory ? ', ' + outOfTerritory + ' out-of-territory' : '')
     + (deprioritized ? ', ' + deprioritized + ' deprioritized (cap ' + MAX_PEOPLE_PER_RUN + ')' : '')
     + (classified ? ', ' + classified + ' ICP-classified' : '')
     + (dedupedOut ? ', ' + dedupedOut + ' duplicate record(s) ignored' : '')
+    + (verifySent ? ', verify: ' + verifySent + 'p' : '')
     + (noteMade ? ' (note posted)' : '')
     + (clayPeople || clayCompany
         ? ', clay: ' + clayPeople + 'p' + (noPhone.length > clayPeople ? ' (of ' + noPhone.length + ' no-phone)' : '')
@@ -593,7 +616,9 @@ function recentSkillPersonIds(registry) {
       var r = pd('GET', '/api/v2/activities', params);
       (r.data || []).forEach(function (act) {
         if (act.type !== 'call') return;
-        var m = /^Call [123]: .+ from .+ for (.+)$/.exec(act.subject || '');
+        // current principal-first format, then the legacy pre-2026-07-10 format
+        var m = /^(.+?): Call [123] - .+ from .+$/.exec(act.subject || '');
+        if (!m) m = /^Call [123]: .+ from .+ for (.+)$/.exec(act.subject || '');
         if (!m || !displays[m[1].trim().toLowerCase()]) return;
         var pid = activityPersonId(act);
         if (pid) ids[String(pid)] = true;
@@ -665,6 +690,25 @@ function clayPost(url, payload) {
 function phones(p) {
   return (p.phone || []).map(function (ph) { return (ph.value || '').trim(); })
     .filter(function (v) { return v; });
+}
+
+// Phone format gate (2026-07-10, mirror of phone_format_ok in create_call_tasks.py).
+// Local-only sanity check; snapshot trial excluded 0.43% of phoned people, all uncallable strings.
+function phoneFormatOk(v) {
+  var s = v.trim().replace(/(?:ext\.?:?|x|#)\s*\d+\s*$/i, '');
+  var d = s.replace(/\D/g, '');
+  if (v.trim().replace(/^\(/, '').charAt(0) === '+' && d.charAt(0) !== '1') {
+    return d.length >= 8 && d.length <= 15;  // explicit international
+  }
+  if (d.length === 10) return true;
+  if (d.length >= 11 && d.length <= 17 && d.charAt(0) === '1') return true;  // 1 + US (+ glued ext)
+  // US number with 1-6 extension digits glued on; area code / exchange can't start 0/1
+  return d.length >= 11 && d.length <= 16
+    && '01'.indexOf(d.charAt(0)) < 0 && '01'.indexOf(d.charAt(3)) < 0;
+}
+
+function validPhones(p) {
+  return phones(p).filter(phoneFormatOk);
 }
 
 function primaryEmail(p) {

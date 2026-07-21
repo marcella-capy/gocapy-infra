@@ -7,9 +7,12 @@ Reads people from the daily snapshot (pd_cache) — never sweeps Pipedrive live.
 notes) go live via the v2/v1 API.
 
 Title contract (reconcile_done_calls.py parses this — do not change):
-    subject = "Call <n>: <Last Name> from <Organization> for <Principal Display Name>"
-    The subject IS the machine marker: reconcile matches SUBJECT_RE and resolves the principal by
-    display name via the registry. The person is read off the activity's primary participant.
+    subject = "<Principal Display Name>: Call <n> - <Last Name> from <Organization>"
+    (principal-first since 2026-07-10 so reps can group tasks by principal at a glance; the
+    pre-2026-07-10 format "Call <n>: <Last> from <Org> for <Display>" is still parsed for the
+    45-day rotation window). The subject IS the machine marker: reconcile matches the subject
+    regexes and resolves the principal by display name via the registry. The person is read off
+    the activity's primary participant.
 
 CLI:
     python create_call_tasks.py --principal franklin --org-name "Franklin Casting" \
@@ -66,14 +69,18 @@ CLAY_WEBHOOKS = HERE.parent / "references" / "clay-webhooks.json"
 MIN_CALLABLE_DEFAULT = 5  # orgs with fewer callable people go to the Clay company table
 MAX_PEOPLE_PER_RUN = 25   # hard cap; a re-run within ROTATION_DAYS gets the NEXT 25 people
 ROTATION_DAYS = 45        # person with any call task in this window is not re-tasked
-CALLS_PER_DAY = 5         # Call-1s per company per business day
+CALLS_PER_DAY = 3         # Call-1s per company per business day (5 -> 3 per rep feedback 2026-07-10)
 TIER3_MAX_WITHPHONE = 100  # >100 phoned people -> only tier 1/2 titles get tasks
 CLAY_PEOPLE_MAX = 10      # phone-finder table: tier-1 titles only, max 10 per run
 
 # skill registry slug -> client-territories.json slug (identity when absent)
 TERRITORY_SLUGS = {"lnp": "lnp-machining"}
-# Subject doubles as the machine marker; group(1) = call number, group(2) = principal display name.
-SUBJECT_RE = re.compile(r"^Call ([123]): .+ from .+ for (.+)$")
+# Subject doubles as the machine marker. Current (principal-first, 2026-07-10):
+#   "<Display>: Call <n> - <Last> from <Org>"     group(1) = display, group(2) = n
+SUBJECT_RE = re.compile(r"^(.+?): Call ([123]) - .+ from .+$")
+# Legacy subject (2026-07-07..10): group(1) = n, group(2) = display. Still honored so the
+# rotation scan and reconcile keep seeing tasks created before the format change.
+OLD_SUBJECT_RE = re.compile(r"^Call ([123]): .+ from .+ for (.+)$")
 # Legacy marker (activities created before 2026-07-07 title change) — still honored when matching.
 MARKER_RE = re.compile(r"\[call-task-scheduler principal=([a-z0-9-]+) seq=(\d)/3(?: person=\d+)?\]")
 
@@ -87,9 +94,13 @@ def principal_of(act: dict, registry: dict) -> "str | None":
     Matches the subject contract (preferred) or the legacy note marker."""
     if act.get("type") != "call":
         return None
-    m = SUBJECT_RE.match(act.get("subject") or "")
-    if m:
-        display = m.group(2).strip().lower()
+    subject = act.get("subject") or ""
+    m = SUBJECT_RE.match(subject)
+    display = m.group(1).strip().lower() if m else None
+    if display is None:
+        m = OLD_SUBJECT_RE.match(subject)
+        display = m.group(2).strip().lower() if m else None
+    if display is not None:
         for slug, entry in registry.items():
             if display in (slug, (entry.get("display_name") or "").lower()):
                 return slug
@@ -167,20 +178,10 @@ def _recent_call_activity_person_ids(registry: dict) -> set:
     return ids
 
 
-# ── title prioritization (rules confirmed by Marcella 2026-07-08; mirror of Code.gs) ───────────
-# Tier 1: functional keyword + manager/sr/senior/director, minus program managers, engineers,
-#         buyers, specialists, entry-level, VP, C-level.
-# Tier 2: VP-level with the same functional keywords (used only when tier 1 < 25).
-# Tier 3: everyone else (buyers land here) — skipped when the org has >100 phoned people.
-FUNC_RE = re.compile(r"(sourcing|commodit|purchasing|supplier|procurement|supply\s*chain|category)")
-SENIOR_RE = re.compile(r"(manager|mgr\.?|sr\.?(\s|$)|senior|director)")
-VP_RE = re.compile(r"(vp|v\.p\.|vice\s*president)")
-TIER1_EXCLUDE_RE = re.compile(
-    r"(program\s*manager|engineer|buyer|specialist|associate|junior|jr\.?(\s|$)|coordinator"
-    r"|analyst|intern(\s|$)|assistant|chief|c[pes]o(\s|$)|president)")
-# titles Marcella explicitly wants in tier 1 despite the engineer exclusion
-# ("anything with Supplier Development goes, even with the word engineer")
-TIER1_EXCEPTION_RE = re.compile(r"(supplier\s*development|sourcing\s*engineer)")
+# ── title prioritization ───────────────────────────────────────────────────────────────────────
+# Single source of truth: go-capy-outreach/scripts/tier_rank.py (v3 rules, Marcella 2026-07-20).
+# Tier 4 = generic program/project managers — never called.
+from tier_rank import PRIME_ORG_RE, tier_of_title  # noqa: E402  (OUTREACH_SCRIPTS on sys.path)
 
 # hard blocklist for the Clay phone-finder webhook (Marcella 2026-07-08):
 # never send these titles to Clay, even when the org has zero phoned people.
@@ -200,23 +201,17 @@ def clay_eligible(p: dict) -> bool:
 
 
 def tier_of(p: dict) -> int:
-    t = (p.get(TITLE_KEY) or "").lower()
-    if not t:
-        return 3
-    if TIER1_EXCEPTION_RE.search(t):
-        return 1
-    if FUNC_RE.search(t):
-        if VP_RE.search(t) and not TIER1_EXCLUDE_RE.search(VP_RE.sub("", t)):
-            return 2
-        if SENIOR_RE.search(t) and not VP_RE.search(t) and not TIER1_EXCLUDE_RE.search(t):
-            return 1
-    return 3
+    org = p.get("org_name") or ""
+    if isinstance(p.get("org_id"), dict):
+        org = org or str(p["org_id"].get("name") or "")
+    return tier_of_title(p.get(TITLE_KEY) or "", prime=bool(PRIME_ORG_RE.search(org)))
 
 
 def prioritize(people: list, total_with_phone: int) -> "tuple[list, int]":
-    """Order tier1 -> (tier2 if tier1 < 25) -> tier3 (only when org not huge); cap at
-    MAX_PEOPLE_PER_RUN. Returns (list, deprioritized_count)."""
-    tiers = {1: [], 2: [], 3: []}
+    """Order tier1 -> (tier2 if tier1 < 25) -> tier3 (only when org not huge); tier4
+    (generic program managers) never gets call tasks; cap at MAX_PEOPLE_PER_RUN.
+    Returns (list, deprioritized_count)."""
+    tiers = {1: [], 2: [], 3: [], 4: []}
     for p in people:
         tiers[tier_of(p)].append(p)
     ordered = list(tiers[1])
@@ -297,6 +292,29 @@ def _resolve_orgs(org_name: "str | None", org_ids: "str | None") -> "dict[str, d
 def _phones(p: dict) -> list:
     return [ph.get("value").strip() for ph in (p.get("phone") or [])
             if isinstance(ph, dict) and (ph.get("value") or "").strip()]
+
+
+# ── phone format gate (2026-07-10, mirror of phoneFormatOk in Code.gs) ─────────────────────────
+# Local-only sanity check so garbage strings ("invalid", "ext. 125", "315") never consume a
+# 25-cap slot. Snapshot trial 2026-07-10: excludes 0.43% of people with phones, all uncallable.
+_EXT_RE = re.compile(r"(?i)(?:ext\.?:?|x|#)\s*\d+\s*$")
+
+
+def phone_format_ok(v: str) -> bool:
+    s = _EXT_RE.sub("", v.strip())
+    d = re.sub(r"\D", "", s)
+    if v.strip().lstrip("(").startswith("+") and not d.startswith("1"):
+        return 8 <= len(d) <= 15  # explicit international
+    if len(d) == 10:
+        return True
+    if 11 <= len(d) <= 17 and d.startswith("1"):
+        return True  # 1 + US number (+ optionally glued extension digits)
+    # US number with 1-6 extension digits glued on; area code can't start 0/1
+    return 11 <= len(d) <= 16 and d[0] not in "01" and d[3] not in "01"
+
+
+def _valid_phones(p: dict) -> list:
+    return [v for v in _phones(p) if phone_format_ok(v)]
 
 
 def _primary_email(p: dict) -> str:
@@ -440,8 +458,13 @@ def main() -> int:
         print(f"  duplicate record ignored: {ignored.get('name')} (id {ignored['id']}) "
               f"-> tasks only on id {kept['id']}")
 
-    with_phone = [p for p in icp_yes if _phones(p)]
-    no_phone = [p for p in icp_yes if not _phones(p)]
+    # phone format gate BEFORE the 25-cap selection: someone with only garbage numbers must not
+    # consume a cap slot — they join the no-phone bucket (org note + Clay phone-finder) instead.
+    with_phone = [p for p in icp_yes if _valid_phones(p)]
+    no_phone = [p for p in icp_yes if not _valid_phones(p)]
+    bad_format = [p for p in no_phone if _phones(p)]
+    for p in bad_format:
+        print(f"  phone format rejected: {p.get('name')} {_phones(p)} -> routed to no-phone bucket")
 
     print(f"principal={a.principal} orgs={[o.get('name') for o in orgs.values()]} "
           f"persons={len(persons)} icp_yes={len(icp_yes)} with_phone={len(with_phone)} "
@@ -478,11 +501,11 @@ def main() -> int:
         oid = org_rel.get("value") if isinstance(org_rel, dict) else org_rel
         org_name = orgs.get(str(oid), {}).get("name") or p.get("org_name") or ""
         for n in range(1, seq_count + 1):
-            note = f"Call {p.get('name')} - {p.get(TITLE_KEY) or 'no title'} @ {', '.join(_phones(p))}"
+            note = f"Call {p.get('name')} - {p.get(TITLE_KEY) or 'no title'} @ {', '.join(_valid_phones(p))}"
             if n == 1:  # only the first done call adds the person to the sequence
                 note += '<br><br>[Clicking "Mark As Done" moves lead to a Voicemail Email Sequence in HotHawk]'
             plan.append({
-                "subject": f"Call {n}: {_last_name(p)} from {org_name} for {display}",
+                "subject": f"{display}: Call {n} - {_last_name(p)} from {org_name}",
                 "type": "call",
                 "owner_id": a.owner_id,
                 "person_id": int(p["id"]),  # bookkeeping only — sent as participants (v2 rule)
@@ -581,6 +604,22 @@ def main() -> int:
         if clay_people:
             print(f"  pushed {clay_people} tier-1 no-phone people to Clay people table "
                   f"(of {len(no_phone)} no-phone total)")
+        # every tasked person also goes to the phone-validation table (mirror of Code.gs;
+        # Marcella updates the Pipedrive record FROM the Clay table — no local writeback)
+        clay_verify = 0
+        if clay.get("phone_validation"):
+            for p in todo:
+                rel = p.get("org_id")
+                oid = rel.get("value") if isinstance(rel, dict) else rel
+                if _clay_post(clay["phone_validation"], {
+                    "name": p.get("name"),
+                    "phones": [v for v in _phones(p) if phone_format_ok(v)],
+                    "pipedrive_person_id": int(p["id"]),
+                    "company_name": orgs.get(str(oid), {}).get("name") or "",
+                }):
+                    clay_verify += 1
+            if clay_verify:
+                print(f"  pushed {clay_verify} tasked people to Clay phone-validation table")
 
     ledger = {"date": today.isoformat(), "principal": a.principal, "owner_id": a.owner_id,
               "test": a.test, "activities": created, "note_ids": note_ids,

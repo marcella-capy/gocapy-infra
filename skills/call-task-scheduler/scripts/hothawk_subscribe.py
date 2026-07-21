@@ -54,7 +54,7 @@ TAG_NAME = "voicemail"
 
 
 def _hh(method: str, path: str, params: "dict | None" = None, body: "dict | None" = None,
-        timeout: int = 60, _tries: int = 0):
+        timeout: int = 60, _tries: int = 0, fatal: bool = True):
     token = capy_env.get("HOTHAWK_API_TOKEN")
     if not token:
         sys.exit("ERROR: HOTHAWK_API_TOKEN missing in env")
@@ -72,7 +72,9 @@ def _hh(method: str, path: str, params: "dict | None" = None, body: "dict | None
         detail = e.read().decode("utf-8", errors="replace")
         if e.code in (429, 502, 503, 504) and _tries < 3:
             time.sleep(2 * 4 ** _tries)
-            return _hh(method, path, params, body, timeout, _tries + 1)
+            return _hh(method, path, params, body, timeout, _tries + 1, fatal)
+        if not fatal:
+            return {"_error": e.code, "_detail": detail}
         sys.exit(f"ERROR: HotHawk {method} {path} -> HTTP {e.code}: {detail}\n"
                  f"(REST route may have changed — fall back to the MCP tools per SKILL.md)")
     except (urllib.error.URLError, TimeoutError) as e:
@@ -118,6 +120,8 @@ def main() -> int:
     ap.add_argument("--artifact", required=True, help="reconcile artifact filename (in scripts/)")
     ap.add_argument("--apply", action="store_true")
     ap.add_argument("--delete-remaining", action="store_true")
+    ap.add_argument("--no-close-siblings", action="store_true",
+                    help="record subscribed state only; leave the person's other open call tasks untouched")
     a = ap.parse_args()
 
     path = Path(a.artifact) if Path(a.artifact).is_absolute() else HERE / a.artifact
@@ -131,22 +135,27 @@ def main() -> int:
         groups.setdefault((e["workspace_id"], e["sequence_id"], e["principal"]), []).append(e)
 
     subscribed_pids = []
+    failed_groups = []
     for (ws, seq, principal), rows in groups.items():
         list_name = f"voicemail-called-{principal}"
         list_id = _find_or_create("lists", ws, list_name, a.apply)
         tag_id = _find_or_create("tags", ws, TAG_NAME, a.apply)
         lead_ids = []
+        group_pids = []
         for e in rows:
             who = f"{e['first_name']} {e['last_name']} <{e['email']}> ({e['company_name']})"
+            if "@" not in (e.get("email") or ""):
+                print(f"  SKIP invalid email (fix in Pipedrive person {e['person_id']}): {who}")
+                continue
             lead = _find_lead(ws, e["email"])
             if lead:
                 print(f"  found lead {lead['id']}: {who}")
                 lead_ids.append(lead["id"])
-                subscribed_pids.append(e["person_id"])
+                group_pids.append(e["person_id"])
                 continue
             if not a.apply:
                 print(f"  DRY-RUN would create lead: {who}")
-                subscribed_pids.append(e["person_id"])
+                group_pids.append(e["person_id"])
                 continue
             domain = e["email"].split("@", 1)[1]
             company_id = _find_or_create_company(ws, e["company_name"], domain, apply=True)
@@ -163,26 +172,60 @@ def main() -> int:
                 body={"firstName": e["first_name"], "lastName": e["last_name"]})
             print(f"  created lead {lead.get('id')}: {who}")
             lead_ids.append(lead["id"])
-            subscribed_pids.append(e["person_id"])
+            group_pids.append(e["person_id"])
 
         if not a.apply:
             print(f"  DRY-RUN would bulk-add {len(rows)} leads to list "
                   f"'{list_name}' ({list_id or 'to create'}), append list to campaign {seq}, "
                   f"and tag '{TAG_NAME}' ({tag_id or 'to create'})")
+            subscribed_pids.extend(group_pids)
             continue
 
         _hh("PUT", f"/crm/lists/{list_id}/leads", body={"selectionType": "ids", "leadIds": lead_ids})
         print(f"  bulk-added {len(lead_ids)} leads to list '{list_name}' ({list_id})")
-        _hh("POST", f"/campaigns/{seq}/lists",
-            body={"listSelection": {"selectionType": "ids", "listIds": [list_id]}})
-        print(f"  appended list to campaign {seq}")
+        r = _hh("POST", f"/campaigns/{seq}/lists",
+                body={"listSelection": {"selectionType": "ids", "listIds": [list_id]}}, fatal=False)
+        if r.get("_error") == 409:
+            # DRAFT campaigns reject the append route; PATCH the campaign with the merged list set
+            existing = (_hh("GET", f"/campaigns/{seq}").get("listIds")) or []
+            merged = sorted(set(existing) | {list_id})
+            _hh("PATCH", f"/campaigns/{seq}",
+                body={"listSelection": {"selectionType": "ids", "listIds": merged}})
+            print(f"  attached list to DRAFT campaign {seq} via PATCH (won't send until activated)")
+        elif r.get("_error"):
+            # e.g. campaign deleted (404) or server 400 — leads stay on the list; do NOT mark
+            # these persons subscribed so a re-run (after fixing the registry) picks them up.
+            print(f"  ERROR group [{principal}]: POST /campaigns/{seq}/lists -> "
+                  f"HTTP {r['_error']}: {r['_detail']} — leads left on list, persons NOT marked")
+            failed_groups.append(principal)
+            continue
+        else:
+            print(f"  appended list to campaign {seq}")
+        # Appending an ALREADY-attached list is a server-side no-op and never enrols new list
+        # members — enrol the leads explicitly (only works on ACTIVE/PAUSED campaigns).
+        r = _hh("POST", f"/campaigns/{seq}/leads", body={"leadIds": lead_ids}, fatal=False)
+        if r.get("_error") == 409:
+            print(f"  NOTE: campaign {seq} is DRAFT — leads are on the attached list but NOT "
+                  f"enrolled; after activating the campaign, enrol them via "
+                  f"POST /campaigns/{seq}/leads")
+        elif r.get("_error"):
+            print(f"  ERROR group [{principal}]: POST /campaigns/{seq}/leads -> "
+                  f"HTTP {r['_error']}: {r['_detail']} — persons NOT marked")
+            failed_groups.append(principal)
+            continue
+        else:
+            print(f"  enrolled {len(lead_ids)} leads into campaign {seq}")
         _hh("PUT", f"/crm/tags/{tag_id}/leads", body={"selectionType": "ids", "leadIds": lead_ids})
         print(f"  tagged {len(lead_ids)} leads '{TAG_NAME}'")
+        subscribed_pids.extend(group_pids)
 
     if a.apply and subscribed_pids:
-        _mark_subscribed(subscribed_pids, a.delete_remaining, apply=True)
-    print(f"RESULT: ok - {len(subscribed_pids)} leads "
-          f"{'pushed to list/campaign/tag' if a.apply else 'planned (DRY-RUN)'}")
+        _mark_subscribed(subscribed_pids, a.delete_remaining, apply=True,
+                         close_siblings=not a.no_close_siblings)
+    status = "ok" if not failed_groups else "partial"
+    print(f"RESULT: {status} - {len(subscribed_pids)} leads "
+          f"{'pushed to list/campaign/tag' if a.apply else 'planned (DRY-RUN)'}"
+          + (f"; FAILED groups: {', '.join(failed_groups)}" if failed_groups else ""))
     return 0
 
 

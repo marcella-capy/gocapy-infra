@@ -1,0 +1,46 @@
+{
+  "_comment": "Config for platform-mirror-audit. Edit these when clients/domains change.",
+
+  "exclude_domains": [
+    "tech-maxmachine.com",
+    "gen-foundry.com",
+    "vrc-eng.com",
+    "shellcastfoundries.com",
+    "franklincasting.com",
+    "aeroforging.com",
+    "agmi-mfg.com",
+    "mega-techaq.com",
+    "metalstampingmfg.com",
+    "lnp-machining.com",
+    "parmatechgroup.com",
+    "metalproductsamp.com"
+  ],
+  "_exclude_note": "Domains we do NOT run cold outreach through on PlusVibe (HH-only warmup/parking). Excluded from BOTH gap directions.",
+
+  "pv_workspaces": {
+    "machining-clients": "69fd080546e55fcda1d94da6",
+    "forge-other": "69fa2d9be1623d61f71e9ded"
+  },
+
+  "client_tag_to_pv_workspace": {
+    "TMX": "machining-clients",
+    "MEGATECH": "forge-other",
+    "LNP": "machining-clients",
+    "ALPHA GRAINGER": "machining-clients",
+    "TECH-MAX": "machining-clients",
+    "PATRIOT": "forge-other",
+    "SHELLCAST": "forge-other",
+    "GENERAL FOUNDRY": "forge-other",
+    "VRC": "forge-other",
+    "HARVEY VOGEL": "forge-other",
+    "FRANKLIN CASTING": "forge-other",
+    "USAI": "forge-other"
+  },
+  "_client_tag_note": "Used only to place a whole-domain PV gap when the domain has no PlusVibe sibling to copy the workspace from. Tag values come from the `tags` column of the consolidated credential CSVs.",
+
+  "credential_dirs": [
+    "~/Downloads",
+    "~/Documents/Downloads-Sorted/Capy"
+  ],
+  "_credential_note": "Directories scanned recursively for *.csv with email+password columns. Newest file wins on conflict."
+}

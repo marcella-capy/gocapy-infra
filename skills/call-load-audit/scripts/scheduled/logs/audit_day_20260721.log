@@ -1,0 +1,49 @@
+﻿=== 2026-07-21T09:59:25.3024541-05:00 call-load-audit DAY START ===
+≡ƒô₧ Call ΓåÆ HotHawk Load Audit ΓÇö Daily ΓÇö 2026-07-20
+ΓÜá∩╕Å 3 NOT loaded  ┬╖  149 calls / 125 people  ┬╖  122 loaded, 3 missing
+```
+principal        User          Company Name                            # of Calls
+---------------  ------------  --------------------------------------  ----------
+alpha-grainger   Ericka        Beretta USA                             1
+alpha-grainger   Ericka        Savage Arms                             1
+alpha-grainger   Ericka        Sig Sauer                               4
+alpha-grainger   Mark          Smiths Interconnect                     2
+franklin         Ericka        Flowserve                               4
+franklin         Ericka        X-Energy                                7
+general-foundry  Ericka        Bloom Energy                            6
+general-foundry  Ericka        Chart Industries                        2
+general-foundry  Ericka        Plug Power                              1
+lnp              Ericka        Sierra Nevada Corporation               12
+lnp              Mark          Moog                                    10
+lnp              Mark          Rocket Lab                              6
+patriot-forge    Ericka        Lawrence Livermore National Laboratory  5
+patriot-forge    Mark          General Dynamics Mission Systems        6
+patriot-forge    Mark          Lockheed Martin                         18
+patriot-forge    Mark          Northrop Grumman                        15
+patriot-forge    Mark          PCC Structurals, Inc.                   4
+patriot-forge    Mark          Safran                                  6
+shellcast        Ericka        Leonardo DRS                            10
+shellcast        Ericka        Mercury Systems                         6
+shellcast        Ericka        Sierra Space                            5
+shellcast        Ericka        Teledyne FLIR                           6
+tmx              Ericka        Woodward                                10
+vrc              Ericka        Donaldson Company                       1
+vrc              Ericka        Graco                                   1
+-                -             -                                       -
+                 TOTAL Ericka                                          82
+                 TOTAL Mark                                            67
+```
+ΓÜá∩╕Å NOT LOADED (3) ΓÇö done calls that never reached HotHawk:
+```
+principal      User    Company                    Person                                    why
+-------------  ------  -------------------------  ----------------------------------------  ---------------------------------------------
+lnp            Ericka  Sierra Nevada Corporation  Colby Moulder <colby.moulder@sncorp.com>  not-enrolled (on list only / draft campaign?)
+patriot-forge  Mark    Lockheed Martin            Chuck Hughes                              no-email
+shellcast      Ericka  Leonardo DRS               Tina Griffith <tina.griffith@drs.com>     not-enrolled (on list only / draft campaign?)
+```
+Fix: activate/enroll the campaign in HotHawk, or re-run the reconcile (`reconcile_done_calls.py --since <date> --apply`) for these people.
+
+discord: posted
+
+RESULT: ok - {"mode": "day", "window": ["2026-07-20", "2026-07-20"], "total_calls": 149, "people": 125, "loaded": 122, "missing": 3}
+=== 2026-07-21T10:33:07.9347823-05:00 call-load-audit DAY END (exit 0) ===
