@@ -4,7 +4,10 @@ description: >
   The standard Go Capy onboarding runbook for cold-email infrastructure. Use
   this skill whenever Marcella says "New client [url]", "onboard this new
   client", "More domains for [client]", "add domains for [client]", or provides
-  a new client website alongside cold email / outreach / sending domains. This
+  a new client website alongside cold email / outreach / sending domains. Also
+  use for "Batch domains for <clients>" / "More domains for multiple clients" /
+  "buy domains for these principals" — the batch mode described at the bottom,
+  for buying warmup domains across 10+ existing principals in one pass. This
   is an orchestrator: it runs the existing skills (purchasing-domains-porkbun →
   siteground-email-setup → mailbox-onboarder PlusVibe stages → mailbox-onboarder
   HotHawk stages) interactively in one session, with the user approving every
@@ -151,3 +154,102 @@ inbox vs spam). One send, no retries.
 - `hothawk-mailbox-connect` connection-verification step
 - `inbox-placement` deliverability step
 - Porkbun per-domain "API Access" dashboard toggle
+
+---
+
+## Batch Mode (multi-principal)
+
+For buying warmup domains across **10+ existing principals in one pass** (a
+few-times-a-year run, e.g. now). Same Steps 1→5 above, same skills, same
+per-write approval requirement — the only difference is the loop is over a
+list of principals instead of one client, and approval gates are
+**consolidated per stage** instead of per principal so Marcella isn't
+interrupted 10+ times. Never skip an approval gate just because it's batched —
+consolidate the *prompt*, not the *requirement*.
+
+Trigger phrases: **"Batch domains for <clients>"**, **"More domains for
+multiple clients"**.
+
+### Batch Step 0 — Build the run table
+
+For each principal Marcella names:
+1. Look up **BDR**, **client slug**, and **PlusVibe workspace** from the
+   Client → BDR table in the `siteground` skill and the PlusVibe
+   workspace-client mapping
+   (`go-capy-outreach/skills/plusvibe-campaign-builder-v2/references/workspace-client-mapping.md`).
+2. Look up **HotHawk workspace** live via `GET /v1/workspaces` (never
+   hardcoded — hardcoded tables are known to drift).
+3. Only ask Marcella for what can't be resolved this way: **which
+   principals**, **how many domains per principal**, and any **domain-name
+   restrictions**.
+4. Assemble one table — `principal | BDR | client slug | PlusVibe workspace |
+   HotHawk workspace uuid | domain count | restrictions` — and show it to
+   Marcella for **one up-front confirmation** before any API calls. If any
+   field can't be resolved for a principal, flag it in the table instead of
+   guessing.
+
+These are existing principals, not new clients — batch mode never targets the
+Bottom Shelf catch-all workspace, and the Supabase `sending_domains` seed step
+(Step 1.7 above) does not apply.
+
+### Batch Step 1 — Domains, all principals
+
+Run Step 1 above per principal, but consolidate the two approval points:
+1. Generate + check-availability for every principal first (the existing 10s
+   Porkbun rate limit serializes naturally across the whole batch — do not
+   parallelize `checkDomain`/`create` calls).
+2. Present **one combined availability report**, one `client = ... / new
+   domains = ...` block per principal (same format as the standalone skill).
+3. **One purchase approval** covering all principals — Marcella replies once
+   with her picks across the whole batch. Show the grand total price.
+4. Register + point nameservers for all approved domains, one pass, still
+   sequential per Porkbun's rate limits.
+
+**Watch the 24h cap:** Porkbun's successful-registration cap is account-specific
+and reported live in each `domain/create` response (`limits.success` —
+observed as 50/24h on 2026-07-22, not the 10/24h once assumed). Check the
+live response, not a hardcoded number. If the batch's approved-domain count
+would exceed the remaining daily allowance, say so explicitly and propose
+spanning the run across multiple days — never silently truncate the purchase
+list.
+
+### Batch Step 2 — SiteGround mailboxes
+
+Generate the mailbox list per domain per principal (Step 2 above), but output
+**one combined set of browser-console JS snippets**, each snippet clearly
+labeled by principal and domain. Wait for **one combined confirmation** after
+Marcella runs all snippets before moving to Step 3.
+
+### Batch Step 3 — PlusVibe warmup
+
+Per principal (workspace stays principal-specific, never shared): run
+`check_login.py`, then bulk-add verified mailboxes to that principal's own
+PlusVibe workspace with warmup ON and the shared warmup tag. For signatures,
+reuse the existing file at `shared-references/signatures/<client-slug>.md`
+for any principal that already has one; only draft + present for approval the
+signatures of principals that don't — as **one combined review**, not N
+separate ones.
+
+### Batch Step 4 — HotHawk
+
+Run `connect_hothawk.py` once per principal against that principal's own
+HotHawk workspace uuid from the Batch Step 0 table. Same idempotency and
+single-login-attempt rules as Step 4 above.
+
+### Batch Step 5 — Test send
+
+One test send per principal (first new mailbox → marcella@gocapy.com).
+Report all results as **one consolidated pass/fail table** (principal, inbox
+vs spam) instead of individual confirmations.
+
+### Batch verification (end of session)
+
+One combined checklist across all principals:
+- Porkbun `listAll` shows the new domains per principal with SiteGround
+  nameservers.
+- `check_login.py` passed on every mailbox before any platform add.
+- PlusVibe and HotHawk (each principal's own workspace) show matching
+  mailbox sets, warmup ACTIVE, the shared warmup tag.
+- Signature file exists and is approved for every principal (pre-existing or
+  newly drafted this run).
+- Test-send table shows an inbox/spam result for every principal.

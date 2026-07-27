@@ -1,0 +1,33 @@
+﻿=== 2026-07-27T09:39:29.8522050-05:00 call-load-audit DAY START ===
+≡ƒô₧ Call ΓåÆ HotHawk Load Audit ΓÇö Daily ΓÇö 2026-07-24
+ΓÜá∩╕Å 9 NOT loaded  ┬╖  11 calls / 11 people  ┬╖  2 loaded, 9 missing
+```
+principal       User          Company Name                   # of Calls
+--------------  ------------  -----------------------------  ----------
+alpha-grainger  Ericka        Karma Automotive               3
+shellcast       Ericka        Leonardo DRS                   2
+shellcast       Ericka        Spirit Aerosystems             5
+shellcast       Ericka        Terran Orbital (Part of LMCO)  1
+-               -             -                              -
+                TOTAL Ericka                                 11
+```
+ΓÜá∩╕Å NOT LOADED (9) ΓÇö done calls that never reached HotHawk:
+```
+principal       User    Company                        Person                                                       why
+--------------  ------  -----------------------------  -----------------------------------------------------------  ---------------------------------------------
+alpha-grainger  Ericka  Karma Automotive               Theparit Photongkanong <tphotongkanong@karmaautomotive.com>  not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Karma Automotive               Yuna Kim <ykim@karmaautomotive.com>                          not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Karma Automotive               Sarah Zhang <sazhang@karmaautomotive.com>                    not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Spirit Aerosystems             Lee West <lee.west@spiritaero.com>                           not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Spirit Aerosystems             Kimberly Blackburn <kimberly.k.blackburn@spiritaero.com>     not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Spirit Aerosystems             Steven Radke <steven.t.radke@spiritaero.com>                 not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Spirit Aerosystems             Dorine Brittain <dorine.brittain@spiritaero.com>             not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Spirit Aerosystems             Jill Klim <jill.klim@spiritaero.com>                         not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Terran Orbital (Part of LMCO)  Onofre Distefano <onofre.distefano@terranorbital.com>        not-enrolled (on list only / draft campaign?)
+```
+Fix: activate/enroll the campaign in HotHawk, or re-run the reconcile (`reconcile_done_calls.py --since <date> --apply`) for these people.
+
+discord: posted
+
+RESULT: ok - {"mode": "day", "window": ["2026-07-24", "2026-07-24"], "total_calls": 11, "people": 11, "loaded": 2, "missing": 9}
+=== 2026-07-27T09:43:15.1500402-05:00 call-load-audit DAY END (exit 0) ===

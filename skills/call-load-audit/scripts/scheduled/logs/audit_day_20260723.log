@@ -1,0 +1,45 @@
+﻿=== 2026-07-23T08:50:01.4964583-05:00 call-load-audit DAY START ===
+≡ƒô₧ Call ΓåÆ HotHawk Load Audit ΓÇö Daily ΓÇö 2026-07-22
+ΓÜá∩╕Å 13 NOT loaded  ┬╖  38 calls / 38 people  ┬╖  25 loaded, 13 missing
+```
+principal       User          Company Name                            # of Calls
+--------------  ------------  --------------------------------------  ----------
+alpha-grainger  Ericka        Karma Automotive                        2
+alpha-grainger  Ericka        Ruger                                   4
+harvey-vogel    Ericka        virgingalactic.com                      3
+lnp             Ericka        Frontgrade Technologies                 2
+lnp             Ericka        Sierra Nevada Corporation               3
+patriot-forge   Ericka        Lawrence Livermore National Laboratory  3
+shellcast       Ericka        Leonardo DRS                            10
+shellcast       Ericka        Mercury Systems                         2
+shellcast       Ericka        Teledyne FLIR                           3
+shellcast       Ericka        Terran Orbital (Part of LMCO)           1
+tmx             Ericka        Woodward                                4
+vrc             Ericka        RENK America                            1
+-               -             -                                       -
+                TOTAL Ericka                                          38
+```
+ΓÜá∩╕Å NOT LOADED (13) ΓÇö done calls that never reached HotHawk:
+```
+principal       User    Company                        Person                                                  why
+--------------  ------  -----------------------------  ------------------------------------------------------  ---------------------------------------------
+alpha-grainger  Ericka  Karma Automotive               Dan Yoon <dyoon@karmaautomotive.com>                    not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Karma Automotive               Yunni Zhai <yzhai@karmaautomotive.com>                  not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Ruger                          Barbara Gaskell <bgaskell@ruger.com>                    not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Ruger                          Mike Yannotti <myannotti@ruger.com>                     not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Ruger                          Austin O'Shea <aoshea@ruger.com>                        not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Ruger                          Jake Utley <jutley@ruger.com>                           not-enrolled (on list only / draft campaign?)
+harvey-vogel    Ericka  virgingalactic.com             Tiffane Stuckenschneider <tif@virgingalactic.com>       not-enrolled (on list only / draft campaign?)
+harvey-vogel    Ericka  virgingalactic.com             Tim McCarry <tim.mccarry@virgingalactic.com>            not-enrolled (on list only / draft campaign?)
+harvey-vogel    Ericka  virgingalactic.com             Arthur Rodriguez <arthur.rodriguez@virgingalactic.com>  not-enrolled (on list only / draft campaign?)
+lnp             Ericka  Frontgrade Technologies        Ryan Lee <ryan.lee@frontgrade.com>                      not-enrolled (on list only / draft campaign?)
+lnp             Ericka  Frontgrade Technologies        Patricia Wantuck <patricia.wantuck@frontgrade.com>      not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Terran Orbital (Part of LMCO)  Freddy Torres <freddy.torres@terranorbital.com>         not-enrolled (on list only / draft campaign?)
+vrc             Ericka  RENK America                   Andrea Pesch <andrea.pesch@renk-america.com>            not-enrolled (on list only / draft campaign?)
+```
+Fix: activate/enroll the campaign in HotHawk, or re-run the reconcile (`reconcile_done_calls.py --since <date> --apply`) for these people.
+
+discord: posted
+
+RESULT: ok - {"mode": "day", "window": ["2026-07-22", "2026-07-22"], "total_calls": 38, "people": 38, "loaded": 25, "missing": 13}
+=== 2026-07-23T08:50:50.0265415-05:00 call-load-audit DAY END (exit 0) ===

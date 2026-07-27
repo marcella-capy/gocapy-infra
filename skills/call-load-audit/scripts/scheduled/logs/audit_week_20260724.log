@@ -1,0 +1,82 @@
+﻿=== 2026-07-24T09:14:23.6036414-05:00 call-load-audit WEEK START ===
+≡ƒô₧ Call ΓåÆ HotHawk Load Audit ΓÇö Weekly ΓÇö 2026-07-20 .. 2026-07-23
+ΓÜá∩╕Å 29 NOT loaded  ┬╖  260 calls / 201 people  ┬╖  172 loaded, 29 missing
+```
+principal        User          Company Name                            # of Calls
+---------------  ------------  --------------------------------------  ----------
+alpha-grainger   Ericka        Beretta USA                             1
+alpha-grainger   Ericka        Karma Automotive                        8
+alpha-grainger   Ericka        Ruger                                   4
+alpha-grainger   Ericka        Savage Arms                             1
+alpha-grainger   Ericka        Sig Sauer                               4
+alpha-grainger   Mark          Smiths Interconnect                     2
+franklin         Ericka        Flowserve                               6
+franklin         Ericka        X-Energy                                7
+general-foundry  Ericka        Bloom Energy                            10
+general-foundry  Ericka        Chart Industries                        2
+general-foundry  Ericka        Plug Power                              1
+harvey-vogel     Ericka        virgingalactic.com                      3
+lnp              Ericka        Frontgrade Technologies                 2
+lnp              Ericka        Sierra Nevada Corporation               22
+lnp              Mark          Moog                                    10
+lnp              Mark          Rocket Lab                              6
+patriot-forge    Ericka        Lawrence Livermore National Laboratory  14
+patriot-forge    Mark          General Dynamics Mission Systems        6
+patriot-forge    Mark          Lockheed Martin                         18
+patriot-forge    Mark          Northrop Grumman                        15
+patriot-forge    Mark          PCC Structurals, Inc.                   4
+patriot-forge    Mark          Safran                                  6
+shellcast        Ericka        Leonardo DRS                            39
+shellcast        Ericka        Mercury Systems                         16
+shellcast        Ericka        Sierra Space                            5
+shellcast        Ericka        Spirit Aerosystems                      2
+shellcast        Ericka        Teledyne FLIR                           20
+shellcast        Ericka        Terran Orbital (Part of LMCO)           1
+tmx              Ericka        Woodward                                22
+vrc              Ericka        Donaldson Company                       1
+vrc              Ericka        Graco                                   1
+vrc              Ericka        RENK America                            1
+-                -             -                                       -
+                 TOTAL Ericka                                          193
+                 TOTAL Mark                                            67
+```
+ΓÜá∩╕Å NOT LOADED (29) ΓÇö done calls that never reached HotHawk:
+```
+principal       User    Company                                 Person                                                  why
+--------------  ------  --------------------------------------  ------------------------------------------------------  ---------------------------------------------
+alpha-grainger  Ericka  Karma Automotive                        Kurt Caylor <kcaylor@karmaautomotive.com>               not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Karma Automotive                        Juan Lalinde <jlalinde@karmaautomotive.com>             not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Karma Automotive                        Steven Uslander <suslander@karmaautomotive.com>         not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Karma Automotive                        Dan Yoon <dyoon@karmaautomotive.com>                    not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Karma Automotive                        Yunni Zhai <yzhai@karmaautomotive.com>                  not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Karma Automotive                        Charles Bak <cbak@karmaautomotive.com>                  not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Karma Automotive                        Kevin Le <kxle@karmaautomotive.com>                     not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Karma Automotive                        Alex Chu <achu@karmaautomotive.com>                     not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Ruger                                   Barbara Gaskell <bgaskell@ruger.com>                    not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Ruger                                   Mike Yannotti <myannotti@ruger.com>                     not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Ruger                                   Austin O'Shea <aoshea@ruger.com>                        not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Ruger                                   Jake Utley <jutley@ruger.com>                           not-enrolled (on list only / draft campaign?)
+harvey-vogel    Ericka  virgingalactic.com                      Tiffane Stuckenschneider <tif@virgingalactic.com>       not-enrolled (on list only / draft campaign?)
+harvey-vogel    Ericka  virgingalactic.com                      Tim McCarry <tim.mccarry@virgingalactic.com>            not-enrolled (on list only / draft campaign?)
+harvey-vogel    Ericka  virgingalactic.com                      Arthur Rodriguez <arthur.rodriguez@virgingalactic.com>  not-enrolled (on list only / draft campaign?)
+lnp             Ericka  Frontgrade Technologies                 Ryan Lee <ryan.lee@frontgrade.com>                      not-enrolled (on list only / draft campaign?)
+lnp             Ericka  Frontgrade Technologies                 Patricia Wantuck <patricia.wantuck@frontgrade.com>      not-enrolled (on list only / draft campaign?)
+lnp             Ericka  Sierra Nevada Corporation               Colby Moulder <colby.moulder@sncorp.com>                not-enrolled (on list only / draft campaign?)
+patriot-forge   Ericka  Lawrence Livermore National Laboratory  Mauro Cerda <cerda2@llnl.gov>                           not-enrolled (on list only / draft campaign?)
+patriot-forge   Ericka  Lawrence Livermore National Laboratory  Peter Oleson <oleson1@llnl.gov>                         not-enrolled (on list only / draft campaign?)
+patriot-forge   Ericka  Lawrence Livermore National Laboratory  Regina Paladino <paladino1@llnl.gov>                    not-enrolled (on list only / draft campaign?)
+patriot-forge   Mark    Lockheed Martin                         Chuck Hughes                                            no-email
+shellcast       Ericka  Leonardo DRS                            Tina Griffith <tina.griffith@drs.com>                   not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Spirit Aerosystems                      Brian Groce <brian.a.groce@spiritaero.com>              not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Spirit Aerosystems                      Merertu Smile <merertu.smile@spiritaero.com>            not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Terran Orbital (Part of LMCO)           Freddy Torres <freddy.torres@terranorbital.com>         not-enrolled (on list only / draft campaign?)
+tmx             Ericka  Woodward                                Mitch Papkin <mpapkin@hrtextron.textron.com>            not-enrolled (on list only / draft campaign?)
+tmx             Ericka  Woodward                                Brandon Wright <brandon.wright@woodward.com>            not-enrolled (on list only / draft campaign?)
+vrc             Ericka  RENK America                            Andrea Pesch <andrea.pesch@renk-america.com>            not-enrolled (on list only / draft campaign?)
+```
+Fix: activate/enroll the campaign in HotHawk, or re-run the reconcile (`reconcile_done_calls.py --since <date> --apply`) for these people.
+
+discord: posted
+
+RESULT: ok - {"mode": "week", "window": ["2026-07-20", "2026-07-23"], "total_calls": 260, "people": 201, "loaded": 172, "missing": 29}
+=== 2026-07-24T10:11:27.4830612-05:00 call-load-audit WEEK END (exit 0) ===

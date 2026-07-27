@@ -60,7 +60,7 @@ A `"status":"SUCCESS"` with `"credentialsValid":true` confirms keys are valid.
 | Update nameservers | POST | `/api/json/v3/domain/updateNs/{domain}` | JSON body |
 
 Rate limit: `checkDomain` is **1 request per 10 seconds**. Insert `sleep 10` between checks.
-Rate limit: `domain/create` is **1 attempt per 10 seconds**, max **10 successful registrations per 24 hours**.
+Rate limit: `domain/create` is **1 attempt per 10 seconds**. The 24h successful-registration cap is account-specific — the `create` response's `limits.success` field reports the live limit/used/TTL for this account (observed as 50/24h on 2026-07-22; do not assume 10 without checking a live response first).
 
 ---
 
