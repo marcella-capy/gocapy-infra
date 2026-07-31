@@ -129,7 +129,7 @@ def connect_one(token: str, workspace_id: str, email: str, password: str) -> dic
 
 def main() -> int:
     ap = argparse.ArgumentParser(description="Connect SiteGround mailboxes to HotHawk via REST")
-    ap.add_argument("--workspace-id", required=True, help="HotHawk workspace UUID (Bottom Shelf = 0bb515e2-fb32-4676-83ad-ea72e5e909fe)")
+    ap.add_argument("--workspace-id", required=True, help="HotHawk workspace UUID — the client's OWN workspace; resolve live via GET /v1/workspaces/short")
     ap.add_argument("--csv", help="CSV with email,password columns")
     ap.add_argument("--email")
     ap.add_argument("--password")

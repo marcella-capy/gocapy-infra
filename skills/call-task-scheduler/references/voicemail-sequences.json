@@ -1,11 +1,11 @@
 {
   "franklin": {
     "display_name": "Franklin Casting",
-    "workspace_id": "0bb515e2-fb32-4676-83ad-ea72e5e909fe",
-    "workspace_name": "Bottom Shelf",
-    "sequence_id": "d5d9f027-e9b2-4b3e-97b8-f2ca16321c5e",
-    "sequence_name": "Franklin Casting_Post-Voicemail Sequence_070726",
-    "note": "Flipped 2026-07-16: old 'Franklin Casting (Evergreen)' (47e2d481-…) was DELETED in HotHawk (404) and broke the 7/10 backfill. This replacement is still DRAFT — Marcella must activate, then enroll waiting list members."
+    "workspace_id": "023d4d35-245d-44ce-bc74-569d1d968f3d",
+    "workspace_name": "Franklin Casting",
+    "sequence_id": "1bc2bdb0-689e-4650-9169-93c7b784b605",
+    "sequence_name": "Franklin Casting_Post-Voicemail_070726",
+    "note": "Rebuilt 2026-07-31 in the per-client workspace after the Bottom Shelf split. Created PAUSED with zero leads — activate and re-enrol deliberately."
   },
   "lnp": {
     "display_name": "LNP Machining",
@@ -25,17 +25,19 @@
   },
   "alpha-grainger": {
     "display_name": "Alpha Grainger",
-    "workspace_id": "0bb515e2-fb32-4676-83ad-ea72e5e909fe",
-    "workspace_name": "Bottom Shelf",
-    "sequence_id": "ef431dd5-e43f-493a-aaaf-f5c31025f386",
-    "sequence_name": "Alpha Grainger_Post-Voicemail Sequence_070726"
+    "workspace_id": "b2e5eeaa-c702-4f49-a655-a6a50c133030",
+    "workspace_name": "Alpha Grainger",
+    "sequence_id": "a7381c20-858e-4527-b81e-d50f0651fb67",
+    "sequence_name": "Alpha Grainger_Post-Voicemail_070726",
+    "note": "Rebuilt 2026-07-31 in the per-client workspace after the Bottom Shelf split. Created PAUSED with zero leads — activate and re-enrol deliberately."
   },
   "shellcast": {
     "display_name": "Shellcast",
-    "workspace_id": "0bb515e2-fb32-4676-83ad-ea72e5e909fe",
-    "workspace_name": "Bottom Shelf",
-    "sequence_id": "0d3fec73-3384-49aa-b89b-8366d3557491",
-    "sequence_name": "Shellcast_Post-Voicemail Sequence_070726"
+    "workspace_id": "7e286994-b107-472a-8fd7-65bca6ec550d",
+    "workspace_name": "Shellcast",
+    "sequence_id": "7df72ed5-ee2b-48d2-ad2e-da026cdc3963",
+    "sequence_name": "Shellcast_Post-Voicemail Sequence_070726",
+    "note": "Rebuilt 2026-07-31 in the per-client workspace after the Bottom Shelf split. Created PAUSED with zero leads — activate and re-enrol deliberately."
   },
   "patriot-forge": {
     "display_name": "Patriot Forge",
@@ -54,10 +56,11 @@
   },
   "harvey-vogel": {
     "display_name": "Harvey Vogel",
-    "workspace_id": "0bb515e2-fb32-4676-83ad-ea72e5e909fe",
-    "workspace_name": "Bottom Shelf",
-    "sequence_id": "7a9922cc-9213-4e2b-8b28-875b17689057",
-    "sequence_name": "Harvey Vogel_Post-Voicemail Sequence_070726"
+    "workspace_id": "3a6e3124-c6ab-43e4-aa49-bc4eeb3f21cd",
+    "workspace_name": "HV OpCos",
+    "sequence_id": "945208ec-0193-4b2d-bffa-fd8dbd041dec",
+    "sequence_name": "Harvey Vogel_Post-Voicemail Sequence_070726",
+    "note": "Rebuilt 2026-07-31 in the per-client workspace after the Bottom Shelf split. Created PAUSED with zero leads — activate and re-enrol deliberately."
   },
   "vrc": {
     "display_name": "VRC",
@@ -68,16 +71,18 @@
   },
   "megatech": {
     "display_name": "Megatech",
-    "workspace_id": "0bb515e2-fb32-4676-83ad-ea72e5e909fe",
-    "workspace_name": "Bottom Shelf",
-    "sequence_id": "0b077c76-e88f-434c-883d-b1e2420df30f",
-    "sequence_name": "Megatech_Post-Voicemail Sequence_070726"
+    "workspace_id": "98501305-3d2c-4163-a76e-32f8c9c6b635",
+    "workspace_name": "Megatech",
+    "sequence_id": "442deb8f-5305-4c5f-b53c-84a8782bba97",
+    "sequence_name": "Megatech_Post-Voicemail Sequence_070726",
+    "note": "Rebuilt 2026-07-31 in the per-client workspace after the Bottom Shelf split. Created PAUSED with zero leads — activate and re-enrol deliberately."
   },
   "atw": {
     "display_name": "A.T. Wall",
-    "workspace_id": "0bb515e2-fb32-4676-83ad-ea72e5e909fe",
-    "workspace_name": "Bottom Shelf",
-    "sequence_id": "b4ca2d70-6dae-4d87-ad45-07638c075587",
-    "sequence_name": "A.T. Wall_Post-Voicemail Sequence_070726"
+    "workspace_id": "c8e4a440-45a5-424f-945d-51c3b7620e2e",
+    "workspace_name": "ATW",
+    "sequence_id": "419b4280-a645-42cf-bc88-1e8b255cc202",
+    "sequence_name": "A.T. Wall_Post-Voicemail Sequence_070726",
+    "note": "Rebuilt 2026-07-31 in the per-client workspace after the Bottom Shelf split. Created PAUSED with zero leads — activate and re-enrol deliberately."
   }
 }

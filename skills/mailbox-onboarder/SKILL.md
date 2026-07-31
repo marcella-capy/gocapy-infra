@@ -66,9 +66,28 @@ Source: client screenshots, 2026-06-04. Applies to every client.
   randomize ON `20%`, `warmup_business_type="Manufacturing Companies"`, schedule ON /
   timezone `America/Chicago (UTC-05:00)` / **weekdays only**, custom tracking domain OFF,
   warmup signature OFF, reply rate `35%`.
-- **`warmup_custom_words`** is per-client: TMX/LNP/Alpha Grainger = `machining-parts`;
-  Franklin/General Foundry/Harvey Vogel/Shellcast/Patriot = `casting-components`;
-  VRC = `plastic-wonders`; USAI = `gasket-seals`. (Confirm from an existing account if unsure.)
+- **`warmup_custom_words`** is per-client — a shared warmup-pool grouping word, NOT the
+  same thing as a PlusVibe account/client tag (see below) and NOT a column in PlusVibe's
+  own bulk-upload CSV template (it's applied via `accounts.py bulk-update`, separately from
+  upload). Canonical mapping (2026-07-24):
+  - TMX / LNP / Alpha Grainger = `machining-parts`
+  - Franklin / General Foundry / Harvey Vogel / Shellcast / Patriot = `casting-components`
+  - VRC = `plastic-wonders`
+  - USAI = `gasket-seals`
+  - Workplace = `modular-workstations`
+  - Seconn = `metal-fabrication`
+  - ATW = `precision-tubing`
+  - Capy = `outsourced-sales`
+  - Megatech = not yet assigned — ask Marcella before this client's next onboarding run.
+  **New principal → new word:** always ask Marcella for the word (industry-appropriate,
+  e.g. "what does this client make?") rather than inventing one — do not reuse another
+  principal's word. There is no live API to list existing `warmup_custom_words` values
+  across accounts; the closest live check is `accounts.py list -w <ws>` on an existing
+  account for that client and reading its `warmup_custom_words` field.
+  ⚠️ Still unresolved: whether HotHawk's own separate warmup-tag system
+  (`warmups_tags_list`/`warmups_tags_create`) auto-links to a mailbox on connect, or must
+  be set manually in the HotHawk UI. Verify this the next time it matters and record the
+  answer here.
 - **Add with warmup DISABLED**, then enable it in the last step (step 6).
 
 ## Signatures
@@ -114,6 +133,45 @@ HotHawk: `mailboxes_list` for the client workspace. Compute `toPlusVibe`/`toHotH
 mailbox may already be in one platform but not the other). This makes duplicates impossible regardless
 of platform behavior, and keeps re-runs idempotent.
 
+### Alternative: PlusVibe's own CSV upload (manual UI, instead of `accounts.py`)
+PlusVibe's bulk-upload screen accepts a CSV directly — follow the **exact column layout**
+in `references/account_bulk_upload_sample.csv` (PlusVibe's real Sample File, saved
+verbatim in this skill — don't invent columns or reorder them):
+
+```
+first_name,last_name,email,daily_limit,username,password,imap_host,imap_port,smtp_host,smtp_port,smtp_username,smtp_password,tags,min_interval,enable_camp_rampup,camp_rampup_start,camp_rampup_increment,enable_warmup,warmup_daily_limit,enable_warmup_rampup,warmup_rampup_start,warmup_rampup_increment
+```
+
+Note `imap_host`/`imap_port` come **before** `smtp_host`/`smtp_port` — easy to get backwards.
+`username` = the email address; `password` = the SiteGround password verified by
+`check_login.py`. Optional columns (blank is fine — PlusVibe's own sample leaves several
+blank per row):
+
+| Column | Meaning |
+|---|---|
+| `smtp_username` / `smtp_password` | only needed if different from the IMAP credentials |
+| `tags` | assigns the account to a tag (semicolon-separated for multiple, e.g. `Tag A;Tag B`) — **the tag(s) must already exist in PlusVibe** before upload |
+| `min_interval` | minimum sending interval per account (minutes) |
+| `enable_camp_rampup` | `yes`/`no` — campaign ramp-up on/off |
+| `camp_rampup_start` | initial campaign ramp-up value |
+| `camp_rampup_increment` | daily campaign ramp-up increment |
+| `enable_warmup` | `yes`/`no` — warm-up on/off |
+| `warmup_daily_limit` | daily warm-up email limit — **independent of `daily_limit`**, not necessarily equal (PlusVibe's own sample uses `daily_limit=30` with `warmup_daily_limit=15` on one row) — always get this value explicitly, never assume it matches `daily_limit` |
+| `enable_warmup_rampup` | `yes`/`no` — warm-up ramp-up on/off |
+| `warmup_rampup_start` | initial warm-up ramp-up value |
+| `warmup_rampup_increment` | daily warm-up ramp-up increment |
+
+This is a manual alternative to Steps 1-3 below (which use the `accounts.py` API instead) —
+use whichever path Marcella asks for; don't mix a partial CSV upload with API calls for the
+same batch.
+
+**Internal record-keeping convention:** the mailbox CSVs saved to the shared drive (see
+Output 3 in the `siteground` skill) append one extra column, `warmup_custom_words`, with
+each row's principal's warmup word (see the canonical mapping below) — even though this
+column is NOT part of PlusVibe's own upload template and must still be applied separately
+via `accounts.py bulk-update` (Step 2). It's there so the word is visible on the saved
+record, not because PlusVibe's CSV import reads it.
+
 ### Step 1 — Bulk-add PASS mailboxes to PlusVibe (warmup disabled)
 Build a JSON array of account objects (canonical delivery values, `enable_warmup=no`,
 `warmup_custom_words=<client>`, host `mail.<domain>` 993/465, username/password = the address/pwd)
@@ -156,10 +214,23 @@ py scripts/test_send.py --from <mailbox> --password 'NewAirton@19642026!' --to m
 One send from the first mailbox, no retries; confirm arrival (inbox vs spam).
 
 ### Step 5 — Ensure the warmup tag in HotHawk
-Read the PlusVibe `warmup_custom_words` for the client; HotHawk `warmups_tags_list`, and
-`warmups_tags_create` only if that value is missing (for TMX `machining-parts` already exists).
-⚠️ Open question: no MCP endpoint binds a mailbox→warmup-tag; verify whether that linkage is
-automatic on connect or must be set in the HotHawk UI, and record the answer here.
+The canonical per-principal list is **`gocapy-infra/shared-references/warmup-tags.md`** — use it,
+don't re-derive from CSVs.
+
+REST (works headless, unlike the MCP tools): `GET /v1/warmups/tags?workspaceId=…` then
+`POST /v1/warmups/tags {workspaceId, value}`. The field is **`value`**, not `name`. Or just run
+`go-capy-outreach/scripts/migration/ensure_warmup_tags.py --apply` (additive + idempotent).
+
+Two things that bite:
+- **Tags are workspace-scoped and don't travel.** A new workspace starts with ZERO tags — the five
+  created by the 2026-07-31 Bottom Shelf split all did. Seed them at creation time.
+- **A principal often needs MORE THAN ONE tag** (current + older batches still warming, e.g. Alpha
+  Grainger runs `swiss-machining` AND `machining-parts`). Adding one doesn't retire the other.
+- Most of what `GET /warmups/tags` returns is other tenants' noise (`#XXXX-XXX` codes, vendor
+  names, random word-pairs) — Patriot lists 1,332. See warmup-tags.md for how to filter.
+
+⚠️ Open question: no endpoint binds a mailbox→warmup-tag; verify whether HotHawk applies the
+workspace's tags to every mailbox automatically, and record the answer here.
 
 ### Step 6 — Enable warmup in PlusVibe
 `warmup.py bulk-update -w <ws> --ids <new ids> --status ACTIVE`.

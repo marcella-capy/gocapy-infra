@@ -35,8 +35,12 @@ config/signature, skip questions already answered by existing setup).
    use the Client → BDR table in the `siteground` skill
 4. **Client slug** — used for signature file and tags
 5. **PlusVibe workspace** — always ask: **Forge OR Machining**
-6. **HotHawk workspace** — new client → **Bottom Shelf**; existing client →
-   their respective HotHawk workspace
+6. **HotHawk workspace** — **every client gets its OWN workspace.** New client →
+   create one via `POST /v1/workspaces` `{name, currencyCode:"USD"}`, then
+   `PATCH /v1/workspaces/{id}` with `isAiCategorisationEnabled:false`. Existing
+   client → their own workspace. (The shared "Bottom Shelf" catch-all was split
+   up and deleted 2026-07-31 — do not recreate that pattern. The one exception
+   is the Harvey Vogel opcos, who share **HV OpCos** by design.)
 7. **How many domains** to target (she picks the final list manually)
 
 Ask all of these up front in one question set. Do not proceed until answered.
@@ -54,10 +58,15 @@ Ask all of these up front in one question set. Do not proceed until answered.
 5. Register approved domains (`cost` in PENNIES, `agreeToTerms: "yes"`,
    10s between registrations; never auto-retry a failed paid call).
 6. Immediately point nameservers to `ns1.siteground.net` / `ns2.siteground.net`.
-7. **Bottom Shelf only:** seed the new domains into Supabase
-   `workspaces.sending_domains` for the Bottom Shelf workspace — otherwise
-   replies route to `skip:no-principal`. Confirm with Marcella before the
-   Supabase write.
+6.5. Register the new domains as HetrixTools blacklist monitors:
+   `py go-capy-outreach/skills/domain-health/scripts/add_hetrix_monitor.py <domains...>`
+   (see Step 8.5 of the `purchasing-domains-porkbun` skill — this is separate from and
+   does not touch `inventory.json`, which is auto-generated elsewhere).
+7. **Supabase `workspaces` row** — create/update the client's row with its own
+   `hothawk_workspace_id`. `sending_domains` is only load-bearing on a SHARED
+   workspace (today just HV OpCos); if this client is an HV opco, seed its
+   domains there or replies route to `skip:no-principal`. Confirm with Marcella
+   before the Supabase write.
 
 ---
 
@@ -70,6 +79,10 @@ Ask all of these up front in one question set. Do not proceed until answered.
    that Marcella pastes into SiteGround Site Tools to create the accounts.
 3. **Marcella runs the snippet(s) in SiteGround.** Wait for her confirmation
    before continuing.
+4. Save a CSV of the accounts to
+   `G:\Shared drives\Capy Outreach\Cold Email Accounts\<Principal>\`
+   (create the principal's folder if it doesn't exist yet) — see Output 3 in
+   the `siteground-email-setup` skill for the exact format.
 
 (No MailToaster CSV, no ClickUp handoff — removed 2026-07-17. The
 browser-console JS is kept.)
@@ -115,8 +128,9 @@ server is only present in interactive sessions). Helper script:
 ```
 py connect_hothawk.py --workspace-id <uuid> --csv <email,password csv>
 ```
-- Bottom Shelf workspace id = `0bb515e2-fb32-4676-83ad-ea72e5e909fe` (new clients);
-  existing clients use their own workspace uuid.
+- Use the client's OWN workspace uuid. Resolve it live with
+  `GET /v1/workspaces/short` — the API silently accepts a dangling workspaceId
+  and the objects become invisible in the UI.
 - The script skips mailboxes already present (idempotent) and makes ONE login
   attempt each — never a retry loop (SiteGround IP-block protection).
 - Invariant: every PlusVibe mailbox must also exist in HotHawk (PlusVibe ⊆ HotHawk).
@@ -142,8 +156,8 @@ inbox vs spam). One send, no retries.
 - `check_login.py` passed on every mailbox before any platform add.
 - PlusVibe (chosen workspace) and HotHawk (chosen workspace) show the same
   mailbox set, warmup ACTIVE, one shared warmup tag.
-- Bottom Shelf only: Supabase `workspaces.sending_domains` contains the new
-  domains.
+- Supabase `workspaces` row points at the client's own workspace. For an HV
+  opco only: `sending_domains` contains the new domains.
 - Signature file exists at `shared-references/signatures/<client-slug>.md`
   and was user-approved.
 
@@ -188,9 +202,9 @@ For each principal Marcella names:
    field can't be resolved for a principal, flag it in the table instead of
    guessing.
 
-These are existing principals, not new clients — batch mode never targets the
-Bottom Shelf catch-all workspace, and the Supabase `sending_domains` seed step
-(Step 1.7 above) does not apply.
+These are existing principals, not new clients — each already has its own
+workspace, and the Supabase `sending_domains` seed step (Step 1.7 above) applies
+only to the shared HV OpCos workspace.
 
 ### Batch Step 1 — Domains, all principals
 
@@ -204,6 +218,8 @@ Run Step 1 above per principal, but consolidate the two approval points:
    with her picks across the whole batch. Show the grand total price.
 4. Register + point nameservers for all approved domains, one pass, still
    sequential per Porkbun's rate limits.
+5. Register every newly approved domain as a HetrixTools blacklist monitor
+   (Step 6.5 above) — one batch call across all principals, not per-principal.
 
 **Watch the 24h cap:** Porkbun's successful-registration cap is account-specific
 and reported live in each `domain/create` response (`limits.success` —

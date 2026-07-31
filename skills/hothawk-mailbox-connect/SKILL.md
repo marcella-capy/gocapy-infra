@@ -66,7 +66,7 @@ stop the auth retries before they trigger an IP block, and flag it.
 The hardcoded slug→UUID tables in `scripts/block_all.py` / `backfill_hothawk_blocklist.py` /
 `hothawk-api/SKILL.md` **disagree with each other** — do not trust them for naming. Resolve names
 ↔ UUIDs at runtime via `workspaces_short_list` (MCP) or `GET /v1/workspaces`. (12 today: Alpha
-Grainger, Franklin, Tech-Max, Bottom Shelf, Shellcast, Megatech, Capy, Harvey Vogel, VRC,
+Grainger, Franklin Casting, Tech-Max, Shellcast, Megatech, ATW, Capy, HV OpCos, VRC,
 Patriot, LNP Machining, General Foundry.)
 
 ---

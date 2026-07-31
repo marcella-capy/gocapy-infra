@@ -35,11 +35,12 @@ Label names are matched case-insensitively by the edge function's `classifyLabel
 | **Blacklist Domain** | per-principal domain blacklist (`<slug>-domains.md`) | edge function |
 | **Blacklist Contact** | per-principal contact blacklist (`<slug>-contacts.md`) | edge function |
 
-On a SHARED HotHawk workspace (Bottom Shelf hosts 6 principals) the workspace id can't identify the
+On a SHARED HotHawk workspace (since 2026-07-31 only HV OpCos, hosting harvey-vogel +
+workplace-modular + seconn) the workspace id can't identify the
 principal, so per-principal labels resolve it from the message's from/to/cc **mailbox domains** matched
 against `workspaces.sending_domains` (seeded from `voices/client-domains.json`, 2026-07-15). No/ambiguous
 match → `skip:no-principal` + a `processing_errors` row (`step='resolve-principal'`) — never a guess.
-Unshared workspaces keep the plain workspace-id lookup. New Bottom Shelf principal or new lookalike
+Unshared workspaces keep the plain workspace-id lookup. New shared-workspace principal or new lookalike
 domain ⇒ update that workspace row's `sending_domains`.
 | **Wrong Person** | per-principal contact blacklist | edge function |
 | **Not Interested** | per-principal contact blacklist | edge function |

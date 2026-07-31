@@ -16,11 +16,23 @@ Google Sheet "Call Task Scheduler" (Requests tab)
        ├─ org with <5 callable people → Clay Company webhook
        └─ writes ok/error + summary back into the row (Status / Result)
 
-claude.ai cloud routine "Call Task Reconcile" (weekday mornings)
-  └─ yesterday's DONE call tasks (title contract) → per person, first time only:
-       HotHawk: find/create company+lead → list `voicemail-called-<slug>` → attach list to the
-       principal's Voicemail campaign → tag `voicemail` → auto-close the person's other call tasks
+LOCAL scheduled task "CallTaskReconcile_Daily" (Mon-Fri 08:20) — scripts/scheduled/
+  └─ reconcile_and_load.py: DONE call tasks from the last 3 business days (title contract)
+       → per person, first time only: HotHawk find/create company+lead → list
+         `voicemail-called-<slug>` → attach list to the principal's Voicemail campaign →
+         ENROL the leads → tag `voicemail`
+       → sibling call tasks are LEFT OPEN; failures log + alert Discord (notify_run_failure.py)
 ```
+
+**2026-07-30: the reconcile moved OFF the claude.ai cloud routine.** That routine
+(`trig_01JhnGNSJ2bSkRLZ7b236rPK`) is now **disabled**, kept only as a reference for its prompt.
+It failed silently three times — dead since ~7/10, missed 7/14's 65 done calls, and loaded zero
+people 7/28–7/30 while still reporting green — because nothing local ever saw its exit code and
+it left no artifact whose absence anyone would notice. The local task runs the same scripts a
+human runs by hand: it writes `_reconcile_*.json` artifacts, logs to `scripts/scheduled/logs/`,
+and pings Discord on failure. It runs 30 min before `CallLoadAudit_Daily`, so the audit
+independently re-checks each morning's work. Don't re-enable the cloud routine without deciding
+which one owns the job — two owners double-write.
 
 - Sheet: https://docs.google.com/spreadsheets/d/1apeJni_cb86f_J5L_Y2UNrd1Xq1nA2iD8exQQBxIM6A
 - The **Registry tab** in that sheet is the source of truth for principals:
@@ -28,7 +40,7 @@ claude.ai cloud routine "Call Task Reconcile" (weekday mornings)
   `references/voicemail-sequences.json` is a committed mirror — keep both in sync.
 - New principal rule: the voicemail sequence is ALWAYS the campaign whose name contains
   "Voicemail" in the client's HotHawk workspace (`GET /v1/campaigns?workspaceId=`); auto-resolve,
-  ask the user only on zero/multiple matches. (Franklin's lives in the shared "Bottom Shelf"
+  ask the user only on zero/multiple matches. (Franklin's lives in its own "Franklin Casting"
   workspace — never assume the client's own workspace.)
 
 ## Contracts (do not change without updating Apps Script + routine + scripts together)
@@ -42,8 +54,10 @@ claude.ai cloud routine "Call Task Reconcile" (weekday mornings)
 - Note (human-only): `Call <Full Name> - <Title> @ <phones>`; Call 1 additionally carries
   `[Clicking "Mark As Done" moves lead to a Voicemail Email Sequence in HotHawk]`.
 - Only the FIRST completed call per person triggers the HotHawk add; skip if the lead already
-  exists in the workspace tagged `voicemail`. Remaining open call tasks are marked done with an
-  audit note — never deleted.
+  exists in the workspace tagged `voicemail`. **Remaining open call tasks stay OPEN** (Marcella
+  2026-07-15). `--close-siblings` opts into marking them done with an audit note (never deleted);
+  it is OFF by default in both scripts since 2026-07-30. The default used to be the other way and
+  the 07-30 catch-up auto-closed 59 tasks before anyone noticed — leave it off.
 - People with no email are reported, not subscribed.
 - **Territory gate** (2026-07-08): out-of-territory people are skipped ENTIRELY (no tasks, no
   Clay). Rules mirror `go-capy-outreach/shared-references/client-territories.json` (embedded in
@@ -95,7 +109,12 @@ claude.ai cloud routine "Call Task Reconcile" (weekday mornings)
 
 - `apps-script/Code.gs` — the whole of Workflow A. Paste into the sheet's Apps Script editor;
   set Script Property `PIPEDRIVE_API_TOKEN`; run `setup()` once (builds tabs/dropdowns/trigger).
-- claude.ai routine "Call Task Reconcile" — Workflow B, managed via the RemoteTrigger API.
+- `scripts/reconcile_and_load.py` + `scripts/scheduled/` — Workflow B, now the PRIMARY path.
+  `register_scheduler.ps1` registers `CallTaskReconcile_Daily` (Mon-Fri 08:20 → run_reconcile.ps1
+  → reconcile_and_load.py). `--lookback N` business days (default 3) self-heals a failed day;
+  `_reconcile_state.json` keeps it idempotent. Exit 1 (step failed, or `RESULT: partial` from a
+  broken campaign) triggers the Discord alert. `--dry-run` plans without writing.
+- claude.ai routine "Call Task Reconcile" — DISABLED 2026-07-30, superseded by the above.
 - `scripts/` — Python manual fallback (same logic, snapshot-based reads via the outreach
   plugin's pd_cache): `create_call_tasks.py`, `reconcile_done_calls.py`, `hothawk_subscribe.py`,
   `business_days.py`. Run with `--apply` after a dry-run; `--test` = one activity trial.
@@ -115,11 +134,18 @@ claude.ai cloud routine "Call Task Reconcile" (weekday mornings)
 - Pipedrive v2 `POST /activities` requires `participants:[{person_id,primary:true}]`.
 - Pipedrive v2 activities list has NO type/subject filter — filter client-side; paginate by cursor.
 - HotHawk REST (https://api.hothawk.ai/v1, Bearer HOTHAWK_API_TOKEN; spec at
-  https://api.hothawk.ai/docs/public-json): `GET/POST /crm/leads`, `PATCH /crm/leads/{id}`,
-  `GET/POST /crm/companies` (companyId required on lead, from domain), `GET/POST /crm/lists`,
-  `PUT /crm/lists/{id}/leads {selectionType:"ids",leadIds}`, `POST /campaigns/{id}/lists
-  {listSelection:{selectionType:"ids",listIds}}` (idempotent append), `GET/POST /crm/tags`,
-  `PUT /crm/tags/{id}/leads`. Campaigns and subsequences share ids.
+  https://api.hothawk.ai/docs/public-json): `GET/POST /contacts-leads`,
+  `PATCH /contacts-leads/{id}`, `GET/POST /contacts-companies` (companyId required on lead, from
+  domain), `GET/POST /contacts-lists`, `PUT /contacts-lists/{id}/contacts
+  {selectionType:"ids",leadIds}`, `POST /campaigns/{id}/lists
+  {listSelection:{selectionType:"ids",listIds}}` (idempotent append), `GET/POST /contacts-tags`,
+  `PUT /contacts-tags/{id}/contacts`. Campaigns and subsequences share ids.
+  **Route rename 2026-07-30**: the whole `/crm/*` contacts family became `/contacts-*` and the
+  member sub-routes `/{id}/leads` became `/{id}/contacts`; bodies are unchanged and the old paths
+  now 404. This broke `hothawk_subscribe.py` outright and silently broke the call-load audit's
+  per-lead re-check (its `except` swallowed the 404, so every lead read as NOT loaded). Both are
+  fixed. `campaign-lead-uploader/scripts/hh_upload.py` still calls the dead `/crm/lists` and
+  `/crm/leads/bulk` (now `/contacts-lists`, `/contacts-imports/bulk`, `/contacts-imports/{id}`).
 - Pipedrive owner ids: Marcella 22638704, Jonathan 20845253, Sam 20845572, Ericka 23490137.
 - Field keys: Person ICP `1a8684b9333f530c727f9bff307391d3d200c897`, Job Title
   `ef54f66e8242d193fd263fa16ac83850271b2794`, LinkedIn `cf2472711fcbe2a22cef32aea82f1a5a555761a8`.

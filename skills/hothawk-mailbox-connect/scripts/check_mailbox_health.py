@@ -122,8 +122,17 @@ def get_token() -> str:
 
 
 def load_creds() -> dict:
-    """Optional credentials reference. Returns {} if absent (report-only still works)."""
+    """Optional credentials reference. Returns {} if absent (report-only still works).
+
+    NOTE (2026-07-31): CREDS_PATH does not currently exist on the Shared Drive, so --remediate is
+    a silent no-op. Per-mailbox passwords now live in the per-principal CSVs under
+    `G:\\Shared drives\\Capy Outreach\\Cold Email Accounts\\<Principal>\\` (mandated by the
+    siteground skill, "Output 3"). Rebuild this file from those, or point CREDS_PATH at them,
+    before trusting --remediate. The caller warns loudly rather than pretending to remediate.
+    """
     if not CREDS_PATH.exists():
+        print(f"warn: creds file not found at {CREDS_PATH} — reconnect/remediate unavailable",
+              file=sys.stderr)
         return {}
     try:
         return json.loads(CREDS_PATH.read_text(encoding="utf-8"))
@@ -263,6 +272,11 @@ def main() -> int:
 
     token = get_token()
     creds = load_creds()
+    if args.remediate and not creds:
+        # Reconnect is delete + re-add, so without passwords --remediate can only DELETE. Refuse
+        # rather than quietly destroying mailboxes we cannot put back.
+        sys.exit("error: --remediate requires credentials, but none were loaded "
+                 f"({CREDS_PATH} is missing). Re-run report-only, or restore the creds file.")
     state = load_state()
     seen_ids: set[str] = set()
 
