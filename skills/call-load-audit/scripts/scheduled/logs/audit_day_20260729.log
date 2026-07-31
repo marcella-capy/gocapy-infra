@@ -1,0 +1,11 @@
+﻿=== 2026-07-29T10:53:40.1142597-05:00 call-load-audit DAY START ===
+python.exe : ERROR: Pipedrive /persons -> connection failed after retries: <urlopen error [Errno 11001] getaddrinfo 
+failed>
+At C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-load-audit\scripts\scheduled\run_daily.ps1:12 
+char:1
++ & $py "$scripts\audit_call_loads.py" --mode day --discord 2>&1 | Out- ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (ERROR: Pipedriv...ddrinfo failed>:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+=== 2026-07-29T10:54:04.2185856-05:00 call-load-audit DAY END (exit 1) ===

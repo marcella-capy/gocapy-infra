@@ -4,26 +4,32 @@ artifact into HotHawk via the REST API (https://api.hothawk.ai/docs/public). MCP
 fallback only if these routes break.
 
 Flow per (workspace, sequence) group — list-based, per the desk's preferred pattern:
-  1. find-or-create each lead        GET /crm/leads?workspaceId&search=<email>
-                                     POST /crm/leads {workspaceId, email, name, jobTitle,
+  1. find-or-create each lead        GET /contacts-leads?workspaceId&search=<email>
+                                     POST /contacts-leads {workspaceId, email, name, jobTitle,
                                           phoneNumber, companyId}
      (lead create has no companyName field — the company is find-or-created first:
-      GET /crm/companies?workspaceId&search=<domain> / POST /crm/companies {workspaceId, name,
-      domain}, domain taken from the lead's email)
-  2. bulk-add leads to the list      PUT /crm/lists/{id}/leads {selectionType:"ids", leadIds}
+      GET /contacts-companies?workspaceId&search=<domain> / POST /contacts-companies {workspaceId,
+      name, domain}, domain taken from the lead's email)
+  2. bulk-add leads to the list      PUT /contacts-lists/{id}/contacts {selectionType:"ids", leadIds}
      (list find-or-create by name "voicemail-called-<principal>":
-      GET /crm/lists?workspaceId / POST /crm/lists {name, workspaceId})
+      GET /contacts-lists?workspaceId / POST /contacts-lists {name, workspaceId})
   3. append the list to the campaign POST /campaigns/{sequence_id}/lists
                                      {listSelection: {selectionType:"ids", listIds:[...]}}
      (idempotent — already-attached lists are skipped server-side)
-  4. tag the leads "voicemail"       PUT /crm/tags/{id}/leads {selectionType:"ids", leadIds}
-     (tag find-or-create: GET /crm/tags?workspaceId / POST /crm/tags {name, workspaceId})
+  4. tag the leads "voicemail"       PUT /contacts-tags/{id}/contacts {selectionType:"ids", leadIds}
+     (tag find-or-create: GET /contacts-tags?workspaceId / POST /contacts-tags {name, workspaceId})
 
-On success this also records the persons in _reconcile_state.json and auto-closes their remaining
-open Pipedrive call activities (same effect as reconcile_done_calls.py --mark-subscribed --apply).
+2026-07-30: HotHawk renamed the whole `/crm/*` contacts family to `/contacts-*`
+(`/crm/leads`→`/contacts-leads`, `/crm/companies`→`/contacts-companies`,
+`/crm/lists`→`/contacts-lists`, `/crm/tags`→`/contacts-tags`, and the member sub-routes
+`/{id}/leads`→`/{id}/contacts`). Request/response bodies are unchanged. The old paths now 404.
+
+On success this also records the persons in _reconcile_state.json (same effect as
+reconcile_done_calls.py --mark-subscribed --apply). Their remaining open Pipedrive call activities
+are LEFT OPEN (Marcella 2026-07-15); pass --close-siblings to mark them done as well.
 
 CLI:
-    python hothawk_subscribe.py --artifact _reconcile_20260707.json [--apply] [--delete-remaining]
+    python hothawk_subscribe.py --artifact _reconcile_20260707.json [--apply] [--close-siblings]
 
 Dry-run (default) resolves leads/lists/tags read-only and prints the plan without writing.
 """
@@ -89,39 +95,42 @@ def _rows(r):
 
 
 def _find_lead(ws: str, email: str) -> "dict | None":
-    for lead in _rows(_hh("GET", "/crm/leads", {"workspaceId": ws, "search": email, "take": 5})) or []:
+    for lead in _rows(_hh("GET", "/contacts-leads", {"workspaceId": ws, "search": email, "take": 5})) or []:
         if (lead.get("email") or "").strip().lower() == email.strip().lower():
             return lead
     return None
 
 
 def _find_or_create_company(ws: str, name: str, domain: str, apply: bool) -> "str | None":
-    for c in _rows(_hh("GET", "/crm/companies", {"workspaceId": ws, "search": domain, "take": 10})) or []:
+    for c in _rows(_hh("GET", "/contacts-companies", {"workspaceId": ws, "search": domain, "take": 10})) or []:
         if (c.get("domain") or "").strip().lower() == domain.lower():
             return c.get("id")
     if not apply:
         return None
-    c = _hh("POST", "/crm/companies", body={"workspaceId": ws, "name": name or domain, "domain": domain})
+    c = _hh("POST", "/contacts-companies", body={"workspaceId": ws, "name": name or domain, "domain": domain})
     return c.get("id")
 
 
 def _find_or_create(kind: str, ws: str, name: str, apply: bool) -> "str | None":
     """kind is 'lists' or 'tags'; match by exact name (case-insensitive)."""
-    for row in _rows(_hh("GET", f"/crm/{kind}", {"workspaceId": ws})) or []:
+    for row in _rows(_hh("GET", f"/contacts-{kind}", {"workspaceId": ws})) or []:
         if (row.get("name") or "").strip().lower() == name.lower():
             return row.get("id")
     if not apply:
         return None
-    return _hh("POST", f"/crm/{kind}", body={"name": name, "workspaceId": ws}).get("id")
+    return _hh("POST", f"/contacts-{kind}", body={"name": name, "workspaceId": ws}).get("id")
 
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--artifact", required=True, help="reconcile artifact filename (in scripts/)")
     ap.add_argument("--apply", action="store_true")
-    ap.add_argument("--delete-remaining", action="store_true")
-    ap.add_argument("--no-close-siblings", action="store_true",
-                    help="record subscribed state only; leave the person's other open call tasks untouched")
+    ap.add_argument("--close-siblings", action="store_true",
+                    help="ALSO mark each subscribed person's remaining open call tasks done. OFF by "
+                         "default (Marcella 2026-07-15: sibling call tasks stay open).")
+    ap.add_argument("--delete-remaining", action="store_true",
+                    help="with --close-siblings, delete the siblings instead of marking them done")
+    ap.add_argument("--no-close-siblings", action="store_true", help=argparse.SUPPRESS)  # no-op
     a = ap.parse_args()
 
     path = Path(a.artifact) if Path(a.artifact).is_absolute() else HERE / a.artifact
@@ -159,7 +168,7 @@ def main() -> int:
                 continue
             domain = e["email"].split("@", 1)[1]
             company_id = _find_or_create_company(ws, e["company_name"], domain, apply=True)
-            lead = _hh("POST", "/crm/leads", body={
+            lead = _hh("POST", "/contacts-leads", body={
                 "workspaceId": ws,
                 "email": e["email"],
                 "name": f"{e['first_name']} {e['last_name']}".strip(),
@@ -168,7 +177,7 @@ def main() -> int:
                 "companyId": company_id,
             })
             # create ignores name-splitting — first/last must be PATCHed on (needed for {{firstName}})
-            _hh("PATCH", f"/crm/leads/{lead['id']}",
+            _hh("PATCH", f"/contacts-leads/{lead['id']}",
                 body={"firstName": e["first_name"], "lastName": e["last_name"]})
             print(f"  created lead {lead.get('id')}: {who}")
             lead_ids.append(lead["id"])
@@ -181,7 +190,7 @@ def main() -> int:
             subscribed_pids.extend(group_pids)
             continue
 
-        _hh("PUT", f"/crm/lists/{list_id}/leads", body={"selectionType": "ids", "leadIds": lead_ids})
+        _hh("PUT", f"/contacts-lists/{list_id}/contacts", body={"selectionType": "ids", "leadIds": lead_ids})
         print(f"  bulk-added {len(lead_ids)} leads to list '{list_name}' ({list_id})")
         r = _hh("POST", f"/campaigns/{seq}/lists",
                 body={"listSelection": {"selectionType": "ids", "listIds": [list_id]}}, fatal=False)
@@ -215,13 +224,13 @@ def main() -> int:
             continue
         else:
             print(f"  enrolled {len(lead_ids)} leads into campaign {seq}")
-        _hh("PUT", f"/crm/tags/{tag_id}/leads", body={"selectionType": "ids", "leadIds": lead_ids})
+        _hh("PUT", f"/contacts-tags/{tag_id}/contacts", body={"selectionType": "ids", "leadIds": lead_ids})
         print(f"  tagged {len(lead_ids)} leads '{TAG_NAME}'")
         subscribed_pids.extend(group_pids)
 
     if a.apply and subscribed_pids:
         _mark_subscribed(subscribed_pids, a.delete_remaining, apply=True,
-                         close_siblings=not a.no_close_siblings)
+                         close_siblings=a.close_siblings)
     status = "ok" if not failed_groups else "partial"
     print(f"RESULT: {status} - {len(subscribed_pids)} leads "
           f"{'pushed to list/campaign/tag' if a.apply else 'planned (DRY-RUN)'}"

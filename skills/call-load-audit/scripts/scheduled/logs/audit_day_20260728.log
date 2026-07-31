@@ -1,0 +1,32 @@
+﻿=== 2026-07-28T09:31:14.5291071-05:00 call-load-audit DAY START ===
+≡ƒô₧ Call ΓåÆ HotHawk Load Audit ΓÇö Daily ΓÇö 2026-07-27
+ΓÜá∩╕Å 10 NOT loaded  ┬╖  10 calls / 10 people  ┬╖  0 loaded, 10 missing
+```
+principal       User          Company Name        # of Calls
+--------------  ------------  ------------------  ----------
+alpha-grainger  Ericka        Karma Automotive    4
+shellcast       Ericka        Spirit Aerosystems  6
+-               -             -                   -
+                TOTAL Ericka                      10
+```
+ΓÜá∩╕Å NOT LOADED (10) ΓÇö done calls that never reached HotHawk:
+```
+principal       User    Company             Person                                              why
+--------------  ------  ------------------  --------------------------------------------------  ---------------------------------------------
+alpha-grainger  Ericka  Karma Automotive    Kurt Caylor <kcaylor@karmaautomotive.com>           not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Karma Automotive    Steven Uslander <suslander@karmaautomotive.com>     not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Karma Automotive    Randy Mircheff <rmircheff@karmaautomotive.com>      not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Karma Automotive    Alex Chu <achu@karmaautomotive.com>                 not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Spirit Aerosystems  Cirs Alber <cris.w.alber@spiritaero.com>            not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Spirit Aerosystems  Alan Lies <alan.lies@spiritaero.com>                not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Spirit Aerosystems  Rebecca Williams <rebecca.williams@spiritaero.com>  not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Spirit Aerosystems  Preston Crawford <preston.crawford@spiritaero.com>  not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Spirit Aerosystems  Brian Garrels <brian.garrels@spiritaero.com>        not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Spirit Aerosystems  Susan Ewing <susan.ewing@spiritaero.com>            not-enrolled (on list only / draft campaign?)
+```
+Fix: activate/enroll the campaign in HotHawk, or re-run the reconcile (`reconcile_done_calls.py --since <date> --apply`) for these people.
+
+discord: posted
+
+RESULT: ok - {"mode": "day", "window": ["2026-07-27", "2026-07-27"], "total_calls": 10, "people": 10, "loaded": 0, "missing": 10}
+=== 2026-07-28T09:43:33.4380212-05:00 call-load-audit DAY END (exit 0) ===

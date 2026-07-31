@@ -1,0 +1,36 @@
+﻿=== 2026-07-30T09:03:23.9340094-05:00 call-load-audit DAY START ===
+≡ƒô₧ Call ΓåÆ HotHawk Load Audit ΓÇö Daily ΓÇö 2026-07-29
+ΓÜá∩╕Å 13 NOT loaded  ┬╖  13 calls / 13 people  ┬╖  0 loaded, 13 missing
+```
+principal       User          Company Name        # of Calls
+--------------  ------------  ------------------  ----------
+alpha-grainger  Ericka        Karma Automotive    4
+patriot-forge   Ericka        Lam Research        5
+shellcast       Ericka        Spirit Aerosystems  4
+-               -             -                   -
+                TOTAL Ericka                      13
+```
+ΓÜá∩╕Å NOT LOADED (13) ΓÇö done calls that never reached HotHawk:
+```
+principal       User    Company             Person                                            why
+--------------  ------  ------------------  ------------------------------------------------  ---------------------------------------------
+alpha-grainger  Ericka  Karma Automotive    Kurt Caylor <kcaylor@karmaautomotive.com>         not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Karma Automotive    Steven Uslander <suslander@karmaautomotive.com>   not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Karma Automotive    Charles Bak <cbak@karmaautomotive.com>            not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Karma Automotive    Alex Chu <achu@karmaautomotive.com>               not-enrolled (on list only / draft campaign?)
+patriot-forge   Ericka  Lam Research        Patrick Hunt <patrick.hunt@lamresearch.com>       not-enrolled (on list only / draft campaign?)
+patriot-forge   Ericka  Lam Research        Rachel Gentile <rachael.gentile@lamresearch.com>  not-enrolled (on list only / draft campaign?)
+patriot-forge   Ericka  Lam Research        Cindy Mayhew <cindy.mayhew@lamresearch.com>       not-enrolled (on list only / draft campaign?)
+patriot-forge   Ericka  Lam Research        Amy Anderson <amy.anderson@lamresearch.com>       not-enrolled (on list only / draft campaign?)
+patriot-forge   Ericka  Lam Research        Bill Bingham <bill.bingham@lamresearch.com>       not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Spirit Aerosystems  Brian Groce <brian.a.groce@spiritaero.com>        not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Spirit Aerosystems  Kara Hamilton <kara.hamilton@spiritaero.com>      not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Spirit Aerosystems  Marieta Sparks <marieta.sparks@spiritaero.com>    not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Spirit Aerosystems  Linda Crownover <linda.crownover@spiritaero.com>  not-enrolled (on list only / draft campaign?)
+```
+Fix: activate/enroll the campaign in HotHawk, or re-run the reconcile (`reconcile_done_calls.py --since <date> --apply`) for these people.
+
+discord: posted
+
+RESULT: ok - {"mode": "day", "window": ["2026-07-29", "2026-07-29"], "total_calls": 13, "people": 13, "loaded": 0, "missing": 13}
+=== 2026-07-30T09:03:46.9187072-05:00 call-load-audit DAY END (exit 0) ===

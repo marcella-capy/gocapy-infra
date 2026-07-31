@@ -9,10 +9,11 @@ description: >
   "set up accounts for [client]", "create email accounts for these domains",
   "run the siteground skill for [client]", or provides a client name plus a
   list of sending domains. Input is the client name + domains. Output is a
-  plain email + password list grouped by domain, plus one self-executing
+  plain email + password list grouped by domain, one self-executing
   browser-console JS snippet per domain that creates the accounts in SiteGround
-  Site Tools. For display name updates, use the siteground-display-names skill
-  instead.
+  Site Tools, and a CSV of the accounts saved to the shared drive at
+  G:\Shared drives\Capy Outreach\Cold Email Accounts\<Principal>\. For display
+  name updates, use the siteground-display-names skill instead.
 ---
 
 # SiteGround Cold Email Account Setup
@@ -217,6 +218,30 @@ pastes that domain's script, waits for `🎉 Done!`, then moves to the next.
 - **One domain per script** — never combine domains
 - **Prefix only** — enter just the prefix; SiteGround auto-appends `@domain`
 - **React-compatible** — always use the `setReactInput` helper
+
+---
+
+## Output 3: Save a CSV to the Shared Drive
+
+After presenting Outputs 1 and 2, always save a CSV of the accounts to:
+
+`G:\Shared drives\Capy Outreach\Cold Email Accounts\<Principal>\`
+
+- **Create the principal's folder if it doesn't already exist** (existing
+  folders use short codes like `TMX`, `GF`, `FC`, `VRC`, `LNP`, `HV`,
+  `Shellcast`, `AG`, `Patriot` — check for an existing folder before making a
+  new one; use the full principal name if no existing short code applies).
+- **Filename:** `<FOLDER>_<MM.DD.YY>_<BDR first name>.csv` (date = the day the
+  mailboxes were created).
+- **Columns:** `first_name,last_name,email,password,smtp_host,smtp_port,imap_host,imap_port`
+  — one row per mailbox (every prefix × every domain for that principal).
+  Do not include PlusVibe/warmup-specific columns (tags, daily_limit, rampup
+  settings, etc.) here — this CSV is a record of the mailboxes themselves,
+  not a PlusVibe upload file; warmup config is generated separately in the
+  `mailbox-onboarder` skill's PlusVibe stage.
+
+This makes the account list persist for later reference (e.g. "where are the
+new mailbox credentials?") instead of only existing in chat.
 
 ---
 

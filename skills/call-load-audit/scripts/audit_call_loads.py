@@ -152,9 +152,11 @@ def lead_enrolled(ws_id: str, email: str, token: str) -> bool:
     freshly enrolled at `not_contacted` that the send-queue endpoint (enrolled_emails) hasn't picked
     up yet. `campaignStatus == None` = on-list-only / draft = a real miss. Used only to re-verify the
     handful the bulk send-queue check flags as missing, so the per-lead call cost stays small.
-    The search endpoint is authoritative here (it updates ahead of the stale GET /crm/leads/{id})."""
+    The search endpoint is authoritative here (it updates ahead of the stale GET
+    /contacts-leads/{id}). 2026-07-30: this route moved from /crm/leads to /contacts-leads —
+    while it 404'd, the except below swallowed it and every lead re-checked as NOT loaded."""
     try:
-        d = _hh_get("/crm/leads?" + urllib.parse.urlencode(
+        d = _hh_get("/contacts-leads?" + urllib.parse.urlencode(
             {"workspaceId": ws_id, "search": email, "take": 5}), token)
     except (urllib.error.HTTPError, urllib.error.URLError, ValueError):
         return False
@@ -244,11 +246,24 @@ def build_report(mode: str, today: _dt.date) -> "tuple[str, dict]":
         roster = "(no done calls in window)"
 
     total_calls = len(done)
-    head = "✅ all loaded" if not missing else f"⚠️ {len(missing)} NOT loaded"
+    # Zero loaded with calls on the board is a PIPELINE failure, not the usual trickle of
+    # no-email misses — say so unmistakably. The 2026-07-28..30 outage read as a routine
+    # "⚠️ N NOT loaded" for three days running and nobody looked.
+    systemic = bool(people) and loaded_ct == 0
+    if systemic:
+        head = f"\U0001f6a8 PIPELINE FAILURE — 0 of {len(people)} people loaded"
+    elif missing:
+        head = f"⚠️ {len(missing)} NOT loaded"
+    else:
+        head = "✅ all loaded"
     lines = [f"\U0001f4de Call → HotHawk Load Audit — {label}",
              f"{head}  ·  {total_calls} calls / {len(people)} people  ·  "
              f"{loaded_ct} loaded, {len(missing)} missing",
              "```", roster, "```"]
+    if systemic:
+        lines.insert(2, "**Not one done call reached HotHawk in this window.** That is the "
+                        "reconcile being broken, not a data problem — check the CallTaskReconcile "
+                        "runner log and whether the HotHawk API routes moved again.")
 
     if missing:
         mrows = sorted(([m["principal"], m["user"], m["company"],
@@ -262,7 +277,7 @@ def build_report(mode: str, today: _dt.date) -> "tuple[str, dict]":
     roster_only = "\n".join([f"\U0001f4de Call Roster — {label}", "```", roster, "```"])
     meta = {"mode": mode, "window": [start.isoformat(), end.isoformat()],
             "total_calls": total_calls, "people": len(people),
-            "loaded": loaded_ct, "missing": len(missing)}
+            "loaded": loaded_ct, "missing": len(missing), "systemic": systemic}
     return "\n".join(lines), meta, roster_only
 
 
@@ -309,6 +324,12 @@ def main() -> int:
     if a.discord:
         post_discord(out)
         print("\ndiscord: posted")
+    # Exit 2 on a pipeline failure so the scheduled runner's failure alert fires too — the Discord
+    # report alone proved easy to scroll past. A crash (exit 1) alerts through the same path.
+    if meta.get("systemic"):
+        print(f"\nRESULT: error - 0 of {meta['people']} people loaded; reconcile pipeline is down "
+              f"- {json.dumps(meta)}")
+        return 2
     print(f"\nRESULT: ok - {json.dumps(meta)}")
     return 0
 

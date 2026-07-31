@@ -1,0 +1,28 @@
+﻿=== 2026-07-31T13:35:14.6794495-05:00 mailbox-health START (args: '') ===
+py.exe : warn: creds file not found at G:\Shared drives\Capy Outreach\hothawk-mailbox-creds.json — reconnect/remediate 
+unavailable
+At C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\hothawk-mailbox-connect\scripts\scheduled\run_health
+_check.ps1:31 char:1
++ & py $script $argline.Split(" ", [StringSplitOptions]::RemoveEmptyEnt ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warn: creds fil...ate unavailable:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+🩺 HotHawk mailbox health — 2026-07-31  (report-only)
+343 mailboxes · 206 connected · 0 disconnected · 137 gathering
+
+**General Foundry** — 31 total · 31 connected · 0 disconnected · 0 gathering
+**Tech-Max** — 42 total · 42 connected · 0 disconnected · 0 gathering
+**Patriot** — 55 total · 55 connected · 0 disconnected · 0 gathering
+**VRC** — 32 total · 32 connected · 0 disconnected · 0 gathering
+**HV OpCos** — 19 total · 0 connected · 0 disconnected · 19 gathering
+**Franklin Casting** — 28 total · 0 connected · 0 disconnected · 28 gathering
+**Shellcast** — 33 total · 0 connected · 0 disconnected · 33 gathering
+**Megatech** — 1 total · 0 connected · 0 disconnected · 1 gathering
+**LNP Machining** — 21 total · 21 connected · 0 disconnected · 0 gathering
+**Capy** — 26 total · 25 connected · 0 disconnected · 1 gathering
+**Alpha Grainger** — 54 total · 0 connected · 0 disconnected · 54 gathering
+**ATW** — 1 total · 0 connected · 0 disconnected · 1 gathering
+
+✅ All accounts healthy.
+=== 2026-07-31T13:35:22.6502877-05:00 mailbox-health END (exit 0) ===

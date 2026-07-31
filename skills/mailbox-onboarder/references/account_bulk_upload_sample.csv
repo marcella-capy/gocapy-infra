@@ -1,0 +1,4 @@
+first_name,last_name,email,daily_limit,username,password,imap_host,imap_port,smtp_host,smtp_port,smtp_username,smtp_password,tags,min_interval,enable_camp_rampup,camp_rampup_start,camp_rampup_increment,enable_warmup,warmup_daily_limit,enable_warmup_rampup,warmup_rampup_start,warmup_rampup_increment
+John,Doe,johndoe@example.com,30,johndoe@example.com,PlainPassword123!,imap.domain.com,143,smtp.domain.com,587,,,Tag A;Tag B,10,yes,10,2,yes,15,yes,3,1
+Jane,Smith,jane@pipl.ai,30,jane@pipl.ai,password1234,imap.pipl.ai,993,smtp.domain.com,465,,,Tag C,,no,,,no,10,no,,
+Average,Joe,joe@domain.com,25,joe@domain.com,abcd1234,imap.server.com,143,smtp.domain.com,25,login@smtp-only.com,password4smtp,,,,,,,,,,
