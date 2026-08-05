@@ -1,0 +1,73 @@
+{
+  "date": "2026-07-29",
+  "date_end": "2026-08-05",
+  "done_calls": 105,
+  "to_subscribe": [
+    {
+      "person_id": 26245,
+      "principal": "patriot-forge",
+      "first_name": "Bill",
+      "last_name": "Rosana",
+      "email": "william.rosana@lamresearch.com",
+      "company_name": "Lam Research",
+      "phone": "5105725763",
+      "title": "Supply Chain Business Manager Senior, Director, Supply Chain, Director, Supply Chain",
+      "workspace_id": "95997af8-edf7-4a97-8227-cb826bc3e46d",
+      "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+      "done_activity_id": 76139
+    },
+    {
+      "person_id": 60474,
+      "principal": "patriot-forge",
+      "first_name": "Nicholas",
+      "last_name": "Hattori",
+      "email": "nicholas.hattori@lamresearch.com",
+      "company_name": "Lam Research",
+      "phone": "(925) 249-8173",
+      "title": "Manager, Strategic Commodity",
+      "workspace_id": "95997af8-edf7-4a97-8227-cb826bc3e46d",
+      "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+      "done_activity_id": 76142
+    },
+    {
+      "person_id": 66924,
+      "principal": "patriot-forge",
+      "first_name": "Gina",
+      "last_name": "Pistochini",
+      "email": "gina.pistochini@lamresearch.com",
+      "company_name": "Lam Research",
+      "phone": "+19258585760",
+      "title": "Program/Project Manager - Supply Chain Network Planning",
+      "workspace_id": "95997af8-edf7-4a97-8227-cb826bc3e46d",
+      "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+      "done_activity_id": 76220
+    },
+    {
+      "person_id": 66972,
+      "principal": "patriot-forge",
+      "first_name": "Cole",
+      "last_name": "Porter",
+      "email": "cole.porter@lamresearch.com",
+      "company_name": "Lam Research",
+      "phone": "+14088590608",
+      "title": "Supply Chain Business Manager",
+      "workspace_id": "95997af8-edf7-4a97-8227-cb826bc3e46d",
+      "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+      "done_activity_id": 76223
+    },
+    {
+      "person_id": 67037,
+      "principal": "patriot-forge",
+      "first_name": "Selin",
+      "last_name": "Konur",
+      "email": "selin.konur@lamresearch.com",
+      "company_name": "Lam Research",
+      "phone": "+15416029778",
+      "title": "Manager, Supply Chain",
+      "workspace_id": "95997af8-edf7-4a97-8227-cb826bc3e46d",
+      "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+      "done_activity_id": 76226
+    }
+  ],
+  "skipped": []
+}

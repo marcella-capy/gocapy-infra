@@ -1,0 +1,74 @@
+﻿=== 2026-08-04T08:20:01.1889797-05:00 call-task-reconcile START ===
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\reconcile_done_calls.py --since 2026-07-30
+  to-subscribe: Charles Montgomery <chuck.montgomery@spiritaero.com> (Spirit Aerosystems) -> seq 7df72ed5-ee2b-48d2-ad2e-da026cdc3963 [shellcast]
+  to-subscribe: Sharalyn Hamm <sharalyn.m.hamm@spiritaero.com> (Spirit Aerosystems) -> seq 7df72ed5-ee2b-48d2-ad2e-da026cdc3963 [shellcast]
+  to-subscribe: Mark McBride <mark.a.mcbride@spiritaero.com> (Spirit Aerosystems) -> seq 7df72ed5-ee2b-48d2-ad2e-da026cdc3963 [shellcast]
+  to-subscribe: Kayla Legrande <kayla.m.legrande@spiritaero.com> (Spirit Aerosystems) -> seq 7df72ed5-ee2b-48d2-ad2e-da026cdc3963 [shellcast]
+  to-subscribe: Cheryl Schmeidler <cheryl.k.schmeidler@spiritaero.com> (Spirit Aerosystems) -> seq 7df72ed5-ee2b-48d2-ad2e-da026cdc3963 [shellcast]
+  to-subscribe: Dana Branam <dana.branam@spiritaero.com> (Spirit Aerosystems) -> seq 7df72ed5-ee2b-48d2-ad2e-da026cdc3963 [shellcast]
+  to-subscribe: Darren Riley <darren.a.riley@spiritaero.com> (Spirit Aerosystems) -> seq 7df72ed5-ee2b-48d2-ad2e-da026cdc3963 [shellcast]
+  to-subscribe: Leroy Leep <leroy.leep@spiritaero.com> (Spirit Aerosystems) -> seq 7df72ed5-ee2b-48d2-ad2e-da026cdc3963 [shellcast]
+  to-subscribe: Candis Moore <candis.l.moore@spiritaero.com> (Spirit Aerosystems) -> seq 7df72ed5-ee2b-48d2-ad2e-da026cdc3963 [shellcast]
+  to-subscribe: Lesa Coverdale <lesa.coverdale@spiritaero.com> (Spirit Aerosystems) -> seq 7df72ed5-ee2b-48d2-ad2e-da026cdc3963 [shellcast]
+  to-subscribe: Alicia Studemine <alicia.r.studemine@spiritaero.com> (Spirit Aerosystems) -> seq 7df72ed5-ee2b-48d2-ad2e-da026cdc3963 [shellcast]
+  to-subscribe: Randall Crutchfield <randall.crutchfield@spiritaero.com> (Spirit Aerosystems) -> seq 7df72ed5-ee2b-48d2-ad2e-da026cdc3963 [shellcast]
+  to-subscribe: Reiner Kulkowski <invalid> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Mario Denning <mario.denning@lamresearch.com> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Lance Dyrdahl <lance.dyrdahl@lamresearch.com> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Kurt Kern <kurt.kern@lamresearch.com> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Ken Plamondon <ken.plamondon@lamresearch.com> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Gregory Evans <greg.evans@lamresearch.com> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Christopher Holguin <christopher.holguin@lamresearch.com> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Arya Mortazavi <arya.mortazavi@lamresearch.com> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Abhishek Naidu <abhishek.naidu@lamrc.com> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Anibal Valadas <anibal.valadas@lamresearch.com> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Shantanu Chakraborty <shantanu.chakraborty@lamresearch.com> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Jingyan Ginny Guan <jingyan.guan@lamresearch.com> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Rich Herrera <richard.herrera@lamresearch.com> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Lugenia Joyce <lugenia.joyce@lamresearch.com> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: William Kincaid <will.kincaid@lamresearch.com> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Khoi Dinh <khoi.dinh@lamresearch.com> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+RESULT: ok - 87 done calls on 2026-07-30..2026-08-04, 28 to-subscribe, 0 skipped -> _reconcile_20260730-20260804.json
+
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\hothawk_subscribe.py --artifact _reconcile_20260730-20260804.json --apply
+  created lead f0ece214-878e-4e68-90e8-2be7c0dead54: Charles Montgomery <chuck.montgomery@spiritaero.com> (Spirit Aerosystems)
+  created lead a0b1eceb-d7f0-4fd5-8ec6-adc5f8f02292: Sharalyn Hamm <sharalyn.m.hamm@spiritaero.com> (Spirit Aerosystems)
+  created lead 8e679cc1-e113-4725-b644-e7aa3706361e: Mark McBride <mark.a.mcbride@spiritaero.com> (Spirit Aerosystems)
+  created lead 41352a4b-9511-4280-9f2c-c11ea81c66c5: Kayla Legrande <kayla.m.legrande@spiritaero.com> (Spirit Aerosystems)
+  created lead b1f1c052-9292-4304-a5a7-93b08f309218: Cheryl Schmeidler <cheryl.k.schmeidler@spiritaero.com> (Spirit Aerosystems)
+  created lead d744b5bb-0950-4a2c-bdb6-666a5194fe3f: Dana Branam <dana.branam@spiritaero.com> (Spirit Aerosystems)
+  created lead 04e411e6-0e8e-493c-bdf8-b60d26cfbbd8: Darren Riley <darren.a.riley@spiritaero.com> (Spirit Aerosystems)
+  created lead 9d1b9170-3fb1-4d3d-af32-7a810aff0dd9: Leroy Leep <leroy.leep@spiritaero.com> (Spirit Aerosystems)
+  created lead bd021518-7c27-493d-ba65-e5b4582a8830: Candis Moore <candis.l.moore@spiritaero.com> (Spirit Aerosystems)
+  created lead b73816bb-4325-48c6-ab2e-0005081a325a: Lesa Coverdale <lesa.coverdale@spiritaero.com> (Spirit Aerosystems)
+  created lead 8d880437-ef4d-4590-ac63-4beec40c75fc: Alicia Studemine <alicia.r.studemine@spiritaero.com> (Spirit Aerosystems)
+  created lead aa98b8b8-99e7-4af9-8001-09f60479009f: Randall Crutchfield <randall.crutchfield@spiritaero.com> (Spirit Aerosystems)
+  bulk-added 12 leads to list 'voicemail-called-shellcast' (40a92485-a99a-4a5b-a939-7c0752541bba)
+  appended list to campaign 7df72ed5-ee2b-48d2-ad2e-da026cdc3963
+  enrolled 12 leads into campaign 7df72ed5-ee2b-48d2-ad2e-da026cdc3963
+  tagged 12 leads 'voicemail'
+  SKIP invalid email (fix in Pipedrive person 26051): Reiner Kulkowski <invalid> (Lam Research)
+  created lead 6b8549b4-02f9-4516-9656-dcf78686458b: Mario Denning <mario.denning@lamresearch.com> (Lam Research)
+  created lead 498091fb-75ac-4bc9-9392-ece05fb887e0: Lance Dyrdahl <lance.dyrdahl@lamresearch.com> (Lam Research)
+  created lead 4ec48b5b-afd9-4657-b1f6-66a176d3dd9d: Kurt Kern <kurt.kern@lamresearch.com> (Lam Research)
+  created lead 8dbdfd7a-b4f4-4a66-a0c9-340b5b9c0714: Ken Plamondon <ken.plamondon@lamresearch.com> (Lam Research)
+  created lead 6c51ca94-ea3d-4c46-bf13-1347cf5317c7: Gregory Evans <greg.evans@lamresearch.com> (Lam Research)
+  created lead 160424be-d07c-44ed-83c6-67d85e959c1e: Christopher Holguin <christopher.holguin@lamresearch.com> (Lam Research)
+  created lead 94ddb4bb-b6b4-4b79-93c4-04c6958ae9c4: Arya Mortazavi <arya.mortazavi@lamresearch.com> (Lam Research)
+  created lead bff25e4d-8239-4915-aebc-b33253d3939b: Abhishek Naidu <abhishek.naidu@lamrc.com> (Lam Research)
+  created lead f35cb6f2-4c71-4d84-bdf0-ddb1273449c0: Anibal Valadas <anibal.valadas@lamresearch.com> (Lam Research)
+  created lead f0626243-e027-419f-a40d-0ffe909abf20: Shantanu Chakraborty <shantanu.chakraborty@lamresearch.com> (Lam Research)
+  created lead a0d375ae-74ba-47bd-b9fc-a24237e9a481: Jingyan Ginny Guan <jingyan.guan@lamresearch.com> (Lam Research)
+  created lead ce6241eb-9333-421a-8448-f8c8a323bff2: Rich Herrera <richard.herrera@lamresearch.com> (Lam Research)
+  created lead a6e6a36c-e172-40d8-8bc5-7739811863c7: Lugenia Joyce <lugenia.joyce@lamresearch.com> (Lam Research)
+  created lead ee9bd655-a914-4571-b891-71e9cc3c3abb: William Kincaid <will.kincaid@lamresearch.com> (Lam Research)
+  created lead ed5897ec-ad62-4bbc-af56-ee4ebb79475b: Khoi Dinh <khoi.dinh@lamresearch.com> (Lam Research)
+  bulk-added 15 leads to list 'voicemail-called-patriot-forge' (9460d74c-59e5-4184-9243-e8d9937fb60a)
+  appended list to campaign fa1af5bd-8d43-44a0-ac60-d92d642d6d92
+  enrolled 15 leads into campaign fa1af5bd-8d43-44a0-ac60-d92d642d6d92
+  tagged 15 leads 'voicemail'
+RESULT: ok - marked 27 subscribed, 0 sibling activities auto-closed
+RESULT: ok - 27 leads pushed to list/campaign/tag
+
+RESULT: ok - 28 people loaded into HotHawk since 2026-07-30 (_reconcile_20260730-20260804.json)
+=== 2026-08-04T08:21:15.1445681-05:00 call-task-reconcile END (exit 0) ===

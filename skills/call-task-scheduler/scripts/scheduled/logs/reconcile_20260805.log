@@ -1,0 +1,26 @@
+﻿=== 2026-08-05T09:40:07.3631092-05:00 call-task-reconcile START ===
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\reconcile_done_calls.py --since 2026-07-31
+  to-subscribe: Reiner Kulkowski <invalid> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Bill Rosana <william.rosana@lamresearch.com> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Nicholas Hattori <nicholas.hattori@lamresearch.com> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Gina Pistochini <gina.pistochini@lamresearch.com> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Cole Porter <cole.porter@lamresearch.com> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Selin Konur <selin.konur@lamresearch.com> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+RESULT: ok - 33 done calls on 2026-07-31..2026-08-05, 6 to-subscribe, 0 skipped -> _reconcile_20260731-20260805.json
+
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\hothawk_subscribe.py --artifact _reconcile_20260731-20260805.json --apply
+  SKIP invalid email (fix in Pipedrive person 26051): Reiner Kulkowski <invalid> (Lam Research)
+  found lead 78956dba-a5f2-4c48-9663-fb5811d4c805: Bill Rosana <william.rosana@lamresearch.com> (Lam Research)
+  created lead 5046699c-4205-40fd-8c24-5f66926f63b7: Nicholas Hattori <nicholas.hattori@lamresearch.com> (Lam Research)
+  created lead 6bb3b063-b7e5-454e-b069-3891a3f7f3e5: Gina Pistochini <gina.pistochini@lamresearch.com> (Lam Research)
+  created lead 3e58418e-80ca-4ea7-b88c-c066f19f422a: Cole Porter <cole.porter@lamresearch.com> (Lam Research)
+  created lead 4d95db7c-df33-4b64-bbcc-cbd6a5ba438d: Selin Konur <selin.konur@lamresearch.com> (Lam Research)
+  bulk-added 5 leads to list 'voicemail-called-patriot-forge' (9460d74c-59e5-4184-9243-e8d9937fb60a)
+  appended list to campaign fa1af5bd-8d43-44a0-ac60-d92d642d6d92
+  enrolled 5 leads into campaign fa1af5bd-8d43-44a0-ac60-d92d642d6d92
+  tagged 5 leads 'voicemail'
+RESULT: ok - marked 5 subscribed, 0 sibling activities auto-closed
+RESULT: ok - 5 leads pushed to list/campaign/tag
+
+RESULT: ok - 6 people loaded into HotHawk since 2026-07-31 (_reconcile_20260731-20260805.json)
+=== 2026-08-05T09:49:15.1151808-05:00 call-task-reconcile END (exit 0) ===

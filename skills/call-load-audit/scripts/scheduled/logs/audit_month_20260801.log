@@ -1,0 +1,262 @@
+﻿=== 2026-08-01T08:24:11.5830661-05:00 call-load-audit MONTH START ===
+≡ƒô₧ Call ΓåÆ HotHawk Load Audit ΓÇö Monthly ΓÇö July 2026
+ΓÜá∩╕Å 159 NOT loaded  ┬╖  1056 calls / 510 people  ┬╖  351 loaded, 159 missing
+```
+principal        User          Company Name                            # of Calls
+---------------  ------------  --------------------------------------  ----------
+alpha-grainger   Ericka        Beretta USA                             4
+alpha-grainger   Ericka        Karma Automotive                        32
+alpha-grainger   Ericka        Ruger                                   8
+alpha-grainger   Ericka        Savage Arms                             5
+alpha-grainger   Ericka        Sig Sauer                               14
+alpha-grainger   Mark          Smiths Interconnect                     3
+franklin         Ericka        Flowserve                               19
+franklin         Ericka        X-Energy                                26
+general-foundry  Ericka        Bloom Energy                            36
+general-foundry  Ericka        Chart Industries                        7
+general-foundry  Ericka        Plug Power                              3
+harvey-vogel     Ericka        Astronics                               1
+harvey-vogel     Ericka        virgingalactic.com                      9
+lnp              Ericka        AEVEX Aerospace                         7
+lnp              Ericka        Blue Origin                             1
+lnp              Ericka        Frontgrade Technologies                 4
+lnp              Ericka        Sierra Nevada Corporation               82
+lnp              Mark          Moog                                    15
+lnp              Mark          Rocket Lab                              9
+patriot-forge    Ericka        Lam Research                            27
+patriot-forge    Ericka        Lawrence Livermore National Laboratory  47
+patriot-forge    Mark          Arconic Corporation                     3
+patriot-forge    Mark          Collins Aerospace                       37
+patriot-forge    Mark          Fluor Corporation                       6
+patriot-forge    Mark          General Dynamics Mission Systems        39
+patriot-forge    Mark          Lockheed Martin                         70
+patriot-forge    Mark          Northrop Grumman                        61
+patriot-forge    Mark          PCC Structurals, Inc.                   40
+patriot-forge    Mark          Safran                                  52
+patriot-forge    Mark          Woodward                                10
+shellcast        Ericka        Leonardo DRS                            88
+shellcast        Ericka        Mercury Systems                         41
+shellcast        Ericka        Sierra Space                            18
+shellcast        Ericka        Spirit Aerosystems                      42
+shellcast        Ericka        Teledyne FLIR                           52
+shellcast        Ericka        Terran Orbital (Part of LMCO)           6
+tmx              Ericka        BWXT                                    12
+tmx              Ericka        Helion Energy Inc                       19
+tmx              Ericka        Hutchinson                              8
+tmx              Ericka        Woodward                                82
+vrc              Ericka        AEVEX Aerospace                         1
+vrc              Ericka        Donaldson Company                       6
+vrc              Ericka        Graco                                   3
+vrc              Ericka        RENK America                            1
+-                -             -                                       -
+                 TOTAL Ericka                                          711
+                 TOTAL Mark                                            345
+```
+ΓÜá∩╕Å NOT LOADED (159) ΓÇö done calls that never reached HotHawk:
+```
+principal       User    Company                        Person                                                       why
+--------------  ------  -----------------------------  -----------------------------------------------------------  ---------------------------------------------
+alpha-grainger  Ericka  Beretta USA                    John Goodwin <jgoodwin@berettausa.com>                       not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Beretta USA                    Felicia Beasley <fbeasley@berettausa.com>                    not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Karma Automotive               Kurt Caylor <kcaylor@karmaautomotive.com>                    not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Karma Automotive               Juan Lalinde <jlalinde@karmaautomotive.com>                  not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Karma Automotive               Steven Uslander <suslander@karmaautomotive.com>              not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Karma Automotive               Dan Yoon <dyoon@karmaautomotive.com>                         not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Karma Automotive               Yunni Zhai <yzhai@karmaautomotive.com>                       not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Karma Automotive               Charles Bak <cbak@karmaautomotive.com>                       not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Karma Automotive               Kevin Le <kxle@karmaautomotive.com>                          not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Karma Automotive               Theparit Photongkanong <tphotongkanong@karmaautomotive.com>  not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Karma Automotive               Yuna Kim <ykim@karmaautomotive.com>                          not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Karma Automotive               Sarah Zhang <sazhang@karmaautomotive.com>                    not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Karma Automotive               Randy Mircheff <rmircheff@karmaautomotive.com>               not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Karma Automotive               Alex Chu <achu@karmaautomotive.com>                          not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Ruger                          Barbara Gaskell <bgaskell@ruger.com>                         not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Ruger                          Mike Yannotti <myannotti@ruger.com>                          not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Ruger                          Austin O'Shea <aoshea@ruger.com>                             not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Ruger                          Jake Utley <jutley@ruger.com>                                not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Savage Arms                    Alisha Chaffee <achaffee@savagearms.com>                     not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Savage Arms                    Kevin DeMartino <kdemartino@savagearms.com>                  not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Sig Sauer                      Rodrigo Vela Hernandez <rhernandez@sigsauer.com>             not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Sig Sauer                      Steve Jedan <steve.jedan@sigsauer.com>                       not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Sig Sauer                      Michael Fitzsimmons <mfitzsimmons@sigsauer.com>              not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Sig Sauer                      Brandon Green <brandon.green@sigsauer.com>                   not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  Sig Sauer                      Christopher Treadwell <christopher.treadwell@sigsauer.com>   not-enrolled (on list only / draft campaign?)
+alpha-grainger  Mark    Smiths Interconnect            Virginia Hook <ginger.hook@smithsinterconnect.com>           not-enrolled (on list only / draft campaign?)
+franklin        Ericka  Flowserve                      Aaron Fells <afells@flowserve.com>                           not-enrolled (on list only / draft campaign?)
+franklin        Ericka  Flowserve                      Kashif Khan <kkhan@flowserve.com>                            not-enrolled (on list only / draft campaign?)
+franklin        Ericka  Flowserve                      Thomas Jensen <tjensen@flowserve.com>                        not-enrolled (on list only / draft campaign?)
+franklin        Ericka  Flowserve                      Ron Davenport <rdavenport@flowserve.com>                     not-enrolled (on list only / draft campaign?)
+franklin        Ericka  Flowserve                      Kim DeRouen <kderouen@flowserve.com>                         not-enrolled (on list only / draft campaign?)
+franklin        Ericka  Flowserve                      Jason Ulmer <julmer@flowserve.com>                           not-enrolled (on list only / draft campaign?)
+franklin        Ericka  Flowserve                      Marco Marino <mmarino@flowserve.com>                         not-enrolled (on list only / draft campaign?)
+franklin        Ericka  X-Energy                       Richard Wellner <rwellner@x-energy.com>                      not-enrolled (on list only / draft campaign?)
+franklin        Ericka  X-Energy                       Robert Leone <rleone@x-energy.com>                           not-enrolled (on list only / draft campaign?)
+franklin        Ericka  X-Energy                       William Chapman <wchapman@x-energy.com>                      not-enrolled (on list only / draft campaign?)
+franklin        Ericka  X-Energy                       Troy Mabe <tmabe@x-energy.com>                               not-enrolled (on list only / draft campaign?)
+franklin        Ericka  X-Energy                       Sarah Dankanich <sdankanich@x-energy.com>                    not-enrolled (on list only / draft campaign?)
+franklin        Ericka  X-Energy                       Jana Cornell <jcornell@x-energy.com>                         not-enrolled (on list only / draft campaign?)
+franklin        Ericka  X-Energy                       Tim Bendt <tbendt@x-energy.com>                              not-enrolled (on list only / draft campaign?)
+franklin        Ericka  X-Energy                       David Simms <dsimms@x-energy.com>                            not-enrolled (on list only / draft campaign?)
+franklin        Ericka  X-Energy                       David Williams <dwilliams@x-energy.com>                      not-enrolled (on list only / draft campaign?)
+franklin        Ericka  X-Energy                       Joe Ricco <jricco@x-energy.com>                              not-enrolled (on list only / draft campaign?)
+harvey-vogel    Ericka  Astronics                      Elena Torjkov <elena.torjkov@astronics.com>                  not-enrolled (on list only / draft campaign?)
+harvey-vogel    Ericka  virgingalactic.com             Tiffane Stuckenschneider <tif@virgingalactic.com>            not-enrolled (on list only / draft campaign?)
+harvey-vogel    Ericka  virgingalactic.com             Tim McCarry <tim.mccarry@virgingalactic.com>                 not-enrolled (on list only / draft campaign?)
+harvey-vogel    Ericka  virgingalactic.com             Arthur Rodriguez <arthur.rodriguez@virgingalactic.com>       not-enrolled (on list only / draft campaign?)
+patriot-forge   Mark    Collins Aerospace              Ming Guo <invalid>                                           no-email
+patriot-forge   Mark    Lockheed Martin                Chuck Hughes                                                 no-email
+patriot-forge   Mark    Lockheed Martin                Judith Nicholson                                             no-email
+patriot-forge   Mark    Lockheed Martin                James Wilsford                                               no-email
+patriot-forge   Mark    Lockheed Martin                Robbiework Mcclurkan                                         no-email
+patriot-forge   Mark    Northrop Grumman               Kevan Boyce <invalid>                                        no-email
+patriot-forge   Mark    Northrop Grumman               Jim Hafeli                                                   no-email
+patriot-forge   Mark    Northrop Grumman               Matt Campbell                                                no-email
+patriot-forge   Mark    PCC Structurals, Inc.          Bobby Wasabi                                                 no-email
+patriot-forge   Mark    Woodward                       Thomas Rohlfs                                                no-email
+shellcast       Ericka  Leonardo DRS                   Michael Ruiz <mike.ruiz@craneaerospace.com>                  not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Leonardo DRS                   Leslie Renn                                                  no-email
+shellcast       Ericka  Leonardo DRS                   Mark Evert <mark.evert@drs.com>                              not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Leonardo DRS                   Tim Groff <tim.groff@leonardodrs.com>                        not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Leonardo DRS                   Amy Tersinar <amy.tersinar@leonardodrs.com>                  not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Leonardo DRS                   Cintia Bonadias <cintia.bonadias@drs.com>                    not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Leonardo DRS                   Mark Barnhart <mark.barnhart@drs.com>                        not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Leonardo DRS                   Jeremy Grubb <jeremy.grubb@drs.com>                          not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Leonardo DRS                   Tina Griffith <tina.griffith@drs.com>                        not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Leonardo DRS                   Kim Lajeunesse <klajeune@drs.ca>                             not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Leonardo DRS                   Michael DeGregory <michael.degregory@leonardodrs.com>        not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Leonardo DRS                   Jenny Chang <jenny.chang@drs.com>                            not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Leonardo DRS                   Gracie Lux <gracie.lux@drs.com>                              not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Leonardo DRS                   Michael Chier <michael.chier@drs.com>                        not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Leonardo DRS                   Sara Fenimore <sara.fenimore@drs.com>                        not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Leonardo DRS                   Kelsey Smith <kelsey.smith@drs.com>                          not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Leonardo DRS                   Trevor Schelling <trevor.schelling@drs.com>                  not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Leonardo DRS                   Grant Brown <grant.brown@drs.com>                            not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Leonardo DRS                   Petra Freund <petra.freund@drs.com>                          not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Leonardo DRS                   Terry Sprague <terry.n.sprague@drs.com>                      not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Leonardo DRS                   Shawn Schaffer <sschaffer@drs.com>                           not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Leonardo DRS                   Tom Thomas <tom.thomas@leonardodrs.com>                      not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Leonardo DRS                   Andrea Niles <andrea.niles@leonardodrs.com>                  not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Leonardo DRS                   Kolby Harold <kolby.harold@leonardodrs.com>                  not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Leonardo DRS                   Austin Healy <austin.healy@leonardodrs.com>                  not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Leonardo DRS                   Heather Felix <heather.felix@leonardodrs.com>                not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Leonardo DRS                   Britt Morgan <britt.morgan@leonardodrs.com>                  not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Leonardo DRS                   Stephen Bivans <stephen.bivans@leonardodrs.com>              not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Leonardo DRS                   Tom Rossi <tom.rossi@leonardodrs.com>                        not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Leonardo DRS                   Kristine DeCiucis <kristine.deciucis@drs.com>                not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Leonardo DRS                   Phillip Newman <phillip.newman@drs.com>                      not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Leonardo DRS                   Thalia Kaiwi <thalia.kaiwi@drs.com>                          not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Leonardo DRS                   Yvette Miller <yvette.miller@drs.com>                        not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Leonardo DRS                   Timothy Franklin <tim.franklin@drs.com>                      not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Leonardo DRS                   Cristian Zuluaga <cristian.zuluaga@drs.com>                  not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Leonardo DRS                   Abale Rocha <abale.rocha@drs.com>                            not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Leonardo DRS                   Brittaney Holloway <brittaney.holloway@drs.com>              not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Mercury Systems                Stephen Marasigan <smarasigan@sekai-electronics.com>         not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Mercury Systems                Chris Hake <chris.hake@mrcy.com>                             not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Mercury Systems                Brian Whitworth <brian.whitworth@mrcy.com>                   not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Mercury Systems                Kate Chan <kate.chan@mrcy.com>                               not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Mercury Systems                Suzanne Maddux <suzanne.maddux@mrcy.com>                     not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Mercury Systems                Cathy Marino <catherine.marino@mrcy.com>                     not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Mercury Systems                Brenda Tonks <brenda.tonks@mrcy.com>                         not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Mercury Systems                Peter Truong <peter.truong@mrcy.com>                         not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Mercury Systems                Raymond Valenzuela <raymond.valenzuela@mrcy.com>             not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Mercury Systems                Sabrina Sklar <sabrina.sklar@mrcy.com>                       not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Mercury Systems                Darrin Duffy <darrin.duffy@mrcy.com>                         not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Mercury Systems                Simin Nasiri <simin.nasiri@cobham.com>                       not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Mercury Systems                Milagros Valentine <mvalentine@gms4sbc.com>                  not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Mercury Systems                Pamela Lundy <plundy@mrcy.com>                               not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Mercury Systems                Thomas Hall <thomas.hall@mrcy.com>                           not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Sierra Space                   Kevin Brunk <kevin.brunk@sierraspace.com>                    not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Sierra Space                   Rachel Holloway <rachel.holloway@sierraspace.com>            not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Sierra Space                   Ashley Dunkelberger <ashley.dunkelberger@sierraspace.com>    not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Sierra Space                   Frank Rivers <frank.rivers@sierraspace.com>                  not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Sierra Space                   Scott Werkmeister <scott.werkmeister@sierraspace.com>        not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Sierra Space                   Elizabeth Corbett <elizabeth.corbett@sierraspace.com>        not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Sierra Space                   Tate Wazenegger <tate.wazenegger@sierraspace.com>            not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Sierra Space                   Rick Lynard, MBA <rick.lynard@sierraspace.com>               not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Spirit Aerosystems             Brian Groce <brian.a.groce@spiritaero.com>                   not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Spirit Aerosystems             Lee West <lee.west@spiritaero.com>                           not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Spirit Aerosystems             Kimberly Blackburn <kimberly.k.blackburn@spiritaero.com>     not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Spirit Aerosystems             Steven Radke <steven.t.radke@spiritaero.com>                 not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Spirit Aerosystems             Cirs Alber <cris.w.alber@spiritaero.com>                     not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Spirit Aerosystems             Alan Lies <alan.lies@spiritaero.com>                         not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Spirit Aerosystems             Rebecca Williams <rebecca.williams@spiritaero.com>           not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Spirit Aerosystems             Kara Hamilton <kara.hamilton@spiritaero.com>                 not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Spirit Aerosystems             Merertu Smile <merertu.smile@spiritaero.com>                 not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Spirit Aerosystems             Dorine Brittain <dorine.brittain@spiritaero.com>             not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Spirit Aerosystems             Jill Klim <jill.klim@spiritaero.com>                         not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Spirit Aerosystems             Preston Crawford <preston.crawford@spiritaero.com>           not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Spirit Aerosystems             Brian Garrels <brian.garrels@spiritaero.com>                 not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Spirit Aerosystems             Susan Ewing <susan.ewing@spiritaero.com>                     not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Spirit Aerosystems             Alice Gills <alice.gills@spiritaero.com>                     not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Spirit Aerosystems             Selena Boydo <selena.r.boydo@spiritaero.com>                 not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Spirit Aerosystems             Marieta Sparks <marieta.sparks@spiritaero.com>               not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Spirit Aerosystems             Linda Crownover <linda.crownover@spiritaero.com>             not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Teledyne FLIR                  Wendy Taylor <wendy.taylor@teledyneflir.com>                 not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Teledyne FLIR                  Kevin Darby <kevin.darby@teledyne.com>                       not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Teledyne FLIR                  Stephen Barker <stephen.barker@flir.com>                     not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Teledyne FLIR                  Jimmy Howard <jimmy.howard@teledyne.com>                     not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Teledyne FLIR                  Jennifer Varney <jennifer.varney@teledyne.com>               not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Teledyne FLIR                  Katherine Avena <katherine.avena@teledyne.com>               not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Teledyne FLIR                  Natalie Struthers <natalie.struthers@teledyne.com>           not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Teledyne FLIR                  Nancy Wong-Johnson <nancy.wong-johnson@teledyneflir.com>     not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Teledyne FLIR                  Mike Moree <michael.moree@teledyne.com>                      not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Teledyne FLIR                  Katie Marshall <katie.marshall@teledyne.com>                 not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Teledyne FLIR                  Brian Kenney <bkenney@teledyne.com>                          not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Teledyne FLIR                  Jackie Mullins <jackie.mullins@teledyne.com>                 not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Teledyne FLIR                  Bobby Costa <bobby.costa@teledyne.com>                       not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Teledyne FLIR                  Lyndsey Moraros <lyndsey.moraros@teledyneflir.com>           not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Teledyne FLIR                  Adam Henkel <adam.henkel@teledyneflir.com>                   not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Teledyne FLIR                  Teri Winkley <teri.winkley@flir.com>                         not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Teledyne FLIR                  Wayne Pattterson <wayne.patterson@flir.com>                  not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Teledyne FLIR                  Scott Keitzer <skeitzer@flir.com>                            not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Teledyne FLIR                  Jason Holder <jason.holder@teledyneflir.com>                 not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Teledyne FLIR                  Ye Lu <ye.lu@flir.com>                                       not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Teledyne FLIR                  Cara Blum <cara.blum@teledyneflir.com>                       not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Terran Orbital (Part of LMCO)  Freddy Torres <freddy.torres@terranorbital.com>              not-enrolled (on list only / draft campaign?)
+shellcast       Ericka  Terran Orbital (Part of LMCO)  Onofre Distefano <onofre.distefano@terranorbital.com>        not-enrolled (on list only / draft campaign?)
+tmx             Ericka  BWXT                           Nathan Wright <newright@bwxt.com>                            not-enrolled (on list only / draft campaign?)
+```
+Fix: activate/enroll the campaign in HotHawk, or re-run the reconcile (`reconcile_done_calls.py --since <date> --apply`) for these people.
+python.exe : Traceback (most recent call last):
+At 
+C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-load-audit\scripts\scheduled\run_monthly.ps1:11 
+char:1
++ & $py "$scripts\audit_call_loads.py" --mode month --discord 2>&1 | Ou ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-load-audit\scripts\audit_call_loads.py", 
+line 338, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-load-audit\scripts\audit_call_loads.py", 
+line 325, in main
+    post_discord(out)
+    ~~~~~~~~~~~~^^^^^
+  File "C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-load-audit\scripts\audit_call_loads.py", 
+line 300, in post_discord
+    _pd_discord(url, "\n".join(chunk))
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\marce\.claude\plugins\marketplaces\gocapy-claude-plugin\go-capy-outreach\skills\clickup\scripts\kodie_
+notify.py", line 199, in post_discord
+    with urllib.request.urlopen(req, timeout=30) as r:
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\marce\AppData\Local\Python\pythoncore-3.14-64\Lib\urllib\request.py", line 187, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\marce\AppData\Local\Python\pythoncore-3.14-64\Lib\urllib\request.py", line 493, in open
+    response = meth(req, response)
+  File "C:\Users\marce\AppData\Local\Python\pythoncore-3.14-64\Lib\urllib\request.py", line 602, in http_response
+    response = self.parent.error(
+        'http', request, response, code, msg, hdrs)
+  File "C:\Users\marce\AppData\Local\Python\pythoncore-3.14-64\Lib\urllib\request.py", line 531, in error
+    return self._call_chain(*args)
+           ~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\marce\AppData\Local\Python\pythoncore-3.14-64\Lib\urllib\request.py", line 464, in _call_chain
+    result = func(*args)
+  File "C:\Users\marce\AppData\Local\Python\pythoncore-3.14-64\Lib\urllib\request.py", line 611, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 429: Too Many Requests
+=== 2026-08-01T08:28:45.2825790-05:00 call-load-audit MONTH END (exit 1) ===
+posted run-failure alert to ClickUp task 86ba9zvy5
