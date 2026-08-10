@@ -1,0 +1,80 @@
+﻿=== 2026-08-10T09:21:43.0992379-05:00 call-task-reconcile START ===
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\reconcile_done_calls.py --since 2026-08-05
+  to-subscribe: Reiner Kulkowski <invalid> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Lamar McDonald <lamar.mcdonald@lamresearch.com> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Gerald Bulatao <gerry.bulatao@lamresearch.com> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Barbara Espinoza <barbara.espinoza@lamresearch.com> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Puneeth Basavaraj <puneeth.basavaraj@lamrc.com> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Mike Dicken <mike.dicken@lamresearch.com> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Anubhav Chaturvedi <anubhav.chaturvedi@lamresearch.com> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: chinasa lokrheim <chinasa-lokrheim@zoomhubs.com> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Farid Haddadi <farid.haddadi@nikolamotor.com> (Nikola) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Kush Shah <kush.shah@nikolamotor.com> (Nikola) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Dan Ulate <dan.ulate@craneae.com> (Crane Aerospace & Electronics) -> seq 945208ec-0193-4b2d-bffa-fd8dbd041dec [harvey-vogel]
+  to-subscribe: Rosie Grupp <rosie.grupp@craneae.com> (Crane Aerospace & Electronics) -> seq 945208ec-0193-4b2d-bffa-fd8dbd041dec [harvey-vogel]
+  to-subscribe: Bradley Andersen <bandersen@idexcorp.com> (IDEX) -> seq eeadc336-f1a4-4676-a8db-86d0201457a3 [vrc]
+  to-subscribe: James Cushler <jcushler@idexcorp.com> (IDEX) -> seq eeadc336-f1a4-4676-a8db-86d0201457a3 [vrc]
+  to-subscribe: Stephanie Pacheco <spacheco@idexcorp.com> (IDEX) -> seq eeadc336-f1a4-4676-a8db-86d0201457a3 [vrc]
+  to-subscribe: Kyle Stover <kstover@idexcorp.com> (IDEX) -> seq eeadc336-f1a4-4676-a8db-86d0201457a3 [vrc]
+  to-subscribe: Jon Phillips <jon.phillips@fnamerica.com> (FN America) -> seq a7381c20-858e-4527-b81e-d50f0651fb67 [alpha-grainger]
+  to-subscribe: Nicholas Shealy <nicholas.shealy@fnamerica.com> (FN America) -> seq a7381c20-858e-4527-b81e-d50f0651fb67 [alpha-grainger]
+  to-subscribe: Arnold Lemonds <arnold.lemonds@fnamerica.com> (FN America) -> seq a7381c20-858e-4527-b81e-d50f0651fb67 [alpha-grainger]
+  to-subscribe: Shelly Smith <shelly.smith@fnhusa.com> (FN America) -> seq a7381c20-858e-4527-b81e-d50f0651fb67 [alpha-grainger]
+  to-subscribe: Juaquana Brookins <juaquana.brookins@fnamerica.com> (FN America) -> seq a7381c20-858e-4527-b81e-d50f0651fb67 [alpha-grainger]
+  to-subscribe: David Payne <dpayne@berettausa.com> (Beretta USA Corp) -> seq 532ff222-9db3-4344-b292-09eaa35eb62f [lnp]
+  to-subscribe: Reco Land <rland@berettausa.com> (Beretta USA Corp) -> seq 532ff222-9db3-4344-b292-09eaa35eb62f [lnp]
+RESULT: ok - 85 done calls on 2026-08-05..2026-08-10, 23 to-subscribe, 0 skipped -> _reconcile_20260805-20260810.json
+
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\hothawk_subscribe.py --artifact _reconcile_20260805-20260810.json --apply
+  SKIP invalid email (fix in Pipedrive person 26051): Reiner Kulkowski <invalid> (Lam Research)
+  created lead cab1a8b8-49dc-4e04-a984-d9a75566380d: Lamar McDonald <lamar.mcdonald@lamresearch.com> (Lam Research)
+  created lead fb8b8e9c-3136-4a8e-b149-ae15ebb3df85: Gerald Bulatao <gerry.bulatao@lamresearch.com> (Lam Research)
+  created lead 6a68d8e9-eb10-4a6e-85c9-231afaffb37e: Barbara Espinoza <barbara.espinoza@lamresearch.com> (Lam Research)
+  created lead 8f44853d-5282-4c08-95c1-6f28ea221359: Puneeth Basavaraj <puneeth.basavaraj@lamrc.com> (Lam Research)
+  created lead 6d2fcdc3-910f-4287-97ec-8f28b78bce26: Mike Dicken <mike.dicken@lamresearch.com> (Lam Research)
+  created lead c9068689-171c-4742-81ce-614760f6bf6b: Anubhav Chaturvedi <anubhav.chaturvedi@lamresearch.com> (Lam Research)
+  created lead 3d6d8062-a9ab-47fb-95b3-e9b3a07cc7a2: chinasa lokrheim <chinasa-lokrheim@zoomhubs.com> (Lam Research)
+  bulk-added 7 leads to list 'voicemail-called-patriot-forge' (9460d74c-59e5-4184-9243-e8d9937fb60a)
+  appended list to campaign fa1af5bd-8d43-44a0-ac60-d92d642d6d92
+  enrolled 7 leads into campaign fa1af5bd-8d43-44a0-ac60-d92d642d6d92
+  tagged 7 leads 'voicemail'
+  created lead 0291ec74-7862-4db8-86af-9de17ba20a37: Farid Haddadi <farid.haddadi@nikolamotor.com> (Nikola)
+  created lead fbca9562-09a6-4963-95ed-26d5d5111402: Kush Shah <kush.shah@nikolamotor.com> (Nikola)
+  bulk-added 2 leads to list 'voicemail-called-general-foundry' (44b0b0e1-9990-447f-a19e-4d497e78f2f5)
+  appended list to campaign 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26
+  enrolled 2 leads into campaign 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26
+  tagged 2 leads 'voicemail'
+  created lead bf898a25-6b8b-4400-b40f-88826ccbfbc3: Dan Ulate <dan.ulate@craneae.com> (Crane Aerospace & Electronics)
+  found lead f58d6ed9-5bdf-434d-80ac-9093fbdc50b9: Rosie Grupp <rosie.grupp@craneae.com> (Crane Aerospace & Electronics)
+  bulk-added 2 leads to list 'voicemail-called-harvey-vogel' (096a221d-c514-4e72-9d0d-bda2b1404ddf)
+  appended list to campaign 945208ec-0193-4b2d-bffa-fd8dbd041dec
+  enrolled 2 leads into campaign 945208ec-0193-4b2d-bffa-fd8dbd041dec
+  tagged 2 leads 'voicemail'
+  created lead 445e7111-4c60-422d-ae3e-43b7a1d6715c: Bradley Andersen <bandersen@idexcorp.com> (IDEX)
+  created lead 9877b9c8-cfaa-4f7d-8b6d-1578049f0eb8: James Cushler <jcushler@idexcorp.com> (IDEX)
+  created lead baa53837-d146-45de-a4d7-d1daf65540ba: Stephanie Pacheco <spacheco@idexcorp.com> (IDEX)
+  created lead 72da804e-2f36-47e7-b6d4-432ed168ce05: Kyle Stover <kstover@idexcorp.com> (IDEX)
+  bulk-added 4 leads to list 'voicemail-called-vrc' (26427e3f-e913-4073-a997-6fc267c699de)
+  appended list to campaign eeadc336-f1a4-4676-a8db-86d0201457a3
+  enrolled 4 leads into campaign eeadc336-f1a4-4676-a8db-86d0201457a3
+  tagged 4 leads 'voicemail'
+  created lead 8d77dcdc-6ad7-4fbd-acde-4d7f00ded8e0: Jon Phillips <jon.phillips@fnamerica.com> (FN America)
+  created lead 8ec62584-d0e0-42a1-b64c-d59d0519df9a: Nicholas Shealy <nicholas.shealy@fnamerica.com> (FN America)
+  created lead 19ff4816-3b63-4afa-924f-53c75d2976a9: Arnold Lemonds <arnold.lemonds@fnamerica.com> (FN America)
+  created lead bd196ee2-6368-46fd-9e7e-903022c454ec: Shelly Smith <shelly.smith@fnhusa.com> (FN America)
+  created lead 746066d6-16d7-4cda-b0b8-083529132097: Juaquana Brookins <juaquana.brookins@fnamerica.com> (FN America)
+  bulk-added 5 leads to list 'voicemail-called-alpha-grainger' (8106b846-55e7-4960-ac8b-751c3cf3286b)
+  appended list to campaign a7381c20-858e-4527-b81e-d50f0651fb67
+  enrolled 5 leads into campaign a7381c20-858e-4527-b81e-d50f0651fb67
+  tagged 5 leads 'voicemail'
+  created lead 2cb45c97-160b-41a3-aa03-f86fb2c57ac4: David Payne <dpayne@berettausa.com> (Beretta USA Corp)
+  created lead 1129e14b-b8d2-40e2-8b19-ee804f67b4f3: Reco Land <rland@berettausa.com> (Beretta USA Corp)
+  bulk-added 2 leads to list 'voicemail-called-lnp' (64b8b24a-ec17-4afe-aecf-f4fd6bf774dd)
+  appended list to campaign 532ff222-9db3-4344-b292-09eaa35eb62f
+  enrolled 2 leads into campaign 532ff222-9db3-4344-b292-09eaa35eb62f
+  tagged 2 leads 'voicemail'
+RESULT: ok - marked 22 subscribed, 0 sibling activities auto-closed
+RESULT: ok - 22 leads pushed to list/campaign/tag
+
+RESULT: ok - 23 people loaded into HotHawk since 2026-08-05 (_reconcile_20260805-20260810.json)
+=== 2026-08-10T09:24:57.3159222-05:00 call-task-reconcile END (exit 0) ===

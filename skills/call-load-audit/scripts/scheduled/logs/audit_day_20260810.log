@@ -1,0 +1,37 @@
+﻿=== 2026-08-10T09:21:42.6453671-05:00 call-load-audit DAY START ===
+≡ƒô₧ Call ΓåÆ HotHawk Load Audit ΓÇö Daily ΓÇö 2026-08-07
+ΓÜá∩╕Å 11 NOT loaded  ┬╖  31 calls / 31 people  ┬╖  20 loaded, 11 missing
+```
+principal        User          Company Name        # of Calls
+---------------  ------------  ------------------  ----------
+alpha-grainger   Ericka        FN America          3
+general-foundry  Ericka        Nikola              1
+lnp              Ericka        Beretta USA Corp    2
+patriot-forge    Ericka        Lam Research        13
+shellcast        Ericka        Spirit Aerosystems  10
+vrc              Ericka        IDEX                2
+-                -             -                   -
+                 TOTAL Ericka                      31
+```
+ΓÜá∩╕Å NOT LOADED (11) ΓÇö done calls that never reached HotHawk:
+```
+principal        User    Company           Person                                               why
+---------------  ------  ----------------  ---------------------------------------------------  ---------------------------------------------
+alpha-grainger   Ericka  FN America        Arnold Lemonds <arnold.lemonds@fnamerica.com>        not-enrolled (on list only / draft campaign?)
+alpha-grainger   Ericka  FN America        Shelly Smith <shelly.smith@fnhusa.com>               not-enrolled (on list only / draft campaign?)
+alpha-grainger   Ericka  FN America        Juaquana Brookins <juaquana.brookins@fnamerica.com>  not-enrolled (on list only / draft campaign?)
+general-foundry  Ericka  Nikola            Kush Shah <kush.shah@nikolamotor.com>                not-enrolled (on list only / draft campaign?)
+lnp              Ericka  Beretta USA Corp  David Payne <dpayne@berettausa.com>                  not-enrolled (on list only / draft campaign?)
+lnp              Ericka  Beretta USA Corp  Reco Land <rland@berettausa.com>                     not-enrolled (on list only / draft campaign?)
+patriot-forge    Ericka  Lam Research      Reiner Kulkowski <invalid>                           no-email
+patriot-forge    Ericka  Lam Research      Barbara Espinoza <barbara.espinoza@lamresearch.com>  not-enrolled (on list only / draft campaign?)
+patriot-forge    Ericka  Lam Research      chinasa lokrheim <chinasa-lokrheim@zoomhubs.com>     not-enrolled (on list only / draft campaign?)
+vrc              Ericka  IDEX              Stephanie Pacheco <spacheco@idexcorp.com>            not-enrolled (on list only / draft campaign?)
+vrc              Ericka  IDEX              Kyle Stover <kstover@idexcorp.com>                   not-enrolled (on list only / draft campaign?)
+```
+Fix: activate/enroll the campaign in HotHawk, or re-run the reconcile (`reconcile_done_calls.py --since <date> --apply`) for these people.
+
+discord: posted
+
+RESULT: ok - {"mode": "day", "window": ["2026-08-07", "2026-08-07"], "total_calls": 31, "people": 31, "loaded": 20, "missing": 11, "systemic": false}
+=== 2026-08-10T09:24:13.4266970-05:00 call-load-audit DAY END (exit 0) ===

@@ -1,0 +1,14 @@
+﻿=== 2026-08-07T09:20:53.3153861-05:00 call-task-reconcile START ===
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\reconcile_done_calls.py --since 2026-08-04
+ERROR: Pipedrive /persons -> connection failed after retries: <urlopen error [Errno 11001] getaddrinfo failed>
+
+RESULT: error - reconcile_done_calls.py exited 1
+=== 2026-08-07T09:21:46.8466707-05:00 call-task-reconcile END (exit 1) ===
+python.exe : alert post failed (run failure still logged)
+At C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\scheduled\run_reconcile.
+ps1:27 char:17
++ ...     $tail | & $py $notify --source CallTaskReconcile --exit "$exitCod ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (alert post fail...e still logged):String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

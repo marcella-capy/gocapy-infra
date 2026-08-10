@@ -1,0 +1,92 @@
+﻿=== 2026-08-06T08:20:02.0238211-05:00 call-task-reconcile START ===
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\reconcile_done_calls.py --since 2026-08-03
+  to-subscribe: Reiner Kulkowski <invalid> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Ben Huszti <ben.huszti@lamresearch.com> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Chelsea Sparkman <chelsea.sparkman@lamresearch.com> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Vinay Itagi <vinay.itagi@lamresearch.com> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Neha Singh <neha.singh@lamresearch.com> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Colleen Nummelin <colleen.nummelin@lamresearch.com> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Sean Mac Kenzie <smackenzie@zsi-foster.com> (ZSI-Foster) -> seq eeadc336-f1a4-4676-a8db-86d0201457a3 [vrc]
+  to-subscribe: Shannon Berger <shannon.berger@thinkorbital.com> (ThinkOrbital) -> seq 532ff222-9db3-4344-b292-09eaa35eb62f [lnp]
+  to-subscribe: Michele Enich <menich@varda.com> (Varda Space Industries) -> seq 532ff222-9db3-4344-b292-09eaa35eb62f [lnp]
+  to-subscribe: Cesar Romero , DBA <cesar.romero@ast-science.com> (AST SpaceMobile) -> seq 7df72ed5-ee2b-48d2-ad2e-da026cdc3963 [shellcast]
+  to-subscribe: Jennifer Lute <jennifer.lute@emerson.com> (Emerson) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Ryan Freeh <ryan.freeh@emerson.com> (Emerson) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Andrew Webb <andrew.webb@emerson.com> (Emerson) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Ashutosh Singh <ashutosh.singh@nikolamotor.com> (Nikola) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Meri Ghazaryan <meri.ghazaryan@craneae.com> (Crane Aerospace & Electronics) -> seq 945208ec-0193-4b2d-bffa-fd8dbd041dec [harvey-vogel]
+  to-subscribe: Michael Macone <michael.macone@craneae.com> (Crane Aerospace & Electronics) -> seq 945208ec-0193-4b2d-bffa-fd8dbd041dec [harvey-vogel]
+  to-subscribe: William Crompton <wcrompton@idexcorp.com> (IDEX) -> seq eeadc336-f1a4-4676-a8db-86d0201457a3 [vrc]
+  to-subscribe: Briana Stroud <bstroud@idexcorp.com> (IDEX) -> seq eeadc336-f1a4-4676-a8db-86d0201457a3 [vrc]
+  to-subscribe: Robert Yack <ryack@idexcorp.com> (IDEX) -> seq eeadc336-f1a4-4676-a8db-86d0201457a3 [vrc]
+  to-subscribe: Helene Lamie <helene.lamie@fnamerica.com> (FN America) -> seq a7381c20-858e-4527-b81e-d50f0651fb67 [alpha-grainger]
+  to-subscribe: Robert Byers <rob.byers@fnamerica.com> (FN America) -> seq a7381c20-858e-4527-b81e-d50f0651fb67 [alpha-grainger]
+  to-subscribe: Matthew Hopkins <matthew.hopkins@fnamerica.com> (FN America) -> seq a7381c20-858e-4527-b81e-d50f0651fb67 [alpha-grainger]
+  to-subscribe: David Proffitt <david.proffitt@emerson.com> (Emerson) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Elliott Snyder <elliott.snyder@emerson.com> (Emerson) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Ton Rodrigueza <antonio.rodriguezajr@emerson.com> (Emerson) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+RESULT: ok - 67 done calls on 2026-08-03..2026-08-06, 25 to-subscribe, 0 skipped -> _reconcile_20260803-20260806.json
+
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\hothawk_subscribe.py --artifact _reconcile_20260803-20260806.json --apply
+  SKIP invalid email (fix in Pipedrive person 26051): Reiner Kulkowski <invalid> (Lam Research)
+  created lead 841e504c-e3fc-4279-93ee-962927a07799: Ben Huszti <ben.huszti@lamresearch.com> (Lam Research)
+  created lead 8d0b380b-72e3-4aeb-bba8-9e047232f6f8: Chelsea Sparkman <chelsea.sparkman@lamresearch.com> (Lam Research)
+  created lead 454871b5-8e3b-4d38-ae04-bbfaf6d3d3a4: Vinay Itagi <vinay.itagi@lamresearch.com> (Lam Research)
+  created lead 0d2efd54-e917-4a06-ba79-68faaecafb39: Neha Singh <neha.singh@lamresearch.com> (Lam Research)
+  created lead ed29d8ea-da7e-428f-bde1-135f4a361342: Colleen Nummelin <colleen.nummelin@lamresearch.com> (Lam Research)
+  bulk-added 5 leads to list 'voicemail-called-patriot-forge' (9460d74c-59e5-4184-9243-e8d9937fb60a)
+  appended list to campaign fa1af5bd-8d43-44a0-ac60-d92d642d6d92
+  enrolled 5 leads into campaign fa1af5bd-8d43-44a0-ac60-d92d642d6d92
+  tagged 5 leads 'voicemail'
+  created lead f5b3aa92-3762-4f43-b290-73e7790bbd98: Sean Mac Kenzie <smackenzie@zsi-foster.com> (ZSI-Foster)
+  created lead 85f6368a-3b31-4cfd-b19c-0deb81b1337f: William Crompton <wcrompton@idexcorp.com> (IDEX)
+  created lead f13d91ab-62e4-4a43-be62-4c056e657fc2: Briana Stroud <bstroud@idexcorp.com> (IDEX)
+  created lead 7edf6431-d851-4fec-897b-a6f83949d0ce: Robert Yack <ryack@idexcorp.com> (IDEX)
+  bulk-added 4 leads to list 'voicemail-called-vrc' (26427e3f-e913-4073-a997-6fc267c699de)
+  appended list to campaign eeadc336-f1a4-4676-a8db-86d0201457a3
+  enrolled 4 leads into campaign eeadc336-f1a4-4676-a8db-86d0201457a3
+  tagged 4 leads 'voicemail'
+  created lead ea392ce2-194b-42d1-ba9d-a64126a686d6: Shannon Berger <shannon.berger@thinkorbital.com> (ThinkOrbital)
+  created lead 3da97c23-2d63-4a42-b9dd-180e558683c7: Michele Enich <menich@varda.com> (Varda Space Industries)
+  bulk-added 2 leads to list 'voicemail-called-lnp' (64b8b24a-ec17-4afe-aecf-f4fd6bf774dd)
+  appended list to campaign 532ff222-9db3-4344-b292-09eaa35eb62f
+  enrolled 2 leads into campaign 532ff222-9db3-4344-b292-09eaa35eb62f
+  tagged 2 leads 'voicemail'
+  created lead 9114485a-3a6c-42cd-89c1-7d22a8dd8ca5: Cesar Romero , DBA <cesar.romero@ast-science.com> (AST SpaceMobile)
+  bulk-added 1 leads to list 'voicemail-called-shellcast' (40a92485-a99a-4a5b-a939-7c0752541bba)
+  appended list to campaign 7df72ed5-ee2b-48d2-ad2e-da026cdc3963
+  enrolled 1 leads into campaign 7df72ed5-ee2b-48d2-ad2e-da026cdc3963
+  tagged 1 leads 'voicemail'
+  created lead d4542b9a-6730-420f-b901-f7652c16a54d: Jennifer Lute <jennifer.lute@emerson.com> (Emerson)
+  created lead ef8617e1-7f2a-4b7b-93b8-c15c7d367a2c: Ryan Freeh <ryan.freeh@emerson.com> (Emerson)
+  created lead f1934e1e-c954-420d-aed7-e1c25ae5460a: Andrew Webb <andrew.webb@emerson.com> (Emerson)
+  created lead 9d312a68-3bba-4024-a2c0-7beede4976b7: David Proffitt <david.proffitt@emerson.com> (Emerson)
+  created lead d4254d46-2887-41f2-a245-5dcfcc9610f8: Elliott Snyder <elliott.snyder@emerson.com> (Emerson)
+  created lead 1ebe99d8-0b75-4894-8c37-2f685a4705d1: Ton Rodrigueza <antonio.rodriguezajr@emerson.com> (Emerson)
+  bulk-added 6 leads to list 'voicemail-called-franklin' (f7f2a99a-9cba-40a3-97ab-f821d7c7447f)
+  appended list to campaign 1bc2bdb0-689e-4650-9169-93c7b784b605
+  enrolled 6 leads into campaign 1bc2bdb0-689e-4650-9169-93c7b784b605
+  tagged 6 leads 'voicemail'
+  created lead 8a422e9e-0089-4705-aaa1-303603f8e886: Ashutosh Singh <ashutosh.singh@nikolamotor.com> (Nikola)
+  bulk-added 1 leads to list 'voicemail-called-general-foundry' (44b0b0e1-9990-447f-a19e-4d497e78f2f5)
+  appended list to campaign 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26
+  enrolled 1 leads into campaign 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26
+  tagged 1 leads 'voicemail'
+  created lead 2749cac5-5566-4b9d-9f13-b95ce86f6170: Meri Ghazaryan <meri.ghazaryan@craneae.com> (Crane Aerospace & Electronics)
+  created lead 5ee9786a-16f5-4e27-9181-b3faa2213f6f: Michael Macone <michael.macone@craneae.com> (Crane Aerospace & Electronics)
+  bulk-added 2 leads to list 'voicemail-called-harvey-vogel' (096a221d-c514-4e72-9d0d-bda2b1404ddf)
+  appended list to campaign 945208ec-0193-4b2d-bffa-fd8dbd041dec
+  enrolled 2 leads into campaign 945208ec-0193-4b2d-bffa-fd8dbd041dec
+  tagged 2 leads 'voicemail'
+  created lead 62cc7f02-3f19-4599-b928-aceeed2492a0: Helene Lamie <helene.lamie@fnamerica.com> (FN America)
+  created lead 850a5f2c-e8d7-4ec4-9047-97bc6fb62eec: Robert Byers <rob.byers@fnamerica.com> (FN America)
+  created lead 02815b5c-3860-4735-9797-6262285fbd29: Matthew Hopkins <matthew.hopkins@fnamerica.com> (FN America)
+  bulk-added 3 leads to list 'voicemail-called-alpha-grainger' (8106b846-55e7-4960-ac8b-751c3cf3286b)
+  appended list to campaign a7381c20-858e-4527-b81e-d50f0651fb67
+  enrolled 3 leads into campaign a7381c20-858e-4527-b81e-d50f0651fb67
+  tagged 3 leads 'voicemail'
+RESULT: ok - marked 24 subscribed, 0 sibling activities auto-closed
+RESULT: ok - 24 leads pushed to list/campaign/tag
+
+RESULT: ok - 25 people loaded into HotHawk since 2026-08-03 (_reconcile_20260803-20260806.json)
+=== 2026-08-06T08:21:49.2614270-05:00 call-task-reconcile END (exit 0) ===
