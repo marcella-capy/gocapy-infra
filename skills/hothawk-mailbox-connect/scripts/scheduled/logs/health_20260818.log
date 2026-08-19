@@ -1,0 +1,10 @@
+﻿=== 2026-08-18T05:05:38.2033240-05:00 mailbox-health START (args: '') ===
+py.exe : warn: creds file not found at G:\Shared drives\Capy Outreach\hothawk-mailbox-creds.json ΓÇö 
+reconnect/remediate unavailable
+At C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\hothawk-mailbox-connect\scripts\scheduled\run_health
+_check.ps1:31 char:1
++ & py $script $argline.Split(" ", [StringSplitOptions]::RemoveEmptyEnt ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warn: creds fil...ate unavailable:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

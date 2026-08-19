@@ -1,0 +1,20 @@
+﻿=== 2026-08-17T08:50:01.9287492-05:00 call-load-audit DAY START ===
+≡ƒô₧ Call ΓåÆ HotHawk Load Audit ΓÇö Daily ΓÇö 2026-08-14
+Γ£à all loaded  ┬╖  17 calls / 17 people  ┬╖  17 loaded, 0 missing
+```
+principal        User          Company Name                      # of Calls
+---------------  ------------  --------------------------------  ----------
+alpha-grainger   Ericka        1X Technologies                   2
+alpha-grainger   Ericka        FN America                        3
+general-foundry  Ericka        Nikola                            1
+harvey-vogel     Ericka        Crane Aerospace & Electronics     2
+patriot-forge    Ericka        Lam Research                      5
+vrc              Ericka        Corken, Inc. a div of IDEX Corp.  4
+-                -             -                                 -
+                 TOTAL Ericka                                    17
+```
+
+discord: posted
+
+RESULT: ok - {"mode": "day", "window": ["2026-08-14", "2026-08-14"], "total_calls": 17, "people": 17, "loaded": 17, "missing": 0, "systemic": false}
+=== 2026-08-17T08:50:24.7587587-05:00 call-load-audit DAY END (exit 0) ===

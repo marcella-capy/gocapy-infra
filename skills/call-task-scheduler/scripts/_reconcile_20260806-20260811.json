@@ -1,0 +1,99 @@
+{
+  "date": "2026-08-06",
+  "date_end": "2026-08-11",
+  "done_calls": 84,
+  "to_subscribe": [
+    {
+      "person_id": 26051,
+      "principal": "patriot-forge",
+      "first_name": "Reiner",
+      "last_name": "Kulkowski",
+      "email": "invalid",
+      "company_name": "Lam Research",
+      "phone": "(510) 572-0200",
+      "title": "Supply Chain Business Manager",
+      "workspace_id": "95997af8-edf7-4a97-8227-cb826bc3e46d",
+      "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+      "done_activity_id": 76114
+    },
+    {
+      "person_id": 77452,
+      "principal": "vrc",
+      "first_name": "William",
+      "last_name": "Bucher",
+      "email": "bbucher@idexcorp.com",
+      "company_name": "Corken, Inc. a div of IDEX Corp.",
+      "phone": "(847) 283-8325",
+      "title": "Manager, Commodity",
+      "workspace_id": "10e0bbb6-91e1-46dc-9826-67140c8204ce",
+      "sequence_id": "eeadc336-f1a4-4676-a8db-86d0201457a3",
+      "done_activity_id": 76726
+    },
+    {
+      "person_id": 9649,
+      "principal": "vrc",
+      "first_name": "Jeff",
+      "last_name": "Simeon",
+      "email": "jsimeon@idexcorp.com",
+      "company_name": "Corken, Inc. a div of IDEX Corp.",
+      "phone": "(858) 264-9880",
+      "title": "Strategic Buyer",
+      "workspace_id": "10e0bbb6-91e1-46dc-9826-67140c8204ce",
+      "sequence_id": "eeadc336-f1a4-4676-a8db-86d0201457a3",
+      "done_activity_id": 76729
+    },
+    {
+      "person_id": 76278,
+      "principal": "alpha-grainger",
+      "first_name": "Denise",
+      "last_name": "FN - Narvaez",
+      "email": "denisen@fnmfg.com",
+      "company_name": "FN America",
+      "phone": "(803) 736-0522 ext. 290",
+      "title": "Buyer",
+      "workspace_id": "b2e5eeaa-c702-4f49-a655-a6a50c133030",
+      "sequence_id": "a7381c20-858e-4527-b81e-d50f0651fb67",
+      "done_activity_id": 76777
+    },
+    {
+      "person_id": 75194,
+      "principal": "alpha-grainger",
+      "first_name": "Marie",
+      "last_name": "Moore",
+      "email": "marie.moore@1x.tech",
+      "company_name": "1X Technologies",
+      "phone": "",
+      "title": "Director Supply Chain Management",
+      "workspace_id": "b2e5eeaa-c702-4f49-a655-a6a50c133030",
+      "sequence_id": "a7381c20-858e-4527-b81e-d50f0651fb67",
+      "done_activity_id": 76961
+    },
+    {
+      "person_id": 99530,
+      "principal": "alpha-grainger",
+      "first_name": "Yedan",
+      "last_name": "Yin",
+      "email": "yedan.yin@1x.tech",
+      "company_name": "1X Technologies",
+      "phone": "7342768555",
+      "title": "VP, Supply Chain",
+      "workspace_id": "b2e5eeaa-c702-4f49-a655-a6a50c133030",
+      "sequence_id": "a7381c20-858e-4527-b81e-d50f0651fb67",
+      "done_activity_id": 76964
+    },
+    {
+      "person_id": 75423,
+      "principal": "alpha-grainger",
+      "first_name": "Jaime",
+      "last_name": "Silva",
+      "email": "jaime.silva@1x.tech",
+      "company_name": "1X Technologies",
+      "phone": "(408) 661-9710",
+      "title": "Start-Up Senior Supply Chain Specialist",
+      "workspace_id": "b2e5eeaa-c702-4f49-a655-a6a50c133030",
+      "sequence_id": "a7381c20-858e-4527-b81e-d50f0651fb67",
+      "done_activity_id": 76967
+    }
+  ],
+  "skipped": []
+}

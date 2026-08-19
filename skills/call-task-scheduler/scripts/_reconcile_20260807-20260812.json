@@ -1,0 +1,13 @@
+{
+  "date": "2026-08-07",
+  "date_end": "2026-08-12",
+  "done_calls": 89,
+  "to_subscribe": [],
+  "skipped": [
+    {
+      "person_id": 26051,
+      "name": "Reiner Kulkowski",
+      "reason": "no-email"
+    }
+  ]
+}

@@ -184,10 +184,20 @@ def main() -> int:
             group_pids.append(e["person_id"])
 
         if not a.apply:
-            print(f"  DRY-RUN would bulk-add {len(rows)} leads to list "
+            if not group_pids:
+                print(f"  skip group [{principal}]: no usable leads (every row skipped)")
+                continue
+            print(f"  DRY-RUN would bulk-add {len(group_pids)} leads to list "
                   f"'{list_name}' ({list_id or 'to create'}), append list to campaign {seq}, "
                   f"and tag '{TAG_NAME}' ({tag_id or 'to create'})")
             subscribed_pids.extend(group_pids)
+            continue
+
+        if not lead_ids:
+            # Every row in this group was skipped (e.g. invalid email). The list/campaign/tag
+            # routes all reject an empty leadIds array with a 400, which would flag the group
+            # failed and fail the whole run — there is nothing to push, so no-op instead.
+            print(f"  skip group [{principal}]: no usable leads (every row skipped)")
             continue
 
         _hh("PUT", f"/contacts-lists/{list_id}/contacts", body={"selectionType": "ids", "leadIds": lead_ids})

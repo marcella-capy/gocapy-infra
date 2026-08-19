@@ -1,0 +1,36 @@
+﻿=== 2026-08-11T08:22:04.5476221-05:00 call-task-reconcile START ===
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\reconcile_done_calls.py --since 2026-08-06
+  to-subscribe: Reiner Kulkowski <invalid> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: William Bucher <bbucher@idexcorp.com> (Corken, Inc. a div of IDEX Corp.) -> seq eeadc336-f1a4-4676-a8db-86d0201457a3 [vrc]
+  to-subscribe: Jeff Simeon <jsimeon@idexcorp.com> (Corken, Inc. a div of IDEX Corp.) -> seq eeadc336-f1a4-4676-a8db-86d0201457a3 [vrc]
+  to-subscribe: Denise FN - Narvaez <denisen@fnmfg.com> (FN America) -> seq a7381c20-858e-4527-b81e-d50f0651fb67 [alpha-grainger]
+  to-subscribe: Marie Moore <marie.moore@1x.tech> (1X Technologies) -> seq a7381c20-858e-4527-b81e-d50f0651fb67 [alpha-grainger]
+  to-subscribe: Yedan Yin <yedan.yin@1x.tech> (1X Technologies) -> seq a7381c20-858e-4527-b81e-d50f0651fb67 [alpha-grainger]
+  to-subscribe: Jaime Silva <jaime.silva@1x.tech> (1X Technologies) -> seq a7381c20-858e-4527-b81e-d50f0651fb67 [alpha-grainger]
+RESULT: ok - 84 done calls on 2026-08-06..2026-08-11, 7 to-subscribe, 0 skipped -> _reconcile_20260806-20260811.json
+
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\hothawk_subscribe.py --artifact _reconcile_20260806-20260811.json --apply
+  SKIP invalid email (fix in Pipedrive person 26051): Reiner Kulkowski <invalid> (Lam Research)
+  bulk-added 0 leads to list 'voicemail-called-patriot-forge' (9460d74c-59e5-4184-9243-e8d9937fb60a)
+  appended list to campaign fa1af5bd-8d43-44a0-ac60-d92d642d6d92
+  ERROR group [patriot-forge]: POST /campaigns/fa1af5bd-8d43-44a0-ac60-d92d642d6d92/leads -> HTTP 400: {"message":["leadIds should not be empty"],"error":"Bad Request","statusCode":400} ΓÇö persons NOT marked
+  created lead 8d9ef8f7-b9d8-43ca-a5e0-2d75b032dc21: William Bucher <bbucher@idexcorp.com> (Corken, Inc. a div of IDEX Corp.)
+  created lead 6a6875e1-fab1-4ac6-80df-0b528ab5e1be: Jeff Simeon <jsimeon@idexcorp.com> (Corken, Inc. a div of IDEX Corp.)
+  bulk-added 2 leads to list 'voicemail-called-vrc' (26427e3f-e913-4073-a997-6fc267c699de)
+  appended list to campaign eeadc336-f1a4-4676-a8db-86d0201457a3
+  enrolled 2 leads into campaign eeadc336-f1a4-4676-a8db-86d0201457a3
+  tagged 2 leads 'voicemail'
+  created lead 1549f664-552c-4878-8fdb-7ce0e6ed3214: Denise FN - Narvaez <denisen@fnmfg.com> (FN America)
+  created lead d0d593f3-0455-47c1-86e1-5ba18ab6da8a: Marie Moore <marie.moore@1x.tech> (1X Technologies)
+  created lead e7b2f04b-1909-4ad8-9c43-1dd5be289669: Yedan Yin <yedan.yin@1x.tech> (1X Technologies)
+  created lead 42c83369-96c9-407a-bea9-5d36f4350a77: Jaime Silva <jaime.silva@1x.tech> (1X Technologies)
+  bulk-added 4 leads to list 'voicemail-called-alpha-grainger' (8106b846-55e7-4960-ac8b-751c3cf3286b)
+  appended list to campaign a7381c20-858e-4527-b81e-d50f0651fb67
+  enrolled 4 leads into campaign a7381c20-858e-4527-b81e-d50f0651fb67
+  tagged 4 leads 'voicemail'
+RESULT: ok - marked 6 subscribed, 0 sibling activities auto-closed
+RESULT: partial - 6 leads pushed to list/campaign/tag; FAILED groups: patriot-forge
+
+RESULT: error - HotHawk push partial (7 planned) ΓÇö see the failed groups above; those people stay unmarked and retry next run
+=== 2026-08-11T10:00:29.0906885-05:00 call-task-reconcile END (exit 1) ===
+posted run-failure alert to ClickUp task 86ba9zvy5

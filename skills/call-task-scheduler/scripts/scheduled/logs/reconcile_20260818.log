@@ -1,0 +1,40 @@
+﻿=== 2026-08-18T09:23:48.6623962-05:00 call-task-reconcile START ===
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\reconcile_done_calls.py --since 2026-08-13
+  to-subscribe: Ben Nielsen <ben.nielsen@emerson.com> (Emerson) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Abhijeet Hinge <abhijeet.hinge@emerson.com> (Emerson) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Sam Fuccio <sam.fuccio@emerson.com> (Emerson) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Denny Cruikshank <denny.cruikshank@emerson.com> (Emerson) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Justin Cripps <justin.cripps@emerson.com> (Emerson) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Vince Donatelli <vincent.donatelli@emerson.com> (Emerson) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Sean Lang <sean.lang@emerson.com> (Emerson) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Megan Jimison <megan.jimison@emerson.com> (Emerson) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Lisa Harrell <lisah@ig.space> (Intergalactic) -> seq 532ff222-9db3-4344-b292-09eaa35eb62f [lnp]
+  to-subscribe: Greg Bednarczuk <gregb@ig.space> (Intergalactic) -> seq 532ff222-9db3-4344-b292-09eaa35eb62f [lnp]
+  to-subscribe: Jaimee Daniels <jaimeed@ig.space> (Intergalactic) -> seq 532ff222-9db3-4344-b292-09eaa35eb62f [lnp]
+RESULT: ok - 64 done calls on 2026-08-13..2026-08-18, 11 to-subscribe, 0 skipped -> _reconcile_20260813-20260818.json
+
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\hothawk_subscribe.py --artifact _reconcile_20260813-20260818.json --apply
+  created lead 4f4fb81b-1205-4905-8c9d-45d0afd88b54: Ben Nielsen <ben.nielsen@emerson.com> (Emerson)
+  created lead 1507566e-af16-4843-a6be-079bdd56dcdf: Abhijeet Hinge <abhijeet.hinge@emerson.com> (Emerson)
+  created lead 85bf783d-9a66-42f5-890a-78514edcc8e1: Sam Fuccio <sam.fuccio@emerson.com> (Emerson)
+  created lead 8277c041-ec31-43f2-a667-39cc1a87dcbe: Denny Cruikshank <denny.cruikshank@emerson.com> (Emerson)
+  created lead e442435f-6f32-4ea9-9bc9-e2aa4cc1ad5b: Justin Cripps <justin.cripps@emerson.com> (Emerson)
+  created lead 6df5d731-16a7-419f-ae0e-5508168e9daa: Vince Donatelli <vincent.donatelli@emerson.com> (Emerson)
+  created lead 398894a2-9a43-47d3-8960-db8db3e9514b: Sean Lang <sean.lang@emerson.com> (Emerson)
+  created lead 704579cd-680c-47d3-9b8f-f60de02d029a: Megan Jimison <megan.jimison@emerson.com> (Emerson)
+  bulk-added 8 leads to list 'voicemail-called-franklin' (f7f2a99a-9cba-40a3-97ab-f821d7c7447f)
+  appended list to campaign 1bc2bdb0-689e-4650-9169-93c7b784b605
+  enrolled 8 leads into campaign 1bc2bdb0-689e-4650-9169-93c7b784b605
+  tagged 8 leads 'voicemail'
+  created lead f8815fea-c5ba-4d02-be95-cd29264f86d7: Lisa Harrell <lisah@ig.space> (Intergalactic)
+  created lead 4d49937a-f87e-4c48-8db1-52deab98877f: Greg Bednarczuk <gregb@ig.space> (Intergalactic)
+  created lead bda6cec3-e1dd-4ab8-aff4-be88ec0243ad: Jaimee Daniels <jaimeed@ig.space> (Intergalactic)
+  bulk-added 3 leads to list 'voicemail-called-lnp' (64b8b24a-ec17-4afe-aecf-f4fd6bf774dd)
+  appended list to campaign 532ff222-9db3-4344-b292-09eaa35eb62f
+  enrolled 3 leads into campaign 532ff222-9db3-4344-b292-09eaa35eb62f
+  tagged 3 leads 'voicemail'
+RESULT: ok - marked 11 subscribed, 0 sibling activities auto-closed
+RESULT: ok - 11 leads pushed to list/campaign/tag
+
+RESULT: ok - 11 people loaded into HotHawk since 2026-08-13 (_reconcile_20260813-20260818.json)
+=== 2026-08-18T09:26:07.7756979-05:00 call-task-reconcile END (exit 0) ===

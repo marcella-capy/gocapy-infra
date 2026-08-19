@@ -1,0 +1,36 @@
+﻿=== 2026-08-18T09:23:49.3362791-05:00 call-load-audit DAY START ===
+≡ƒô₧ Call ΓåÆ HotHawk Load Audit ΓÇö Daily ΓÇö 2026-08-17
+ΓÜá∩╕Å 8 NOT loaded  ┬╖  24 calls / 24 people  ┬╖  16 loaded, 8 missing
+```
+principal        User          Company Name                      # of Calls
+---------------  ------------  --------------------------------  ----------
+alpha-grainger   Ericka        1X Technologies                   1
+alpha-grainger   Ericka        FN America                        3
+franklin         Ericka        Emerson                           8
+general-foundry  Ericka        Nikola                            1
+lnp              Ericka        Beretta USA Corp                  2
+lnp              Ericka        Intergalactic                     3
+patriot-forge    Ericka        Lam Research                      2
+vrc              Ericka        Corken, Inc. a div of IDEX Corp.  4
+-                -             -                                 -
+                 TOTAL Ericka                                    24
+```
+ΓÜá∩╕Å NOT LOADED (8) ΓÇö done calls that never reached HotHawk:
+```
+principal  User    Company        Person                                           why
+---------  ------  -------------  -----------------------------------------------  ---------------------------------------------
+franklin   Ericka  Emerson        Denny Cruikshank <denny.cruikshank@emerson.com>  not-enrolled (on list only / draft campaign?)
+franklin   Ericka  Emerson        Justin Cripps <justin.cripps@emerson.com>        not-enrolled (on list only / draft campaign?)
+franklin   Ericka  Emerson        Vince Donatelli <vincent.donatelli@emerson.com>  not-enrolled (on list only / draft campaign?)
+franklin   Ericka  Emerson        Sean Lang <sean.lang@emerson.com>                not-enrolled (on list only / draft campaign?)
+franklin   Ericka  Emerson        Megan Jimison <megan.jimison@emerson.com>        not-enrolled (on list only / draft campaign?)
+lnp        Ericka  Intergalactic  Lisa Harrell <lisah@ig.space>                    not-enrolled (on list only / draft campaign?)
+lnp        Ericka  Intergalactic  Greg Bednarczuk <gregb@ig.space>                 not-enrolled (on list only / draft campaign?)
+lnp        Ericka  Intergalactic  Jaimee Daniels <jaimeed@ig.space>                not-enrolled (on list only / draft campaign?)
+```
+Fix: activate/enroll the campaign in HotHawk, or re-run the reconcile (`reconcile_done_calls.py --since <date> --apply`) for these people.
+
+discord: posted
+
+RESULT: ok - {"mode": "day", "window": ["2026-08-17", "2026-08-17"], "total_calls": 24, "people": 24, "loaded": 16, "missing": 8, "systemic": false}
+=== 2026-08-18T09:25:53.4694508-05:00 call-load-audit DAY END (exit 0) ===

@@ -318,8 +318,14 @@ def _valid_phones(p: dict) -> list:
 
 
 def _primary_email(p: dict) -> str:
+    """Primary address, or "" when the person has none.
+
+    ~283 CRM persons carry the desk's sentinel string "invalid" in the email field to mark a
+    known-bad address. It is not an address, so it is reported as absent — otherwise callers
+    treat it as real: it reached HotHawk as a lead (400s the subscribe) and Clay as an email.
+    """
     for e in (p.get("email") or []):
-        if isinstance(e, dict) and (e.get("value") or "").strip():
+        if isinstance(e, dict) and "@" in (e.get("value") or ""):
             return e["value"].strip()
     return ""
 

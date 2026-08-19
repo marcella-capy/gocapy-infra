@@ -1,0 +1,30 @@
+﻿=== 2026-08-12T08:43:42.1888526-05:00 call-task-reconcile START ===
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\reconcile_done_calls.py --since 2026-08-07
+  to-subscribe: Reiner Kulkowski <invalid> (Lam Research) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Elisabel Rivera <erivera@idexcorp.com> (Corken, Inc. a div of IDEX Corp.) -> seq eeadc336-f1a4-4676-a8db-86d0201457a3 [vrc]
+  to-subscribe: KeOnte Criswell <kcriswell@idexcorp.com> (Corken, Inc. a div of IDEX Corp.) -> seq eeadc336-f1a4-4676-a8db-86d0201457a3 [vrc]
+  to-subscribe: Steve Lee <steve.lee@1x.tech> (1X Technologies) -> seq a7381c20-858e-4527-b81e-d50f0651fb67 [alpha-grainger]
+RESULT: ok - 89 done calls on 2026-08-07..2026-08-12, 4 to-subscribe, 0 skipped -> _reconcile_20260807-20260812.json
+
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\hothawk_subscribe.py --artifact _reconcile_20260807-20260812.json --apply
+  SKIP invalid email (fix in Pipedrive person 26051): Reiner Kulkowski <invalid> (Lam Research)
+  bulk-added 0 leads to list 'voicemail-called-patriot-forge' (9460d74c-59e5-4184-9243-e8d9937fb60a)
+  appended list to campaign fa1af5bd-8d43-44a0-ac60-d92d642d6d92
+  ERROR group [patriot-forge]: POST /campaigns/fa1af5bd-8d43-44a0-ac60-d92d642d6d92/leads -> HTTP 400: {"message":["leadIds should not be empty"],"error":"Bad Request","statusCode":400} ΓÇö persons NOT marked
+  created lead d69ecd2f-6d63-49ce-b7d4-7fc81c4927fa: Elisabel Rivera <erivera@idexcorp.com> (Corken, Inc. a div of IDEX Corp.)
+  created lead d1d0514b-b357-444a-a1b0-c0e51dd1d394: KeOnte Criswell <kcriswell@idexcorp.com> (Corken, Inc. a div of IDEX Corp.)
+  bulk-added 2 leads to list 'voicemail-called-vrc' (26427e3f-e913-4073-a997-6fc267c699de)
+  appended list to campaign eeadc336-f1a4-4676-a8db-86d0201457a3
+  enrolled 2 leads into campaign eeadc336-f1a4-4676-a8db-86d0201457a3
+  tagged 2 leads 'voicemail'
+  created lead 69fc8547-d0df-4412-8f01-b93d09f8e427: Steve Lee <steve.lee@1x.tech> (1X Technologies)
+  bulk-added 1 leads to list 'voicemail-called-alpha-grainger' (8106b846-55e7-4960-ac8b-751c3cf3286b)
+  appended list to campaign a7381c20-858e-4527-b81e-d50f0651fb67
+  enrolled 1 leads into campaign a7381c20-858e-4527-b81e-d50f0651fb67
+  tagged 1 leads 'voicemail'
+RESULT: ok - marked 3 subscribed, 0 sibling activities auto-closed
+RESULT: partial - 3 leads pushed to list/campaign/tag; FAILED groups: patriot-forge
+
+RESULT: error - HotHawk push partial (4 planned) ΓÇö see the failed groups above; those people stay unmarked and retry next run
+=== 2026-08-12T09:53:13.0885349-05:00 call-task-reconcile END (exit 1) ===
+posted run-failure alert to ClickUp task 86ba9zvy5

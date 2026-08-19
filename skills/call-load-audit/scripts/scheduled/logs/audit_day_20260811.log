@@ -1,0 +1,31 @@
+﻿=== 2026-08-11T08:59:02.5397706-05:00 call-load-audit DAY START ===
+≡ƒô₧ Call ΓåÆ HotHawk Load Audit ΓÇö Daily ΓÇö 2026-08-10
+ΓÜá∩╕Å 6 NOT loaded  ┬╖  14 calls / 14 people  ┬╖  8 loaded, 6 missing
+```
+principal       User          Company Name                      # of Calls
+--------------  ------------  --------------------------------  ----------
+alpha-grainger  Ericka        1X Technologies                   3
+alpha-grainger  Ericka        FN America                        1
+patriot-forge   Ericka        Lam Research                      7
+shellcast       Ericka        Spirit Aerosystems                1
+vrc             Ericka        Corken, Inc. a div of IDEX Corp.  2
+-               -             -                                 -
+                TOTAL Ericka                                    14
+```
+ΓÜá∩╕Å NOT LOADED (6) ΓÇö done calls that never reached HotHawk:
+```
+principal       User    Company                           Person                                   why
+--------------  ------  --------------------------------  ---------------------------------------  ---------------------------------------------
+alpha-grainger  Ericka  1X Technologies                   Marie Moore <marie.moore@1x.tech>        not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  1X Technologies                   Yedan Yin <yedan.yin@1x.tech>            not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  1X Technologies                   Jaime Silva <jaime.silva@1x.tech>        not-enrolled (on list only / draft campaign?)
+alpha-grainger  Ericka  FN America                        Denise FN - Narvaez <denisen@fnmfg.com>  not-enrolled (on list only / draft campaign?)
+vrc             Ericka  Corken, Inc. a div of IDEX Corp.  William Bucher <bbucher@idexcorp.com>    not-enrolled (on list only / draft campaign?)
+vrc             Ericka  Corken, Inc. a div of IDEX Corp.  Jeff Simeon <jsimeon@idexcorp.com>       not-enrolled (on list only / draft campaign?)
+```
+Fix: activate/enroll the campaign in HotHawk, or re-run the reconcile (`reconcile_done_calls.py --since <date> --apply`) for these people.
+
+discord: posted
+
+RESULT: ok - {"mode": "day", "window": ["2026-08-10", "2026-08-10"], "total_calls": 14, "people": 14, "loaded": 8, "missing": 6, "systemic": false}
+=== 2026-08-11T10:00:43.6937627-05:00 call-load-audit DAY END (exit 0) ===

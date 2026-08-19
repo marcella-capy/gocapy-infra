@@ -1,0 +1,16 @@
+﻿=== 2026-08-14T10:55:11.3933607-05:00 call-task-reconcile START ===
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\reconcile_done_calls.py --since 2026-08-11
+  to-subscribe: Josephine Ortega <jortega@idexcorp.com> (Corken, Inc. a div of IDEX Corp.) -> seq eeadc336-f1a4-4676-a8db-86d0201457a3 [vrc]
+RESULT: ok - 84 done calls on 2026-08-11..2026-08-14, 1 to-subscribe, 0 skipped -> _reconcile_20260811-20260814.json
+
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\hothawk_subscribe.py --artifact _reconcile_20260811-20260814.json --apply
+  created lead dfc5d5cb-7031-4525-9b35-0fd43b4f091a: Josephine Ortega <jortega@idexcorp.com> (Corken, Inc. a div of IDEX Corp.)
+  bulk-added 1 leads to list 'voicemail-called-vrc' (26427e3f-e913-4073-a997-6fc267c699de)
+  appended list to campaign eeadc336-f1a4-4676-a8db-86d0201457a3
+  enrolled 1 leads into campaign eeadc336-f1a4-4676-a8db-86d0201457a3
+  tagged 1 leads 'voicemail'
+RESULT: ok - marked 1 subscribed, 0 sibling activities auto-closed
+RESULT: ok - 1 leads pushed to list/campaign/tag
+
+RESULT: ok - 1 people loaded into HotHawk since 2026-08-11 (_reconcile_20260811-20260814.json)
+=== 2026-08-14T10:55:32.5160734-05:00 call-task-reconcile END (exit 0) ===
