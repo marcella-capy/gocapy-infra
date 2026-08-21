@@ -102,8 +102,12 @@ browser-console JS is kept.)
    (https://docs.google.com/document/d/1Gf4wLo9-PmDZtmAr4QSs07cW5Qr-Fkt1yqbkAcCSjj8).
    The first line is the **BDR's literal full name** (e.g. `Olivia Garcia`) —
    NOT the `{{sender_first_name}} {{sender_last_name}}` merge tags. Include
-   exactly ONE of these phone numbers: `949-209-9625`, `949-524-5765`,
-   `949-820-8005`. **Marcella must approve the signature before it is applied.**
+   exactly ONE phone number: **the client's own Telnyx line** (per-principal
+   numbers, 2026-08-21 — see the number map in the `mailbox-onboarder` skill's
+   Signatures section; a new principal needs a new Telnyx number bought first).
+   Never use the old shared numbers 949-524-5765 / 949-436-6696 / 949-820-8005 —
+   those are personal work lines.
+   **Marcella must approve the signature before it is applied.**
    Once approved, apply it to all mailboxes and save it to
    `gocapy-infra/shared-references/signatures/<client-slug>.md`.
 

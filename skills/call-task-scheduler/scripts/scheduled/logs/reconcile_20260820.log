@@ -1,0 +1,6 @@
+﻿=== 2026-08-20T09:36:38.3902830-05:00 call-task-reconcile START ===
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\reconcile_done_calls.py --since 2026-08-17
+RESULT: ok - 33 done calls on 2026-08-17..2026-08-20, 0 to-subscribe, 0 skipped -> _reconcile_20260817-20260820.json
+
+RESULT: ok - nothing to subscribe since 2026-08-17 (_reconcile_20260817-20260820.json)
+=== 2026-08-20T09:38:31.6281756-05:00 call-task-reconcile END (exit 0) ===

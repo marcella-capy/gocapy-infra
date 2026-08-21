@@ -96,8 +96,15 @@ Per-client templates live in `gocapy-infra/shared-references/signatures/<slug>.m
   `{{sender_first_name}} {{sender_last_name}}` merge tags (Marcella's rule, re-confirmed 2026-07-20;
   each client has one fixed BDR, see the client → BDR table in the `siteground` skill). If a
   signature file still starts with merge tags, replace them with the client's BDR name before applying;
-- contains exactly one of the **3 allowed phone numbers** baked in (`949-209-9625`, `949-524-5765`,
-  `949-820-8005` — Marcella's live set 2026-07-17).
+- contains exactly ONE phone number: **the client's own Telnyx line** (2026-08-21 phone
+  rollout — one number per principal, forwards to the sales reps with the principal shown
+  as caller ID). Current map: Patriot `949-593-2145`, VRC `949-409-0482`, Alpha Grainger
+  `949-312-6568`, Tech-Max `949-409-0384`, LNP `949-593-2811`, Franklin `949-593-2774`,
+  General Foundry `949-593-2822`, Shellcast `949-593-2786`, Harvey Vogel/Workplace/Seconn
+  `949-593-2799`, ATW `949-593-2812`, Megatech `949-209-9625`, Capy `949-209-9625`.
+  A NEW principal needs its own Telnyx number bought and wired first — ask Marcella.
+  The old shared numbers (`949-524-5765`, `949-436-6696`, `949-820-8005`) are personal
+  work lines and must never appear in a signature again.
 PlusVibe stores signatures as HTML — wrap the file's lines as `<div><br>line1<br>line2…</div>`.
 
 ## The batch workflow

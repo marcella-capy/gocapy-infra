@@ -1,0 +1,16 @@
+﻿=== 2026-08-20T09:36:38.4698576-05:00 call-load-audit DAY START ===
+≡ƒô₧ Call ΓåÆ HotHawk Load Audit ΓÇö Daily ΓÇö 2026-08-19
+Γ£à all loaded  ┬╖  3 calls / 3 people  ┬╖  3 loaded, 0 missing
+```
+principal       User          Company Name                      # of Calls
+--------------  ------------  --------------------------------  ----------
+alpha-grainger  Ericka        1X Technologies                   1
+vrc             Ericka        Corken, Inc. a div of IDEX Corp.  2
+-               -             -                                 -
+                TOTAL Ericka                                    3
+```
+
+discord: posted
+
+RESULT: ok - {"mode": "day", "window": ["2026-08-19", "2026-08-19"], "total_calls": 3, "people": 3, "loaded": 3, "missing": 0, "systemic": false}
+=== 2026-08-20T09:38:34.1578799-05:00 call-load-audit DAY END (exit 0) ===
