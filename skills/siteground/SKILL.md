@@ -60,6 +60,7 @@ email prefixes (see below).
 | Patriot Forge     | Juliana Matos      |
 | L&P Machining     | Sofia Alvarez      |
 | Alpha Grainger    | Diana Brunel       |
+| Capy Capital      | Marcella Lobo      |
 
 If the client isn't in the table, ask the user for the BDR's full name before
 proceeding, then add the new client + BDR to this table.
