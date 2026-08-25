@@ -1,0 +1,68 @@
+﻿=== 2026-08-25T10:11:12.6543845-05:00 call-task-reconcile START ===
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\reconcile_done_calls.py --since 2026-08-20
+  to-subscribe: Kristy Pearson <kristy.pearson@bluehalo.com> (BlueHalo) -> seq 532ff222-9db3-4344-b292-09eaa35eb62f [lnp]
+  to-subscribe: Tamara Lewis <tamara.lewis@bluehalo.com> (BlueHalo) -> seq 532ff222-9db3-4344-b292-09eaa35eb62f [lnp]
+  to-subscribe: Stephen Reigle <steve.reigle@bluehalo.com> (BlueHalo) -> seq 532ff222-9db3-4344-b292-09eaa35eb62f [lnp]
+  to-subscribe: Raymond Lomas <raymond.lomas@hermeus.com> (Hermeus Corporation) -> seq 532ff222-9db3-4344-b292-09eaa35eb62f [lnp]
+  to-subscribe: Teri Bynes <teri.bynes@hermeus.com> (Hermeus Corporation) -> seq 532ff222-9db3-4344-b292-09eaa35eb62f [lnp]
+  to-subscribe: Julie Schumacher <julie.schumacher@cesiumastro.com> (CesiumAstro) -> seq 7df72ed5-ee2b-48d2-ad2e-da026cdc3963 [shellcast]
+  to-subscribe: Salamah Soulong <salamah.soulong.ext@cesiumastro.com> (CesiumAstro) -> seq 7df72ed5-ee2b-48d2-ad2e-da026cdc3963 [shellcast]
+  to-subscribe: Tara Young <tara.young@cesiumastro.com> (CesiumAstro) -> seq 7df72ed5-ee2b-48d2-ad2e-da026cdc3963 [shellcast]
+  to-subscribe: Levi Martley <lmartley@vermeer.com> (Vermeer) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Evan Avery <eavery@vermeer.com> (Vermeer) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Jennifer Alexander <jalexander@teamwendy.com> (Team Wendy) -> seq eeadc336-f1a4-4676-a8db-86d0201457a3 [vrc]
+  to-subscribe: Pamela Zisi <pzisi@teamwendy.com> (Team Wendy) -> seq eeadc336-f1a4-4676-a8db-86d0201457a3 [vrc]
+  to-subscribe: Peter Dai <pdai@moog.com> (Moog) -> seq 945208ec-0193-4b2d-bffa-fd8dbd041dec [harvey-vogel]
+  to-subscribe: Victor Nicholas <vnicholas@moog.com> (Moog) -> seq 945208ec-0193-4b2d-bffa-fd8dbd041dec [harvey-vogel]
+  to-subscribe: Brian Barnes <bbarnes@stokespace.com> (Stoke) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Nicholas Womack <nwomack@stokespace.com> (Stoke) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Daniel Roche <droche@stokespace.com> (Stoke) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+RESULT: ok - 35 done calls on 2026-08-20..2026-08-25, 17 to-subscribe, 0 skipped -> _reconcile_20260820-20260825.json
+
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\hothawk_subscribe.py --artifact _reconcile_20260820-20260825.json --apply
+  created lead a4962d07-3646-472a-80a8-ae1f17596afc: Kristy Pearson <kristy.pearson@bluehalo.com> (BlueHalo)
+  created lead 6f38b1f1-3df6-4f6e-8049-b1aa9656781b: Tamara Lewis <tamara.lewis@bluehalo.com> (BlueHalo)
+  created lead 18af824a-1d4f-49c0-b7e4-9e8839e02584: Stephen Reigle <steve.reigle@bluehalo.com> (BlueHalo)
+  found lead bc917630-d96f-4c7f-af71-2d406e9c95e0: Raymond Lomas <raymond.lomas@hermeus.com> (Hermeus Corporation)
+  created lead 82f2e73f-b57a-4f50-9351-526aeceac124: Teri Bynes <teri.bynes@hermeus.com> (Hermeus Corporation)
+  bulk-added 5 leads to list 'voicemail-called-lnp' (64b8b24a-ec17-4afe-aecf-f4fd6bf774dd)
+  appended list to campaign 532ff222-9db3-4344-b292-09eaa35eb62f
+  enrolled 5 leads into campaign 532ff222-9db3-4344-b292-09eaa35eb62f
+  tagged 5 leads 'voicemail'
+  created lead 00d30912-d299-48f4-9c6d-2f6797cfd20c: Julie Schumacher <julie.schumacher@cesiumastro.com> (CesiumAstro)
+  created lead ea52d2a7-32d0-418f-938e-728c7012bd9a: Salamah Soulong <salamah.soulong.ext@cesiumastro.com> (CesiumAstro)
+  created lead 4ab41454-e2d5-4716-a257-b1fbd09f5530: Tara Young <tara.young@cesiumastro.com> (CesiumAstro)
+  bulk-added 3 leads to list 'voicemail-called-shellcast' (40a92485-a99a-4a5b-a939-7c0752541bba)
+  appended list to campaign 7df72ed5-ee2b-48d2-ad2e-da026cdc3963
+  enrolled 3 leads into campaign 7df72ed5-ee2b-48d2-ad2e-da026cdc3963
+  tagged 3 leads 'voicemail'
+  created lead 9c3d5e16-d72e-4d59-9744-cff8254cd6fe: Levi Martley <lmartley@vermeer.com> (Vermeer)
+  created lead b21ce573-7e9a-43da-b813-f1176cda1788: Evan Avery <eavery@vermeer.com> (Vermeer)
+  bulk-added 2 leads to list 'voicemail-called-general-foundry' (44b0b0e1-9990-447f-a19e-4d497e78f2f5)
+  appended list to campaign 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26
+  enrolled 2 leads into campaign 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26
+  tagged 2 leads 'voicemail'
+  created lead 8d220a3e-afe1-4ceb-9a1a-7e1a8392195c: Jennifer Alexander <jalexander@teamwendy.com> (Team Wendy)
+  created lead ece038cd-57b9-4a29-adb2-83c1bb223115: Pamela Zisi <pzisi@teamwendy.com> (Team Wendy)
+  bulk-added 2 leads to list 'voicemail-called-vrc' (26427e3f-e913-4073-a997-6fc267c699de)
+  appended list to campaign eeadc336-f1a4-4676-a8db-86d0201457a3
+  enrolled 2 leads into campaign eeadc336-f1a4-4676-a8db-86d0201457a3
+  tagged 2 leads 'voicemail'
+  found lead 8852116f-711b-470e-b791-0a81b29bba21: Peter Dai <pdai@moog.com> (Moog)
+  found lead d6b7407a-a4a1-4390-b56d-40631839c79a: Victor Nicholas <vnicholas@moog.com> (Moog)
+  bulk-added 2 leads to list 'voicemail-called-harvey-vogel' (096a221d-c514-4e72-9d0d-bda2b1404ddf)
+  appended list to campaign 945208ec-0193-4b2d-bffa-fd8dbd041dec
+  ERROR group [harvey-vogel]: POST /campaigns/945208ec-0193-4b2d-bffa-fd8dbd041dec/leads -> HTTP 422: {"code":"NO_ELIGIBLE_LEADS","message":"All selected leads are already enrolled in other campaigns. Set `allowLeadsInMultiple = true` to enrol overlapping leads anyway.","skippedLeadCount":2,"skippedLeads":[{"leadId":"d6b7407a-a4a1-4390-b56d-40631839c79a","conflictingCampaignId":"db3f2785-826e-4540-97e7-1964bdfac507","conflictingCampaignName":"Harvey Vogel"},{"leadId":"8852116f-711b-470e-b791-0a81b29bba21","conflictingCampaignId":"db3f2785-826e-4540-97e7-1964bdfac507","conflictingCampaignName":"Harvey Vogel"}],"status":422} ΓÇö persons NOT marked
+  created lead af794e53-ac98-402e-a5b3-e3a49d6def50: Brian Barnes <bbarnes@stokespace.com> (Stoke)
+  created lead b6cedb2e-5521-40a1-96aa-bdf97d01c5a6: Nicholas Womack <nwomack@stokespace.com> (Stoke)
+  created lead 5832c9de-cfc1-4aac-8247-8ac0fd5e9ec6: Daniel Roche <droche@stokespace.com> (Stoke)
+  bulk-added 3 leads to list 'voicemail-called-patriot-forge' (9460d74c-59e5-4184-9243-e8d9937fb60a)
+  appended list to campaign fa1af5bd-8d43-44a0-ac60-d92d642d6d92
+  enrolled 3 leads into campaign fa1af5bd-8d43-44a0-ac60-d92d642d6d92
+  tagged 3 leads 'voicemail'
+RESULT: ok - marked 15 subscribed, 0 sibling activities auto-closed
+RESULT: partial - 15 leads pushed to list/campaign/tag; FAILED groups: harvey-vogel
+
+RESULT: error - HotHawk push partial (17 planned) ΓÇö see the failed groups above; those people stay unmarked and retry next run
+=== 2026-08-25T10:12:12.2986609-05:00 call-task-reconcile END (exit 1) ===
+posted run-failure alert to ClickUp task 86ba9zvy5

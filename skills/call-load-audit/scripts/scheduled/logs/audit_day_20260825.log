@@ -1,0 +1,41 @@
+﻿=== 2026-08-25T10:11:12.3651625-05:00 call-load-audit DAY START ===
+≡ƒô₧ Call ΓåÆ HotHawk Load Audit ΓÇö Daily ΓÇö 2026-08-24
+ΓÜá∩╕Å 14 NOT loaded  ┬╖  17 calls / 17 people  ┬╖  3 loaded, 14 missing
+```
+principal        User          Company Name         # of Calls
+---------------  ------------  -------------------  ----------
+general-foundry  Ericka        Vermeer              2
+harvey-vogel     Ericka        Moog                 2
+lnp              Ericka        BlueHalo             3
+lnp              Ericka        Hermeus Corporation  2
+patriot-forge    Ericka        Stoke                3
+shellcast        Ericka        CesiumAstro          3
+vrc              Ericka        Team Wendy           2
+-                -             -                    -
+                 TOTAL Ericka                       17
+```
+ΓÜá∩╕Å NOT LOADED (14) ΓÇö done calls that never reached HotHawk:
+```
+principal        User    Company              Person                                                 why
+---------------  ------  -------------------  -----------------------------------------------------  ---------------------------------------------
+general-foundry  Ericka  Vermeer              Levi Martley <lmartley@vermeer.com>                    not-enrolled (on list only / draft campaign?)
+general-foundry  Ericka  Vermeer              Evan Avery <eavery@vermeer.com>                        not-enrolled (on list only / draft campaign?)
+lnp              Ericka  BlueHalo             Kristy Pearson <kristy.pearson@bluehalo.com>           not-enrolled (on list only / draft campaign?)
+lnp              Ericka  BlueHalo             Tamara Lewis <tamara.lewis@bluehalo.com>               not-enrolled (on list only / draft campaign?)
+lnp              Ericka  BlueHalo             Stephen Reigle <steve.reigle@bluehalo.com>             not-enrolled (on list only / draft campaign?)
+lnp              Ericka  Hermeus Corporation  Teri Bynes <teri.bynes@hermeus.com>                    not-enrolled (on list only / draft campaign?)
+patriot-forge    Ericka  Stoke                Brian Barnes <bbarnes@stokespace.com>                  not-enrolled (on list only / draft campaign?)
+patriot-forge    Ericka  Stoke                Nicholas Womack <nwomack@stokespace.com>               not-enrolled (on list only / draft campaign?)
+patriot-forge    Ericka  Stoke                Daniel Roche <droche@stokespace.com>                   not-enrolled (on list only / draft campaign?)
+shellcast        Ericka  CesiumAstro          Julie Schumacher <julie.schumacher@cesiumastro.com>    not-enrolled (on list only / draft campaign?)
+shellcast        Ericka  CesiumAstro          Salamah Soulong <salamah.soulong.ext@cesiumastro.com>  not-enrolled (on list only / draft campaign?)
+shellcast        Ericka  CesiumAstro          Tara Young <tara.young@cesiumastro.com>                not-enrolled (on list only / draft campaign?)
+vrc              Ericka  Team Wendy           Jennifer Alexander <jalexander@teamwendy.com>          not-enrolled (on list only / draft campaign?)
+vrc              Ericka  Team Wendy           Pamela Zisi <pzisi@teamwendy.com>                      not-enrolled (on list only / draft campaign?)
+```
+Fix: activate/enroll the campaign in HotHawk, or re-run the reconcile (`reconcile_done_calls.py --since <date> --apply`) for these people.
+
+discord: posted
+
+RESULT: ok - {"mode": "day", "window": ["2026-08-24", "2026-08-24"], "total_calls": 17, "people": 17, "loaded": 3, "missing": 14, "systemic": false}
+=== 2026-08-25T10:11:49.1460351-05:00 call-load-audit DAY END (exit 0) ===

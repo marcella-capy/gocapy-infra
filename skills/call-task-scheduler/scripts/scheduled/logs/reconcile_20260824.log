@@ -1,0 +1,44 @@
+﻿=== 2026-08-24T10:07:37.4234439-05:00 call-task-reconcile START ===
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\reconcile_done_calls.py --since 2026-08-19
+  to-subscribe: Guelay Navarro <guelay.navarro@bluehalo.com> (BlueHalo) -> seq 532ff222-9db3-4344-b292-09eaa35eb62f [lnp]
+  to-subscribe: Clarence Page <clarence.page@bluehalo.com> (BlueHalo) -> seq 532ff222-9db3-4344-b292-09eaa35eb62f [lnp]
+  to-subscribe: Patti O'Toole <patricia.otoole@bluehalo.com> (BlueHalo) -> seq 532ff222-9db3-4344-b292-09eaa35eb62f [lnp]
+  to-subscribe: Darrell Ellis, MBA <darrell.ellis@hermeus.com> (Hermeus Corporation) -> seq 532ff222-9db3-4344-b292-09eaa35eb62f [lnp]
+  to-subscribe: Alexander Andon <alex.andon@hermeus.com> (Hermeus Corporation) -> seq 532ff222-9db3-4344-b292-09eaa35eb62f [lnp]
+  to-subscribe: Lauren Vandiver <lauren.vandiver@hermeus.com> (Hermeus Corporation) -> seq 532ff222-9db3-4344-b292-09eaa35eb62f [lnp]
+  to-subscribe: Travis Wrobel <twrobel@graco.com> (Graco) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: David Trask <dtrask@graco.com> (Graco) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Scott Bishop <sbishop@vermeer.com> (Vermeer) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Jodie Hill <jodiehill@vermeer.com> (Vermeer) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Charity Spangenburg <charityspangenburg@vermeer.com> (Vermeer) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+RESULT: ok - 18 done calls on 2026-08-19..2026-08-24, 11 to-subscribe, 0 skipped -> _reconcile_20260819-20260824.json
+
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\hothawk_subscribe.py --artifact _reconcile_20260819-20260824.json --apply
+  created lead 83b58026-d1d8-4ad4-abfd-5c97de07042c: Guelay Navarro <guelay.navarro@bluehalo.com> (BlueHalo)
+  created lead 4486aaef-5e4f-46ec-91a7-2f09bbe63e16: Clarence Page <clarence.page@bluehalo.com> (BlueHalo)
+  created lead 67079b01-dea3-43e2-b2d2-ba0a32919c5d: Patti O'Toole <patricia.otoole@bluehalo.com> (BlueHalo)
+  created lead 070abb9a-3c6b-47cc-ad6a-5e2a6f412773: Darrell Ellis, MBA <darrell.ellis@hermeus.com> (Hermeus Corporation)
+  created lead cda451d6-67be-4171-89f2-bdabda6fb910: Alexander Andon <alex.andon@hermeus.com> (Hermeus Corporation)
+  created lead 86db5225-36aa-4740-aa80-4daefef4a0c0: Lauren Vandiver <lauren.vandiver@hermeus.com> (Hermeus Corporation)
+  bulk-added 6 leads to list 'voicemail-called-lnp' (64b8b24a-ec17-4afe-aecf-f4fd6bf774dd)
+  appended list to campaign 532ff222-9db3-4344-b292-09eaa35eb62f
+  enrolled 6 leads into campaign 532ff222-9db3-4344-b292-09eaa35eb62f
+  tagged 6 leads 'voicemail'
+  created lead bd637853-406f-41ec-8d14-e09ef839c2da: Travis Wrobel <twrobel@graco.com> (Graco)
+  created lead 5370fe23-891c-4fda-ae16-d4f7e8ed0987: David Trask <dtrask@graco.com> (Graco)
+  bulk-added 2 leads to list 'voicemail-called-franklin' (f7f2a99a-9cba-40a3-97ab-f821d7c7447f)
+  appended list to campaign 1bc2bdb0-689e-4650-9169-93c7b784b605
+  enrolled 2 leads into campaign 1bc2bdb0-689e-4650-9169-93c7b784b605
+  tagged 2 leads 'voicemail'
+  created lead ee16fe7b-474a-4680-813b-828c604ae3eb: Scott Bishop <sbishop@vermeer.com> (Vermeer)
+  created lead 3c551bc0-b18a-434c-8c63-782aeb355a05: Jodie Hill <jodiehill@vermeer.com> (Vermeer)
+  created lead 1dd47bc7-57b1-4298-a5fc-682345116f72: Charity Spangenburg <charityspangenburg@vermeer.com> (Vermeer)
+  bulk-added 3 leads to list 'voicemail-called-general-foundry' (44b0b0e1-9990-447f-a19e-4d497e78f2f5)
+  appended list to campaign 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26
+  enrolled 3 leads into campaign 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26
+  tagged 3 leads 'voicemail'
+RESULT: ok - marked 11 subscribed, 0 sibling activities auto-closed
+RESULT: ok - 11 leads pushed to list/campaign/tag
+
+RESULT: ok - 11 people loaded into HotHawk since 2026-08-19 (_reconcile_20260819-20260824.json)
+=== 2026-08-24T10:08:24.5252402-05:00 call-task-reconcile END (exit 0) ===

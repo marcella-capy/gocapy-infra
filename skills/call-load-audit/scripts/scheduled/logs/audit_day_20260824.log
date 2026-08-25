@@ -1,0 +1,36 @@
+﻿=== 2026-08-24T10:07:37.4264452-05:00 call-load-audit DAY START ===
+≡ƒô₧ Call ΓåÆ HotHawk Load Audit ΓÇö Daily ΓÇö 2026-08-21
+ΓÜá∩╕Å 11 NOT loaded  ┬╖  14 calls / 14 people  ┬╖  3 loaded, 11 missing
+```
+principal        User          Company Name         # of Calls
+---------------  ------------  -------------------  ----------
+franklin         Ericka        Graco                2
+general-foundry  Ericka        Vermeer              3
+lnp              Ericka        BlueHalo             3
+lnp              Ericka        Hermeus Corporation  3
+lnp              Ericka        Intergalactic        3
+-                -             -                    -
+                 TOTAL Ericka                       14
+```
+ΓÜá∩╕Å NOT LOADED (11) ΓÇö done calls that never reached HotHawk:
+```
+principal        User    Company              Person                                                why
+---------------  ------  -------------------  ----------------------------------------------------  ---------------------------------------------
+franklin         Ericka  Graco                Travis Wrobel <twrobel@graco.com>                     not-enrolled (on list only / draft campaign?)
+franklin         Ericka  Graco                David Trask <dtrask@graco.com>                        not-enrolled (on list only / draft campaign?)
+general-foundry  Ericka  Vermeer              Scott Bishop <sbishop@vermeer.com>                    not-enrolled (on list only / draft campaign?)
+general-foundry  Ericka  Vermeer              Jodie Hill <jodiehill@vermeer.com>                    not-enrolled (on list only / draft campaign?)
+general-foundry  Ericka  Vermeer              Charity Spangenburg <charityspangenburg@vermeer.com>  not-enrolled (on list only / draft campaign?)
+lnp              Ericka  BlueHalo             Guelay Navarro <guelay.navarro@bluehalo.com>          not-enrolled (on list only / draft campaign?)
+lnp              Ericka  BlueHalo             Clarence M. Page <clarence.page@bluehalo.com>         not-enrolled (on list only / draft campaign?)
+lnp              Ericka  BlueHalo             Patti O'Toole <patricia.otoole@bluehalo.com>          not-enrolled (on list only / draft campaign?)
+lnp              Ericka  Hermeus Corporation  Darrell Ellis, MBA <darrell.ellis@hermeus.com>        not-enrolled (on list only / draft campaign?)
+lnp              Ericka  Hermeus Corporation  Alexander Andon <alex.andon@hermeus.com>              not-enrolled (on list only / draft campaign?)
+lnp              Ericka  Hermeus Corporation  Lauren Vandiver <lauren.vandiver@hermeus.com>         not-enrolled (on list only / draft campaign?)
+```
+Fix: activate/enroll the campaign in HotHawk, or re-run the reconcile (`reconcile_done_calls.py --since <date> --apply`) for these people.
+
+discord: posted
+
+RESULT: ok - {"mode": "day", "window": ["2026-08-21", "2026-08-21"], "total_calls": 14, "people": 14, "loaded": 3, "missing": 11, "systemic": false}
+=== 2026-08-24T10:08:01.8324616-05:00 call-load-audit DAY END (exit 0) ===
