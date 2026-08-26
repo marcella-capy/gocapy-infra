@@ -1,0 +1,60 @@
+﻿=== 2026-08-26T09:21:02.3412507-05:00 call-task-reconcile START ===
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\reconcile_done_calls.py --since 2026-08-21
+  to-subscribe: Noah Meyers <noah.meyers@bluehalo.com> (BlueHalo) -> seq 532ff222-9db3-4344-b292-09eaa35eb62f [lnp]
+  to-subscribe: Nancy Pham <nancy.pham@bluehalo.com> (BlueHalo) -> seq 532ff222-9db3-4344-b292-09eaa35eb62f [lnp]
+  to-subscribe: Ryan Heinrichs <rheinrichs@vermeer.com> (Vermeer) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Ryan Bouwkamp <rbouwkamp@vermeer.com> (Vermeer) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Grace Miller <gracemiller@vermeer.com> (Vermeer) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Ian Eckard <ieckard@teamwendy.com> (Team Wendy) -> seq eeadc336-f1a4-4676-a8db-86d0201457a3 [vrc]
+  to-subscribe: Rebecca Saari <rsaari@teamwendy.com> (Team Wendy) -> seq eeadc336-f1a4-4676-a8db-86d0201457a3 [vrc]
+  to-subscribe: Peter Dai <pdai@moog.com> (Moog) -> seq 945208ec-0193-4b2d-bffa-fd8dbd041dec [harvey-vogel]
+  to-subscribe: Victor Nicholas <vnicholas@moog.com> (Moog) -> seq 945208ec-0193-4b2d-bffa-fd8dbd041dec [harvey-vogel]
+  to-subscribe: Christina Tomaselli <ctomaselli@moog.com> (Moog) -> seq 945208ec-0193-4b2d-bffa-fd8dbd041dec [harvey-vogel]
+  to-subscribe: Christine Hawker-Real <chawker@moog.com> (Moog) -> seq 945208ec-0193-4b2d-bffa-fd8dbd041dec [harvey-vogel]
+  to-subscribe: Wilbert Jones <wilbert.jones@moog.com> (Moog) -> seq 945208ec-0193-4b2d-bffa-fd8dbd041dec [harvey-vogel]
+  to-subscribe: Kyle Schumacher <kschumacher@stokespace.com> (Stoke) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Marco Salguero <msalguero@stokespace.com> (Stoke) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Jonah Zimmerman <jzimmerman@stokespace.com> (Stoke) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+RESULT: ok - 47 done calls on 2026-08-21..2026-08-26, 15 to-subscribe, 0 skipped -> _reconcile_20260821-20260826.json
+
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\hothawk_subscribe.py --artifact _reconcile_20260821-20260826.json --apply
+  created lead 9f67da8d-0a4e-4cf0-a0c2-757a60c394cb: Noah Meyers <noah.meyers@bluehalo.com> (BlueHalo)
+  created lead 1b214260-335b-4a15-b9d3-76d134bab3d2: Nancy Pham <nancy.pham@bluehalo.com> (BlueHalo)
+  bulk-added 2 leads to list 'voicemail-called-lnp' (64b8b24a-ec17-4afe-aecf-f4fd6bf774dd)
+  appended list to campaign 532ff222-9db3-4344-b292-09eaa35eb62f
+  enrolled 2 leads into campaign 532ff222-9db3-4344-b292-09eaa35eb62f
+  tagged 2 leads 'voicemail'
+  created lead 118c9c78-1e21-4511-a13e-177c353c5720: Ryan Heinrichs <rheinrichs@vermeer.com> (Vermeer)
+  created lead e472fe90-0105-4465-8df7-292bc0e6ba42: Ryan Bouwkamp <rbouwkamp@vermeer.com> (Vermeer)
+  created lead 00f94028-4857-428d-9760-760747ba3068: Grace Miller <gracemiller@vermeer.com> (Vermeer)
+  bulk-added 3 leads to list 'voicemail-called-general-foundry' (44b0b0e1-9990-447f-a19e-4d497e78f2f5)
+  appended list to campaign 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26
+  enrolled 3 leads into campaign 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26
+  tagged 3 leads 'voicemail'
+  created lead 76428346-ef0f-40e5-8435-aa132ac2e005: Ian Eckard <ieckard@teamwendy.com> (Team Wendy)
+  created lead 6d46e485-dcf4-465d-8ccf-edfc6e52a000: Rebecca Saari <rsaari@teamwendy.com> (Team Wendy)
+  bulk-added 2 leads to list 'voicemail-called-vrc' (26427e3f-e913-4073-a997-6fc267c699de)
+  appended list to campaign eeadc336-f1a4-4676-a8db-86d0201457a3
+  enrolled 2 leads into campaign eeadc336-f1a4-4676-a8db-86d0201457a3
+  tagged 2 leads 'voicemail'
+  found lead 8852116f-711b-470e-b791-0a81b29bba21: Peter Dai <pdai@moog.com> (Moog)
+  found lead d6b7407a-a4a1-4390-b56d-40631839c79a: Victor Nicholas <vnicholas@moog.com> (Moog)
+  found lead e540f51b-e29a-4902-96da-9f06eb0f2dcd: Christina Tomaselli <ctomaselli@moog.com> (Moog)
+  found lead 4faf927d-92e1-4031-941e-caa6f1dbc31a: Christine Hawker-Real <chawker@moog.com> (Moog)
+  found lead d8ea463f-0d21-4ad4-8030-9ac9c98ef3a0: Wilbert Jones <wilbert.jones@moog.com> (Moog)
+  bulk-added 5 leads to list 'voicemail-called-harvey-vogel' (096a221d-c514-4e72-9d0d-bda2b1404ddf)
+  appended list to campaign 945208ec-0193-4b2d-bffa-fd8dbd041dec
+  ERROR group [harvey-vogel]: POST /campaigns/945208ec-0193-4b2d-bffa-fd8dbd041dec/leads -> HTTP 422: {"code":"NO_ELIGIBLE_LEADS","message":"All selected leads are already enrolled in other campaigns. Set `allowLeadsInMultiple = true` to enrol overlapping leads anyway.","skippedLeadCount":5,"skippedLeads":[{"leadId":"4faf927d-92e1-4031-941e-caa6f1dbc31a","conflictingCampaignId":"db3f2785-826e-4540-97e7-1964bdfac507","conflictingCampaignName":"Harvey Vogel"},{"leadId":"d6b7407a-a4a1-4390-b56d-40631839c79a","conflictingCampaignId":"db3f2785-826e-4540-97e7-1964bdfac507","conflictingCampaignName":"Harvey Vogel"},{"leadId":"e540f51b-e29a-4902-96da-9f06eb0f2dcd","conflictingCampaignId":"db3f2785-826e-4540-97e7-1964bdfac507","conflictingCampaignName":"Harvey Vogel"},{"leadId":"d8ea463f-0d21-4ad4-8030-9ac9c98ef3a0","conflictingCampaignId":"db3f2785-826e-4540-97e7-1964bdfac507","conflictingCampaignName":"Harvey Vogel"},{"leadId":"8852116f-711b-470e-b791-0a81b29bba21","conflictingCampaignId":"db3f2785-826e-4540-97e7-1964bdfac507","conflictingCampaignName":"Harvey Vogel"}],"status":422} ΓÇö persons NOT marked
+  created lead 6a97c54a-70ac-49a0-80d5-6851ab307ea8: Kyle Schumacher <kschumacher@stokespace.com> (Stoke)
+  created lead 3b1d26a0-4d28-4338-8d3c-9514f8e788a7: Marco Salguero <msalguero@stokespace.com> (Stoke)
+  created lead 063f44d1-79b9-4a7e-bf9e-e5b9b881f4e0: Jonah Zimmerman <jzimmerman@stokespace.com> (Stoke)
+  bulk-added 3 leads to list 'voicemail-called-patriot-forge' (9460d74c-59e5-4184-9243-e8d9937fb60a)
+  appended list to campaign fa1af5bd-8d43-44a0-ac60-d92d642d6d92
+  enrolled 3 leads into campaign fa1af5bd-8d43-44a0-ac60-d92d642d6d92
+  tagged 3 leads 'voicemail'
+RESULT: ok - marked 10 subscribed, 0 sibling activities auto-closed
+RESULT: partial - 10 leads pushed to list/campaign/tag; FAILED groups: harvey-vogel
+
+RESULT: error - HotHawk push partial (15 planned) ΓÇö see the failed groups above; those people stay unmarked and retry next run
+=== 2026-08-26T09:22:07.0142476-05:00 call-task-reconcile END (exit 1) ===
+posted run-failure alert to ClickUp task 86ba9zvy5

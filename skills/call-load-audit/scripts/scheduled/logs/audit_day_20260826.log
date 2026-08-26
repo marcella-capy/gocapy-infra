@@ -1,0 +1,36 @@
+﻿=== 2026-08-26T09:21:02.5980123-05:00 call-load-audit DAY START ===
+≡ƒô₧ Call ΓåÆ HotHawk Load Audit ΓÇö Daily ΓÇö 2026-08-25
+ΓÜá∩╕Å 10 NOT loaded  ┬╖  16 calls / 16 people  ┬╖  6 loaded, 10 missing
+```
+principal        User          Company Name   # of Calls
+---------------  ------------  -------------  ----------
+general-foundry  Ericka        Vermeer        3
+harvey-vogel     Ericka        Moog           3
+lnp              Ericka        BlueHalo       2
+lnp              Ericka        Intergalactic  3
+patriot-forge    Ericka        Stoke          3
+vrc              Ericka        Team Wendy     2
+-                -             -              -
+                 TOTAL Ericka                 16
+```
+ΓÜá∩╕Å NOT LOADED (10) ΓÇö done calls that never reached HotHawk:
+```
+principal        User    Company     Person                                        why
+---------------  ------  ----------  --------------------------------------------  ---------------------------------------------
+general-foundry  Ericka  Vermeer     Ryan Heinrichs <rheinrichs@vermeer.com>       not-enrolled (on list only / draft campaign?)
+general-foundry  Ericka  Vermeer     Ryan Bouwkamp <rbouwkamp@vermeer.com>         not-enrolled (on list only / draft campaign?)
+general-foundry  Ericka  Vermeer     Grace Miller <gracemiller@vermeer.com>        not-enrolled (on list only / draft campaign?)
+lnp              Ericka  BlueHalo    Noah Meyers <noah.meyers@bluehalo.com>        not-enrolled (on list only / draft campaign?)
+lnp              Ericka  BlueHalo    Nancy Pham <nancy.pham@bluehalo.com>          not-enrolled (on list only / draft campaign?)
+patriot-forge    Ericka  Stoke       Kyle Schumacher <kschumacher@stokespace.com>  not-enrolled (on list only / draft campaign?)
+patriot-forge    Ericka  Stoke       Marco Salguero <msalguero@stokespace.com>     not-enrolled (on list only / draft campaign?)
+patriot-forge    Ericka  Stoke       Jonah Zimmerman <jzimmerman@stokespace.com>   not-enrolled (on list only / draft campaign?)
+vrc              Ericka  Team Wendy  Ian Eckard <ieckard@teamwendy.com>            not-enrolled (on list only / draft campaign?)
+vrc              Ericka  Team Wendy  Rebecca Saari <rsaari@teamwendy.com>          not-enrolled (on list only / draft campaign?)
+```
+Fix: activate/enroll the campaign in HotHawk, or re-run the reconcile (`reconcile_done_calls.py --since <date> --apply`) for these people.
+
+discord: posted
+
+RESULT: ok - {"mode": "day", "window": ["2026-08-25", "2026-08-25"], "total_calls": 16, "people": 16, "loaded": 6, "missing": 10, "systemic": false}
+=== 2026-08-26T09:21:46.1423524-05:00 call-load-audit DAY END (exit 0) ===

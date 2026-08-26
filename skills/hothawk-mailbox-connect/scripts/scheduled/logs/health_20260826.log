@@ -1,0 +1,10 @@
+﻿=== 2026-08-26T09:21:01.4288226-05:00 mailbox-health START (args: '') ===
+py.exe : error: global env not found at G:\Shared drives\Capy Outreach\global.env.md
+At C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\hothawk-mailbox-connect\scripts\scheduled\run_health
+_check.ps1:31 char:1
++ & py $script $argline.Split(" ", [StringSplitOptions]::RemoveEmptyEnt ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (error: global e...h\global.env.md:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+=== 2026-08-26T09:21:03.2832612-05:00 mailbox-health END (exit 1) ===

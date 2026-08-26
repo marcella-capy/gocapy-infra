@@ -3402,5 +3402,55 @@
     "subscribed_at": "2026-08-25T10:12:12",
     "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
     "closed_activities": []
+  },
+  "75978": {
+    "subscribed_at": "2026-08-26T09:22:06",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": []
+  },
+  "76180": {
+    "subscribed_at": "2026-08-26T09:22:06",
+    "sequence_id": "532ff222-9db3-4344-b292-09eaa35eb62f",
+    "closed_activities": []
+  },
+  "109666": {
+    "subscribed_at": "2026-08-26T09:22:06",
+    "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+    "closed_activities": []
+  },
+  "109670": {
+    "subscribed_at": "2026-08-26T09:22:06",
+    "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+    "closed_activities": []
+  },
+  "20792": {
+    "subscribed_at": "2026-08-26T09:22:06",
+    "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+    "closed_activities": []
+  },
+  "102737": {
+    "subscribed_at": "2026-08-26T09:22:06",
+    "sequence_id": "eeadc336-f1a4-4676-a8db-86d0201457a3",
+    "closed_activities": []
+  },
+  "102738": {
+    "subscribed_at": "2026-08-26T09:22:06",
+    "sequence_id": "eeadc336-f1a4-4676-a8db-86d0201457a3",
+    "closed_activities": []
+  },
+  "109714": {
+    "subscribed_at": "2026-08-26T09:22:06",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "109723": {
+    "subscribed_at": "2026-08-26T09:22:06",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "109724": {
+    "subscribed_at": "2026-08-26T09:22:06",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
   }
 }
