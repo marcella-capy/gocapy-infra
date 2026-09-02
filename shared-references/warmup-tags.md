@@ -30,7 +30,7 @@ Until 2026-07-31 there was no single record of these — the only source was the
 | Alpha Grainger | Alpha Grainger | `swiss-machining`, `machining-parts` |
 | Franklin Casting | Franklin Casting | `precision-castings`, `casting-components` |
 | Shellcast | Shellcast | `investment-casting`, `casting-components` |
-| ATW / Parmatech / Judson Smith | ATW | `precision-tubing` |
+| ATW / Parmatech / Judson Smith | ATW | `custom-fabrication` (live PlusVibe pool word, all 20 mailboxes, re-verified 2026-08-28); `precision-tubing` exists as a HotHawk workspace tag only |
 | Megatech | Megatech | `machining-parts` |
 | Harvey Vogel | HV OpCos | `stamping-custom` |
 | Workplace Modular | HV OpCos | `workbench-components` |

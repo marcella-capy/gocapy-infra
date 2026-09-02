@@ -1,0 +1,131 @@
+{
+  "date": "2026-08-27",
+  "date_end": "2026-09-01",
+  "done_calls": 54,
+  "to_subscribe": [
+    {
+      "person_id": 109675,
+      "principal": "general-foundry",
+      "first_name": "Joe",
+      "last_name": "Flaherty",
+      "email": "jflaherty@vermeer.com",
+      "company_name": "Vermeer",
+      "phone": "(641) 621-7907",
+      "title": "Tactical Buyer",
+      "workspace_id": "9e14ce45-dca8-4c46-b30a-c17652222d2d",
+      "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+      "done_activity_id": 77522
+    },
+    {
+      "person_id": 109676,
+      "principal": "general-foundry",
+      "first_name": "Jake",
+      "last_name": "Brenizer",
+      "email": "jbrenizer@vermeer.com",
+      "company_name": "Vermeer",
+      "phone": "(414) 350-7424",
+      "title": "Supply Chain Management Intern",
+      "workspace_id": "9e14ce45-dca8-4c46-b30a-c17652222d2d",
+      "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+      "done_activity_id": 77525
+    },
+    {
+      "person_id": 109677,
+      "principal": "general-foundry",
+      "first_name": "Andy",
+      "last_name": "Suarez",
+      "email": "asuarez@vermeer.com",
+      "company_name": "Vermeer",
+      "phone": "(641) 621-8389",
+      "title": "Tactical Buyer",
+      "workspace_id": "9e14ce45-dca8-4c46-b30a-c17652222d2d",
+      "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+      "done_activity_id": 77528
+    },
+    {
+      "person_id": 73565,
+      "principal": "harvey-vogel",
+      "first_name": "Christina",
+      "last_name": "Tomaselli",
+      "email": "ctomaselli@moog.com",
+      "company_name": "Moog",
+      "phone": "(310) 618-7631",
+      "title": "Director, Supply Chain",
+      "workspace_id": "3a6e3124-c6ab-43e4-aa49-bc4eeb3f21cd",
+      "sequence_id": "945208ec-0193-4b2d-bffa-fd8dbd041dec",
+      "done_activity_id": 77587
+    },
+    {
+      "person_id": 73596,
+      "principal": "harvey-vogel",
+      "first_name": "Christine",
+      "last_name": "Hawker-Real",
+      "email": "chawker@moog.com",
+      "company_name": "Moog",
+      "phone": "(310) 686-5160",
+      "title": "Performance Manager, Supplier",
+      "workspace_id": "3a6e3124-c6ab-43e4-aa49-bc4eeb3f21cd",
+      "sequence_id": "945208ec-0193-4b2d-bffa-fd8dbd041dec",
+      "done_activity_id": 77590
+    },
+    {
+      "person_id": 76888,
+      "principal": "harvey-vogel",
+      "first_name": "Wilbert",
+      "last_name": "Jones",
+      "email": "wilbert.jones@moog.com",
+      "company_name": "Moog",
+      "phone": "(310) 618-7635",
+      "title": "Senior Manager, Global Supplier Performance",
+      "workspace_id": "3a6e3124-c6ab-43e4-aa49-bc4eeb3f21cd",
+      "sequence_id": "945208ec-0193-4b2d-bffa-fd8dbd041dec",
+      "done_activity_id": 77593
+    },
+    {
+      "person_id": 73571,
+      "principal": "harvey-vogel",
+      "first_name": "Manuel",
+      "last_name": "Maravilla",
+      "email": "mmaravilla@moog.com",
+      "company_name": "Moog",
+      "phone": "(310) 618-7215",
+      "title": "Supply Chain Specialist & Buyer & Planner",
+      "workspace_id": "3a6e3124-c6ab-43e4-aa49-bc4eeb3f21cd",
+      "sequence_id": "945208ec-0193-4b2d-bffa-fd8dbd041dec",
+      "done_activity_id": 77622
+    },
+    {
+      "person_id": 73585,
+      "principal": "harvey-vogel",
+      "first_name": "Jenna",
+      "last_name": "Keys",
+      "email": "jkeys@moog.com",
+      "company_name": "Moog",
+      "phone": "(310) 618-6613",
+      "title": "Special Projects Supply Chain Lead",
+      "workspace_id": "3a6e3124-c6ab-43e4-aa49-bc4eeb3f21cd",
+      "sequence_id": "945208ec-0193-4b2d-bffa-fd8dbd041dec",
+      "done_activity_id": 77625
+    },
+    {
+      "person_id": 73593,
+      "principal": "harvey-vogel",
+      "first_name": "Melissa",
+      "last_name": "Alward",
+      "email": "malward@moog.com",
+      "company_name": "Moog",
+      "phone": "(310) 618-6643",
+      "title": "Purchasing Specialist",
+      "workspace_id": "3a6e3124-c6ab-43e4-aa49-bc4eeb3f21cd",
+      "sequence_id": "945208ec-0193-4b2d-bffa-fd8dbd041dec",
+      "done_activity_id": 77628
+    }
+  ],
+  "skipped": [
+    {
+      "person_id": 102999,
+      "name": "Nelly Ucler",
+      "reason": "no-email"
+    }
+  ]
+}

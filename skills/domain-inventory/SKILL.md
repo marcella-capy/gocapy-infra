@@ -25,6 +25,20 @@ grouped tables with **expiration / renewal status / annual cost**.
 Output columns: `domain, principal, registrar, expiration, renewal, cost`.
 
 ## Files
+- `scripts/sheet_sync.py` - **writes the live "3.0 Renewal" tab** of the Cold Outreach
+  Domains sheet (id `178xVEdck...`) from Porkbun: fills expiry + auto-renew, corrects the
+  registrar label where a domain marked `External Domain` is really Porkbun, and appends
+  any Porkbun domain the sheet is missing. Dry-run by default; `--apply` writes.
+  Scheduled monthly as `AISDR_DomainRenewal`.
+  - Reuses `pull_porkbun()` / `load_env()` from `domain_inventory.py` - one Porkbun client.
+  - **Never overwrites a human annotation** in Auto Renewal (`cancelled`, `XX`, free
+    text). Conflicts are reported, not resolved.
+  - Domains Porkbun does not hold (SiteGround / External) are left untouched: there is no
+    live source for them, so a guess is worse than the current blank. SiteGround has no
+    list API - those rows still need a paste from the SiteGround dashboard.
+  - Needs `GOOGLE_SHEETS_SA_KEY` in `~/.claude/global.env` (service-account JSON path) and
+    the sheet shared with that service account as Editor.
+  - Snapshots the tab to `references/sheet-backups/` before every write.
 - `scripts/domain_inventory.py` — pulls Porkbun, merges the `--extra` rows, resolves principals, writes the CSV + prints the summary.
 - `references/principal-overrides.json` — **persistent config**: registrar prices, slug→display names, internal/Capy hints, manual domain→principal overrides, and DROP (let-lapse) assignments. Edit this when things change; the script reads it every run.
 - `references/_example_extra.csv` — sample of the normalized SiteGround/GoDaddy input.

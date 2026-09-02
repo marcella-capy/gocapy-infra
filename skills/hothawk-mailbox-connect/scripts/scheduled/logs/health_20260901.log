@@ -1,0 +1,45 @@
+﻿=== 2026-09-01T06:45:18.7644871-05:00 mailbox-health START (args: '') ===
+py.exe : warn: creds file not found at G:\Shared drives\Capy Outreach\hothawk-mailbox-creds.json ΓÇö 
+reconnect/remediate unavailable
+At C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\hothawk-mailbox-connect\scripts\scheduled\run_health
+_check.ps1:31 char:1
++ & py $script $argline.Split(" ", [StringSplitOptions]::RemoveEmptyEnt ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warn: creds fil...ate unavailable:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Traceback (most recent call last):
+  File "C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\hothawk-mailbox-connect\scripts\scheduled\..\ch
+eck_mailbox_health.py", line 433, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\hothawk-mailbox-connect\scripts\scheduled\..\ch
+eck_mailbox_health.py", line 340, in main
+    boxes = list_mailboxes(token, ws["id"])
+  File "C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\hothawk-mailbox-connect\scripts\scheduled\..\ch
+eck_mailbox_health.py", line 194, in list_mailboxes
+    status, payload = _request(
+                      ~~~~~~~~^
+        "GET", f"/mailboxes?workspaceId={ws_id}&page={page}&take=150", token
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\hothawk-mailbox-connect\scripts\scheduled\..\ch
+eck_mailbox_health.py", line 169, in _request
+    raw = r.read().decode("utf-8")
+          ~~~~~~^^
+  File "C:\Users\marce\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 500, in read
+    s = self._safe_read(self.length)
+  File "C:\Users\marce\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 648, in _safe_read
+    data = self.fp.read(cursize)
+  File "C:\Users\marce\AppData\Local\Python\pythoncore-3.14-64\Lib\socket.py", line 725, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\marce\AppData\Local\Python\pythoncore-3.14-64\Lib\ssl.py", line 1304, in recv_into
+    return self.read(nbytes, buffer)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\marce\AppData\Local\Python\pythoncore-3.14-64\Lib\ssl.py", line 1138, in read
+    return self._sslobj.read(len, buffer)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+TimeoutError: The read operation timed out
+=== 2026-09-01T07:39:53.7797048-05:00 mailbox-health END (exit 1) ===

@@ -1,0 +1,37 @@
+﻿=== 2026-09-01T08:20:00.7118012-05:00 call-task-reconcile START ===
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\reconcile_done_calls.py --since 2026-08-27
+  to-subscribe: Joe Flaherty <jflaherty@vermeer.com> (Vermeer) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Jake Brenizer <jbrenizer@vermeer.com> (Vermeer) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Andy Suarez <asuarez@vermeer.com> (Vermeer) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Christina Tomaselli <ctomaselli@moog.com> (Moog) -> seq 945208ec-0193-4b2d-bffa-fd8dbd041dec [harvey-vogel]
+  to-subscribe: Christine Hawker-Real <chawker@moog.com> (Moog) -> seq 945208ec-0193-4b2d-bffa-fd8dbd041dec [harvey-vogel]
+  to-subscribe: Wilbert Jones <wilbert.jones@moog.com> (Moog) -> seq 945208ec-0193-4b2d-bffa-fd8dbd041dec [harvey-vogel]
+  to-subscribe: Manuel Maravilla <mmaravilla@moog.com> (Moog) -> seq 945208ec-0193-4b2d-bffa-fd8dbd041dec [harvey-vogel]
+  to-subscribe: Jenna Keys <jkeys@moog.com> (Moog) -> seq 945208ec-0193-4b2d-bffa-fd8dbd041dec [harvey-vogel]
+  to-subscribe: Melissa Alward <malward@moog.com> (Moog) -> seq 945208ec-0193-4b2d-bffa-fd8dbd041dec [harvey-vogel]
+  skipped: {'person_id': 102999, 'name': 'Nelly Ucler', 'reason': 'no-email'}
+RESULT: ok - 54 done calls on 2026-08-27..2026-09-01, 9 to-subscribe, 1 skipped -> _reconcile_20260827-20260901.json
+
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\hothawk_subscribe.py --artifact _reconcile_20260827-20260901.json --apply
+  created lead 92f194e7-8b2e-459b-8889-e59a3722328e: Joe Flaherty <jflaherty@vermeer.com> (Vermeer)
+  created lead 394b2521-d351-4e9e-af7a-2bf91006a200: Jake Brenizer <jbrenizer@vermeer.com> (Vermeer)
+  created lead 25cb727a-fdbb-4a39-b018-671623520c13: Andy Suarez <asuarez@vermeer.com> (Vermeer)
+  bulk-added 3 leads to list 'voicemail-called-general-foundry' (44b0b0e1-9990-447f-a19e-4d497e78f2f5)
+  appended list to campaign 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26
+  enrolled 3 leads into campaign 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26
+  tagged 3 leads 'voicemail'
+  found lead e540f51b-e29a-4902-96da-9f06eb0f2dcd: Christina Tomaselli <ctomaselli@moog.com> (Moog)
+  found lead 4faf927d-92e1-4031-941e-caa6f1dbc31a: Christine Hawker-Real <chawker@moog.com> (Moog)
+  found lead d8ea463f-0d21-4ad4-8030-9ac9c98ef3a0: Wilbert Jones <wilbert.jones@moog.com> (Moog)
+  found lead 2b555bc0-f12b-44b5-b348-1af6cca9af6a: Manuel Maravilla <mmaravilla@moog.com> (Moog)
+  found lead 2b4fac0e-44c8-4bc6-99ab-1d2fb6d6223d: Jenna Keys <jkeys@moog.com> (Moog)
+  found lead 46d24de0-b52c-4342-a117-3429000c00eb: Melissa Alward <malward@moog.com> (Moog)
+  bulk-added 6 leads to list 'voicemail-called-harvey-vogel' (096a221d-c514-4e72-9d0d-bda2b1404ddf)
+  appended list to campaign 945208ec-0193-4b2d-bffa-fd8dbd041dec
+  enrolled 6 leads into campaign 945208ec-0193-4b2d-bffa-fd8dbd041dec
+  tagged 6 leads 'voicemail'
+RESULT: ok - marked 9 subscribed, 0 sibling activities auto-closed
+RESULT: ok - 9 leads pushed to list/campaign/tag
+
+RESULT: ok - 9 people loaded into HotHawk since 2026-08-27 (_reconcile_20260827-20260901.json)
+=== 2026-09-01T08:20:26.5940531-05:00 call-task-reconcile END (exit 0) ===

@@ -1,0 +1,47 @@
+﻿=== 2026-09-01T07:42:00.8292068-05:00 call-load-audit MONTH START ===
+≡ƒô₧ Call ΓåÆ HotHawk Load Audit ΓÇö Monthly ΓÇö August 2026
+ΓÜá∩╕Å 5 NOT loaded  ┬╖  359 calls / 174 people  ┬╖  169 loaded, 5 missing
+```
+principal        User          Company Name                      # of Calls
+---------------  ------------  --------------------------------  ----------
+alpha-grainger   Ericka        1X Technologies                   10
+alpha-grainger   Ericka        FN America                        23
+franklin         Ericka        Emerson                           14
+franklin         Ericka        Graco                             14
+general-foundry  Ericka        Nikola                            9
+general-foundry  Ericka        Vermeer                           30
+harvey-vogel     Ericka        Crane Aerospace & Electronics     12
+harvey-vogel     Ericka        Moog                              21
+lnp              Ericka        Beretta USA Corp                  6
+lnp              Ericka        BlueHalo                          8
+lnp              Ericka        Hermeus Corporation               5
+lnp              Ericka        Intergalactic                     9
+lnp              Ericka        ThinkOrbital                      3
+lnp              Ericka        Varda Space Industries            3
+patriot-forge    Ericka        Lam Research                      91
+patriot-forge    Ericka        Stoke                             15
+shellcast        Ericka        AST SpaceMobile                   1
+shellcast        Ericka        CesiumAstro                       6
+shellcast        Ericka        Spirit Aerosystems                34
+vrc              Ericka        Corken, Inc. a div of IDEX Corp.  34
+vrc              Ericka        Team Wendy                        8
+vrc              Ericka        ZSI-Foster                        3
+-                -             -                                 -
+                 TOTAL Ericka                                    359
+```
+ΓÜá∩╕Å NOT LOADED (5) ΓÇö done calls that never reached HotHawk:
+```
+principal        User    Company       Person                                 why
+---------------  ------  ------------  -------------------------------------  ---------------------------------------------
+franklin         Ericka  Graco         Nelly Ucler                            no-email
+general-foundry  Ericka  Vermeer       Joe Flaherty <jflaherty@vermeer.com>   not-enrolled (on list only / draft campaign?)
+general-foundry  Ericka  Vermeer       Jake Brenizer <jbrenizer@vermeer.com>  not-enrolled (on list only / draft campaign?)
+general-foundry  Ericka  Vermeer       Andy Suarez <asuarez@vermeer.com>      not-enrolled (on list only / draft campaign?)
+patriot-forge    Ericka  Lam Research  Reiner Kulkowski                       no-email
+```
+Fix: activate/enroll the campaign in HotHawk, or re-run the reconcile (`reconcile_done_calls.py --since <date> --apply`) for these people.
+
+discord: posted
+
+RESULT: ok - {"mode": "month", "window": ["2026-08-01", "2026-08-31"], "total_calls": 359, "people": 174, "loaded": 169, "missing": 5, "systemic": false}
+=== 2026-09-01T07:42:46.7881354-05:00 call-load-audit MONTH END (exit 0) ===

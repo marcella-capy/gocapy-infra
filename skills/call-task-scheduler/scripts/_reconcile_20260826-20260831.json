@@ -1,0 +1,183 @@
+{
+  "date": "2026-08-26",
+  "date_end": "2026-08-31",
+  "done_calls": 48,
+  "to_subscribe": [
+    {
+      "person_id": 102998,
+      "principal": "franklin",
+      "first_name": "Tiffany",
+      "last_name": "Ingall",
+      "email": "ta@graco.com",
+      "company_name": "Graco",
+      "phone": "(517) 240-7194",
+      "title": "Sourcing Specialist II",
+      "workspace_id": "023d4d35-245d-44ce-bc74-569d1d968f3d",
+      "sequence_id": "1bc2bdb0-689e-4650-9169-93c7b784b605",
+      "done_activity_id": 77459
+    },
+    {
+      "person_id": 109673,
+      "principal": "general-foundry",
+      "first_name": "Joan",
+      "last_name": "Nunnikhoven",
+      "email": "jnunnikhoven@vermeer.com",
+      "company_name": "Vermeer",
+      "phone": "(641) 621-7231",
+      "title": "Tactical Buyer",
+      "workspace_id": "9e14ce45-dca8-4c46-b30a-c17652222d2d",
+      "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+      "done_activity_id": 77516
+    },
+    {
+      "person_id": 109674,
+      "principal": "general-foundry",
+      "first_name": "David",
+      "last_name": "Heinen",
+      "email": "dheinen@vermeer.com",
+      "company_name": "Vermeer",
+      "phone": "(641) 621-7964",
+      "title": "Procurement, Tactical Buyer",
+      "workspace_id": "9e14ce45-dca8-4c46-b30a-c17652222d2d",
+      "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+      "done_activity_id": 77519
+    },
+    {
+      "person_id": 24393,
+      "principal": "harvey-vogel",
+      "first_name": "Peter",
+      "last_name": "Dai",
+      "email": "pdai@moog.com",
+      "company_name": "Moog",
+      "phone": "(310) 533-1178 x 6428",
+      "title": "Senior Manager, Strategic Sourcing",
+      "workspace_id": "3a6e3124-c6ab-43e4-aa49-bc4eeb3f21cd",
+      "sequence_id": "945208ec-0193-4b2d-bffa-fd8dbd041dec",
+      "done_activity_id": 77578
+    },
+    {
+      "person_id": 73548,
+      "principal": "harvey-vogel",
+      "first_name": "Victor",
+      "last_name": "Nicholas",
+      "email": "vnicholas@moog.com",
+      "company_name": "Moog",
+      "phone": "(310) 618-7691",
+      "title": "Manager, Supply Chain (Ag)",
+      "workspace_id": "3a6e3124-c6ab-43e4-aa49-bc4eeb3f21cd",
+      "sequence_id": "945208ec-0193-4b2d-bffa-fd8dbd041dec",
+      "done_activity_id": 77584
+    },
+    {
+      "person_id": 21355,
+      "principal": "harvey-vogel",
+      "first_name": "Brad",
+      "last_name": "Mason",
+      "email": "bmason@moog.com",
+      "company_name": "Moog",
+      "phone": "(310) 533-1178",
+      "title": "Supply Specialist",
+      "workspace_id": "3a6e3124-c6ab-43e4-aa49-bc4eeb3f21cd",
+      "sequence_id": "945208ec-0193-4b2d-bffa-fd8dbd041dec",
+      "done_activity_id": 77595
+    },
+    {
+      "person_id": 22518,
+      "principal": "harvey-vogel",
+      "first_name": "Gregory",
+      "last_name": "Rizza",
+      "email": "grizza@moog.com",
+      "company_name": "Moog",
+      "phone": "(310) 618-7546",
+      "title": "Staff project engineer",
+      "workspace_id": "3a6e3124-c6ab-43e4-aa49-bc4eeb3f21cd",
+      "sequence_id": "945208ec-0193-4b2d-bffa-fd8dbd041dec",
+      "done_activity_id": 77598
+    },
+    {
+      "person_id": 23452,
+      "principal": "harvey-vogel",
+      "first_name": "Kenny",
+      "last_name": "Hua",
+      "email": "khua@moog.com",
+      "company_name": "Moog",
+      "phone": "(310) 618-7241",
+      "title": "Electronic Design Engineer",
+      "workspace_id": "3a6e3124-c6ab-43e4-aa49-bc4eeb3f21cd",
+      "sequence_id": "945208ec-0193-4b2d-bffa-fd8dbd041dec",
+      "done_activity_id": 77601
+    },
+    {
+      "person_id": 24184,
+      "principal": "harvey-vogel",
+      "first_name": "Mary",
+      "last_name": "Wittig",
+      "email": "mwittig@moog.com",
+      "company_name": "Moog",
+      "phone": "(310) 618-7530",
+      "title": "Supply Chain Senior Buyer",
+      "workspace_id": "3a6e3124-c6ab-43e4-aa49-bc4eeb3f21cd",
+      "sequence_id": "945208ec-0193-4b2d-bffa-fd8dbd041dec",
+      "done_activity_id": 77604
+    },
+    {
+      "person_id": 25308,
+      "principal": "harvey-vogel",
+      "first_name": "Tiffany",
+      "last_name": "Gorelik",
+      "email": "tgorelik@moog.com",
+      "company_name": "Moog",
+      "phone": "(310) 533-1178",
+      "title": "sr. supply specialist",
+      "workspace_id": "3a6e3124-c6ab-43e4-aa49-bc4eeb3f21cd",
+      "sequence_id": "945208ec-0193-4b2d-bffa-fd8dbd041dec",
+      "done_activity_id": 77610
+    },
+    {
+      "person_id": 25456,
+      "principal": "harvey-vogel",
+      "first_name": "Toni",
+      "last_name": "Reid",
+      "email": "treid@moog.com",
+      "company_name": "Moog",
+      "phone": "(310) 533-1178",
+      "title": "Purchasing",
+      "workspace_id": "3a6e3124-c6ab-43e4-aa49-bc4eeb3f21cd",
+      "sequence_id": "945208ec-0193-4b2d-bffa-fd8dbd041dec",
+      "done_activity_id": 77613
+    },
+    {
+      "person_id": 73515,
+      "principal": "harvey-vogel",
+      "first_name": "Mirella",
+      "last_name": "Bostick",
+      "email": "mirella.bostick@moog.com",
+      "company_name": "Moog",
+      "phone": "(818) 576-6849",
+      "title": "Buyer",
+      "workspace_id": "3a6e3124-c6ab-43e4-aa49-bc4eeb3f21cd",
+      "sequence_id": "945208ec-0193-4b2d-bffa-fd8dbd041dec",
+      "done_activity_id": 77616
+    },
+    {
+      "person_id": 73543,
+      "principal": "harvey-vogel",
+      "first_name": "Shane",
+      "last_name": "Higgins",
+      "email": "shiggins@moog.com",
+      "company_name": "Moog",
+      "phone": "(310) 533-1178",
+      "title": "Supplier Lead",
+      "workspace_id": "3a6e3124-c6ab-43e4-aa49-bc4eeb3f21cd",
+      "sequence_id": "945208ec-0193-4b2d-bffa-fd8dbd041dec",
+      "done_activity_id": 77619
+    }
+  ],
+  "skipped": [
+    {
+      "person_id": 102999,
+      "name": "Nelly Ucler",
+      "reason": "no-email"
+    }
+  ]
+}

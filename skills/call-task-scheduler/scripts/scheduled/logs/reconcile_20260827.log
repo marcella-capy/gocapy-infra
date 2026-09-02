@@ -1,0 +1,28 @@
+﻿=== 2026-08-27T09:23:08.1435529-05:00 call-task-reconcile START ===
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\reconcile_done_calls.py --since 2026-08-24
+  to-subscribe: Brian Salinas <brsalinas@graco.com> (Graco) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Evan Foster <evan_foster@graco.com> (Graco) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Timothy Light <tim_light@graco.com> (Graco) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Chris Tiffany <christophertiffany@vermeer.com> (Vermeer) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Craig Heul <cverheul@vermeer.com> (Vermeer) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Jamie Kendall <jkendall@vermeer.com> (Vermeer) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Peter Dai <pdai@moog.com> (Moog) -> seq 945208ec-0193-4b2d-bffa-fd8dbd041dec [harvey-vogel]
+  to-subscribe: Victor Nicholas <vnicholas@moog.com> (Moog) -> seq 945208ec-0193-4b2d-bffa-fd8dbd041dec [harvey-vogel]
+  to-subscribe: Christina Tomaselli <ctomaselli@moog.com> (Moog) -> seq 945208ec-0193-4b2d-bffa-fd8dbd041dec [harvey-vogel]
+  to-subscribe: Christine Hawker-Real <chawker@moog.com> (Moog) -> seq 945208ec-0193-4b2d-bffa-fd8dbd041dec [harvey-vogel]
+  to-subscribe: Wilbert Jones <wilbert.jones@moog.com> (Moog) -> seq 945208ec-0193-4b2d-bffa-fd8dbd041dec [harvey-vogel]
+  to-subscribe: Brad Mason <bmason@moog.com> (Moog) -> seq 945208ec-0193-4b2d-bffa-fd8dbd041dec [harvey-vogel]
+  to-subscribe: Gregory Rizza <grizza@moog.com> (Moog) -> seq 945208ec-0193-4b2d-bffa-fd8dbd041dec [harvey-vogel]
+  to-subscribe: Kenny Hua <khua@moog.com> (Moog) -> seq 945208ec-0193-4b2d-bffa-fd8dbd041dec [harvey-vogel]
+  to-subscribe: Matthew Polnerow <mpolnerow@stokespace.com> (Stoke) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Bryden Tutko <btutko@stokespace.com> (Stoke) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Alexander Suppiah <alexander@stoke-space.com> (Stoke) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+RESULT: ok - 45 done calls on 2026-08-24..2026-08-27, 17 to-subscribe, 0 skipped -> _reconcile_20260824-20260827.json
+
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\hothawk_subscribe.py --artifact _reconcile_20260824-20260827.json --apply
+ERROR: HotHawk GET /contacts-lists -> HTTP 429: {"message":"API calls limit reached for this team","status":429}
+(REST route may have changed ΓÇö fall back to the MCP tools per SKILL.md)
+
+RESULT: error - hothawk_subscribe.py exited 1
+=== 2026-08-27T09:26:31.7994569-05:00 call-task-reconcile END (exit 1) ===
+posted run-failure alert to ClickUp task 86ba9zvy5

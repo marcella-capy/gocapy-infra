@@ -210,16 +210,59 @@ def delete_mailbox(token: str, mb_id: str) -> bool:
 
 
 def connect_imap(token: str, ws_id: str, mb: dict, cfg: dict) -> tuple[int, dict | None]:
+    """Re-add a mailbox, preserving its display name.
+
+    The name can ONLY be set here -- no API route can change it afterwards -- so a
+    placeholder written now is permanent. This used to fall back to
+    firstName="Mailbox"/lastName="User", which branded any nameless mailbox it
+    touched as the literal sender "Mailbox User". It now refuses instead; callers
+    must resolve the real name first (see resolve_full_name).
+    """
     first, _, last = (mb.get("fullName") or "").partition(" ")
+    if not first or not last:
+        return 0, {"message": "refused: no full name -- would create a permanently "
+                              "mis-named mailbox (name is settable only at creation)"}
     body = {
-        "firstName": first or "Mailbox", "lastName": last or "User",
+        "firstName": first, "lastName": last,
         "email": mb["email"], "workspaceId": ws_id, **cfg,
     }
     return _request("POST", "/mailboxes/connect-imap", token, body)
 
 
+def resolve_full_name(mb: dict) -> str:
+    """Best-known display name for a mailbox: its own, else the domain's BDR."""
+    full = (mb.get("fullName") or "").strip()
+    if full:
+        return full
+    email = (mb.get("email") or "").lower()
+    if "@" not in email:
+        return ""
+    for _p in Path(__file__).resolve().parents:
+        cand = (_p / "gocapy-claude-plugin" / "go-capy-outreach" / "shared-references"
+                / "voices" / "client-domains.json")
+        if cand.exists():
+            data = json.loads(cand.read_text(encoding="utf-8"))
+            dom = email.split("@", 1)[1]
+            for client in data.get("clients", {}).values():
+                if isinstance(client, dict) and dom in [
+                    d.strip().lower() for d in client.get("domains", []) or []
+                ]:
+                    return (client.get("bdr") or "").strip()
+            break
+    return ""
+
+
 def reconnect(token: str, ws_id: str, mb: dict, cfg: dict) -> bool:
-    """Delete then re-add with stored creds (no REST reconnect route exists)."""
+    """Delete then re-add with stored creds (no REST reconnect route exists).
+
+    Resolves the display name BEFORE deleting: the delete is irreversible and the
+    name is unsettable afterwards, so a mailbox we cannot name is left alone.
+    """
+    mb = {**mb, "fullName": resolve_full_name(mb)}
+    if not mb["fullName"]:
+        print(f"  skip {mb.get('email')}: no full name resolvable -- not deleting, "
+              f"a re-add could not restore the sender name", file=sys.stderr)
+        return False
     if not delete_mailbox(token, mb["id"]):
         return False
     status, _ = connect_imap(token, ws_id, mb, cfg)

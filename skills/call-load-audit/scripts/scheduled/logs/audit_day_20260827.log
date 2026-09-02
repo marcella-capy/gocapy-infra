@@ -1,0 +1,38 @@
+﻿=== 2026-08-27T09:23:08.3327611-05:00 call-load-audit DAY START ===
+≡ƒô₧ Call ΓåÆ HotHawk Load Audit ΓÇö Daily ΓÇö 2026-08-26
+≡ƒÜ¿ PIPELINE FAILURE ΓÇö 0 of 12 people loaded  ┬╖  12 calls / 12 people  ┬╖  0 loaded, 12 missing
+**Not one done call reached HotHawk in this window.** That is the reconcile being broken, not a data problem ΓÇö check the CallTaskReconcile runner log and whether the HotHawk API routes moved again.
+```
+principal        User          Company Name  # of Calls
+---------------  ------------  ------------  ----------
+franklin         Ericka        Graco         3
+general-foundry  Ericka        Vermeer       3
+harvey-vogel     Ericka        Moog          3
+patriot-forge    Ericka        Stoke         3
+-                -             -             -
+                 TOTAL Ericka                12
+```
+ΓÜá∩╕Å NOT LOADED (12) ΓÇö done calls that never reached HotHawk:
+```
+principal        User    Company  Person                                          why
+---------------  ------  -------  ----------------------------------------------  ---------------------------------------------
+franklin         Ericka  Graco    Brian Salinas <brsalinas@graco.com>             not-enrolled (on list only / draft campaign?)
+franklin         Ericka  Graco    Evan Foster <evan_foster@graco.com>             not-enrolled (on list only / draft campaign?)
+franklin         Ericka  Graco    Timothy Light <tim_light@graco.com>             not-enrolled (on list only / draft campaign?)
+general-foundry  Ericka  Vermeer  Chris Tiffany <christophertiffany@vermeer.com>  not-enrolled (on list only / draft campaign?)
+general-foundry  Ericka  Vermeer  Craig Heul <cverheul@vermeer.com>               not-enrolled (on list only / draft campaign?)
+general-foundry  Ericka  Vermeer  Jamie Kendall <jkendall@vermeer.com>            not-enrolled (on list only / draft campaign?)
+harvey-vogel     Ericka  Moog     Brad Mason <bmason@moog.com>                    not-enrolled (on list only / draft campaign?)
+harvey-vogel     Ericka  Moog     Gregory Rizza <grizza@moog.com>                 not-enrolled (on list only / draft campaign?)
+harvey-vogel     Ericka  Moog     Kenny Hua <khua@moog.com>                       not-enrolled (on list only / draft campaign?)
+patriot-forge    Ericka  Stoke    Matthew Polnerow <mpolnerow@stokespace.com>     not-enrolled (on list only / draft campaign?)
+patriot-forge    Ericka  Stoke    Bryden Tutko <btutko@stokespace.com>            not-enrolled (on list only / draft campaign?)
+patriot-forge    Ericka  Stoke    Alexander Suppiah <alexander@stoke-space.com>   not-enrolled (on list only / draft campaign?)
+```
+Fix: activate/enroll the campaign in HotHawk, or re-run the reconcile (`reconcile_done_calls.py --since <date> --apply`) for these people.
+
+discord: posted
+
+RESULT: error - 0 of 12 people loaded; reconcile pipeline is down - {"mode": "day", "window": ["2026-08-26", "2026-08-26"], "total_calls": 12, "people": 12, "loaded": 0, "missing": 12, "systemic": true}
+=== 2026-08-27T09:25:56.7269056-05:00 call-load-audit DAY END (exit 2) ===
+posted run-failure alert to ClickUp task 86ba9zvy5

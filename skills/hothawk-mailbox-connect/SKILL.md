@@ -17,11 +17,13 @@ description: >
 
 # HotHawk — Adding mailboxes & checking if they're connected
 
-Two jobs:
+Three jobs:
 1. **Add + verify** (interactive) — add one or many sending mailboxes to a workspace, then
    confirm each truly connects, auto-deleting any that don't (the bad-auth / IP-block defense).
 2. **Daily health scan** (scheduled) — sweep every HotHawk workspace for disconnected accounts,
    reconnect or remove them, and post a Discord digest. Weekdays only.
+3. **Fix a nameless mailbox** — repair a blank Full Name by delete + re-add, then put the
+   mailbox back on its campaigns.
 
 ---
 
@@ -109,6 +111,22 @@ Patriot, LNP Machining, General Foundry.)
    `firstName, lastName, email, workspaceId, imapUsername, imapPassword, imapHost, imapPort,
    smtpUsername, smtpPassword, smtpHost, smtpPort`. A successful create returns
    `currentConnectionStatus: INITIALIZING` and assigns a `connectionId`.
+   - **`firstName`/`lastName` are your ONLY chance to set the name.** They become the mailbox's
+     **Full Name** — the sender name the prospect sees. Never omit them, and never pass a
+     placeholder: HotHawk accepts a create with no name and the result is permanent.
+
+     Verified against the live API **2026-08-28** — there is no way to rename an existing mailbox:
+
+     | attempt | result |
+     |---|---|
+     | `PATCH` / `PUT /v1/mailboxes/{id}` (and `/settings`, `/profile`, `/name`) | 404, route does not exist |
+     | `PATCH /v1/mailboxes/{id}/reconnect` + name fields | 400; documented fields only → 200, credentials only |
+     | `POST /v1/mailboxes/connect-imap` on an existing address | 201, same `accountId`, credentials updated, **name ignored** |
+     | `POST /v1/mailboxes/imap-bulk` with `fullName` on an existing address | `status: success`, same `accountId`, **name ignored** |
+
+     The UI cannot edit it either (confirmed 2026-08-28), so the only remedy is
+     delete-and-re-add, which needs the password — see Job 3. This is how 187 of 469 live
+     mailboxes ended up nameless. (Warmup is NOT lost: it runs on PlusVibe, not HotHawk.)
    - **Add in small batches when the password is unverified** — a wrong password spawns many
      simultaneous auth-hammering mailboxes, which is exactly what blocks the IP. Verify one works
      before firing the rest.
@@ -128,6 +146,37 @@ Patriot, LNP Machining, General Foundry.)
 > if something watches the threshold, so prefer to see at least the first mailbox reach CONNECTED.
 
 ---
+
+## Job 3 — Fix a nameless mailbox (`scripts/rename_mailboxes.py`)
+
+A mailbox with a blank **Full Name** sends with no human name next to the address. The name
+is settable ONLY at creation (see the table in Job 1), so the only repair is **delete +
+re-add** — which is irreversible without the password.
+
+```
+py scripts/rename_mailboxes.py snapshot --out state.json        # read-only, builds the plan
+py scripts/rename_mailboxes.py run   --state state.json --limit 1 --yes   # pilot ONE first
+py scripts/rename_mailboxes.py run   --state state.json --yes             # the full pass
+py scripts/rename_mailboxes.py attach --state state.json --yes            # rebuild campaigns
+py scripts/rename_mailboxes.py verify --state state.json                  # read-only check
+py scripts/rename_mailboxes.py report --state state.json                  # daily-limit to-do
+```
+
+`run`/`attach` are dry-run unless `--yes`. Names resolve from the Drive onboarding CSV, then
+the domain's BDR in `client-domains.json`; a name that does not derive its own address is
+deferred, never guessed.
+
+**Always run `attach` afterwards.** A re-added mailbox gets a NEW account id and is NOT
+returned to its campaigns automatically — skipping this silently drops mailboxes out of live
+campaigns. `snapshot` records every attachment first; that state file is the only rollback
+record, so keep it.
+
+Also note:
+- `campaignDailyLimit` resets to 10 and **cannot** be restored by API (no request schema
+  accepts it) — re-set it in the UI; `report` prints the list.
+- Warmup is unaffected (it runs on PlusVibe, not HotHawk).
+- One mailbox per 30s, one login attempt each, hard stop after 3 consecutive failures.
+- A mailbox with no stored password is skipped — deleting it would destroy it permanently.
 
 ## Job 2 — Daily health scan (scheduled, `scripts/check_mailbox_health.py`)
 
@@ -199,6 +248,7 @@ The bridge must be deployed with the mailbox-event support first
 ## Files
 
 - `scripts/check_mailbox_health.py` — the daily cross-workspace scan (scan / reconnect / delete / digest).
+- `scripts/rename_mailboxes.py` — repair a blank Full Name by delete + re-add (Job 3); `snapshot`/`run`/`attach`/`verify`/`report`.
 - `scripts/register_mailbox_webhooks.py` — register the real-time disconnect/reconnect webhooks (user-run; idempotent).
 - `supabase/functions/email-ops-bridge/` — receives the webhooks (mailbox_disconnected / mailbox_reconnected slugs) and posts Discord alerts.
 - `scripts/scheduled/run_health_check.ps1` — Task Scheduler launcher (report-only until you add `--remediate`).

@@ -203,13 +203,33 @@ Use the **REST API** (`POST /v1/mailboxes/connect-imap`) so this works in headle
 the HotHawk MCP server is only present in interactive sessions. Script:
 `scripts/connect_hothawk.py` (`HOTHAWK_API_TOKEN` via `capy_env`):
 ```
-py scripts/connect_hothawk.py --workspace-id <uuid> --csv <accounts.csv>   # email,password columns
+py scripts/connect_hothawk.py --workspace-id <uuid> --csv <accounts.csv>
+   # columns: email,password + first_name,last_name
 ```
 `imapHost`/`smtpHost`=`mail.<domain>`, 993/465, username=email, password=verified pwd. The script
 skips mailboxes already in the workspace (idempotent) and makes ONE login attempt each. **No separate
 PlusVibe-auth check — step 0 already proved the credentials.** GATHERING is normal up to ~30 min; only
 `GATHERING > 6 h` is the stall bug → stop, do not re-add in a loop. (The MCP `mailboxes_connect_imap_create`
 tool remains a valid interactive alternative when the MCP server is connected.)
+
+> **⚠ The BDR name is mandatory and can only be set here.** `firstName`/`lastName` become the
+> mailbox's HotHawk **Full Name** — the sender name the prospect sees. HotHawk accepts a connect
+> call without them and creates a **permanently nameless** mailbox: verified 2026-08-28, no API
+> route can set a name afterwards (`PATCH /mailboxes/{id}` 404s, `/reconnect` rejects name fields,
+> and connect-imap / imap-bulk on an existing address update only the credentials). The only remedy
+> is delete-and-re-add — which needs the password and loses warmup history — or hand-editing in the
+> UI. This is how 187 of 469 live mailboxes ended up nameless.
+>
+> The script now takes the name from the CSV's `first_name`/`last_name` columns (the standard
+> SiteGround CSVs already carry them), else `--first-name`/`--last-name`, else the domain's BDR in
+> `shared-references/voices/client-domains.json`. If it can name none of them it **refuses the whole
+> run before attempting any login** — do not work around that, fix the CSV.
+
+### Step 4.1 — Confirm every new mailbox has its name
+```
+py ../hothawk-mailbox-connect/scripts/audit_display_names.py --workspace "<Workspace>"
+```
+`NO_NAME` must be **0**. Anything listed there is only fixable by hand now, so catch it here.
 
 ### Step 4.5 — Test send (SMTP smoke test)
 PlusVibe has **no ad-hoc test-send endpoint** (only warmup + email-placement seed tests). To prove a

@@ -137,6 +137,7 @@ def pull_porkbun(env, price_fallback):
                 rows.append({
                     "domain": x["domain"], "registrar": "Porkbun",
                     "expiration": (x.get("expireDate", "") or "")[:10],
+                    "registered": (x.get("createDate", "") or "")[:10],
                     "renewal": "ON" if on else "OFF",
                     "_cost": cost, "cost": f"${cost:.2f}", "flag": "",
                 })

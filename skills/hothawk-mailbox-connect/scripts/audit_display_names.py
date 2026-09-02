@@ -38,6 +38,24 @@ for _stream in (sys.stdout, sys.stderr):
 
 
 def get_token() -> str:
+    """Local-first, via the shared capy_env loader; the Drive .md is the fallback.
+
+    Reading straight off the G: drive made this script fail outright when Drive was
+    unmounted, and stall ~30s when it was slow. capy_env prefers ~/.claude/global.env
+    and falls back to the same Drive file.
+    """
+    for _p in Path(__file__).resolve().parents:
+        cand = _p / "gocapy-claude-plugin" / "go-capy-outreach" / "scripts"
+        if (cand / "capy_env.py").exists():
+            sys.path.insert(0, str(cand))
+            try:
+                import capy_env  # noqa: PLC0415
+                tok = capy_env.get("HOTHAWK_API_TOKEN")
+                if tok:
+                    return tok
+            except Exception:
+                pass
+            break
     if not ENV_PATH.exists():
         sys.exit(f"error: global env not found at {ENV_PATH}")
     txt = ENV_PATH.read_text(encoding="utf-8")

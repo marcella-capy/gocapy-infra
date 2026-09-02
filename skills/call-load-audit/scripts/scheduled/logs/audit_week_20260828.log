@@ -1,0 +1,23 @@
+﻿=== 2026-08-28T09:12:02.2465086-05:00 call-load-audit WEEK START ===
+≡ƒô₧ Call ΓåÆ HotHawk Load Audit ΓÇö Weekly ΓÇö 2026-08-24 .. 2026-08-27
+Γ£à all loaded  ┬╖  58 calls / 58 people  ┬╖  58 loaded, 0 missing
+```
+principal        User          Company Name         # of Calls
+---------------  ------------  -------------------  ----------
+franklin         Ericka        Graco                8
+general-foundry  Ericka        Vermeer              14
+harvey-vogel     Ericka        Moog                 10
+lnp              Ericka        BlueHalo             5
+lnp              Ericka        Hermeus Corporation  2
+lnp              Ericka        Intergalactic        3
+patriot-forge    Ericka        Stoke                9
+shellcast        Ericka        CesiumAstro          3
+vrc              Ericka        Team Wendy           4
+-                -             -                    -
+                 TOTAL Ericka                       58
+```
+
+discord: posted
+
+RESULT: ok - {"mode": "week", "window": ["2026-08-24", "2026-08-27"], "total_calls": 58, "people": 58, "loaded": 58, "missing": 0, "systemic": false}
+=== 2026-08-28T09:12:30.2372624-05:00 call-load-audit WEEK END (exit 0) ===

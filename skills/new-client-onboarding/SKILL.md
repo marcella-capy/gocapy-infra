@@ -130,13 +130,24 @@ server is only present in interactive sessions). Helper script:
 `POST /v1/mailboxes/connect-imap`, `HOTHAWK_API_TOKEN` via `capy_env`.
 
 ```
-py connect_hothawk.py --workspace-id <uuid> --csv <email,password csv>
+py connect_hothawk.py --workspace-id <uuid> --csv <csv>
+   # columns: email,password + first_name,last_name
 ```
 - Use the client's OWN workspace uuid. Resolve it live with
   `GET /v1/workspaces/short` — the API silently accepts a dangling workspaceId
   and the objects become invisible in the UI.
 - The script skips mailboxes already present (idempotent) and makes ONE login
   attempt each — never a retry loop (SiteGround IP-block protection).
+- **The BDR name is mandatory and settable ONLY at creation.** `firstName`/
+  `lastName` become the mailbox's HotHawk **Full Name** — the sender name the
+  prospect sees. HotHawk will accept a connect call without them and create a
+  permanently nameless mailbox; verified 2026-08-28, no API route can set the
+  name afterwards. The script resolves it from the CSV's `first_name`/
+  `last_name`, else `--first-name`/`--last-name`, else the domain's BDR in
+  `shared-references/voices/client-domains.json`, and **refuses the run** if it
+  cannot name every mailbox. Fix the CSV rather than working around it.
+- Then confirm: `py ../hothawk-mailbox-connect/scripts/audit_display_names.py
+  --workspace "<Workspace>"` must report `NO_NAME 0`.
 - Invariant: every PlusVibe mailbox must also exist in HotHawk (PlusVibe ⊆ HotHawk).
 
 ## Step 5 — Test send (SMTP smoke test)
@@ -253,8 +264,9 @@ separate ones.
 ### Batch Step 4 — HotHawk
 
 Run `connect_hothawk.py` once per principal against that principal's own
-HotHawk workspace uuid from the Batch Step 0 table. Same idempotency and
-single-login-attempt rules as Step 4 above.
+HotHawk workspace uuid from the Batch Step 0 table. Same idempotency,
+single-login-attempt and **mandatory-BDR-name** rules as Step 4 above; finish
+each principal with the `audit_display_names.py` check (`NO_NAME` must be 0).
 
 ### Batch Step 5 — Test send
 

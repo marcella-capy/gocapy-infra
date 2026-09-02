@@ -1,0 +1,1098 @@
+[
+ [
+  "Principal",
+  "Domains",
+  "Type",
+  "Registered On",
+  "Expires on",
+  "Auto Renewal"
+ ],
+ [
+  "AGMI",
+  "agrainermfg.com",
+  "Porkbun",
+  "Mar 10, 2026",
+  "Mar 10, 2027",
+  "OFF"
+ ],
+ [
+  "AGMI",
+  "agrainerprecision.com",
+  "Porkbun",
+  "Mar 10, 2026",
+  "Mar 10, 2027",
+  "OFF"
+ ],
+ [
+  "DROP-Axiscades",
+  "axiscades-aero.com",
+  "Porkbun",
+  "Apr 6, 2026",
+  "Apr 6, 2027",
+  "OFF"
+ ],
+ [
+  "DROP-Axiscades",
+  "axiscades-eng.com",
+  "Porkbun",
+  "Apr 6, 2026",
+  "Apr 6, 2027",
+  "OFF"
+ ],
+ [
+  "DROP-Axiscades",
+  "axiscades-mfg.com",
+  "Porkbun",
+  "Apr 6, 2026",
+  "Apr 6, 2027",
+  "OFF"
+ ],
+ [
+  "DROP-Axiscades",
+  "axiscadeshq.com",
+  "Porkbun",
+  "Apr 6, 2026",
+  "Apr 6, 2027",
+  "OFF"
+ ],
+ [
+  "DROP-Axiscades",
+  "axiscadesmfg.com",
+  "Porkbun",
+  "Apr 6, 2026",
+  "Apr 6, 2027",
+  "OFF"
+ ],
+ [
+  "FRA",
+  "franklinprecision.com",
+  "Porkbun",
+  "Mar 2, 2026",
+  "Mar 2, 2027",
+  "ON"
+ ],
+ [
+  "Capy",
+  "getmenopower.com",
+  "Porkbun",
+  "Oct 21, 2025",
+  "Oct 21, 2026",
+  "ON"
+ ],
+ [
+  "Patriot",
+  "patriotforgesmfg.com",
+  "Porkbun",
+  "Oct 28, 2025",
+  "Oct 28, 2026",
+  "ON"
+ ],
+ [
+  "Patriot",
+  "patriotforging.com",
+  "Porkbun",
+  "Oct 28, 2025",
+  "Oct 28, 2026",
+  "ON"
+ ],
+ [
+  "Patriot",
+  "advancedforging.com",
+  "Porkbun",
+  "Jan 13, 2026",
+  "Jan 13, 2027",
+  "ON"
+ ],
+ [
+  "Patriot",
+  "aeroforging.com",
+  "Porkbun",
+  "Jan 13, 2026",
+  "Jan 13, 2027",
+  "ON"
+ ],
+ [
+  "Patriot",
+  "aerospace-forging.com",
+  "Porkbun",
+  "Jan 13, 2026",
+  "Jan 13, 2027",
+  "ON"
+ ],
+ [
+  "Patriot",
+  "componentforging.com",
+  "Porkbun",
+  "Jan 13, 2026",
+  "Jan 13, 2027",
+  "ON"
+ ],
+ [
+  "Patriot",
+  "forge-machining.com",
+  "Porkbun",
+  "Jan 13, 2026",
+  "Jan 13, 2027",
+  "ON"
+ ],
+ [
+  "Patriot",
+  "forge-precision.com",
+  "Porkbun",
+  "Jan 13, 2026",
+  "Jan 13, 2027",
+  "ON"
+ ],
+ [
+  "Patriot",
+  "highprecisionforge.com",
+  "Porkbun",
+  "Jan 13, 2026",
+  "Jan 13, 2027",
+  "ON"
+ ],
+ [
+  "Patriot",
+  "industrialforging.com",
+  "Porkbun",
+  "Jan 13, 2026",
+  "Jan 13, 2027",
+  "ON"
+ ],
+ [
+  "Patriot",
+  "machined-forgings.com",
+  "Porkbun",
+  "Jan 13, 2026",
+  "Jan 13, 2027",
+  "ON"
+ ],
+ [
+  "Patriot",
+  "metalaeroparts.com",
+  "Porkbun",
+  "Jan 13, 2026",
+  "Jan 13, 2027",
+  "ON"
+ ],
+ [
+  "Patriot",
+  "patriot-forgeworks.com",
+  "Porkbun",
+  "Jan 13, 2026",
+  "Jan 13, 2027",
+  "ON"
+ ],
+ [
+  "Patriot",
+  "patriotforgeaero.com",
+  "Porkbun",
+  "Jan 13, 2026",
+  "Jan 13, 2027",
+  "ON"
+ ],
+ [
+  "Patriot",
+  "patriotforgeprecision.com",
+  "Porkbun",
+  "Jan 13, 2026",
+  "Jan 13, 2027",
+  "ON"
+ ],
+ [
+  "Patriot",
+  "patriot-forging.com",
+  "Porkbun",
+  "Jan 15, 2026",
+  "Jan 15, 2027",
+  "ON"
+ ],
+ [
+  "Patriot",
+  "patriotforgeengineering.com",
+  "Porkbun",
+  "Jan 15, 2026",
+  "Jan 15, 2027",
+  "ON"
+ ],
+ [
+  "Patriot",
+  "patriotforgingco.com",
+  "Porkbun",
+  "Jan 15, 2026",
+  "Jan 15, 2027",
+  "ON"
+ ],
+ [
+  "HV",
+  "metalstampedpart.com",
+  "Porkbun",
+  "Jan 16, 2026",
+  "Jan 16, 2027",
+  "ON"
+ ],
+ [
+  "HV",
+  "metalstampingmfg.com",
+  "Porkbun",
+  "Jan 16, 2026",
+  "Jan 16, 2027",
+  "ON"
+ ],
+ [
+  "Patriot",
+  "aerospaceforge.com",
+  "Porkbun",
+  "Jan 23, 2026",
+  "Jan 23, 2027",
+  "ON"
+ ],
+ [
+  "Patriot",
+  "patriotforgedefense.com",
+  "Porkbun",
+  "Jan 23, 2026",
+  "Jan 23, 2027",
+  "ON"
+ ],
+ [
+  "Patriot",
+  "patriotforgehq.com",
+  "Porkbun",
+  "Jan 23, 2026",
+  "Jan 23, 2027",
+  "ON"
+ ],
+ [
+  "GF",
+  "genfoundryservices.com",
+  "Porkbun",
+  "Feb 26, 2026",
+  "Feb 26, 2027",
+  "ON"
+ ],
+ [
+  "SHC",
+  "shellcastcastings.com",
+  "Porkbun",
+  "Feb 26, 2026",
+  "Feb 26, 2027",
+  "ON"
+ ],
+ [
+  "TMX",
+  "techmaxhq.com",
+  "Porkbun",
+  "Feb 26, 2026",
+  "Feb 26, 2027",
+  "ON"
+ ],
+ [
+  "TMX",
+  "techmaxprecision.com",
+  "Porkbun",
+  "Feb 26, 2026",
+  "Feb 26, 2027",
+  "ON"
+ ],
+ [
+  "FRA",
+  "franklininvestcast.com",
+  "Porkbun",
+  "Jul 22, 2026",
+  "Jul 22, 2027",
+  "ON"
+ ],
+ [
+  "Capy",
+  "gocapyhq.com",
+  "Porkbun",
+  "Mar 4, 2026",
+  "Mar 4, 2027",
+  "ON"
+ ],
+ [
+  "AGMI",
+  "agmi-mfg.com",
+  "Porkbun",
+  "Mar 10, 2026",
+  "Mar 10, 2027",
+  "ON"
+ ],
+ [
+  "AGMI",
+  "agmi-parts.com",
+  "Porkbun",
+  "Mar 10, 2026",
+  "Mar 10, 2027",
+  "ON"
+ ],
+ [
+  "AGMI",
+  "agmi-precision.com",
+  "Porkbun",
+  "Mar 10, 2026",
+  "Mar 10, 2027",
+  "ON"
+ ],
+ [
+  "AGMI",
+  "agmimfg.com",
+  "Porkbun",
+  "Mar 10, 2026",
+  "Mar 10, 2027",
+  "ON"
+ ],
+ [
+  "AGMI",
+  "agmiparts.com",
+  "Porkbun",
+  "Mar 10, 2026",
+  "Mar 10, 2027",
+  "ON"
+ ],
+ [
+  "AGMI",
+  "agmiprecision.com",
+  "Porkbun",
+  "Mar 10, 2026",
+  "Mar 10, 2027",
+  "ON"
+ ],
+ [
+  "AGMI",
+  "alpha-grainger.com",
+  "Porkbun",
+  "Mar 10, 2026",
+  "Mar 10, 2027",
+  "ON"
+ ],
+ [
+  "LNP",
+  "lnp-machining.com",
+  "Porkbun",
+  "May 7, 2026",
+  "May 7, 2027",
+  "ON"
+ ],
+ [
+  "LNP",
+  "lnp-mfg.com",
+  "Porkbun",
+  "May 7, 2026",
+  "May 7, 2027",
+  "ON"
+ ],
+ [
+  "LNP",
+  "lnpmachine.com",
+  "Porkbun",
+  "May 7, 2026",
+  "May 7, 2027",
+  "ON"
+ ],
+ [
+  "LNP",
+  "lnpmfg.com",
+  "Porkbun",
+  "May 7, 2026",
+  "May 7, 2027",
+  "ON"
+ ],
+ [
+  "ATW",
+  "atwallprecision.com",
+  "Porkbun",
+  "Jun 30, 2025",
+  "Jun 30, 2027",
+  "ON"
+ ],
+ [
+  "ATW",
+  "judsonsmithco.com",
+  "Porkbun",
+  "Jun 30, 2025",
+  "Jun 30, 2027",
+  "ON"
+ ],
+ [
+  "ATW",
+  "parmatechgroup.com",
+  "Porkbun",
+  "Jun 30, 2025",
+  "Jun 30, 2027",
+  "ON"
+ ],
+ [
+  "ATW",
+  "parmatechinc.com",
+  "Porkbun",
+  "Jun 30, 2025",
+  "Jun 30, 2027",
+  "ON"
+ ],
+ [
+  "Patriot",
+  "patriot-forge.com",
+  "Porkbun",
+  "Jul 11, 2025",
+  "Jul 11, 2027",
+  "ON"
+ ],
+ [
+  "Patriot",
+  "patriot-forgeco.com",
+  "Porkbun",
+  "Jul 11, 2025",
+  "Jul 11, 2027",
+  "ON"
+ ],
+ [
+  "Patriot",
+  "patriotforgeco.com",
+  "Porkbun",
+  "Jul 11, 2025",
+  "Jul 11, 2027",
+  "ON"
+ ],
+ [
+  "Patriot",
+  "patriotforgemfg.com",
+  "Porkbun",
+  "Jul 11, 2025",
+  "Jul 11, 2027",
+  "ON"
+ ],
+ [
+  "Capy",
+  "capymfg.com",
+  "Porkbun",
+  "Jul 15, 2025",
+  "Jul 15, 2027",
+  "ON"
+ ],
+ [
+  "HV",
+  "modularbench.com",
+  "Porkbun",
+  "Jul 17, 2026",
+  "Jul 17, 2027",
+  "ON"
+ ],
+ [
+  "HV",
+  "advmetalstampings.com",
+  "Porkbun",
+  "Jul 22, 2026",
+  "Jul 22, 2027",
+  "ON"
+ ],
+ [
+  "HV",
+  "customsheetfab.com",
+  "Porkbun",
+  "Jul 22, 2026",
+  "Jul 22, 2027",
+  "ON"
+ ],
+ [
+  "HV",
+  "fiberlaserstamping.com",
+  "Porkbun",
+  "Jul 22, 2026",
+  "Jul 22, 2027",
+  "ON"
+ ],
+ [
+  "FRA",
+  "franklincast.com",
+  "Porkbun",
+  "Jul 22, 2026",
+  "Jul 22, 2027",
+  "ON"
+ ],
+ [
+  "FRA",
+  "franklincasting.com",
+  "Registered at SiteGround",
+  "",
+  "Jan 28, 2026",
+  ""
+ ],
+ [
+  "GF",
+  "genfoundrycasting.com",
+  "Porkbun",
+  "Jul 22, 2026",
+  "Jul 22, 2027",
+  "ON"
+ ],
+ [
+  "GF",
+  "genfoundryco.com",
+  "Porkbun",
+  "Jul 22, 2026",
+  "Jul 22, 2027",
+  "ON"
+ ],
+ [
+  "HV",
+  "gometalstamping.com",
+  "Porkbun",
+  "Jul 22, 2026",
+  "Jul 22, 2027",
+  "ON"
+ ],
+ [
+  "SHC",
+  "goshellcast.com",
+  "Porkbun",
+  "Jul 22, 2026",
+  "Jul 22, 2027",
+  "ON"
+ ],
+ [
+  "HV",
+  "goworkstations.com",
+  "Porkbun",
+  "Jul 22, 2026",
+  "Jul 22, 2027",
+  "ON"
+ ],
+ [
+  "LNP",
+  "lnpcnc.com",
+  "Porkbun",
+  "Jul 22, 2026",
+  "Jul 22, 2027",
+  "ON"
+ ],
+ [
+  "LNP",
+  "lnpcncmachining.com",
+  "Porkbun",
+  "Jul 22, 2026",
+  "Jul 22, 2027",
+  "ON"
+ ],
+ [
+  "LNP",
+  "lnpprecision.com",
+  "Porkbun",
+  "Jul 22, 2026",
+  "Jul 22, 2027",
+  "ON"
+ ],
+ [
+  "HV",
+  "metalfabrication-hq.com",
+  "Porkbun",
+  "Jul 22, 2026",
+  "Jul 22, 2027",
+  "ON"
+ ],
+ [
+  "HV",
+  "sheetmetalfabco.com",
+  "Porkbun",
+  "Jul 22, 2026",
+  "Jul 22, 2027",
+  "ON"
+ ],
+ [
+  "HV",
+  "sheetmetalmfgco.com",
+  "Porkbun",
+  "Jul 22, 2026",
+  "Jul 22, 2027",
+  "ON"
+ ],
+ [
+  "SHC",
+  "shellcastmfg.com",
+  "Porkbun",
+  "Jul 22, 2026",
+  "Jul 22, 2027",
+  "ON"
+ ],
+ [
+  "TMX",
+  "tech-maxcnc.com",
+  "Porkbun",
+  "Jul 22, 2026",
+  "Jul 22, 2027",
+  "ON"
+ ],
+ [
+  "TMX",
+  "tech-maxmfg.com",
+  "Porkbun",
+  "Jul 22, 2026",
+  "Jul 22, 2027",
+  "ON"
+ ],
+ [
+  "VRC",
+  "vrc-plastics.com",
+  "Porkbun",
+  "Jul 22, 2026",
+  "Jul 22, 2027",
+  "ON"
+ ],
+ [
+  "VRC",
+  "vrcplastics.com",
+  "Porkbun",
+  "Jul 22, 2026",
+  "Jul 22, 2027",
+  "ON"
+ ],
+ [
+  "HV",
+  "workstationcustom.com",
+  "Porkbun",
+  "Jul 22, 2026",
+  "Jul 22, 2027",
+  "ON"
+ ],
+ [
+  "AVEELA",
+  "hrmara.com",
+  "External Domain",
+  "",
+  "",
+  "XX"
+ ],
+ [
+  "AVEELA",
+  "mara-staffing.com",
+  "External Domain",
+  "",
+  "",
+  "XX"
+ ],
+ [
+  "AVEELA",
+  "marahq.com",
+  "External Domain",
+  "",
+  "",
+  "XX"
+ ],
+ [
+  "SHC",
+  "shellcastfoundry.com",
+  "Registered at SiteGround",
+  "",
+  "Jan 8, 2026",
+  ""
+ ],
+ [
+  "SHC",
+  "shellcastfoundries.com",
+  "Registered at SiteGround",
+  "",
+  "Jan 8, 2026",
+  ""
+ ],
+ [
+  "TMX",
+  "techmax-mfg.com",
+  "Registered at SiteGround",
+  "",
+  "Jan 10, 2026",
+  ""
+ ],
+ [
+  "TMX",
+  "techmaxmachining.com",
+  "Registered at SiteGround",
+  "",
+  "Jan 10, 2026",
+  ""
+ ],
+ [
+  "TMX",
+  "techmaxmachine.com",
+  "Registered at SiteGround",
+  "",
+  "Jan 10, 2026",
+  ""
+ ],
+ [
+  "Capy",
+  "capyengineering.com",
+  "Registered at SiteGround",
+  "",
+  "Jan 19, 2026",
+  ""
+ ],
+ [
+  "TMX",
+  "tech-maxmachine.com",
+  "Registered at SiteGround",
+  "",
+  "Jan 23, 2026",
+  ""
+ ],
+ [
+  "TMX",
+  "techmaxmfg.com",
+  "Registered at SiteGround",
+  "",
+  "Jan 23, 2026",
+  ""
+ ],
+ [
+  "AECA",
+  "aecamfg.com",
+  "Registered at SiteGround",
+  "",
+  "Jan 23, 2026",
+  ""
+ ],
+ [
+  "GF",
+  "genfoundryservice.com",
+  "Registered at SiteGround",
+  "",
+  "Jan 23, 2026",
+  ""
+ ],
+ [
+  "GF",
+  "general-foundry.com",
+  "Registered at SiteGround",
+  "",
+  "Jan 23, 2026",
+  ""
+ ],
+ [
+  "GF",
+  "gen-foundry.com",
+  "Registered at SiteGround",
+  "",
+  "Jan 23, 2026",
+  ""
+ ],
+ [
+  "SHC",
+  "shellcast-foundry.com",
+  "Registered at SiteGround",
+  "",
+  "Jan 23, 2026",
+  ""
+ ],
+ [
+  "SHC",
+  "shellcast-foundries.com",
+  "Registered at SiteGround",
+  "",
+  "Jan 23, 2026",
+  ""
+ ],
+ [
+  "FRA",
+  "franklin-castings.com",
+  "Registered at SiteGround",
+  "",
+  "Jan 28, 2026",
+  ""
+ ],
+ [
+  "FRA",
+  "franklin-casting.com",
+  "Registered at SiteGround",
+  "",
+  "Jan 28, 2026",
+  "ON"
+ ],
+ [
+  "AMP",
+  "advmetalproduct.com",
+  "Registered at SiteGround",
+  "",
+  "Feb 14, 2026",
+  ""
+ ],
+ [
+  "AMP",
+  "advmetalproducts.com",
+  "Registered at SiteGround",
+  "",
+  "Feb 14, 2026",
+  ""
+ ],
+ [
+  "AMP",
+  "advantagemetalfab.com",
+  "Registered at SiteGround",
+  "",
+  "Feb 14, 2026",
+  ""
+ ],
+ [
+  "MGT",
+  "mega-techaq.com",
+  "Registered at SiteGround",
+  "",
+  "Feb 14, 2026",
+  ""
+ ],
+ [
+  "MGT",
+  "megatechmachining.com",
+  "Registered at SiteGround",
+  "",
+  "Feb 14, 2026",
+  ""
+ ],
+ [
+  "USAI",
+  "metalproductsamp.com",
+  "Registered at SiteGround",
+  "",
+  "Feb 14, 2026",
+  ""
+ ],
+ [
+  "GF",
+  "genfoundryserv.com",
+  "Registered at SiteGround",
+  "",
+  "Feb 19, 2026",
+  ""
+ ],
+ [
+  "MGT",
+  "megamachining.com",
+  "Registered at SiteGround",
+  "",
+  "Feb 26, 2026",
+  ""
+ ],
+ [
+  "MGT",
+  "megatechaqs.com",
+  "Registered at SiteGround",
+  "",
+  "Feb 26, 2026",
+  ""
+ ],
+ [
+  "VRC",
+  "vrcmanufacturing.com",
+  "Registered at SiteGround",
+  "",
+  "Feb 28, 2026",
+  ""
+ ],
+ [
+  "VRC",
+  "vrc-eng.com",
+  "Registered at SiteGround",
+  "",
+  "Feb 28, 2026",
+  ""
+ ],
+ [
+  "Capy",
+  "capycapitalfund.com",
+  "Registered at SiteGround",
+  "",
+  "May 24, 2026",
+  ""
+ ],
+ [
+  "Capy",
+  "capycapitalgroup.com",
+  "Registered at SiteGround",
+  "",
+  "May 24, 2026",
+  ""
+ ],
+ [
+  "Capy",
+  "capyequity.com",
+  "Registered at SiteGround",
+  "",
+  "May 24, 2026",
+  ""
+ ],
+ [
+  "Capy",
+  "capyfunds.com",
+  "Registered at SiteGround",
+  "",
+  "May 24, 2026",
+  ""
+ ],
+ [
+  "Capy",
+  "capycapital.com",
+  "Registered at SiteGround",
+  "",
+  "Aug 1, 2026",
+  ""
+ ],
+ [
+  "AECA",
+  "aecamachining.com",
+  "Registered at SiteGround",
+  "",
+  "Dec 20, 2026",
+  ""
+ ],
+ [
+  "AECA",
+  "aecamanufacturing.com",
+  "Registered at SiteGround",
+  "",
+  "Dec 20, 2026",
+  ""
+ ],
+ [
+  "VRC",
+  "vrc-manufacturing.com",
+  "Registered at SiteGround",
+  "",
+  "Dec 20, 2026",
+  ""
+ ],
+ [
+  "VRC",
+  "vrc-engineering.com",
+  "Registered at SiteGround",
+  "",
+  "Dec 20, 2026",
+  ""
+ ],
+ [
+  "ATW",
+  "atwallmfg.com",
+  "Porkbun",
+  "",
+  "",
+  ""
+ ],
+ [
+  "ATW",
+  "atwallworks.com",
+  "Porkbun",
+  "",
+  "",
+  ""
+ ],
+ [
+  "Capy",
+  "aveela.co",
+  "Porkbun",
+  "",
+  "",
+  ""
+ ],
+ [
+  "Capy",
+  "aveelasleep.com",
+  "Porkbun",
+  "",
+  "",
+  ""
+ ],
+ [
+  "AVEELA",
+  "capy-capital.com",
+  "Porkbun",
+  "",
+  "",
+  ""
+ ],
+ [
+  "Capy",
+  "capy-patch.com",
+  "Porkbun",
+  "",
+  "",
+  ""
+ ],
+ [
+  "ATW",
+  "getparmatech.com",
+  "External Domain",
+  "",
+  "",
+  ""
+ ],
+ [
+  "Capy",
+  "gocapp.com",
+  "External Domain",
+  "",
+  "",
+  ""
+ ],
+ [
+  "Capy",
+  "gocapy.com",
+  "External Domain",
+  "",
+  "",
+  ""
+ ],
+ [
+  "Capy",
+  "gokappy.com",
+  "External Domain",
+  "",
+  "",
+  ""
+ ],
+ [
+  "Capy",
+  "gokapy.com",
+  "External Domain",
+  "",
+  "",
+  ""
+ ],
+ [
+  "ATW",
+  "judsonsmithmfg.com",
+  "External Domain",
+  "",
+  "",
+  ""
+ ],
+ [
+  "ATW",
+  "judsonsmithworks.com",
+  "External Domain",
+  "",
+  "",
+  ""
+ ],
+ [
+  "ATW",
+  "parmatechmfg.com",
+  "External Domain",
+  "",
+  "",
+  ""
+ ],
+ [
+  "AVEELA",
+  "sassysage.io",
+  "External Domain",
+  "",
+  "",
+  ""
+ ],
+ [
+  "ATW",
+  "parmatechco.com",
+  "External Domain",
+  "",
+  "",
+  ""
+ ]
+]
