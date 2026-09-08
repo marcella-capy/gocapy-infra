@@ -1,0 +1,18 @@
+﻿=== 2026-09-04T08:50:01.0674896-05:00 call-load-audit DAY START ===
+≡ƒô₧ Call ΓåÆ HotHawk Load Audit ΓÇö Daily ΓÇö 2026-09-03
+Γ£à all loaded  ┬╖  17 calls / 17 people  ┬╖  17 loaded, 0 missing
+```
+principal        User          Company Name  # of Calls
+---------------  ------------  ------------  ----------
+franklin         Ericka        Graco         3
+general-foundry  Ericka        Vermeer       5
+harvey-vogel     Ericka        Moog          6
+patriot-forge    Ericka        Stoke         3
+-                -             -             -
+                 TOTAL Ericka                17
+```
+
+discord: posted
+
+RESULT: ok - {"mode": "day", "window": ["2026-09-03", "2026-09-03"], "total_calls": 17, "people": 17, "loaded": 17, "missing": 0, "systemic": false}
+=== 2026-09-04T08:50:20.7732541-05:00 call-load-audit DAY END (exit 0) ===

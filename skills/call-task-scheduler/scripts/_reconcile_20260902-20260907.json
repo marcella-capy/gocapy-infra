@@ -1,0 +1,13 @@
+{
+  "date": "2026-09-02",
+  "date_end": "2026-09-07",
+  "done_calls": 51,
+  "to_subscribe": [],
+  "skipped": [
+    {
+      "person_id": 102999,
+      "name": "Nelly Ucler",
+      "reason": "no-email"
+    }
+  ]
+}

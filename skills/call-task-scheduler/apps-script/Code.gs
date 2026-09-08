@@ -27,11 +27,14 @@
  *   "Call <n>: <Last> from <Org> for <Display>" is still recognized when scanning.)
  */
 
+// people_no_phone = the FIND PHONE table (Marcella 2026-09-08: kept; she is reworking it
+// herself — fill-only-when-empty, write-back maps ONLY Phone). Payload keys unchanged.
 var CLAY_PEOPLE_WEBHOOK = 'https://api.clay.com/v3/sources/webhook/pull-in-data-from-a-webhook-09215211-803a-4bdd-b557-614dd39d381e';
-var CLAY_COMPANY_WEBHOOK = 'https://api.clay.com/v3/sources/webhook/pull-in-data-from-a-webhook-b03a3389-0f3b-4405-94e3-ed61dd599cc9';
-// phone-validation table: every tasked person's numbers go here for live/disconnected checking;
-// Marcella updates the Pipedrive record FROM the Clay table (this script never writes phones back)
-var CLAY_PHONE_VALIDATION_WEBHOOK = 'https://api.clay.com/v3/sources/webhook/pull-in-data-from-a-webhook-e9466b81-4a89-4e30-9eca-8f8eae5aeb19';
+// RETIRED 2026-09-08: the companies-need-people (...b03a3389) and phone-validation
+// (...e9466b81) Clay tables are deleted/ignored. Empty URL = clayPost skips the push.
+// Do not re-add without Marcella's ask.
+var CLAY_COMPANY_WEBHOOK = '';
+var CLAY_PHONE_VALIDATION_WEBHOOK = '';
 var ICP_KEY = '1a8684b9333f530c727f9bff307391d3d200c897';      // Person ICP (Yes/No)
 var TITLE_KEY = 'ef54f66e8242d193fd263fa16ac83850271b2794';    // Person Job Title
 var LINKEDIN_KEY = 'cf2472711fcbe2a22cef32aea82f1a5a555761a8'; // Person LinkedIn Page
@@ -680,6 +683,7 @@ function readRegistry() {
 }
 
 function clayPost(url, payload) {
+  if (!url) return false;  // retired table (empty URL) — skip the push cleanly
   var resp = UrlFetchApp.fetch(url, {
     method: 'post', contentType: 'application/json',
     payload: JSON.stringify(payload), muteHttpExceptions: true,

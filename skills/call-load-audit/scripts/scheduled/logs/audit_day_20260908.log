@@ -1,0 +1,11 @@
+﻿=== 2026-09-08T14:50:00.8972126+01:00 call-load-audit DAY START ===
+≡ƒô₧ Call ΓåÆ HotHawk Load Audit ΓÇö Daily ΓÇö 2026-09-07
+Γ£à all loaded  ┬╖  0 calls / 0 people  ┬╖  0 loaded, 0 missing
+```
+(no done calls in window)
+```
+
+discord: posted
+
+RESULT: ok - {"mode": "day", "window": ["2026-09-07", "2026-09-07"], "total_calls": 0, "people": 0, "loaded": 0, "missing": 0, "systemic": false}
+=== 2026-09-08T14:50:07.7922678+01:00 call-load-audit DAY END (exit 0) ===

@@ -590,23 +590,26 @@ def main() -> int:
             }
             if _clay_post(clay["people_no_phone"], payload):
                 clay_people += 1
-        for oid, org in orgs.items():
-            callable_n = sum(1 for p in with_phone
-                             if str((p.get("org_id") or {}).get("value")
-                                    if isinstance(p.get("org_id"), dict) else p.get("org_id")) == oid)
-            if callable_n < a.min_callable:
-                org_payload = {
-                    "company_name": org.get("name") or "",
-                    "company_domain": _org_domain(org),
-                    "email_pattern": str(org.get(ORG_EMAIL_PATTERN_KEY) or ""),
-                    "pipedrive_org_id": int(oid),
-                    "icp_yes_count": len(icp_yes), "with_phone_count": callable_n,
-                    "no_phone_count": len(no_phone),
-                }
-                if _clay_post(clay["companies_need_people"], org_payload):
-                    clay_companies += 1
-                    print(f"  pushed org {org.get('name')} to Clay company table "
-                          f"({callable_n} callable < {a.min_callable})")
+        # companies_need_people retired 2026-09-08 (Marcella deleted that Clay table) —
+        # the key is gone from clay-webhooks.json, so this whole block skips.
+        if clay.get("companies_need_people"):
+            for oid, org in orgs.items():
+                callable_n = sum(1 for p in with_phone
+                                 if str((p.get("org_id") or {}).get("value")
+                                        if isinstance(p.get("org_id"), dict) else p.get("org_id")) == oid)
+                if callable_n < a.min_callable:
+                    org_payload = {
+                        "company_name": org.get("name") or "",
+                        "company_domain": _org_domain(org),
+                        "email_pattern": str(org.get(ORG_EMAIL_PATTERN_KEY) or ""),
+                        "pipedrive_org_id": int(oid),
+                        "icp_yes_count": len(icp_yes), "with_phone_count": callable_n,
+                        "no_phone_count": len(no_phone),
+                    }
+                    if _clay_post(clay["companies_need_people"], org_payload):
+                        clay_companies += 1
+                        print(f"  pushed org {org.get('name')} to Clay company table "
+                              f"({callable_n} callable < {a.min_callable})")
         if clay_people:
             print(f"  pushed {clay_people} tier-1 no-phone people to Clay people table "
                   f"(of {len(no_phone)} no-phone total)")
