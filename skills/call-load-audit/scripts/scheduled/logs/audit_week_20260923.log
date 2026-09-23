@@ -1,0 +1,32 @@
+﻿=== 2026-09-23T06:05:36.4399787-07:00 call-load-audit WEEK START ===
+≡ƒô₧ Call ΓåÆ HotHawk Load Audit ΓÇö Weekly ΓÇö 2026-09-21 .. 2026-09-22
+ΓÜá∩╕Å 8 NOT loaded  ┬╖  24 calls / 24 people  ┬╖  16 loaded, 8 missing
+```
+principal        User          Company Name              # of Calls
+---------------  ------------  ------------------------  ----------
+franklin         Ericka        Terex                     6
+general-foundry  Ericka        Intuitive Surgical, Inc.  12
+general-foundry  Ericka        PROTEOR USA               2
+lnp              Ericka        Applied Composites        4
+-                -             -                         -
+                 TOTAL Ericka                            24
+```
+ΓÜá∩╕Å NOT LOADED (8) ΓÇö done calls that never reached HotHawk:
+```
+principal        User    Company                   Person                                                why
+---------------  ------  ------------------------  ----------------------------------------------------  ---------------------------------------------
+franklin         Ericka  Terex                     Tammy Zirbel <tammy.zirbel@terex.com>                 not-enrolled (on list only / draft campaign?)
+franklin         Ericka  Terex                     Philip Brady <philip.brady@terex.com>                 not-enrolled (on list only / draft campaign?)
+franklin         Ericka  Terex                     Leanne Arens <leanne.arens@terex.com>                 not-enrolled (on list only / draft campaign?)
+general-foundry  Ericka  Intuitive Surgical, Inc.  Allison Chen <alison.chen@intusurg.com>               not-enrolled (on list only / draft campaign?)
+general-foundry  Ericka  Intuitive Surgical, Inc.  Jeffrey Rampe <jeff.rampe@intusurg.com>               not-enrolled (on list only / draft campaign?)
+general-foundry  Ericka  Intuitive Surgical, Inc.  Charles Carman <charles.carman@intusurg.com>          not-enrolled (on list only / draft campaign?)
+general-foundry  Ericka  Intuitive Surgical, Inc.  Viet Nguyen <viet.nguyen@intusurg.com>                not-enrolled (on list only / draft campaign?)
+lnp              Ericka  Applied Composites        Christine Casillas <ccasillas@appliedcomposites.com>  not-enrolled (on list only / draft campaign?)
+```
+Fix: activate/enroll the campaign in HotHawk, or re-run the reconcile (`reconcile_done_calls.py --since <date> --apply`) for these people.
+
+discord: posted
+
+RESULT: ok - {"mode": "week", "window": ["2026-09-21", "2026-09-22"], "total_calls": 24, "people": 24, "loaded": 16, "missing": 8, "systemic": false}
+=== 2026-09-23T06:06:01.1428962-07:00 call-load-audit WEEK END (exit 0) ===

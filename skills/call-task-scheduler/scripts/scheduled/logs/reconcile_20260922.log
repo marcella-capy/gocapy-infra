@@ -1,0 +1,46 @@
+﻿=== 2026-09-22T06:20:00.4552544-07:00 call-task-reconcile START ===
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\reconcile_done_calls.py --since 2026-09-17
+  to-subscribe: Gerardo Ultreras <gerardo.ultreras@appliedcomposites.com> (Applied Composites) -> seq 532ff222-9db3-4344-b292-09eaa35eb62f [lnp]
+  to-subscribe: Valerie Kennedy <valerie.kennedy@appliedcomposites.com> (Applied Composites) -> seq 532ff222-9db3-4344-b292-09eaa35eb62f [lnp]
+  to-subscribe: Sean Maman <sean.maman@appliedcomposites.com> (Applied Composites) -> seq 532ff222-9db3-4344-b292-09eaa35eb62f [lnp]
+  to-subscribe: Nilotpal Roy <nilotpal.roy@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Anteneh Tirusew <anteneh.tirusew@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Brandon Lloyd <brandon.lloyd@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Ruby Schiernbeck <ruby.schiernbeck@terex.com> (Terex) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Mitchel Mudra <mitchel.mudra@terex.com> (Terex) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Jamal Hassan <jamal.hassan@terex.com> (Terex) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Scott Lanterman <scott.lanterman@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Stephen Truong <stephen.truong@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Susan Pearson <susan.pearson@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+RESULT: ok - 41 done calls on 2026-09-17..2026-09-22, 12 to-subscribe, 0 skipped -> _reconcile_20260917-20260922.json
+
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\hothawk_subscribe.py --artifact _reconcile_20260917-20260922.json --apply
+  created lead 4eb5757a-7a81-422f-bab0-eea9e592020f: Gerardo Ultreras <gerardo.ultreras@appliedcomposites.com> (Applied Composites)
+  created lead 6eadec42-337e-4531-a1e7-1077231e3fbc: Valerie Kennedy <valerie.kennedy@appliedcomposites.com> (Applied Composites)
+  created lead c823e472-8af0-4268-910f-f20457cdae46: Sean Maman <sean.maman@appliedcomposites.com> (Applied Composites)
+  bulk-added 3 leads to list 'voicemail-called-lnp' (64b8b24a-ec17-4afe-aecf-f4fd6bf774dd)
+  appended list to campaign 532ff222-9db3-4344-b292-09eaa35eb62f
+  enrolled 3 leads into campaign 532ff222-9db3-4344-b292-09eaa35eb62f
+  tagged 3 leads 'voicemail'
+  created lead bf10691e-edc1-4605-8256-24310b8afeed: Nilotpal Roy <nilotpal.roy@intusurg.com> (Intuitive Surgical, Inc.)
+  created lead c34bd42e-453a-4fe1-813c-1b6f5361d8a9: Anteneh Tirusew <anteneh.tirusew@intusurg.com> (Intuitive Surgical, Inc.)
+  created lead 99729cac-a987-4a07-996a-20d2d7fa0f27: Brandon Lloyd <brandon.lloyd@intusurg.com> (Intuitive Surgical, Inc.)
+  created lead 4415b15f-62df-4b84-8341-f079af83be12: Scott Lanterman <scott.lanterman@intusurg.com> (Intuitive Surgical, Inc.)
+  found lead 51cb6518-bc3f-4c7e-b90e-d468128d8dfa: Stephen Truong <stephen.truong@intusurg.com> (Intuitive Surgical, Inc.)
+  found lead 1628a5ef-1740-499f-bba7-fbe300aec273: Susan Pearson <susan.pearson@intusurg.com> (Intuitive Surgical, Inc.)
+  bulk-added 6 leads to list 'voicemail-called-general-foundry' (44b0b0e1-9990-447f-a19e-4d497e78f2f5)
+  appended list to campaign 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26
+  enrolled 6 leads into campaign 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26
+  tagged 6 leads 'voicemail'
+  created lead 3daa20b1-f279-44fb-8581-d4903ab05488: Ruby Schiernbeck <ruby.schiernbeck@terex.com> (Terex)
+  created lead e6b06d31-d4dc-4f0b-a0fe-e47d00e460e7: Mitchel Mudra <mitchel.mudra@terex.com> (Terex)
+  created lead a7e852b0-a98e-4e1f-8795-25c4c70a74da: Jamal Hassan <jamal.hassan@terex.com> (Terex)
+  bulk-added 3 leads to list 'voicemail-called-franklin' (f7f2a99a-9cba-40a3-97ab-f821d7c7447f)
+  appended list to campaign 1bc2bdb0-689e-4650-9169-93c7b784b605
+  enrolled 3 leads into campaign 1bc2bdb0-689e-4650-9169-93c7b784b605
+  tagged 3 leads 'voicemail'
+RESULT: ok - marked 12 subscribed, 0 sibling activities auto-closed
+RESULT: ok - 12 leads pushed to list/campaign/tag
+
+RESULT: ok - 12 people loaded into HotHawk since 2026-09-17 (_reconcile_20260917-20260922.json)
+=== 2026-09-22T06:20:29.0307224-07:00 call-task-reconcile END (exit 0) ===

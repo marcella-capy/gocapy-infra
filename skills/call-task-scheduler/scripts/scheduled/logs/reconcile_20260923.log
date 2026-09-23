@@ -1,0 +1,42 @@
+﻿=== 2026-09-23T06:20:04.4122475-07:00 call-task-reconcile START ===
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\reconcile_done_calls.py --since 2026-09-18
+  to-subscribe: Christine Casillas <ccasillas@appliedcomposites.com> (Applied Composites) -> seq 532ff222-9db3-4344-b292-09eaa35eb62f [lnp]
+  to-subscribe: Allison Chen <alison.chen@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Jeffrey Rampe <jeff.rampe@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Charles Carman <charles.carman@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Tammy Zirbel <tammy.zirbel@terex.com> (Terex) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Philip Brady <philip.brady@terex.com> (Terex) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Leanne Arens <leanne.arens@terex.com> (Terex) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Tom Brown <tom.brown@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Viet Nguyen <viet.nguyen@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Tatjana Korkut <tatjana.korkut@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+RESULT: ok - 34 done calls on 2026-09-18..2026-09-23, 10 to-subscribe, 0 skipped -> _reconcile_20260918-20260923.json
+
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\hothawk_subscribe.py --artifact _reconcile_20260918-20260923.json --apply
+  created lead 84ee615d-f3d9-4ff7-9b6b-bf23ecb2d06e: Christine Casillas <ccasillas@appliedcomposites.com> (Applied Composites)
+  bulk-added 1 leads to list 'voicemail-called-lnp' (64b8b24a-ec17-4afe-aecf-f4fd6bf774dd)
+  appended list to campaign 532ff222-9db3-4344-b292-09eaa35eb62f
+  enrolled 1 leads into campaign 532ff222-9db3-4344-b292-09eaa35eb62f
+  tagged 1 leads 'voicemail'
+  created lead 99d679e1-3f04-42d7-ad3a-59608d08f0df: Allison Chen <alison.chen@intusurg.com> (Intuitive Surgical, Inc.)
+  created lead d2ede0dc-3ad5-486b-91ad-6d862154b70b: Jeffrey Rampe <jeff.rampe@intusurg.com> (Intuitive Surgical, Inc.)
+  created lead 84ed46e7-17d7-4952-99d3-7f65fd76e9db: Charles Carman <charles.carman@intusurg.com> (Intuitive Surgical, Inc.)
+  found lead bfe0ad2d-7f2d-4405-adfd-305089610bec: Tom Brown <tom.brown@intusurg.com> (Intuitive Surgical, Inc.)
+  created lead 6c7fb9ba-82c2-4bad-9163-4a616e831407: Viet Nguyen <viet.nguyen@intusurg.com> (Intuitive Surgical, Inc.)
+  found lead 2ef816d0-ad50-42ca-9a06-8008c1f1807d: Tatjana Korkut <tatjana.korkut@intusurg.com> (Intuitive Surgical, Inc.)
+  bulk-added 6 leads to list 'voicemail-called-general-foundry' (44b0b0e1-9990-447f-a19e-4d497e78f2f5)
+  appended list to campaign 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26
+  enrolled 6 leads into campaign 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26
+  tagged 6 leads 'voicemail'
+  created lead d94386e3-72c5-4d4f-81d7-57006228144d: Tammy Zirbel <tammy.zirbel@terex.com> (Terex)
+  created lead 06843f50-9e1c-4d0e-b17c-28b1b7976380: Philip Brady <philip.brady@terex.com> (Terex)
+  created lead 1d6b919c-8ee4-4ad6-b28b-e1e7e1c951ac: Leanne Arens <leanne.arens@terex.com> (Terex)
+  bulk-added 3 leads to list 'voicemail-called-franklin' (f7f2a99a-9cba-40a3-97ab-f821d7c7447f)
+  appended list to campaign 1bc2bdb0-689e-4650-9169-93c7b784b605
+  enrolled 3 leads into campaign 1bc2bdb0-689e-4650-9169-93c7b784b605
+  tagged 3 leads 'voicemail'
+RESULT: ok - marked 10 subscribed, 0 sibling activities auto-closed
+RESULT: ok - 10 leads pushed to list/campaign/tag
+
+RESULT: ok - 10 people loaded into HotHawk since 2026-09-18 (_reconcile_20260918-20260923.json)
+=== 2026-09-23T06:20:39.0814675-07:00 call-task-reconcile END (exit 0) ===

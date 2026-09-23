@@ -1,0 +1,24 @@
+﻿=== 2026-09-09T14:50:00.8567584+01:00 call-load-audit DAY START ===
+≡ƒô₧ Call ΓåÆ HotHawk Load Audit ΓÇö Daily ΓÇö 2026-09-08
+ΓÜá∩╕Å 1 NOT loaded  ┬╖  12 calls / 12 people  ┬╖  11 loaded, 1 missing
+```
+principal        User          Company Name  # of Calls
+---------------  ------------  ------------  ----------
+franklin         Ericka        Graco         2
+general-foundry  Ericka        Vermeer       4
+harvey-vogel     Ericka        Moog          6
+-                -             -             -
+                 TOTAL Ericka                12
+```
+ΓÜá∩╕Å NOT LOADED (1) ΓÇö done calls that never reached HotHawk:
+```
+principal  User    Company  Person       why
+---------  ------  -------  -----------  --------
+franklin   Ericka  Graco    Nelly Ucler  no-email
+```
+Fix: activate/enroll the campaign in HotHawk, or re-run the reconcile (`reconcile_done_calls.py --since <date> --apply`) for these people.
+
+discord: posted
+
+RESULT: ok - {"mode": "day", "window": ["2026-09-08", "2026-09-08"], "total_calls": 12, "people": 12, "loaded": 11, "missing": 1, "systemic": false}
+=== 2026-09-09T14:50:09.8639113+01:00 call-load-audit DAY END (exit 0) ===

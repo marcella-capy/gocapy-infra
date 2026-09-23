@@ -1,0 +1,67 @@
+﻿=== 2026-09-23T06:05:36.6381689-07:00 call-load-audit MONTH START ===
+python.exe : Traceback (most recent call last):
+At 
+C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-load-audit\scripts\scheduled\run_monthly.ps1:11 
+char:1
++ & $py "$scripts\audit_call_loads.py" --mode month --discord 2>&1 | Ou ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-load-audit\scripts\audit_call_loads.py", 
+line 338, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-load-audit\scripts\audit_call_loads.py", 
+line 321, in main
+    report, meta, roster_only = build_report(a.mode, today)
+                                ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-load-audit\scripts\audit_call_loads.py", 
+line 222, in build_report
+    status = enrolled_emails(seq, token, hh_cache).get(email.lower())
+             ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-load-audit\scripts\audit_call_loads.py", 
+line 134, in enrolled_emails
+    d = _hh_get(f"/campaigns/{seq_id}/leads?limit=25&page={page}", token)
+  File "C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-load-audit\scripts\audit_call_loads.py", 
+line 121, in _hh_get
+    with urllib.request.urlopen(req, timeout=30) as r:
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\marce\AppData\Local\Python\pythoncore-3.14-64\Lib\urllib\request.py", line 187, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\marce\AppData\Local\Python\pythoncore-3.14-64\Lib\urllib\request.py", line 487, in open
+    response = self._open(req, data)
+  File "C:\Users\marce\AppData\Local\Python\pythoncore-3.14-64\Lib\urllib\request.py", line 504, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+                              '_open', req)
+  File "C:\Users\marce\AppData\Local\Python\pythoncore-3.14-64\Lib\urllib\request.py", line 464, in _call_chain
+    result = func(*args)
+  File "C:\Users\marce\AppData\Local\Python\pythoncore-3.14-64\Lib\urllib\request.py", line 1369, in https_open
+    return self.do_open(http.client.HTTPSConnection, req,
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        context=self._context)
+                        ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\marce\AppData\Local\Python\pythoncore-3.14-64\Lib\urllib\request.py", line 1325, in do_open
+    r = h.getresponse()
+  File "C:\Users\marce\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 1450, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "C:\Users\marce\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\marce\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 297, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\marce\AppData\Local\Python\pythoncore-3.14-64\Lib\socket.py", line 725, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\marce\AppData\Local\Python\pythoncore-3.14-64\Lib\ssl.py", line 1304, in recv_into
+    return self.read(nbytes, buffer)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\marce\AppData\Local\Python\pythoncore-3.14-64\Lib\ssl.py", line 1138, in read
+    return self._sslobj.read(len, buffer)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+=== 2026-09-23T06:06:12.7494376-07:00 call-load-audit MONTH END (exit 1) ===
+posted run-failure alert to ClickUp task 86ba9zvy5

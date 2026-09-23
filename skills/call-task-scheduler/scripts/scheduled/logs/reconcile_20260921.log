@@ -1,0 +1,84 @@
+﻿=== 2026-09-21T17:45:07.9714019+03:00 call-task-reconcile START ===
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\reconcile_done_calls.py --since 2026-09-16
+  to-subscribe: Craig Phipps <Craig.Phipps@proteor.com> (PROTEOR USA) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Tiffany Harding <tharding@proteorusa.com> (PROTEOR USA) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Melissa Monjaras <mmonjaras@appliedcomposites.com> (Applied Composites) -> seq 532ff222-9db3-4344-b292-09eaa35eb62f [lnp]
+  to-subscribe: John Peery <john.peery@appliedcomposites.com> (Applied Composites) -> seq 532ff222-9db3-4344-b292-09eaa35eb62f [lnp]
+  to-subscribe: Kyle Zhang <kzhang@appliedcomposites.com> (Applied Composites) -> seq 532ff222-9db3-4344-b292-09eaa35eb62f [lnp]
+  to-subscribe: Yvonne Brown <yvonne.brown@ga-asi.com> (General Atomics Aeronautical Systems) -> seq 7df72ed5-ee2b-48d2-ad2e-da026cdc3963 [shellcast]
+  to-subscribe: Anand Jayachandran <anand.jayachandran@velan.com> (Velan) -> seq 7df72ed5-ee2b-48d2-ad2e-da026cdc3963 [shellcast]
+  to-subscribe: Tony Mascari <anthony.mascari@terex.com> (Terex) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Tony Starnes <amstarnes@jlg.com> (JLG Industries, Inc.) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Din Mohiuddin <din.mohiuddin@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Cara Lima <cara.lima@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Daniel Gonzalez <dan.gonzalez@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Dave Haider <dave.haider@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Deepak Kapoor <deepak.kapoor@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Nathan Ancheta <nathan.ancheta@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Jamie Ballowe <jballowe@revisionmilitary.com> (Revision Military) -> seq eeadc336-f1a4-4676-a8db-86d0201457a3 [vrc]
+  to-subscribe: Christine Wang <christine.wang@terex.com> (Terex) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Scott Garritson <scott.garritson@terex.com> (Terex) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: April Choat <april.choat@terex.com> (Terex) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Parth Gagpalliwar <parth.gagpalliwar@terex.com> (Terex) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Debra Carrigan <debra.carrigan@terex.com> (Terex) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Zaid Pervez <zaid.pervez@terex.com> (Terex) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Kevin Ha <kevin.ha@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Marco Almeida <marco.almeida@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Mark Chang <mark.chang@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Peter Yee <peter.yee@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: RAJINDER BADWAL <rajinder.badwal@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+RESULT: ok - 27 done calls on 2026-09-16..2026-09-21, 27 to-subscribe, 0 skipped -> _reconcile_20260916-20260921.json
+
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\hothawk_subscribe.py --artifact _reconcile_20260916-20260921.json --apply
+  created lead 3006f383-8f59-486b-ab0b-3bda1f673481: Craig Phipps <Craig.Phipps@proteor.com> (PROTEOR USA)
+  created lead f3682724-fd36-478e-9d93-4ea44b033e45: Tiffany Harding <tharding@proteorusa.com> (PROTEOR USA)
+  created lead 207d5363-dbd0-4fa9-aa7d-0253f7b18523: Din Mohiuddin <din.mohiuddin@intusurg.com> (Intuitive Surgical, Inc.)
+  created lead f974a30a-65a9-409d-9d16-bab68e390415: Cara Lima <cara.lima@intusurg.com> (Intuitive Surgical, Inc.)
+  created lead ee14248f-ccad-4853-a677-99e2b3e58743: Daniel Gonzalez <dan.gonzalez@intusurg.com> (Intuitive Surgical, Inc.)
+  created lead cc8d5892-b5a2-4154-af07-058789724508: Dave Haider <dave.haider@intusurg.com> (Intuitive Surgical, Inc.)
+  created lead b2671016-535c-42c8-b0e4-a400b9a1f194: Deepak Kapoor <deepak.kapoor@intusurg.com> (Intuitive Surgical, Inc.)
+  created lead 8f55fa47-e804-4580-bd46-35932771ab5c: Nathan Ancheta <nathan.ancheta@intusurg.com> (Intuitive Surgical, Inc.)
+  found lead a9344718-3654-4897-99c7-2fdd226467c7: Kevin Ha <kevin.ha@intusurg.com> (Intuitive Surgical, Inc.)
+  found lead 0e2862a4-ccb3-45aa-aae8-14774780113e: Marco Almeida <marco.almeida@intusurg.com> (Intuitive Surgical, Inc.)
+  created lead 908e608b-87ba-49cf-9b0d-cf320ece1ea8: Mark Chang <mark.chang@intusurg.com> (Intuitive Surgical, Inc.)
+  found lead 1ba01b27-8886-4f87-8154-96c032b0cb18: Peter Yee <peter.yee@intusurg.com> (Intuitive Surgical, Inc.)
+  found lead 553eee34-1653-4d3a-a535-fff1ed77c09d: RAJINDER BADWAL <rajinder.badwal@intusurg.com> (Intuitive Surgical, Inc.)
+  bulk-added 13 leads to list 'voicemail-called-general-foundry' (44b0b0e1-9990-447f-a19e-4d497e78f2f5)
+  appended list to campaign 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26
+  enrolled 13 leads into campaign 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26
+  tagged 13 leads 'voicemail'
+  created lead f669b434-61a9-4e8a-ad82-47a65b98e110: Melissa Monjaras <mmonjaras@appliedcomposites.com> (Applied Composites)
+  created lead 71d856ab-86f9-44f7-9360-7a9f1ae1c332: John Peery <john.peery@appliedcomposites.com> (Applied Composites)
+  created lead b1fa9b58-b816-4101-8804-8247a65eb342: Kyle Zhang <kzhang@appliedcomposites.com> (Applied Composites)
+  bulk-added 3 leads to list 'voicemail-called-lnp' (64b8b24a-ec17-4afe-aecf-f4fd6bf774dd)
+  appended list to campaign 532ff222-9db3-4344-b292-09eaa35eb62f
+  enrolled 3 leads into campaign 532ff222-9db3-4344-b292-09eaa35eb62f
+  tagged 3 leads 'voicemail'
+  found lead 64b0f47a-ddde-4155-833f-ba17b546da73: Yvonne Brown <yvonne.brown@ga-asi.com> (General Atomics Aeronautical Systems)
+  created lead 659be1b5-e692-4333-9654-91b470bb7570: Anand Jayachandran <anand.jayachandran@velan.com> (Velan)
+  bulk-added 2 leads to list 'voicemail-called-shellcast' (40a92485-a99a-4a5b-a939-7c0752541bba)
+  appended list to campaign 7df72ed5-ee2b-48d2-ad2e-da026cdc3963
+  enrolled 2 leads into campaign 7df72ed5-ee2b-48d2-ad2e-da026cdc3963
+  tagged 2 leads 'voicemail'
+  found lead 707e0dc7-904f-46d4-bc48-32dc3e3f87ae: Tony Mascari <anthony.mascari@terex.com> (Terex)
+  found lead c89d897f-9f15-450f-b654-8e8c73863b38: Tony Starnes <amstarnes@jlg.com> (JLG Industries, Inc.)
+  created lead 35d0ab2c-4764-49f5-95d1-0a5e1dd3075f: Christine Wang <christine.wang@terex.com> (Terex)
+  created lead aab6bcfc-d1d9-4dde-9aab-eb2b1682fa58: Scott Garritson <scott.garritson@terex.com> (Terex)
+  created lead 91d4d001-823b-43b0-afa9-139cf1351524: April Choat <april.choat@terex.com> (Terex)
+  created lead fb46bb48-e8ca-4463-8d79-b5b80f176a3e: Parth Gagpalliwar <parth.gagpalliwar@terex.com> (Terex)
+  created lead de3004c6-4d4d-444f-b1eb-b128cdeff912: Debra Carrigan <debra.carrigan@terex.com> (Terex)
+  created lead 56da833b-536d-4af2-92a2-b811bb96d942: Zaid Pervez <zaid.pervez@terex.com> (Terex)
+  bulk-added 8 leads to list 'voicemail-called-franklin' (f7f2a99a-9cba-40a3-97ab-f821d7c7447f)
+  appended list to campaign 1bc2bdb0-689e-4650-9169-93c7b784b605
+  enrolled 8 leads into campaign 1bc2bdb0-689e-4650-9169-93c7b784b605
+  tagged 8 leads 'voicemail'
+  created lead bfb3a48d-fafc-4207-9065-14b6090ab15e: Jamie Ballowe <jballowe@revisionmilitary.com> (Revision Military)
+  bulk-added 1 leads to list 'voicemail-called-vrc' (26427e3f-e913-4073-a997-6fc267c699de)
+  appended list to campaign eeadc336-f1a4-4676-a8db-86d0201457a3
+  enrolled 1 leads into campaign eeadc336-f1a4-4676-a8db-86d0201457a3
+  tagged 1 leads 'voicemail'
+RESULT: ok - marked 27 subscribed, 0 sibling activities auto-closed
+RESULT: ok - 27 leads pushed to list/campaign/tag
+
+RESULT: ok - 27 people loaded into HotHawk since 2026-09-16 (_reconcile_20260916-20260921.json)
+=== 2026-09-21T17:52:06.1619193+03:00 call-task-reconcile END (exit 0) ===

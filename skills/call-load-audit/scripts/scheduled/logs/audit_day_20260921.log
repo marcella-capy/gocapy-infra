@@ -1,0 +1,31 @@
+﻿=== 2026-09-21T17:45:08.2775611+03:00 call-load-audit DAY START ===
+≡ƒô₧ Call ΓåÆ HotHawk Load Audit ΓÇö Daily ΓÇö 2026-09-18
+ΓÜá∩╕Å 8 NOT loaded  ┬╖  10 calls / 10 people  ┬╖  2 loaded, 8 missing
+```
+principal        User          Company Name              # of Calls
+---------------  ------------  ------------------------  ----------
+franklin         Ericka        Terex                     3
+general-foundry  Ericka        Intuitive Surgical, Inc.  6
+lnp              Ericka        Applied Composites        1
+-                -             -                         -
+                 TOTAL Ericka                            10
+```
+ΓÜá∩╕Å NOT LOADED (8) ΓÇö done calls that never reached HotHawk:
+```
+principal        User    Company                   Person                                           why
+---------------  ------  ------------------------  -----------------------------------------------  ---------------------------------------------
+franklin         Ericka  Terex                     Parth Gagpalliwar <parth.gagpalliwar@terex.com>  not-enrolled (on list only / draft campaign?)
+franklin         Ericka  Terex                     Debra Carrigan <debra.carrigan@terex.com>        not-enrolled (on list only / draft campaign?)
+franklin         Ericka  Terex                     Zaid Pervez <zaid.pervez@terex.com>              not-enrolled (on list only / draft campaign?)
+general-foundry  Ericka  Intuitive Surgical, Inc.  Dave Haider <dave.haider@intusurg.com>           not-enrolled (on list only / draft campaign?)
+general-foundry  Ericka  Intuitive Surgical, Inc.  Deepak Kapoor <deepak.kapoor@intusurg.com>       not-enrolled (on list only / draft campaign?)
+general-foundry  Ericka  Intuitive Surgical, Inc.  Nathan Ancheta <nathan.ancheta@intusurg.com>     not-enrolled (on list only / draft campaign?)
+general-foundry  Ericka  Intuitive Surgical, Inc.  Mark Chang <mark.chang@intusurg.com>             not-enrolled (on list only / draft campaign?)
+lnp              Ericka  Applied Composites        Kyle Zhang <kzhang@appliedcomposites.com>        not-enrolled (on list only / draft campaign?)
+```
+Fix: activate/enroll the campaign in HotHawk, or re-run the reconcile (`reconcile_done_calls.py --since <date> --apply`) for these people.
+
+discord: posted
+
+RESULT: ok - {"mode": "day", "window": ["2026-09-18", "2026-09-18"], "total_calls": 10, "people": 10, "loaded": 2, "missing": 8, "systemic": false}
+=== 2026-09-21T17:51:14.5270070+03:00 call-load-audit DAY END (exit 0) ===
