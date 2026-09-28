@@ -1,335 +1,407 @@
 #!/usr/bin/env python3
 """pipedrive-org-dedup skill — whole-database duplicate-organization merge.
 
-Finds organizations that share the SAME normalized website domain and merges the duplicates
-into one survivor. This is the standalone, monthly-maintenance version of the per-filter dedup
-documented in org-research-agent-v2/SKILL.md Step 1c (which only runs inside a research sweep).
+Finds organizations that are the same company and merges the duplicates into one survivor.
+Three match rules, each tagged on every CSV row (the `match_on` column):
+  - domain    same normalized website domain (seed_resolver.normalize_domain; blocklist applies)
+  - linkedin  same LinkedIn company page (built-in org field `linkedin`, /company|school|showcase/<slug>)
+  - name      same cleaned name (accents off, Inc/LLC/Corp/Co/Ltd/Group/Holdings stripped)
 
-It REUSES the existing primitives in the gocapy-claude-plugin marketplace — no new merge or
-Pipedrive API code lives here:
-  - pd_cache.get_orgs()                  the single 429-safe daily-snapshot read of ALL orgs
-  - pd_cache.get_field_maps()            to resolve the "Company Research" custom-field key
-  - seed_resolver.normalize_domain()     strip scheme/www/path/port -> bare registrable domain
-  - pipedrive_create.merge_orgs()        PUT /organizations/{loser}/merge {"merge_with_id": survivor}
+Records linked by domain OR LinkedIn form one group (union-find). Each loser row gets a tier:
+  high       the SAME name (legal suffix/punctuation/typo aside) AND domain or LinkedIn matches
+  medium     one name is the other plus extra words ('Diebold' / 'Diebold Nixdorf') AND the
+             website domain matches
+  review     names differ (parent/subsidiary, e.g. Amazon Robotics vs Amazon Kuiper on
+             aboutamazon.com, or a wrong LinkedIn link), LinkedIn is the only match and the names
+             differ slightly (divisions often use the parent's page), a different non-blank Holding
+             Co, a group of 6+, or a loser tied to the survivor only through a third record
+  Sharing just a brand word ('Teledyne X' / 'Teledyne Y') never counts as the names agreeing.
+  name-only  same cleaned name but no shared domain/LinkedIn — review list, never merged unless the
+             human explicitly passes --tiers name-only on an approved file
 
-Survivor pick (mirrors Step 1c): non-empty Company Research -> most linked people -> lowest id.
-Only EXACT-domain groups merge; orgs with no/blank/blocklisted domain are skipped (never grouped).
-Same-domain / different-name acquisitions DO merge (still an exact-domain match).
+Survivor: non-empty Company Research -> most people -> most activity/deals -> lowest id.
+Guards: domain blocklist, protected names (whole group skipped), protected id pairs (never merged
+together). Reads the daily snapshot (pd_cache) — zero Pipedrive calls on a dry run.
 
-Two phases, HARD review gate — the skill never merges anything it derived on its own:
-  python dedup_orgs.py                          # dry-run: writes a reviewable CSV + JSON, ZERO writes
-  python dedup_orgs.py --execute --plan <csv>   # merge ONLY the rows in the human-approved CSV
-  python dedup_orgs.py --execute --plan <csv> --limit 25   # cautious first batch from that CSV
-  python dedup_orgs.py --out <path>             # base path for the dry-run CSV/JSON
-  python dedup_orgs.py --capy-root <path>       # override sibling-repo autodetect
+  python dedup_orgs.py                                   # dry run -> shared-references/dedup/orgs/<today>/
+  python dedup_orgs.py --post-task 86bc8kj30             # ...and post the report + CSV to ClickUp as Kodie
+  python dedup_orgs.py --execute --plan <csv> --tiers high [--limit 25]
+  python dedup_orgs.py --execute --plan <edited csv> --tiers medium,review
 
---execute REQUIRES --plan pointing at a dry-run CSV the user has reviewed. It re-derives nothing:
-it merges exactly the loser->survivor pairs in that file. No CSV => no merges.
+--execute REQUIRES --plan (a human-approved CSV) and --tiers. It re-derives nothing. Every merge:
+budget brake -> survivor snapshot to audit_<date>.jsonl -> MERGE -> joined text fields restored.
+Name and phone are never written (golden rule 10). Merged losers are logged to merged_ledger.jsonl
+and skipped on re-runs, so an interrupted batch simply resumes.
 
-Exit codes: 0 ok, 2 sibling repo / primitives / plan not found, 3 merge failures during --execute.
+Exit codes: 0 ok, 2 setup/plan problem, 3 merge failures during --execute.
 """
 from __future__ import annotations
 
 import argparse
-import csv
-import datetime
 import json
+import re
 import sys
-from collections import defaultdict
+from collections import Counter, defaultdict
 from pathlib import Path
-
-for _stream in (sys.stdout, sys.stderr):
-    try:
-        _stream.reconfigure(encoding="utf-8")
-    except (AttributeError, ValueError):
-        pass
 
 HERE = Path(__file__).resolve().parent
 SKILL = HERE.parent
 REFERENCES = SKILL / "references"
+sys.path.insert(0, str(HERE))
+import dedup_common as dc  # noqa: E402
 
-# Relative locations of the reused primitives inside the gocapy-claude-plugin marketplace.
-_PD_CACHE_REL = Path("gocapy-claude-plugin/go-capy-outreach/scripts")
-_FINDPEOPLE_REL = Path(
-    "gocapy-claude-plugin/go-capy-outreach/skills/find-people-at-organizations/scripts")
+log = dc.log
 
-
-def log(*a):
-    print(*a, file=sys.stderr)
-
-
-def find_capy_root(explicit: "str | None") -> "Path | None":
-    """Locate the dir that holds gocapy-claude-plugin (the marketplaces root). Walk up from this
-    skill, then fall back to a glob — same approach as domain-inventory's client-domains lookup."""
-    if explicit:
-        p = Path(explicit)
-        return p if (p / _PD_CACHE_REL / "pd_cache.py").exists() else None
-    for base in [SKILL, *SKILL.parents]:
-        if (base / _PD_CACHE_REL / "pd_cache.py").exists():
-            return base
-    for base in SKILL.parents:
-        for cand in base.glob("**/gocapy-claude-plugin/go-capy-outreach/scripts/pd_cache.py"):
-            return cand.parents[2].parent  # .../marketplaces
-    return None
+LEGAL = {"inc", "incorporated", "llc", "l l c", "ltd", "limited", "corp", "corporation", "co",
+         "company", "plc", "gmbh", "lp", "llp", "the", "group", "holdings", "holding", "sa", "ag",
+         "bv", "srl", "pty", "pvt", "private", "lc", "pllc", "usa", "us"}
+# Words too generic to prove two names are the same company.
+GENERIC = LEGAL | {"and", "of", "industries", "industry", "industrial", "manufacturing", "mfg",
+                   "technologies", "technology", "tech", "systems", "system", "international",
+                   "intl", "america", "american", "national", "global", "enterprises",
+                   "enterprise", "services", "service", "solutions", "products", "product",
+                   "engineering", "precision", "machine", "machining", "aerospace", "defense",
+                   "electronics", "components", "division", "div", "north", "south", "east", "west",
+                   "united", "states", "de", "la", "del", "a", "an", "for", "at", "on", "in"}
+MAX_GROUP = 5
 
 
-def load_blocklist() -> set[str]:
-    """Normalized domains that must NEVER group (parked pages, shared ESP/registrar hosts,
-    generic mailbox providers). Unparseable/comment keys (leading '_') are ignored."""
-    path = REFERENCES / "dedup-domain-blocklist.json"
-    if not path.exists():
-        log(f"WARN: blocklist not found at {path} — proceeding with empty blocklist")
-        return set()
-    data = json.loads(path.read_text(encoding="utf-8"))
-    domains = data.get("domains", data) if isinstance(data, dict) else data
-    return {str(d).strip().lower() for d in domains if d and not str(d).startswith("_")}
+def clean_name(name: str) -> str:
+    n = dc.ascii_fold(name).replace("&", " and ")
+    n = re.sub(r"\(.*?\)|\[.*?\]", " ", n)  # "(OH)", "(WA)" location tags
+    n = re.sub(r"[^a-z0-9 ]", " ", n)
+    return " ".join(t for t in n.split() if t not in LEGAL)
 
 
-def load_org_exclusions() -> list[str]:
-    """Org-name substrings (lowercased) that must NEVER be merged — any domain group containing
-    one is skipped entirely and left for a human (e.g. large primes with intentional division
-    records). Comment keys (leading '_') are ignored."""
-    path = REFERENCES / "dedup-org-exclusions.json"
-    if not path.exists():
+def core_words(name: str) -> set:
+    return {t for t in clean_name(name).split() if t not in GENERIC and len(t) > 1}
+
+
+def name_strength(a: str, b: str) -> int:
+    """2 = the same name (punctuation/spacing/legal suffix/generic words aside, or a small typo:
+    'Earle M. Jorgensen' / 'Earle M Jorgenson'). 1 = one name is the other plus extra words
+    ('Airbus' / 'Airbus Helicopter', 'Diebold' / 'Diebold Nixdorf') - often a division, so never
+    'high'. 0 = different names. Sharing only a brand word is 0: 'Teledyne Reynolds' vs
+    'Teledyne Qioptiq' are sister divisions, not duplicates."""
+    ca, cb = clean_name(a), clean_name(b)
+    if not ca or not cb:
+        return 0
+    na, nb = ca.replace(" ", ""), cb.replace(" ", "")
+    wa, wb = core_words(a), core_words(b)
+    if na == nb or (wa and wa == wb):
+        return 2
+    if min(len(na), len(nb)) >= 8 and dc.jaro_winkler(na, nb) >= 0.93:
+        return 2
+    short, long_ = sorted((na, nb), key=len)
+    if (len(short) >= 3 and long_.startswith(short)) or (len(short) >= 5 and short in long_):
+        return 1
+    return 1 if (wa and wb and (wa <= wb or wb <= wa)) else 0
+
+
+def names_similar(a: str, b: str) -> bool:
+    return name_strength(a, b) > 0
+
+
+def load_json_list(fname: str, key: str) -> list:
+    p = REFERENCES / fname
+    if not p.exists():
         return []
-    data = json.loads(path.read_text(encoding="utf-8"))
-    names = data.get("names", data) if isinstance(data, dict) else data
-    return [str(n).strip().lower() for n in names if n and not str(n).startswith("_")]
+    data = json.loads(p.read_text(encoding="utf-8"))
+    items = data.get(key, []) if isinstance(data, dict) else data
+    return [x for x in items if not (isinstance(x, str) and x.startswith("_"))]
 
 
-def is_excluded(org: dict, exclusions: list[str]) -> bool:
-    name = (org.get("name") or "").lower()
-    return any(ex in name for ex in exclusions)
-
-
-def has_research(org: dict, research_key: "str | None") -> bool:
-    if not research_key:
-        return False
-    return bool(str(org.get(research_key) or "").strip())
-
-
-def people_count(org: dict) -> int:
+def as_int(v) -> int:
     try:
-        return int(org.get("people_count") or 0)
+        return int(v or 0)
     except (TypeError, ValueError):
         return 0
 
 
-def pick_survivor(group: list[dict], research_key: "str | None") -> dict:
-    """Non-empty Company Research -> most linked people -> lowest id (deterministic)."""
-    return sorted(
-        group,
-        key=lambda o: (not has_research(o, research_key), -people_count(o), int(o["id"])),
-    )[0]
+def activity(o: dict) -> int:
+    return sum(as_int(o.get(k)) for k in ("activities_count", "open_deals_count", "closed_deals_count",
+                                          "email_messages_count", "notes_count"))
 
 
-def build_plan(orgs: dict, normalize, research_key, blocklist, exclusions):
-    """Group orgs by exact normalized domain; return (merges, stats).
+class Ctx:
+    def __init__(self, normalize, research_key, holding_key, blocklist, exclusions, pairs):
+        self.normalize, self.research_key, self.holding_key = normalize, research_key, holding_key
+        self.blocklist, self.exclusions = blocklist, [e.lower() for e in exclusions]
+        self.pairs = {frozenset((int(a), int(b))) for a, b in pairs}
 
-    merges: [{"domain","survivor":{...},"losers":[{...}]}]   stats: counts for the report.
-    """
-    by_domain: dict[str, list[dict]] = defaultdict(list)
-    no_domain = blocklisted = 0
-    for org in orgs.values():
-        domain = normalize(org.get("website") or "")
-        if not domain:
-            no_domain += 1
+    def domain(self, o):
+        d = self.normalize(o.get("website") or "")
+        return "" if not d or d in self.blocklist else d
+
+    def research(self, o):
+        return bool(self.research_key and str(o.get(self.research_key) or "").strip())
+
+    def holding(self, o):
+        v = o.get(self.holding_key) if self.holding_key else None
+        return clean_name(str(v)) if v else ""
+
+    def excluded(self, o):
+        n = (o.get("name") or "").lower()
+        return any(e in n for e in self.exclusions)
+
+
+def pick_survivor(group, ctx):
+    return sorted(group, key=lambda o: (not ctx.research(o), -as_int(o.get("people_count")),
+                                        -activity(o), int(o["id"])))[0]
+
+
+def survivor_reason(s, ctx):
+    if ctx.research(s):
+        return "has Company Research"
+    if as_int(s.get("people_count")):
+        return f"most people ({as_int(s.get('people_count'))})"
+    if activity(s):
+        return "most activity"
+    return "lowest id"
+
+
+def build_plan(orgs: dict, ctx: Ctx):
+    recs = {int(o["id"]): o for o in orgs.values() if o.get("active_flag", True) is not False}
+    by = {"domain": defaultdict(set), "linkedin": defaultdict(set), "name": defaultdict(set)}
+    stats = Counter(orgs_scanned=len(recs))
+    for i, o in recs.items():
+        raw = ctx.normalize(o.get("website") or "")
+        if not raw:
+            stats["no_domain"] += 1
+        elif raw in ctx.blocklist:
+            stats["blocklisted_domain"] += 1
+        d = ctx.domain(o)
+        li = dc.linkedin_slug(o.get("linkedin"), "company")
+        nm = clean_name(o.get("name") or "")
+        if d:
+            by["domain"][d].add(i)
+        if li:
+            by["linkedin"][li].add(i)
+        if len(nm.replace(" ", "")) >= 4:
+            by["name"][nm].add(i)
+
+    # Per-category raw counts (what Marcella asked for: duplicates by domain / LinkedIn / name).
+    category = {}
+    for k, idx in by.items():
+        grps = [s for s in idx.values() if len(s) > 1]
+        category[k] = {"groups": len(grps), "extra_records": sum(len(s) - 1 for s in grps)}
+
+    uf = dc.UnionFind()
+    for k in ("domain", "linkedin"):
+        for ids in idx_groups(by[k]):
+            for x in ids[1:]:
+                uf.union(ids[0], x)
+
+    rows, blocked, excluded_groups = [], [], []
+    clustered = set()
+    for members in uf.groups().values():
+        if len(members) < 2:
             continue
-        if domain in blocklist:
-            blocklisted += 1
+        group = [recs[i] for i in members]
+        clustered.update(members)
+        if any(ctx.excluded(o) for o in group):
+            excluded_groups.append(sorted(members))
             continue
-        by_domain[domain].append(org)
+        s = pick_survivor(group, ctx)
+        sid = int(s["id"])
+        for o in group:
+            lid = int(o["id"])
+            if lid == sid:
+                continue
+            if frozenset((lid, sid)) in ctx.pairs:
+                blocked.append({"loser_id": lid, "survivor_id": sid, "why": "protected pair"})
+                continue
+            sig = []
+            if ctx.domain(o) and ctx.domain(o) == ctx.domain(s):
+                sig.append("domain")
+            ls, lo = dc.linkedin_slug(s.get("linkedin"), "company"), dc.linkedin_slug(o.get("linkedin"), "company")
+            if ls and ls == lo:
+                sig.append("linkedin")
+            same_name = clean_name(o.get("name") or "") == clean_name(s.get("name") or "")
+            strength = name_strength(o.get("name") or "", s.get("name") or "")
+            notes = []
+            if not sig:
+                tier = "review"
+                notes.append("linked only through another record in the group")
+            elif strength == 0:
+                tier = "review"
+                notes.append("names differ - possible parent/subsidiary or wrong LinkedIn")
+            elif strength == 2:
+                tier = "high"
+            elif "domain" in sig:
+                tier = "medium"
+                notes.append("one name has extra words - check it is not a division")
+            else:
+                tier = "review"
+                notes.append("same LinkedIn page only and names differ slightly - may be a division")
+            hs, ho = ctx.holding(s), ctx.holding(o)
+            if hs and ho and hs != ho:
+                tier = "review"
+                notes.append("different Holding Co")
+            if len(group) > MAX_GROUP:
+                tier = "review"
+                notes.append(f"large group ({len(group)} records)")
+            if same_name:
+                sig.append("name")
+            rows.append(row(tier, sig, s, o, ctx, "; ".join(notes), group_key(s, ctx)))
 
-    merges = []
-    excluded = 0
-    for domain, group in by_domain.items():
-        if len(group) < 2:
+    # Name-only review list: same cleaned name, not already grouped by domain/LinkedIn together.
+    for nm, ids in by["name"].items():
+        if len(ids) < 2:
             continue
-        if any(is_excluded(o, exclusions) for o in group):
-            excluded += 1
-            log(f"[dup-excluded] {domain} — protected org name, skipped (left for human)")
+        roots = {uf.find(i) if i in clustered else i for i in ids}
+        if len(roots) < 2:
             continue
-        survivor = pick_survivor(group, research_key)
-        losers = [o for o in group if int(o["id"]) != int(survivor["id"])]
-        if not losers:
+        group = [recs[i] for i in ids]
+        if any(ctx.excluded(o) for o in group):
             continue
-        reason = ("has Company Research" if has_research(survivor, research_key)
-                  else f"most people ({people_count(survivor)})" if people_count(survivor)
-                  else "lowest id")
-        merges.append({
-            "domain": domain,
-            "survivor": {"id": int(survivor["id"]), "name": survivor.get("name"),
-                         "people": people_count(survivor), "research": has_research(survivor, research_key),
-                         "reason": reason},
-            "losers": [{"id": int(o["id"]), "name": o.get("name"), "people": people_count(o)}
-                       for o in losers],
-        })
+        s = pick_survivor(group, ctx)
+        sroot = uf.find(int(s["id"])) if int(s["id"]) in clustered else int(s["id"])
+        for o in group:
+            lid = int(o["id"])
+            if lid == int(s["id"]) or (lid in clustered and uf.find(lid) == sroot):
+                continue
+            if frozenset((lid, int(s["id"]))) in ctx.pairs:
+                continue
+            note = "same name only - check websites/locations"
+            d1, d2 = ctx.domain(s), ctx.domain(o)
+            if d1 and d2 and d1 != d2:
+                note = f"same name but different websites ({d1} vs {d2})"
+            rows.append(row("name-only", ["name"], s, o, ctx, note, nm))
 
-    merges.sort(key=lambda m: m["domain"])
-    stats = {
-        "orgs_scanned": len(orgs),
-        "duplicate_domains": len(merges),
-        "planned_merges": sum(len(m["losers"]) for m in merges),
-        "no_domain_skipped": no_domain,
-        "blocklist_skipped": blocklisted,
-        "excluded_groups_skipped": excluded,
-    }
-    return merges, stats
-
-
-def print_report(merges, stats):
-    for m in merges:
-        s = m["survivor"]
-        log(f"\n  {m['domain']}  (keep #{s['id']} {s['name']!r} — {s['reason']})")
-        for loser in m["losers"]:
-            log(f"      merge #{loser['id']} {loser['name']!r}  ({loser['people']} ppl)  -> #{s['id']}")
-    log("\n" + "=" * 70)
-    log(f"  orgs scanned ............ {stats['orgs_scanned']}")
-    log(f"  duplicate domains ....... {stats['duplicate_domains']}")
-    log(f"  planned merges .......... {stats['planned_merges']}")
-    log(f"  skipped (no domain) ..... {stats['no_domain_skipped']}")
-    log(f"  skipped (blocklist) ..... {stats['blocklist_skipped']}")
-    log(f"  skipped (excluded orgs) . {stats.get('excluded_groups_skipped', 0)}")
-    log("=" * 70)
+    order = {t: i for i, t in enumerate(dc.TIERS)}
+    rows.sort(key=lambda r: (order[r["tier"]], r["group"], int(r["loser_id"])))
+    tiers = Counter(r["tier"] for r in rows)
+    stats.update({
+        "groups_merged": len({r["survivor_id"] for r in rows if r["tier"] != "name-only"}),
+        "excluded_groups_skipped": len(excluded_groups),
+        "protected_pairs_blocked": len(blocked),
+    })
+    return rows, {"stats": dict(stats), "category": category, "tiers": dict(tiers),
+                  "excluded_groups": excluded_groups, "blocked": blocked}
 
 
-CSV_HEADER = ["domain", "survivor_id", "survivor_name", "survivor_reason",
-              "loser_id", "loser_name", "loser_people"]
+def idx_groups(index):
+    return [sorted(s) for s in index.values() if len(s) > 1]
 
 
-def write_plan_csv(merges, path: Path) -> None:
-    """One row per planned merge (loser -> survivor). This is the artifact the user reviews AND
-    the exact file --execute consumes — what they approve is what runs."""
-    with path.open("w", newline="", encoding="utf-8") as fh:
-        w = csv.writer(fh)
-        w.writerow(CSV_HEADER)
-        for m in merges:
-            s = m["survivor"]
-            for loser in m["losers"]:
-                w.writerow([m["domain"], s["id"], s["name"], s["reason"],
-                            loser["id"], loser["name"], loser["people"]])
+def group_key(s, ctx):
+    return ctx.domain(s) or dc.linkedin_slug(s.get("linkedin"), "company") or clean_name(s.get("name") or "")
 
 
-def read_plan_csv(path: Path) -> list[dict]:
-    """Read approved loser->survivor pairs back from a reviewed dry-run CSV. --execute acts ONLY
-    on these rows; it never re-derives the plan."""
-    rows = []
-    with path.open(newline="", encoding="utf-8") as fh:
-        for r in csv.DictReader(fh):
-            try:
-                rows.append({"domain": r.get("domain", ""),
-                             "survivor": int(r["survivor_id"]), "loser": int(r["loser_id"]),
-                             "loser_name": r.get("loser_name", "")})
-            except (KeyError, ValueError):
-                continue  # skip malformed / commented rows
-    return rows
+def row(tier, sig, s, o, ctx, note, group):
+    return {"tier": tier, "match_on": "+".join(sig) or "-", "group": group,
+            "survivor_id": int(s["id"]), "survivor_name": s.get("name"),
+            "survivor_website": s.get("website") or "", "survivor_reason": survivor_reason(s, ctx),
+            "loser_id": int(o["id"]), "loser_name": o.get("name"), "loser_website": o.get("website") or "",
+            "loser_people": as_int(o.get("people_count")), "note": note}
 
 
-def execute_merges(pairs, merge_orgs, limit: "int | None"):
-    """Merge each approved loser->survivor pair via the Pipedrive MERGE endpoint (never delete).
-    Returns (merged, failed) lists."""
-    merged, failed = [], []
-    for i, p in enumerate(pairs):
-        if limit is not None and i >= limit:
-            break
-        loser_id, survivor_id, domain = p["loser"], p["survivor"], p["domain"]
-        try:
-            status, resp = merge_orgs(loser_id, survivor_id, dry_run=False)
-        except Exception as exc:  # noqa: BLE001 — keep the batch going, record the failure
-            status, resp = "error", {"exception": str(exc)}
-        if status == "merged":
-            log(f"[org-merge] {loser_id} -> {survivor_id} ({domain})")
-            merged.append({"loser": loser_id, "survivor": survivor_id, "domain": domain})
-        else:
-            log(f"[org-merge-FAILED] {loser_id} -> {survivor_id} ({domain}): {resp}")
-            failed.append({"loser": loser_id, "survivor": survivor_id,
-                           "domain": domain, "response": resp})
-    return merged, failed
+CSV_HEADER = ["tier", "match_on", "group", "survivor_id", "survivor_name", "survivor_website",
+              "survivor_reason", "loser_id", "loser_name", "loser_website", "loser_people", "note"]
+
+
+def summary_text(summary, rows, csv_name) -> str:
+    """Plain-English ClickUp note (Marcella is not a developer: outcome first, no jargon)."""
+    t, c, st = summary["tiers"], summary["category"], summary["stats"]
+    merge_rows = sum(v for k, v in t.items() if k != "name-only")
+    return (
+        f"Monthly company duplicate check is ready - nothing has been merged.\n\n"
+        f"I checked {st['orgs_scanned']:,} companies and found {merge_rows} that look like duplicates "
+        f"of another company record, plus {t.get('name-only', 0)} that only share a name.\n\n"
+        f"How they matched:\n"
+        f"- Same website: {c['domain']['groups']} sets ({c['domain']['extra_records']} extra records)\n"
+        f"- Same LinkedIn page: {c['linkedin']['groups']} sets ({c['linkedin']['extra_records']} extra records)\n"
+        f"- Same name: {c['name']['groups']} sets ({c['name']['extra_records']} extra records)\n\n"
+        f"How sure I am:\n"
+        f"- Safe to merge (same name, plus the same website or LinkedIn page): {t.get('high', 0)}\n"
+        f"- Likely (same website, one name has extra words - like Diebold vs Diebold Nixdorf): "
+        f"{t.get('medium', 0)}\n"
+        f"- Please look (names differ, possible parent and subsidiary or division, "
+        f"LinkedIn-only matches, or big groups): {t.get('review', 0)}\n"
+        f"- Same name only, kept separate unless you say so: {t.get('name-only', 0)}\n\n"
+        f"Protected companies (Lockheed, Northrop, Raytheon, Safran and any pairs you blocked) were left "
+        f"alone: {st.get('excluded_groups_skipped', 0)} groups.\n\n"
+        f"The full list is attached ({csv_name}). Reply \"merge the safe ones\" and I'll merge that batch. "
+        f"For the others, delete any rows you don't want from the sheet, attach it back here and tell me "
+        f"to merge it. Merging moves people, deals and notes onto the kept company - nothing is deleted."
+    )
 
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--execute", action="store_true",
-                    help="Run merges. REQUIRES --plan (a reviewed dry-run CSV). Default is dry-run.")
-    ap.add_argument("--plan", default=None,
-                    help="Path to the human-approved dry-run CSV. Required (and only used) with --execute.")
-    ap.add_argument("--limit", type=int, default=None,
-                    help="Cap the number of merges performed (cautious first batch).")
-    ap.add_argument("--out", default=None, help="Base path for the dry-run CSV/JSON or results JSON.")
-    ap.add_argument("--capy-root", default=None,
-                    help="Override autodetect of the marketplaces dir holding gocapy-claude-plugin.")
+    ap.add_argument("--execute", action="store_true", help="Merge rows from an approved --plan CSV.")
+    ap.add_argument("--plan", default=None, help="Human-approved CSV (required with --execute).")
+    ap.add_argument("--tiers", default=None,
+                    help="Comma list of approved tiers to execute: high,medium,review,name-only or all.")
+    ap.add_argument("--limit", type=int, default=None, help="Cap merges this run (pilot batch).")
+    ap.add_argument("--post-task", default=None, help="ClickUp task id: post the dry-run report there as Kodie.")
+    ap.add_argument("--capy-root", default=None, help="Override autodetect of the marketplaces dir.")
     args = ap.parse_args()
 
-    root = find_capy_root(args.capy_root)
+    root = dc.find_capy_root(args.capy_root, SKILL)
     if root is None:
         log("ERROR: could not locate gocapy-claude-plugin/.../pd_cache.py. Pass --capy-root.")
         return 2
-    sys.path.insert(0, str(root / _PD_CACHE_REL))
-    sys.path.insert(0, str(root / _FINDPEOPLE_REL))
-    log(f"[dedup] capy-root: {root}")
-    today = datetime.date.today().strftime("%Y%m%d")
+    dc.bootstrap(root)
+    base = root / dc.DEDUP_OUT_REL / "orgs"
 
-    # ── EXECUTE: merge ONLY the human-approved CSV. Re-derives nothing; never deletes. ──────────
     if args.execute:
-        if not args.plan:
-            log("ERROR: --execute requires --plan <reviewed dry-run CSV>. Refusing to merge "
-                "anything that wasn't reviewed. Run a dry run first, review the CSV, then pass it.")
+        tiers = dc.parse_tiers(args.tiers)
+        if not args.plan or not tiers:
+            log("ERROR: --execute needs --plan <approved csv> AND --tiers <approved tiers>. Refusing.")
             return 2
-        plan_path = Path(args.plan)
-        if not plan_path.exists():
-            log(f"ERROR: --plan file not found: {plan_path}")
+        plan = Path(args.plan)
+        if not plan.exists():
+            log(f"ERROR: plan not found: {plan}")
             return 2
-        try:
-            from pipedrive_create import merge_orgs
-        except ImportError as exc:
-            log(f"ERROR: failed to import merge primitive from {root}: {exc}")
+        from pipedrive_create import merge_orgs, pd_call
+        rows = dc.read_plan(plan, tiers)
+        if not rows:
+            log(f"ERROR: no rows in {plan.name} for tiers {sorted(tiers)}.")
             return 2
-        pairs = read_plan_csv(plan_path)
-        if not pairs:
-            log(f"ERROR: no valid merge rows in {plan_path}.")
-            return 2
-        n = min(args.limit, len(pairs)) if args.limit else len(pairs)
-        log(f"\n[dedup] EXECUTING {n} of {len(pairs)} approved merges from {plan_path.name} "
-            f"(Pipedrive MERGE — loser folds into survivor, no record is deleted)...")
-        merged, failed = execute_merges(pairs, merge_orgs, args.limit)
-        out_path = Path(args.out) if args.out else Path(f"dedup_orgs_results_{today}.json")
-        out_path.write_text(json.dumps(
-            {"date": today, "mode": "execute", "plan": str(plan_path),
-             "approved_pairs": len(pairs), "merged_count": len(merged), "failed_count": len(failed),
-             "merged": merged, "failed": failed}, indent=2, ensure_ascii=False), encoding="utf-8")
-        log(f"\n[dedup] DONE — merged {len(merged)}, failed {len(failed)}. Results -> {out_path}")
-        return 3 if failed else 0
+        out = dc.out_dir(root, "orgs")
+        log(f"[dedup] EXECUTING up to {args.limit or len(rows)} of {len(rows)} approved rows "
+            f"({sorted(tiers)}) from {plan.name} — MERGE only, nothing deleted.")
+        res = dc.execute_merges(rows, entity="organizations", merge_fn=merge_orgs, pd_call=pd_call,
+                                out=out, ledger=base / "merged_ledger.jsonl", limit=args.limit)
+        res.update({"plan": str(plan), "tiers": sorted(tiers)})
+        rp = out / f"results_{dc.today()}.json"
+        rp.write_text(json.dumps(res, indent=2, ensure_ascii=False, default=str), encoding="utf-8")
+        log(f"[dedup] DONE — merged {res['merged_count']}, failed {res['failed_count']}, "
+            f"skipped {res['skipped_count']}{' (stopped: ' + res['stopped'] + ')' if res['stopped'] else ''}. "
+            f"Results -> {rp}")
+        print(f"RESULT: merged={res['merged_count']} failed={res['failed_count']} skipped={res['skipped_count']}")
+        return 3 if res["failed"] else 0
 
-    # ── DRY RUN (default): build plan, print, write the reviewable CSV (+ JSON). ZERO writes. ───
-    try:
-        import pd_cache
-        from seed_resolver import normalize_domain
-    except ImportError as exc:
-        log(f"ERROR: failed to import reused primitives from {root}: {exc}")
-        return 2
+    import pd_cache
+    from seed_resolver import normalize_domain
     orgs = pd_cache.get_orgs()
-    (_, _), (_org_by_key, org_by_name) = pd_cache.get_field_maps()
-    research_key = (org_by_name.get("Company Research") or {}).get("key")
-    blocklist = load_blocklist()
-    exclusions = load_org_exclusions()
-    if exclusions:
-        log(f"[dedup] protected org names (never merged): {', '.join(exclusions)}")
-
-    merges, stats = build_plan(orgs, normalize_domain, research_key, blocklist, exclusions)
-    print_report(merges, stats)
-
-    base = Path(args.out) if args.out else Path(f"dedup_orgs_dryrun_{today}")
-    base = base.with_suffix("")  # we add our own extensions
-    csv_path, json_path = base.with_suffix(".csv"), base.with_suffix(".json")
-    write_plan_csv(merges, csv_path)
-    json_path.write_text(json.dumps({"date": today, "mode": "dry-run", "stats": stats,
-                                     "merges": merges}, indent=2, ensure_ascii=False),
-                         encoding="utf-8")
-    log(f"\n[dedup] DRY RUN — zero writes to Pipedrive.")
-    log(f"[dedup] Review CSV: {csv_path}")
-    log(f"[dedup] Then, after approval:  python dedup_orgs.py --execute --plan {csv_path.name} [--limit N]")
+    (_, _), (_, org_by_name) = pd_cache.get_field_maps()
+    ctx = Ctx(normalize_domain,
+              (org_by_name.get("Company Research") or {}).get("key"),
+              (org_by_name.get("Holding Co") or {}).get("key"),
+              {str(d).strip().lower() for d in load_json_list("dedup-domain-blocklist.json", "domains")},
+              [str(n) for n in load_json_list("dedup-org-exclusions.json", "names")],
+              [p for p in load_json_list("dedup-protected-pairs.json", "pairs") if isinstance(p, list)])
+    rows, summary = build_plan(orgs, ctx)
+    out = dc.out_dir(root, "orgs")
+    csv_path = out / f"org_dedup_review_{dc.today()}.csv"
+    dc.write_csv(csv_path, CSV_HEADER, rows)
+    (out / f"org_dedup_summary_{dc.today()}.json").write_text(
+        json.dumps({"date": dc.today(), "snapshot": pd_cache.snapshot_date("orgs"), **summary},
+                   indent=2, ensure_ascii=False), encoding="utf-8")
+    text = summary_text(summary, rows, csv_path.name)
+    (out / f"org_dedup_report_{dc.today()}.txt").write_text(text, encoding="utf-8")
+    log(json.dumps({k: summary[k] for k in ("stats", "category", "tiers")}, indent=2))
+    log(f"[dedup] DRY RUN — zero Pipedrive writes. Review CSV: {csv_path}")
+    if args.post_task:
+        ok = dc.post_to_clickup(root, args.post_task, text, [csv_path])
+        log(f"[dedup] ClickUp post {'ok' if ok else 'FAILED'} on task {args.post_task}")
+    t = summary["tiers"]
+    print(f"RESULT: orgs dry-run high={t.get('high', 0)} medium={t.get('medium', 0)} "
+          f"review={t.get('review', 0)} name-only={t.get('name-only', 0)} csv={csv_path}")
     return 0
-    return 3 if failed else 0
 
 
 if __name__ == "__main__":

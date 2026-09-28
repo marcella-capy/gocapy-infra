@@ -1,0 +1,26 @@
+﻿=== 2026-09-25T06:20:01.2861215-07:00 call-task-reconcile START ===
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\reconcile_done_calls.py --since 2026-09-22
+  to-subscribe: Chris Webb <chris.webb@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Girish Suppa <girish.suppa@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Ravi Kurse <ravi.kurse@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Lani Moreno <lani.moreno@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Jennifer Bernas <jennifer.bernas@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Rachel Teoh <rachel.teoh@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+RESULT: ok - 52 done calls on 2026-09-22..2026-09-25, 6 to-subscribe, 0 skipped -> _reconcile_20260922-20260925.json
+
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\hothawk_subscribe.py --artifact _reconcile_20260922-20260925.json --apply
+  found lead 667d7aac-4450-428f-b80c-dbddc780d20b: Chris Webb <chris.webb@intusurg.com> (Intuitive Surgical, Inc.)
+  found lead 6db3cc4a-fb0f-4782-8f1f-c88526a46a27: Girish Suppa <girish.suppa@intusurg.com> (Intuitive Surgical, Inc.)
+  found lead 8a6ab6bb-4015-4c13-b1f7-4061fb9f51ee: Ravi Kurse <ravi.kurse@intusurg.com> (Intuitive Surgical, Inc.)
+  created lead 31ca88d1-95f5-4a50-a4b5-17e28551ab1c: Lani Moreno <lani.moreno@intusurg.com> (Intuitive Surgical, Inc.)
+  created lead 193bff86-8466-487b-a391-7b6e78e3c4f2: Jennifer Bernas <jennifer.bernas@intusurg.com> (Intuitive Surgical, Inc.)
+  created lead 3fadf9b1-3ada-49ae-9058-4db7a0bbbc2c: Rachel Teoh <rachel.teoh@intusurg.com> (Intuitive Surgical, Inc.)
+  bulk-added 6 leads to list 'voicemail-called-general-foundry' (44b0b0e1-9990-447f-a19e-4d497e78f2f5)
+  appended list to campaign 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26
+  enrolled 6 leads into campaign 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26
+  tagged 6 leads 'voicemail'
+RESULT: ok - marked 6 subscribed, 0 sibling activities auto-closed
+RESULT: ok - 6 leads pushed to list/campaign/tag
+
+RESULT: ok - 6 people loaded into HotHawk since 2026-09-22 (_reconcile_20260922-20260925.json)
+=== 2026-09-25T06:20:20.2582679-07:00 call-task-reconcile END (exit 0) ===

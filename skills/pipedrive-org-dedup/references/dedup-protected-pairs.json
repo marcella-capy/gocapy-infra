@@ -1,0 +1,7 @@
+{
+  "_comment": "Org id pairs that must NEVER be merged into each other, even when a domain or LinkedIn page links them. Each entry is [id_a, id_b]; order does not matter. Add a pair whenever a review turns up two records that look alike but are different entities. History: 2026-09-28 Honeywell 4761 (the real Honeywell, renamed from 'Salisbury') vs 52944 (Honeywell Aerospace Technologies) - add-to-crm routes new Honeywell people to 4761, and 52944 is kept separate on purpose. 2026-06-22 Marcella struck Airbus 31226 <- Airbus Helicopter 33190 from the approved sheet; carried over here so it is not re-proposed.",
+  "pairs": [
+    [4761, 52944],
+    [31226, 33190]
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "date": "2026-09-22",
+  "date_end": "2026-09-25",
+  "done_calls": 52,
+  "to_subscribe": [
+    {
+      "person_id": 9769,
+      "principal": "general-foundry",
+      "first_name": "Chris",
+      "last_name": "Webb",
+      "email": "chris.webb@intusurg.com",
+      "company_name": "Intuitive Surgical, Inc.",
+      "phone": "5407505744",
+      "title": "Buyer",
+      "workspace_id": "9e14ce45-dca8-4c46-b30a-c17652222d2d",
+      "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+      "done_activity_id": 81041
+    },
+    {
+      "person_id": 13765,
+      "principal": "general-foundry",
+      "first_name": "Girish",
+      "last_name": "Suppa",
+      "email": "girish.suppa@intusurg.com",
+      "company_name": "Intuitive Surgical, Inc.",
+      "phone": "+14085238875",
+      "title": "NPI Supplier Managing Engineer",
+      "workspace_id": "9e14ce45-dca8-4c46-b30a-c17652222d2d",
+      "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+      "done_activity_id": 81044
+    },
+    {
+      "person_id": 13774,
+      "principal": "general-foundry",
+      "first_name": "Ravi",
+      "last_name": "Kurse",
+      "email": "ravi.kurse@intusurg.com",
+      "company_name": "Intuitive Surgical, Inc.",
+      "phone": "4085230690",
+      "title": "Senior NPI Supplier Engineer",
+      "workspace_id": "9e14ce45-dca8-4c46-b30a-c17652222d2d",
+      "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+      "done_activity_id": 81047
+    },
+    {
+      "person_id": 73175,
+      "principal": "general-foundry",
+      "first_name": "Lani",
+      "last_name": "Moreno",
+      "email": "lani.moreno@intusurg.com",
+      "company_name": "Intuitive Surgical, Inc.",
+      "phone": "4085237019",
+      "title": "NPI Buyer",
+      "workspace_id": "9e14ce45-dca8-4c46-b30a-c17652222d2d",
+      "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+      "done_activity_id": 81155
+    },
+    {
+      "person_id": 73176,
+      "principal": "general-foundry",
+      "first_name": "Jennifer",
+      "last_name": "Bernas",
+      "email": "jennifer.bernas@intusurg.com",
+      "company_name": "Intuitive Surgical, Inc.",
+      "phone": "4085232240",
+      "title": "Senior Manager, Supplier Engineering",
+      "workspace_id": "9e14ce45-dca8-4c46-b30a-c17652222d2d",
+      "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+      "done_activity_id": 81158
+    },
+    {
+      "person_id": 76379,
+      "principal": "general-foundry",
+      "first_name": "Rachel",
+      "last_name": "Teoh",
+      "email": "rachel.teoh@intusurg.com",
+      "company_name": "Intuitive Surgical, Inc.",
+      "phone": "(408) 523-0530",
+      "title": "Program Manager, NPI Sourcing",
+      "workspace_id": "9e14ce45-dca8-4c46-b30a-c17652222d2d",
+      "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+      "done_activity_id": 81161
+    }
+  ],
+  "skipped": []
+}

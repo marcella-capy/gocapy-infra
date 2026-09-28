@@ -2,98 +2,106 @@
 name: pipedrive-org-dedup
 description: >
   Find and merge duplicate ORGANIZATION records in Pipedrive across the whole
-  database, grouping by exact website domain and merging duplicates into one
-  survivor. Use this skill whenever the user wants to "dedup Pipedrive", "merge
-  duplicate organizations / companies", says there are "too many duplicate orgs",
-  wants to "clean up duplicate companies", or asks for the "monthly org dedup".
-  Meant as a MONTHLY maintenance run. It uses Pipedrive's MERGE function only — it
-  NEVER deletes organizations; the loser's people/deals/activities fold into the
-  survivor. It ALWAYS writes a reviewable CSV first and NEVER merges anything until
-  the user has reviewed and approved that CSV (--execute acts only on the approved
-  file). Exact-domain matches only (acquisitions sharing a domain DO merge); never
-  merges on name similarity or across different domains. For person/contact dedup or
-  per-filter research-time dedup (org-research-agent-v2 Step 1c) use those instead —
-  this is whole-database org dedup.
+  database. Matches on website domain, LinkedIn company page and cleaned company
+  name, sorts every proposed merge into a confidence tier (high / medium / review /
+  name-only) and merges only what a human approved. Use this skill whenever the
+  user wants to "dedup Pipedrive", "merge duplicate organizations / companies",
+  says there are "too many duplicate orgs", wants to "clean up duplicate companies",
+  asks for "duplicates by domain / LinkedIn / name", or asks for the "monthly org
+  dedup". It uses Pipedrive's MERGE only - never deletes. It ALWAYS writes a
+  reviewable CSV first and NEVER merges until the user approves (a ClickUp reply
+  for the whole high tier, or an edited sheet for the rest). Parent/subsidiary
+  pairs and division records are flagged, not merged. For PERSON duplicates use
+  pipedrive-person-dedup; for research-time dedup see org-research-agent-v2 Step 1c.
 ---
 
 # Pipedrive Org Dedup (monthly)
 
-Whole-database duplicate-organization cleanup. Two phases, **hard review gate:**
-**dry-run CSV → human review & approval → execute that CSV.** The skill never merges anything it
-derived on its own — `--execute` acts ONLY on the reviewed CSV you pass via `--plan`.
+Whole-database duplicate-organization cleanup. **Dry-run CSV -> human approval -> execute that
+CSV.** `--execute` acts ONLY on the reviewed CSV passed via `--plan`, and only on the tiers passed
+via `--tiers`. **It MERGES, it never DELETES** (`PUT /organizations/{loser}/merge`).
 
-**It MERGES, it never DELETES.** Every action is Pipedrive's merge endpoint
-(`PUT /organizations/{loser}/merge`), which moves the loser's people/deals/activities onto the
-survivor. There is no delete call anywhere in this skill.
+## What counts as a duplicate (match rules)
+Every CSV row names which rules matched (`match_on`):
+- **domain** - same normalized website (`seed_resolver.normalize_domain`; subdomains are distinct;
+  `references/dedup-domain-blocklist.json` hosts never group).
+- **linkedin** - same LinkedIn company page (built-in org field `linkedin`, `/company/<slug>`).
+- **name** - same cleaned name (accents off; Inc/LLC/Corp/Co/Ltd/Group/Holdings and "(OH)" tags
+  stripped).
 
-It reuses the merge primitive and detection rules that already exist in the
-`gocapy-claude-plugin` marketplace — no new Pipedrive API code lives in this skill:
-- `pd_cache.get_orgs()` — the single 429-safe daily snapshot of every org (read path).
-- `seed_resolver.normalize_domain()` — bare-domain normalization (strip scheme/www/path/port).
-- `pipedrive_create.merge_orgs()` — `PUT /organizations/{loser}/merge {"merge_with_id": survivor}`.
+Records linked by domain OR LinkedIn form one group. Each loser row gets a **tier**:
 
-## What counts as a duplicate
-Two orgs whose **website resolves to the exact same normalized domain** (e.g. both `ebad.com`).
-Survivor is picked deterministically: **non-empty `Company Research` → most linked people →
-lowest org id (oldest)**. All other orgs in the group merge into it.
+| Tier | Rule | Approval |
+|---|---|---|
+| high | the same name (suffix/punctuation/typo aside) AND domain or LinkedIn matches | one ClickUp reply approves the whole tier |
+| medium | one name is the other plus extra words ("Diebold" / "Diebold Nixdorf") AND same website | row by row in the sheet |
+| review | names differ (parent/subsidiary, acquired company, wrong LinkedIn), LinkedIn-only with slightly different names (divisions share the parent page), different Holding Co, group of 6+, or tied only through a third record | row by row |
+| name-only | same cleaned name, no shared website/LinkedIn | review list; merged only if explicitly approved |
 
-**Conservative by design:**
-- Exact-domain groups only. Never name-similarity, never across different domains.
-- Orgs with no/blank website are **skipped** (no exact-domain evidence) — reported, not merged.
-- Domains in `references/dedup-domain-blocklist.json` (gmail, parked pages, site builders, etc.)
-  are skipped so unrelated companies sharing a generic host don't get merged. Add to that file
-  whenever a dry run surfaces a bogus group.
-- **Protected org names** in `references/dedup-org-exclusions.json` are NEVER merged: any
-  duplicate-domain group containing one of these names is skipped entirely and left for a human
-  (logged `[dup-excluded]`, counted as `excluded_groups_skipped`). Currently protected (added
-  2026-06-22 at Marcella's request): **Lockheed Martin, Northrop Grumman, Raytheon, Safran.**
-  These large primes keep intentional division records / need manual handling.
+Sharing a brand word is never enough ("Teledyne Reynolds" vs "Teledyne Qioptiq" are sister
+divisions). Marcella decided 2026-09-28: **parent and subsidiary stay separate** - they are flagged
+for review, never in the high batch.
+
+**Survivor:** non-empty Company Research -> most people -> most activity/deals/emails/notes ->
+lowest id.
+
+**Guards (all in `references/`):**
+- `dedup-domain-blocklist.json` - generic hosts (gmail, wix, linkedin.com...) never group.
+- `dedup-org-exclusions.json` - protected names (Lockheed Martin, Northrop Grumman, Raytheon,
+  Safran): any group containing one is skipped entirely.
+- `dedup-protected-pairs.json` - id pairs never merged together (Honeywell 4761 / 52944; Airbus
+  31226 / Airbus Helicopter 33190, struck by Marcella 2026-06-22). Add a pair every time a reviewer
+  strikes a row so it is not proposed again.
 
 ## Files
-- `scripts/dedup_orgs.py` — the runner (dry-run by default; `--execute` to merge).
-- `references/dedup-domain-blocklist.json` — persistent: domains that must never group. Edit as needed.
+- `scripts/dedup_orgs.py` - the runner (dry run by default).
+- `scripts/dedup_common.py` - shared with pipedrive-person-dedup: output folder, LinkedIn/name
+  normalization, plan CSV contract, the merge executor (budget brake, audit, joined-field repair),
+  ClickUp posting.
+- `scripts/scheduled/` - monthly report job (`PipedriveDedup_Monthly`, registered DISABLED).
+- Outputs: `gocapy-claude-plugin/go-capy-outreach/shared-references/dedup/orgs/<YYYYMMDD>/`
+  (`org_dedup_review_*.csv`, `org_dedup_summary_*.json`, `org_dedup_report_*.txt`, `audit_*.jsonl`,
+  `results_*.json`) and `dedup/orgs/merged_ledger.jsonl`. Git-ignored.
 
 ## Prereqs
-- `PIPEDRIVE_API_TOKEN` / `PIPEDRIVE_DOMAIN` in `~/.claude/global.env` (already set; loaded by
-  `capy_env` via `pd_cache`).
-- A current Pipedrive snapshot. Refresh if stale:
-  `python <capy>/go-capy-outreach/scripts/pd_cache.py --status` (then `--refresh` if needed).
-- Python `python3.14` (Windows: `C:\Users\marce\AppData\Local\Python\bin\python.exe`).
-
-> The script auto-locates the `gocapy-claude-plugin` marketplace dir by walking up from this skill.
-> If that fails, pass `--capy-root <path to the marketplaces dir>`.
-
----
+- `PIPEDRIVE_API_TOKEN` / `PIPEDRIVE_DOMAIN` in `~/.claude/global.env` (loaded by `capy_env`).
+- A current snapshot (`python <capy>/go-capy-outreach/scripts/pd_cache.py --status`).
+- Windows Python: `C:\Users\marce\AppData\Local\Python\bin\python.exe`.
 
 ## Workflow
 
-### Step 1 — Dry run (always first)
+### 1. Dry run (always first; zero Pipedrive calls)
 ```
-python scripts/dedup_orgs.py
+python scripts/dedup_orgs.py                         # writes the review CSV + summary
+python scripts/dedup_orgs.py --post-task 86bc8kj30   # ...and posts it to ClickUp as Kodie
 ```
-Prints every duplicate-domain group (survivor + reason, and each loser it would merge) and totals,
-and writes a **reviewable CSV** `dedup_orgs_dryrun_YYYYMMDD.csv` (one row per planned merge:
-`domain, survivor_id, survivor_name, survivor_reason, loser_id, loser_name, loser_people`) plus a
-JSON copy. **No writes to Pipedrive.**
+The summary gives duplicates **per category** (domain / LinkedIn / name) and **per tier**.
 
-### Step 2 — Show the CSV to the user and get approval (REQUIRED)
-Always present the CSV for review — the skill must never merge without it. Walk it together;
-spot-check that survivors look right and that no group merges two genuinely different companies
-(those mean a generic shared host → add it to `references/dedup-domain-blocklist.json` and re-run
-Step 1). The user can also delete/edit rows in the CSV to drop merges they don't want — `--execute`
-runs exactly the rows that remain. Get explicit approval before merging.
+### 2. Approval (REQUIRED)
+Approval is a ClickUp reply or a returned sheet, never a reaction. Typical replies:
+- "merge the safe ones" -> run the `high` tier from the dry-run CSV.
+- An edited sheet (rows she doesn't want deleted) + "merge this" -> run the tiers in that file.
+When she strikes a row, add the pair to `dedup-protected-pairs.json`.
 
-### Step 3 — Execute the approved CSV (after approval)
-Pass the reviewed CSV via `--plan`. Cautious first batch, then the rest:
+### 3. Execute
 ```
-python scripts/dedup_orgs.py --execute --plan dedup_orgs_dryrun_YYYYMMDD.csv --limit 10  # verify these 10 in the UI
-python scripts/dedup_orgs.py --execute --plan dedup_orgs_dryrun_YYYYMMDD.csv             # then the full run
+python scripts/dedup_orgs.py --execute --plan <csv> --tiers high --limit 5     # pilot, check in the UI
+python scripts/dedup_orgs.py --execute --plan <csv> --tiers high
+python scripts/dedup_orgs.py --execute --plan <edited csv> --tiers medium,review
 ```
-`--execute` re-derives nothing — it merges exactly the loser→survivor rows in the CSV (Pipedrive
-MERGE, no deletes). Without `--plan` it refuses to run. Each merge logs
-`[org-merge] {loser} -> {survivor} ({domain})`; results are written to
-`dedup_orgs_results_YYYYMMDD.json`. Exit code 3 if any merge failed.
+Per merge: budget brake (keeps Pipedrive's last 15%) -> survivor + loser snapshot to
+`audit_<date>.jsonl` -> MERGE -> re-read survivor -> any text field that came back comma-joined
+(website, LinkedIn, industry, custom text fields such as ICP) is restored to the survivor's
+pre-merge value. **Name and phone are never written** (golden rule 10). Merged losers go to
+`merged_ledger.jsonl` and are skipped on re-runs. Ends with a `RESULT:` line; exit 3 if any merge
+failed. Cost is roughly 15-25 Pipedrive tokens per merge.
 
 ## Cadence
-Run monthly. Can be scheduled (a `/schedule` cloud agent or an AISDR scheduled task) to produce
-the dry-run report monthly and ping for review — but **merging stays human-approved**.
+`scripts/scheduled/register_scheduler.ps1` registers `PipedriveDedup_Monthly` (1st, 06:10):
+org + person dry runs, reports posted to the dedup task (86bc8kj30). Registered **DISABLED** until Marcella
+turns it on (`register_scheduler.ps1 -Enable`). Merging always waits for approval.
+
+## History
+- 2026-06-22: first run, domain-only. 1,424 merges, 0 failures.
+- 2026-09-28: added LinkedIn + name matching, tiers, parent/subsidiary flagging, protected pairs,
+  budget brake, audit log, joined-field repair, fixed output folder, monthly report job.

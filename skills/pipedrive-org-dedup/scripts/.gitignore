@@ -2,3 +2,7 @@
 dedup_orgs_dryrun_*.csv
 dedup_orgs_dryrun_*.json
 dedup_orgs_results_*.json
+
+# Scheduled run logs
+scheduled/logs/
+__pycache__/

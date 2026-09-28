@@ -1,0 +1,24 @@
+﻿=== 2026-09-24T06:20:01.2395104-07:00 call-task-reconcile START ===
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\reconcile_done_calls.py --since 2026-09-21
+  to-subscribe: Tiffany Ho <tiffany.ho@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Ryan Bertsch <ryan.bertsch@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Rebecca Johnson <rebecca.johnson@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Patrick Bryant <patrick.bryant@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Gabriela Meza <gabriela.meza@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+RESULT: ok - 43 done calls on 2026-09-21..2026-09-24, 5 to-subscribe, 0 skipped -> _reconcile_20260921-20260924.json
+
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\hothawk_subscribe.py --artifact _reconcile_20260921-20260924.json --apply
+  found lead ecf04c3a-02b0-4524-b58a-b373076991c6: Tiffany Ho <tiffany.ho@intusurg.com> (Intuitive Surgical, Inc.)
+  found lead 79717320-d2d0-460c-ab9b-94cf30cb4064: Ryan Bertsch <ryan.bertsch@intusurg.com> (Intuitive Surgical, Inc.)
+  found lead a945abca-46e5-4cca-9248-4fc5aa0882ad: Rebecca Johnson <rebecca.johnson@intusurg.com> (Intuitive Surgical, Inc.)
+  found lead f9bb7bf2-6fc2-4a69-b6b6-a363ce502d2f: Patrick Bryant <patrick.bryant@intusurg.com> (Intuitive Surgical, Inc.)
+  created lead 18beadd2-4b48-4953-9d12-9c3cb12fbe42: Gabriela Meza <gabriela.meza@intusurg.com> (Intuitive Surgical, Inc.)
+  bulk-added 5 leads to list 'voicemail-called-general-foundry' (44b0b0e1-9990-447f-a19e-4d497e78f2f5)
+  appended list to campaign 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26
+  enrolled 5 leads into campaign 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26
+  tagged 5 leads 'voicemail'
+RESULT: ok - marked 5 subscribed, 0 sibling activities auto-closed
+RESULT: ok - 5 leads pushed to list/campaign/tag
+
+RESULT: ok - 5 people loaded into HotHawk since 2026-09-21 (_reconcile_20260921-20260924.json)
+=== 2026-09-24T06:20:14.9665878-07:00 call-task-reconcile END (exit 0) ===

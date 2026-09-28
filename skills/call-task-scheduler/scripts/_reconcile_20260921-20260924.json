@@ -1,0 +1,73 @@
+{
+  "date": "2026-09-21",
+  "date_end": "2026-09-24",
+  "done_calls": 43,
+  "to_subscribe": [
+    {
+      "person_id": 73171,
+      "principal": "general-foundry",
+      "first_name": "Tiffany",
+      "last_name": "Ho",
+      "email": "tiffany.ho@intusurg.com",
+      "company_name": "Intuitive Surgical, Inc.",
+      "phone": "4085239628",
+      "title": "Manager, NPI Sourcing (Endoscope Team)",
+      "workspace_id": "9e14ce45-dca8-4c46-b30a-c17652222d2d",
+      "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+      "done_activity_id": 81032
+    },
+    {
+      "person_id": 76444,
+      "principal": "general-foundry",
+      "first_name": "Ryan",
+      "last_name": "Bertsch",
+      "email": "ryan.bertsch@intusurg.com",
+      "company_name": "Intuitive Surgical, Inc.",
+      "phone": "(408) 523-7593",
+      "title": "Senior Director, Global Supply Chain",
+      "workspace_id": "9e14ce45-dca8-4c46-b30a-c17652222d2d",
+      "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+      "done_activity_id": 81035
+    },
+    {
+      "person_id": 76566,
+      "principal": "general-foundry",
+      "first_name": "Rebecca",
+      "last_name": "Johnson",
+      "email": "rebecca.johnson@intusurg.com",
+      "company_name": "Intuitive Surgical, Inc.",
+      "phone": "(475) 209-8210",
+      "title": "Senior Director, Strategic Sourcing",
+      "workspace_id": "9e14ce45-dca8-4c46-b30a-c17652222d2d",
+      "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+      "done_activity_id": 81038
+    },
+    {
+      "person_id": 73172,
+      "principal": "general-foundry",
+      "first_name": "Patrick",
+      "last_name": "Bryant",
+      "email": "patrick.bryant@intusurg.com",
+      "company_name": "Intuitive Surgical, Inc.",
+      "phone": "8657890226",
+      "title": "Strategic Sourcing Analyst",
+      "workspace_id": "9e14ce45-dca8-4c46-b30a-c17652222d2d",
+      "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+      "done_activity_id": 81149
+    },
+    {
+      "person_id": 73174,
+      "principal": "general-foundry",
+      "first_name": "Gabriela",
+      "last_name": "Meza",
+      "email": "gabriela.meza@intusurg.com",
+      "company_name": "Intuitive Surgical, Inc.",
+      "phone": "3108803810",
+      "title": "Senior Supplier Engineer",
+      "workspace_id": "9e14ce45-dca8-4c46-b30a-c17652222d2d",
+      "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+      "done_activity_id": 81152
+    }
+  ],
+  "skipped": []
+}
