@@ -61,6 +61,7 @@ email prefixes (see below).
 | L&P Machining     | Sofia Alvarez      |
 | Alpha Grainger    | Diana Brunel       |
 | Capy Capital      | Marcella Lobo      |
+| Mara GTM Engineering | Marcella Ericson |
 
 If the client isn't in the table, ask the user for the BDR's full name before
 proceeding, then add the new client + BDR to this table.

@@ -1,0 +1,36 @@
+﻿=== 2026-09-29T08:20:00.5566284-05:00 call-task-reconcile START ===
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\reconcile_done_calls.py --since 2026-09-24
+  to-subscribe: Akbar Ahmad <akbar.ahmad@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Charles Brunner <charles.brunner@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: David Bailey <david.bailey@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Francis Alvano <francis.alvano@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Fred Parsa <fred.parsa@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Heather Fleming <heather.fleming@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Narayan Iyer <narayan.iyer@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Jennifer Belardes <jennifer.belardes@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: John Firtz <john.firtz@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Cynthia Le <cynthia.le@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Nhut Diep <nhut.diep@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+RESULT: ok - 71 done calls on 2026-09-24..2026-09-29, 11 to-subscribe, 0 skipped -> _reconcile_20260924-20260929.json
+
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\hothawk_subscribe.py --artifact _reconcile_20260924-20260929.json --apply
+  created lead cb22d0d7-b31f-4f60-9106-473923679392: Akbar Ahmad <akbar.ahmad@intusurg.com> (Intuitive Surgical, Inc.)
+  found lead 56e7e388-bd37-4b08-8e8e-af8758fe4967: Charles Brunner <charles.brunner@intusurg.com> (Intuitive Surgical, Inc.)
+  created lead 42a67ae4-c2f4-46d5-a622-873042db93b8: David Bailey <david.bailey@intusurg.com> (Intuitive Surgical, Inc.)
+  created lead 5c046f9f-3bdb-43f1-9ab7-5491e070b92b: Francis Alvano <francis.alvano@intusurg.com> (Intuitive Surgical, Inc.)
+  found lead 57f6f396-9b7c-40e6-b6d8-5394a961b033: Fred Parsa <fred.parsa@intusurg.com> (Intuitive Surgical, Inc.)
+  found lead a148ffc0-b69a-4026-b79b-4b7aeabf4d76: Heather Fleming <heather.fleming@intusurg.com> (Intuitive Surgical, Inc.)
+  created lead e8af83a6-8798-417b-8896-abcdb2365e09: Narayan Iyer <narayan.iyer@intusurg.com> (Intuitive Surgical, Inc.)
+  found lead 9d646067-eaef-4e8f-b2e5-cbdf2b050cfb: Jennifer Belardes <jennifer.belardes@intusurg.com> (Intuitive Surgical, Inc.)
+  found lead 5ac77841-b515-4970-97a2-1b80670dac0a: John Firtz <john.firtz@intusurg.com> (Intuitive Surgical, Inc.)
+  created lead 3e759089-6ef5-4559-9114-73da5a2c1ab9: Cynthia Le <cynthia.le@intusurg.com> (Intuitive Surgical, Inc.)
+  created lead 57c19178-b09d-4e25-9c3b-2569406bf186: Nhut Diep <nhut.diep@intusurg.com> (Intuitive Surgical, Inc.)
+  bulk-added 11 leads to list 'voicemail-called-general-foundry' (44b0b0e1-9990-447f-a19e-4d497e78f2f5)
+  appended list to campaign 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26
+  enrolled 11 leads into campaign 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26
+  tagged 11 leads 'voicemail'
+RESULT: ok - marked 11 subscribed, 0 sibling activities auto-closed
+RESULT: ok - 11 leads pushed to list/campaign/tag
+
+RESULT: ok - 11 people loaded into HotHawk since 2026-09-24 (_reconcile_20260924-20260929.json)
+=== 2026-09-29T08:20:25.5675424-05:00 call-task-reconcile END (exit 0) ===

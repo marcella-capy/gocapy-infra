@@ -83,3 +83,15 @@ DISABLED until Marcella turns it on.
 ## History
 - 2026-09-28: built. First dry run: 96,207 people, ~6,700 high / ~120 medium / ~960 review,
   1,334 bad-data pairs.
+
+## Clay-copies plan (2026-09-28)
+
+`scripts/clay_copy_plan.py` builds a separate `--plan` CSV for the ~3,500 copies the Clay
+"Find People -> Update Pipedrive" table created 09-22..09-27 (see memory
+clay-table1-create-person-duplicate-source-2026-09-28). Marcella's rule: survivor = the OLDEST
+record with an email (else the oldest), one survivor per LinkedIn slug, same-company copies ->
+tier high, multi-org / name-mismatch -> review, never chained. The general monthly plan would
+keep a NEW empty copy in ~460 cases, so run this one FIRST, then rebuild the monthly plan.
+    python clay_copy_plan.py [--rows dump.json] [--post-task 86bc8kj30]      # dry run
+    python dedup_persons.py --execute --plan clay_copies_plan_<date>.csv --tiers high --limit 10
+2026-09-28 dry run: 3,493 merges / 43 review. Approvals only on task 86bc8kj30.

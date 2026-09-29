@@ -17,7 +17,8 @@ names to agree AND at least one second signal:
                              small typo (Jaro-Winkler >= 0.92)
 
 Tiers (one per loser row):
-  high     names agree (exact or fuzzy) AND same email or same LinkedIn profile
+  high     names agree (exact or fuzzy) AND same email or same LinkedIn profile - except same
+           LinkedIn at a DIFFERENT org with no shared email (a job change) -> review
   medium   exact names AND same org, no conflicting LinkedIn
   review   fuzzy names AND (same org or phone); exact names + same direct phone at a different org;
            exact names + same email domain only; a loser tied
@@ -263,7 +264,10 @@ def build_plan(persons, li_key, research_key, free_domains, is_role_email):
                         "id_a": a, "name_a": pa.get("name"), "org_a": pa.get("org_name") or "",
                         "id_b": b, "name_b": pb.get("name"), "org_b": pb.get("org_name") or ""})
                 continue
-            tier = "review" if li_conflict else "high"
+            # Same LinkedIn but a different org and no shared email is usually a job change: the old
+            # record documents the old employer, so a human decides (Clay job-changer lane owns these).
+            job_move = shared_li and not shared_email and not same_org and org_of(pa) and org_of(pb)
+            tier = "review" if (li_conflict or job_move) else "high"
         elif li_conflict:
             continue
         elif same_org and agree == 2:
@@ -311,14 +315,18 @@ def build_plan(persons, li_key, research_key, free_domains, is_role_email):
                 notes.append("some names in this group disagree")
             if agree == 1:
                 notes.append("names match loosely (nickname/initial/typo)")
+            if e and "linkedin" in sig and "email" not in sig and "org" not in sig:
+                notes.append("same LinkedIn at a different company - may be a job change")
             rows.append({
                 "tier": tier, "match_on": "+".join(sig) or "-",
                 "name_match": {2: "exact", 1: "fuzzy"}.get(agree, "no"),
                 "survivor_id": sid, "survivor_name": s.get("name"),
                 "survivor_org": s.get("org_name") or "", "survivor_email": (emails_of(s) or [""])[0],
                 "survivor_reason": reason(s, names[sid], research_key),
+                "survivor_added": (s.get("add_time") or "")[:10],
                 "loser_id": lid, "loser_name": p.get("name"), "loser_org": p.get("org_name") or "",
-                "loser_email": (emails_of(p) or [""])[0], "note": "; ".join(notes),
+                "loser_email": (emails_of(p) or [""])[0],
+                "loser_added": (p.get("add_time") or "")[:10], "note": "; ".join(notes),
                 "_rank": rank[tier]})
     rows.sort(key=lambda r: (r["_rank"], r["survivor_id"], r["loser_id"]))
     tiers = Counter(r["tier"] for r in rows)
@@ -340,8 +348,8 @@ def reason(p, n, research_key) -> str:
 
 
 CSV_HEADER = ["tier", "match_on", "name_match", "survivor_id", "survivor_name", "survivor_org",
-              "survivor_email", "survivor_reason", "loser_id", "loser_name", "loser_org",
-              "loser_email", "note"]
+              "survivor_email", "survivor_reason", "survivor_added", "loser_id", "loser_name",
+              "loser_org", "loser_email", "loser_added", "note"]
 CONFLICT_HEADER = ["shared", "value", "id_a", "name_a", "org_a", "id_b", "name_b", "org_b"]
 
 

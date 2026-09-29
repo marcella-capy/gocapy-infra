@@ -1,0 +1,18 @@
+﻿=== 2026-09-29T08:50:00.5364670-05:00 call-load-audit DAY START ===
+≡ƒô₧ Call ΓåÆ HotHawk Load Audit ΓÇö Daily ΓÇö 2026-09-28
+Γ£à all loaded  ┬╖  48 calls / 48 people  ┬╖  48 loaded, 0 missing
+```
+principal        User          Company Name              # of Calls
+---------------  ------------  ------------------------  ----------
+franklin         Ericka        Terex                     11
+general-foundry  Ericka        Intuitive Surgical, Inc.  34
+lnp              Ericka        Applied Composites        2
+vrc              Ericka        Revision Military         1
+-                -             -                         -
+                 TOTAL Ericka                            48
+```
+
+discord: posted
+
+RESULT: ok - {"mode": "day", "window": ["2026-09-28", "2026-09-28"], "total_calls": 48, "people": 48, "loaded": 48, "missing": 0, "systemic": false}
+=== 2026-09-29T08:50:18.4574288-05:00 call-load-audit DAY END (exit 0) ===
