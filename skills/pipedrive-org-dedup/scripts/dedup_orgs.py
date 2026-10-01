@@ -301,30 +301,21 @@ CSV_HEADER = ["tier", "match_on", "group", "survivor_id", "survivor_name", "surv
               "survivor_reason", "loser_id", "loser_name", "loser_website", "loser_people", "note"]
 
 
-def summary_text(summary, rows, csv_name) -> str:
+def summary_text(summary, rows, csv_name, label_text) -> str:
     """Plain-English ClickUp note (Marcella is not a developer: outcome first, no jargon)."""
-    t, c, st = summary["tiers"], summary["category"], summary["stats"]
-    merge_rows = sum(v for k, v in t.items() if k != "name-only")
+    t, st = summary["tiers"], summary["stats"]
     return (
-        f"Monthly company duplicate check is ready - nothing has been merged.\n\n"
-        f"I checked {st['orgs_scanned']:,} companies and found {merge_rows} that look like duplicates "
-        f"of another company record, plus {t.get('name-only', 0)} that only share a name.\n\n"
-        f"How they matched:\n"
-        f"- Same website: {c['domain']['groups']} sets ({c['domain']['extra_records']} extra records)\n"
-        f"- Same LinkedIn page: {c['linkedin']['groups']} sets ({c['linkedin']['extra_records']} extra records)\n"
-        f"- Same name: {c['name']['groups']} sets ({c['name']['extra_records']} extra records)\n\n"
-        f"How sure I am:\n"
-        f"- Safe to merge (same name, plus the same website or LinkedIn page): {t.get('high', 0)}\n"
-        f"- Likely (same website, one name has extra words - like Diebold vs Diebold Nixdorf): "
-        f"{t.get('medium', 0)}\n"
-        f"- Please look (names differ, possible parent and subsidiary or division, "
-        f"LinkedIn-only matches, or big groups): {t.get('review', 0)}\n"
-        f"- Same name only, kept separate unless you say so: {t.get('name-only', 0)}\n\n"
-        f"Protected companies (Lockheed, Northrop, Raytheon, Safran and any pairs you blocked) were left "
-        f"alone: {st.get('excluded_groups_skipped', 0)} groups.\n\n"
-        f"The full list is attached ({csv_name}). Reply \"merge the safe ones\" and I'll merge that batch. "
-        f"For the others, delete any rows you don't want from the sheet, attach it back here and tell me "
-        f"to merge it. Merging moves people, deals and notes onto the kept company - nothing is deleted."
+        f"Weekly company duplicate check - nothing has been merged yet.\n\n"
+        f"I checked {st['orgs_scanned']:,} companies. {t.get('high', 0)} records are copies I'm sure "
+        f"about: same name, plus the same website or LinkedIn page.\n\n"
+        f"{label_text}\n\n"
+        f"When you're done deleting, reply \"merge them\" here and I'll merge the rest of that sure list "
+        f"into the company we keep - people, deals and notes move over. Copies you already deleted are "
+        f"skipped.\n\n"
+        f"Left alone, not labelled: {t.get('medium', 0)} likely, {t.get('review', 0)} that need a human "
+        f"look (possible parent/division pairs) and {t.get('name-only', 0)} that only share a name (full "
+        f"list: {csv_name}). Protected companies (Lockheed, Northrop, Raytheon, Safran and pairs you "
+        f"blocked) were skipped."
     )
 
 
@@ -377,7 +368,7 @@ def main() -> int:
     import pd_cache
     from seed_resolver import normalize_domain
     orgs = pd_cache.get_orgs()
-    (_, _), (_, org_by_name) = pd_cache.get_field_maps()
+    (_, _), (org_by_key, org_by_name) = pd_cache.get_field_maps()
     ctx = Ctx(normalize_domain,
               (org_by_name.get("Company Research") or {}).get("key"),
               (org_by_name.get("Holding Co") or {}).get("key"),
@@ -387,17 +378,26 @@ def main() -> int:
     rows, summary = build_plan(orgs, ctx)
     out = dc.out_dir(root, "orgs")
     csv_path = out / f"org_dedup_review_{dc.today()}.csv"
+    label_path = out / f"org_dedup_label_import_{dc.today()}.csv"
     dc.write_csv(csv_path, CSV_HEADER, rows)
+    recs = orgs.values() if isinstance(orgs, dict) else orgs
+    by_id = {int(o["id"]): o for o in recs if isinstance(o, dict) and o.get("id") is not None}
+    label_info = dc.write_label_csv(label_path, rows, by_id, org_by_key, "Organization")
+    summary["label_file"] = label_info
     (out / f"org_dedup_summary_{dc.today()}.json").write_text(
         json.dumps({"date": dc.today(), "snapshot": pd_cache.snapshot_date("orgs"), **summary},
                    indent=2, ensure_ascii=False), encoding="utf-8")
-    text = summary_text(summary, rows, csv_path.name)
+    text = summary_text(summary, rows, csv_path.name,
+                        dc.label_note("company", label_info, label_path.name))
     (out / f"org_dedup_report_{dc.today()}.txt").write_text(text, encoding="utf-8")
-    log(json.dumps({k: summary[k] for k in ("stats", "category", "tiers")}, indent=2))
+    log(json.dumps({k: summary[k] for k in ("stats", "category", "tiers", "label_file")}, indent=2))
     log(f"[dedup] DRY RUN — zero Pipedrive writes. Review CSV: {csv_path}")
     if args.post_task:
-        ok = dc.post_to_clickup(root, args.post_task, text, [csv_path])
+        files = ([label_path] if label_info["rows"] else []) + [csv_path]
+        ok = dc.post_to_clickup(root, args.post_task, text, files)
         log(f"[dedup] ClickUp post {'ok' if ok else 'FAILED'} on task {args.post_task}")
+        if ok and label_info["rows"]:
+            dc.record_report(base, "orgs", csv_path, label_info["rows"])
     t = summary["tiers"]
     print(f"RESULT: orgs dry-run high={t.get('high', 0)} medium={t.get('medium', 0)} "
           f"review={t.get('review', 0)} name-only={t.get('name-only', 0)} csv={csv_path}")

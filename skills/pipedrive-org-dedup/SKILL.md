@@ -58,7 +58,8 @@ lowest id.
 - `scripts/dedup_common.py` - shared with pipedrive-person-dedup: output folder, LinkedIn/name
   normalization, plan CSV contract, the merge executor (budget brake, audit, joined-field repair),
   ClickUp posting.
-- `scripts/scheduled/` - monthly report job (`PipedriveDedup_Monthly`, registered DISABLED).
+- `scripts/dedup_approval.py` - reads Marcella's "merge them" reply, merges the approved sure list.
+- `scripts/scheduled/` - `PipedriveDedup_Weekly` (daily run, Monday reports); see Cadence.
 - Outputs: `gocapy-claude-plugin/go-capy-outreach/shared-references/dedup/orgs/<YYYYMMDD>/`
   (`org_dedup_review_*.csv`, `org_dedup_summary_*.json`, `org_dedup_report_*.txt`, `audit_*.jsonl`,
   `results_*.json`) and `dedup/orgs/merged_ledger.jsonl`. Git-ignored.
@@ -97,9 +98,18 @@ pre-merge value. **Name and phone are never written** (golden rule 10). Merged l
 failed. Cost is roughly 15-25 Pipedrive tokens per merge.
 
 ## Cadence
-`scripts/scheduled/register_scheduler.ps1` registers `PipedriveDedup_Monthly` (1st, 06:10):
-org + person dry runs, reports posted to the dedup task (86bc8kj30). Registered **DISABLED** until Marcella
-turns it on (`register_scheduler.ps1 -Enable`). Merging always waits for approval.
+Weekly flow (Marcella 2026-09-30). `scripts/scheduled/register_scheduler.ps1 [-Enable]` registers
+`PipedriveDedup_Weekly` (DAILY 06:10, `run_weekly.ps1`) and removes the retired `PipedriveDedup_Monthly`:
+- **Mondays:** org + person reports posted to the dedup task (86bc8kj30). Each carries a Pipedrive
+  import file (`*_label_import_<date>.csv`: `<Entity> - ID`, `<Entity> - Labels`) that labels every
+  **high-tier copy** (never the survivor) `Duplicate – delete`, keeping the record's current labels.
+  Posting records the report in `dedup/<orgs|persons>/reports.jsonl`.
+- **Marcella** imports the file, deletes copies by hand, then replies "merge them" on the task.
+- **Daily:** `dedup_approval.py` finds her reply (after the newest report, merge/go ahead/yes and no
+  wait/hold/no), stores it in `dedup/approvals.json`, and runs `--execute --tiers high` on that
+  report's plan every night until done (budget brake + ledger; deleted copies skip as inactive).
+  One note on start, one on finish. Medium/review tiers are never merged by this path.
+- Say "merge them", never "reply to approve": clickup_call.py rejects reply+approve wording.
 
 ## History
 - 2026-06-22: first run, domain-only. 1,424 merges, 0 failures.

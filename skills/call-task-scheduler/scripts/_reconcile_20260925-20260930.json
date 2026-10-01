@@ -1,0 +1,21 @@
+{
+  "date": "2026-09-25",
+  "date_end": "2026-09-30",
+  "done_calls": 66,
+  "to_subscribe": [
+    {
+      "person_id": 22771,
+      "principal": "general-foundry",
+      "first_name": "Jason",
+      "last_name": "Glasser",
+      "email": "jason.glasser@intusurg.com",
+      "company_name": "Intuitive Surgical, Inc.",
+      "phone": "(408) 523-2100 x6806",
+      "title": "Mechanical Design Engineer",
+      "workspace_id": "9e14ce45-dca8-4c46-b30a-c17652222d2d",
+      "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+      "done_activity_id": 81068
+    }
+  ],
+  "skipped": []
+}

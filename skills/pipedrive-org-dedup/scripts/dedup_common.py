@@ -202,6 +202,72 @@ def parse_tiers(raw: "str | None") -> "set | None":
     return ts
 
 
+# -- weekly label file + report registry (Marcella 2026-09-30) -------------------------------
+# Weekly flow: the report posts a Pipedrive IMPORT file that labels each duplicate COPY (never the
+# record we keep) in the sure tier only. Marcella imports it, deletes copies by hand, then replies
+# on the dedup task; dedup_approval.py merges whatever is left of that week's sure list.
+
+DUP_LABEL = "Duplicate – delete"
+LABEL_TIERS = {"high"}
+REPORTS_FILE = "reports.jsonl"
+
+
+def _label_ids(rec: dict) -> list:
+    ids = rec.get("label_ids")
+    if ids is None:
+        ids = rec.get("label")
+    if ids in (None, "", []):
+        return []
+    return ids if isinstance(ids, list) else [ids]
+
+
+def write_label_csv(path: Path, rows: list, records: dict, fields_by_key: dict, prefix: str) -> dict:
+    """Import file: '<prefix> - ID' + '<prefix> - Labels'. The Labels cell carries the record's
+    CURRENT labels plus DUP_LABEL, so an import that replaces labels loses nothing. No name, phone
+    or email column (golden rule 10). `records` = {id: snapshot record}."""
+    field = fields_by_key.get("label_ids") or fields_by_key.get("label") or {}
+    opts = field.get("options") or {}
+    out, seen, unknown = [], set(), 0
+    for r in rows:
+        if r.get("tier") not in LABEL_TIERS:
+            continue
+        lid = int(r["loser_id"])
+        if lid in seen:
+            continue
+        seen.add(lid)
+        names = []
+        for i in _label_ids(records.get(lid) or {}):
+            n = opts.get(str(i))
+            if n is None:
+                unknown += 1
+            elif n != DUP_LABEL:
+                names.append(n)
+        out.append({f"{prefix} - ID": lid, f"{prefix} - Labels": ", ".join(names + [DUP_LABEL])})
+    write_csv(path, [f"{prefix} - ID", f"{prefix} - Labels"], out)
+    return {"rows": len(out), "label_exists": DUP_LABEL in set(opts.values()),
+            "unknown_label_ids": unknown}
+
+
+def record_report(base: Path, entity: str, plan: Path, sure_rows: int) -> None:
+    """Remember a POSTED weekly report so dedup_approval.py can match Marcella's reply to it."""
+    with (base / REPORTS_FILE).open("a", encoding="utf-8") as fh:
+        fh.write(json.dumps({"ts": datetime.datetime.now().astimezone().isoformat(timespec="seconds"),
+                             "entity": entity, "day": today(), "plan": str(plan),
+                             "sure_rows": sure_rows}) + "\n")
+
+
+def label_note(entity_word: str, info: dict, label_name: str) -> str:
+    if not info["rows"]:
+        return f"No {entity_word} duplicates I'm sure about this week, so there is no label file."
+    extra = "" if info["label_exists"] else (
+        f" The label \"{DUP_LABEL}\" isn't in Pipedrive yet - add it once under {entity_word} labels "
+        f"before importing.")
+    return (f"Label file attached ({label_name}): {info['rows']:,} {entity_word} copies I'm sure are "
+            f"duplicates get the label \"{DUP_LABEL}\". Import it in Pipedrive (it updates by ID and "
+            f"keeps each record's current labels), then filter on that label and delete what you "
+            f"want gone. The record we keep is never labelled.{extra}")
+
+
 # -- merge executor -------------------------------------------------------------------------
 
 def _repairable(key: str) -> bool:

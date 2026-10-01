@@ -77,8 +77,8 @@ Outputs: `gocapy-claude-plugin/go-capy-outreach/shared-references/dedup/persons/
 LinkedIn slugs and the joined-field repair (no Pipedrive calls).
 
 ## Cadence
-Runs inside `PipedriveDedup_Monthly` (see pipedrive-org-dedup `scripts/scheduled/`), registered
-DISABLED until Marcella turns it on.
+Runs inside `PipedriveDedup_Weekly` (Monday report + label import file, daily merge after her
+"merge them" reply); see pipedrive-org-dedup SKILL.md, Cadence.
 
 ## History
 - 2026-09-28: built. First dry run: 96,207 people, ~6,700 high / ~120 medium / ~960 review,

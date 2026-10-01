@@ -32,6 +32,7 @@ Research -> lowest id. Reads the daily snapshot (pd_cache) — zero Pipedrive ca
 
   python dedup_persons.py                                  # dry run -> shared-references/dedup/persons/<today>/
   python dedup_persons.py --post-task 86bc8kj30            # ...and post the report + CSVs to ClickUp as Kodie
+                                                           # (incl. the sure-tier label import file)
   python dedup_persons.py --execute --plan <csv> --tiers high --limit 2500
 
 --execute REQUIRES --plan and --tiers. Budget brake keeps Pipedrive's last 15%; a full backlog
@@ -353,28 +354,19 @@ CSV_HEADER = ["tier", "match_on", "name_match", "survivor_id", "survivor_name", 
 CONFLICT_HEADER = ["shared", "value", "id_a", "name_a", "org_a", "id_b", "name_b", "org_b"]
 
 
-def summary_text(summary, csv_name, conflict_name) -> str:
-    t, c, st = summary["tiers"], summary["category"], summary["stats"]
-    total = sum(t.values())
+def summary_text(summary, csv_name, conflict_name, label_text) -> str:
+    t, st = summary["tiers"], summary["stats"]
     return (
-        f"Monthly people duplicate check is ready - nothing has been merged.\n\n"
-        f"I checked {st['persons_scanned']:,} people and found {total:,} records that look like a second "
-        f"copy of someone already in Pipedrive ({st['duplicate_groups']:,} people have duplicates). A matching "
-        f"name alone never counts - each one also shares an email, LinkedIn profile, company or direct phone.\n\n"
-        f"How sure I am:\n"
-        f"- Safe to merge (name matches and same email or LinkedIn): {t.get('high', 0):,}\n"
-        f"- Likely (exact same name at the same company): {t.get('medium', 0):,}\n"
-        f"- Please look (nicknames, initials, same phone at a different company, or only the email "
-        f"domain matches): {t.get('review', 0):,}\n\n"
-        f"Bad data to fix, never merged: {st['conflicts']:,} cases where two DIFFERENT people share the same "
-        f"email or LinkedIn profile - mostly guessed addresses like chris@company.com given to several "
-        f"people, or an enrichment tool attaching the wrong LinkedIn. That list is attached separately "
-        f"({conflict_name}).\n\n"
-        f"The full list is attached ({csv_name}). Reply \"merge the safe ones\" and I'll merge that batch "
-        f"over a few days (Pipedrive limits how much we can change per day). For the others, delete any "
-        f"rows you don't want, attach the sheet back here and tell me to merge it. The record I keep is "
-        f"the one with the full name and the most emails and activity; names and phone numbers are never "
-        f"changed."
+        f"Weekly people duplicate check - nothing has been merged yet.\n\n"
+        f"I checked {st['persons_scanned']:,} people. {t.get('high', 0):,} records are copies I'm sure "
+        f"about: the name matches AND they share an email or LinkedIn profile.\n\n"
+        f"{label_text}\n\n"
+        f"When you're done deleting, reply \"merge them\" here and I'll merge the rest of that sure list "
+        f"into the record we keep, over the next few nights (Pipedrive limits changes per day). Copies "
+        f"you already deleted are skipped. Names and phone numbers are never changed.\n\n"
+        f"Left alone, not labelled: {t.get('medium', 0):,} likely and {t.get('review', 0):,} that need a "
+        f"human look (full list: {csv_name}), plus {st['conflicts']:,} bad-data cases where two DIFFERENT "
+        f"people share one email or LinkedIn ({conflict_name})."
     )
 
 
@@ -431,23 +423,32 @@ def main() -> int:
                            .read_text(encoding="utf-8"))
     free = {str(d).lower() for d in (blocklist.get("domains", blocklist) if isinstance(blocklist, dict)
                                      else blocklist) if not str(d).startswith("_")}
-    rows, conflicts, summary = build_plan(pd_cache.get_persons(), pd_fields.PERSON_LINKEDIN,
+    persons = pd_cache.get_persons()
+    rows, conflicts, summary = build_plan(persons, pd_fields.PERSON_LINKEDIN,
                                           pd_fields.PERSON_RESEARCH, free, is_role_email)
     out = dc.out_dir(root, "persons")
     csv_path = out / f"person_dedup_review_{dc.today()}.csv"
     conf_path = out / f"person_dedup_bad_data_{dc.today()}.csv"
+    label_path = out / f"person_dedup_label_import_{dc.today()}.csv"
     dc.write_csv(csv_path, CSV_HEADER, rows)
     dc.write_csv(conf_path, CONFLICT_HEADER, conflicts)
+    by_id = {int(p["id"]): p for p in persons if p.get("id") is not None}
+    label_info = dc.write_label_csv(label_path, rows, by_id, pd_cache.get_field_maps()[0][0], "Person")
+    summary["label_file"] = label_info
     (out / f"person_dedup_summary_{dc.today()}.json").write_text(
         json.dumps({"date": dc.today(), "snapshot": pd_cache.snapshot_date("persons"), **summary},
                    indent=2, ensure_ascii=False), encoding="utf-8")
-    text = summary_text(summary, csv_path.name, conf_path.name)
+    text = summary_text(summary, csv_path.name, conf_path.name,
+                        dc.label_note("people", label_info, label_path.name))
     (out / f"person_dedup_report_{dc.today()}.txt").write_text(text, encoding="utf-8")
     log(json.dumps(summary, indent=2))
     log(f"[dedup] DRY RUN — zero Pipedrive writes. Review CSV: {csv_path}")
     if args.post_task:
-        ok = dc.post_to_clickup(root, args.post_task, text, [csv_path, conf_path])
+        files = ([label_path] if label_info["rows"] else []) + [csv_path, conf_path]
+        ok = dc.post_to_clickup(root, args.post_task, text, files)
         log(f"[dedup] ClickUp post {'ok' if ok else 'FAILED'} on task {args.post_task}")
+        if ok and label_info["rows"]:
+            dc.record_report(base, "persons", csv_path, label_info["rows"])
     t = summary["tiers"]
     print(f"RESULT: persons dry-run high={t.get('high', 0)} medium={t.get('medium', 0)} "
           f"review={t.get('review', 0)} conflicts={summary['stats']['conflicts']} csv={csv_path}")
