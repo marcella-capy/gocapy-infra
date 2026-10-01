@@ -1,0 +1,15 @@
+﻿=== 2026-10-01T08:20:00.5790628-05:00 call-task-reconcile START ===
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\reconcile_done_calls.py --since 2026-09-28
+  to-subscribe: Jason Glasser <jason.glasser@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+RESULT: ok - 82 done calls on 2026-09-28..2026-10-01, 1 to-subscribe, 0 skipped -> _reconcile_20260928-20261001.json
+
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\hothawk_subscribe.py --artifact _reconcile_20260928-20261001.json --apply
+  found lead 31640745-433d-4a2b-a164-5e2fbe35401e: Jason Glasser <jason.glasser@intusurg.com> (Intuitive Surgical, Inc.)
+  bulk-added 1 leads to list 'voicemail-called-general-foundry' (44b0b0e1-9990-447f-a19e-4d497e78f2f5)
+  appended list to campaign 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26
+  ERROR group [general-foundry]: POST /campaigns/82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26/leads -> HTTP 422: {"code":"NO_ELIGIBLE_LEADS","message":"All selected leads are already enrolled in other campaigns. Set `allowLeadsInMultiple = true` to enrol overlapping leads anyway.","skippedLeadCount":1,"skippedLeads":[{"leadId":"31640745-433d-4a2b-a164-5e2fbe35401e","conflictingCampaignId":"2d825f12-08c9-4e26-afe1-f622bcbbb113","conflictingCampaignName":"General Foundry"}],"status":422} ΓÇö persons NOT marked
+RESULT: partial - 0 leads pushed to list/campaign/tag; FAILED groups: general-foundry
+
+RESULT: error - HotHawk push partial (1 planned) ΓÇö see the failed groups above; those people stay unmarked and retry next run
+=== 2026-10-01T08:20:12.2068727-05:00 call-task-reconcile END (exit 1) ===
+posted run-failure alert to ClickUp task 86ba9zvy5

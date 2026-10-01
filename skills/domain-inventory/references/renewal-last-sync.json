@@ -1,8 +1,18 @@
 {
- "synced_at": "2026-09-01T09:10:28",
- "porkbun_count": 80,
- "changed": 0,
- "appended": [],
+ "synced_at": "2026-10-01T11:10:29",
+ "porkbun_count": 84,
+ "changed": 18,
+ "appended": [
+  "gomaragtm.com",
+  "mara-gtm.com",
+  "maragtm.com",
+  "maramfg.com"
+ ],
  "conflicts": [],
- "no_principal": []
+ "no_principal": [
+  "gomaragtm.com",
+  "mara-gtm.com",
+  "maragtm.com",
+  "maramfg.com"
+ ]
 }
