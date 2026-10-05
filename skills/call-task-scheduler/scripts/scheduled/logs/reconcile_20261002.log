@@ -1,0 +1,26 @@
+﻿=== 2026-10-02T08:20:00.5130830-05:00 call-task-reconcile START ===
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\reconcile_done_calls.py --since 2026-09-29
+  to-subscribe: Jason Glasser <jason.glasser@intusurg.com> (Intuitive Surgical, Inc.) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Suzanna Perine <suzanna.perine@conmet.com> (Conmet) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Horacio Goujon <horacio.goujon@conmet.com> (Conmet) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Lina Villarreal <lina.villarreal@conmet.com> (Conmet) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+RESULT: ok - 47 done calls on 2026-09-29..2026-10-02, 4 to-subscribe, 0 skipped -> _reconcile_20260929-20261002.json
+
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\hothawk_subscribe.py --artifact _reconcile_20260929-20261002.json --apply
+  found lead 31640745-433d-4a2b-a164-5e2fbe35401e: Jason Glasser <jason.glasser@intusurg.com> (Intuitive Surgical, Inc.)
+  bulk-added 1 leads to list 'voicemail-called-general-foundry' (44b0b0e1-9990-447f-a19e-4d497e78f2f5)
+  appended list to campaign 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26
+  enrolled 1 leads into campaign 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26
+  tagged 1 leads 'voicemail'
+  created lead d31de089-b829-4db1-b75e-ff9a72441c33: Suzanna Perine <suzanna.perine@conmet.com> (Conmet)
+  created lead 3f41dc61-04d7-4f54-ac6f-97b9ad78f18e: Horacio Goujon <horacio.goujon@conmet.com> (Conmet)
+  created lead 5e26cd37-2698-40a0-9141-5683c4ec2231: Lina Villarreal <lina.villarreal@conmet.com> (Conmet)
+  bulk-added 3 leads to list 'voicemail-called-franklin' (f7f2a99a-9cba-40a3-97ab-f821d7c7447f)
+  appended list to campaign 1bc2bdb0-689e-4650-9169-93c7b784b605
+  enrolled 3 leads into campaign 1bc2bdb0-689e-4650-9169-93c7b784b605
+  tagged 3 leads 'voicemail'
+RESULT: ok - marked 4 subscribed, 0 sibling activities auto-closed
+RESULT: ok - 4 leads pushed to list/campaign/tag
+
+RESULT: ok - 4 people loaded into HotHawk since 2026-09-29 (_reconcile_20260929-20261002.json)
+=== 2026-10-02T08:20:29.1115111-05:00 call-task-reconcile END (exit 0) ===

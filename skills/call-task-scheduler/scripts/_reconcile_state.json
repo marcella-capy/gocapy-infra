@@ -3992,5 +3992,25 @@
     "subscribed_at": "2026-09-29T08:20:25",
     "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
     "closed_activities": []
+  },
+  "22771": {
+    "subscribed_at": "2026-10-02T08:20:28",
+    "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+    "closed_activities": []
+  },
+  "117021": {
+    "subscribed_at": "2026-10-02T08:20:28",
+    "sequence_id": "1bc2bdb0-689e-4650-9169-93c7b784b605",
+    "closed_activities": []
+  },
+  "117022": {
+    "subscribed_at": "2026-10-02T08:20:28",
+    "sequence_id": "1bc2bdb0-689e-4650-9169-93c7b784b605",
+    "closed_activities": []
+  },
+  "117023": {
+    "subscribed_at": "2026-10-02T08:20:28",
+    "sequence_id": "1bc2bdb0-689e-4650-9169-93c7b784b605",
+    "closed_activities": []
   }
 }
