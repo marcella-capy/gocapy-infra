@@ -1,0 +1,18 @@
+﻿=== 2026-10-05T09:38:12.2738521-05:00 call-task-reconcile START ===
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\reconcile_done_calls.py --since 2026-09-30
+  to-subscribe: Elke Diekel <elke.diekel@conmet.com> (Conmet) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Francesco Orsi <francesco.orsi@conmet.com> (Conmet) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+RESULT: ok - 42 done calls on 2026-09-30..2026-10-05, 2 to-subscribe, 0 skipped -> _reconcile_20260930-20261005.json
+
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\hothawk_subscribe.py --artifact _reconcile_20260930-20261005.json --apply
+  created lead 9626ecad-3dc5-4ac4-a022-15ea19d5647f: Elke Diekel <elke.diekel@conmet.com> (Conmet)
+  created lead 3b60af04-3e05-4d85-bddb-3190d9846506: Francesco Orsi <francesco.orsi@conmet.com> (Conmet)
+  bulk-added 2 leads to list 'voicemail-called-franklin' (f7f2a99a-9cba-40a3-97ab-f821d7c7447f)
+  appended list to campaign 1bc2bdb0-689e-4650-9169-93c7b784b605
+  enrolled 2 leads into campaign 1bc2bdb0-689e-4650-9169-93c7b784b605
+  tagged 2 leads 'voicemail'
+RESULT: ok - marked 2 subscribed, 0 sibling activities auto-closed
+RESULT: ok - 2 leads pushed to list/campaign/tag
+
+RESULT: ok - 2 people loaded into HotHawk since 2026-09-30 (_reconcile_20260930-20261005.json)
+=== 2026-10-05T09:55:20.9809575-05:00 call-task-reconcile END (exit 0) ===

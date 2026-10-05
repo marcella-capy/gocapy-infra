@@ -1,0 +1,34 @@
+{
+  "date": "2026-09-30",
+  "date_end": "2026-10-05",
+  "done_calls": 42,
+  "to_subscribe": [
+    {
+      "person_id": 117024,
+      "principal": "franklin",
+      "first_name": "Elke",
+      "last_name": "Diekel",
+      "email": "elke.diekel@conmet.com",
+      "company_name": "Conmet",
+      "phone": "(360) 831-3893",
+      "title": "Sourcing Manager",
+      "workspace_id": "023d4d35-245d-44ce-bc74-569d1d968f3d",
+      "sequence_id": "1bc2bdb0-689e-4650-9169-93c7b784b605",
+      "done_activity_id": 86515
+    },
+    {
+      "person_id": 117025,
+      "principal": "franklin",
+      "first_name": "Francesco",
+      "last_name": "Orsi",
+      "email": "francesco.orsi@conmet.com",
+      "company_name": "Conmet",
+      "phone": "(224) 204-4797",
+      "title": "Sourcing Manager",
+      "workspace_id": "023d4d35-245d-44ce-bc74-569d1d968f3d",
+      "sequence_id": "1bc2bdb0-689e-4650-9169-93c7b784b605",
+      "done_activity_id": 86518
+    }
+  ],
+  "skipped": []
+}
