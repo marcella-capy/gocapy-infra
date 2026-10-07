@@ -1,0 +1,77 @@
+﻿=== 2026-10-07T08:20:01.1751776-05:00 call-task-reconcile START ===
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\reconcile_done_calls.py --since 2026-10-02
+  to-subscribe: Cody Perry <cody.perry@conmet.com> (Conmet) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Anthony Lopes <anthony.lopes@conmet.com> (Conmet) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Rae Norton <rae.norton@conmet.com> (Conmet) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Benjamin Powell <ben.powell@conmet.com> (Conmet) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Kristie Murray <kristie.murray@conmet.com> (Conmet) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: Chris Little <chris.little@conmet.com> (Conmet) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: David Tetreault <datetrea@bechtel.com> (Bechtel Plant Machinery, Inc. (BPMI)) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Franklin Salaman <frsalama@bechtel.com> (Bechtel Plant Machinery, Inc. (BPMI)) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Clayton Stich <cstich@astromecha.co> (Astro Mechanica) -> seq d573850c-19c0-46ff-b5e8-845a173ccea6 [tmx]
+  to-subscribe: Tyler Sandberg <tyler@astromecha.co> (Astro Mechanica) -> seq d573850c-19c0-46ff-b5e8-845a173ccea6 [tmx]
+  to-subscribe: Tj Mason <tjmason@machindustries.com> (Mach Industries) -> seq d573850c-19c0-46ff-b5e8-845a173ccea6 [tmx]
+  to-subscribe: Evan Dawson <evandawson@machindustries.com> (Mach Industries) -> seq d573850c-19c0-46ff-b5e8-845a173ccea6 [tmx]
+  to-subscribe: Austin Gisi <austingisi@machindustries.com> (Mach Industries) -> seq d573850c-19c0-46ff-b5e8-845a173ccea6 [tmx]
+  to-subscribe: Michael Mason <michael.mason@radianaerospace.com> (Radian Aerospace) -> seq d573850c-19c0-46ff-b5e8-845a173ccea6 [tmx]
+  to-subscribe: Neil Baleva <n.baleva@portalsystems.space> (Portal Space Systems) -> seq d573850c-19c0-46ff-b5e8-845a173ccea6 [tmx]
+  to-subscribe: Calvin Deng <calvin@castelion.com> (Castelion) -> seq d573850c-19c0-46ff-b5e8-845a173ccea6 [tmx]
+  to-subscribe: Safy Sherif <safy.sherif@portalsystems.space> (Portal Space Systems) -> seq d573850c-19c0-46ff-b5e8-845a173ccea6 [tmx]
+  to-subscribe: Jordan Colson <jordan@castelion.com> (Castelion) -> seq d573850c-19c0-46ff-b5e8-845a173ccea6 [tmx]
+  to-subscribe: Kenneth Doyle <kdoyle@gravitics.com> (Gravitics) -> seq d573850c-19c0-46ff-b5e8-845a173ccea6 [tmx]
+  to-subscribe: Justin Bonnell <jbonnell@gravitics.com> (Gravitics) -> seq d573850c-19c0-46ff-b5e8-845a173ccea6 [tmx]
+  to-subscribe: Alex Mudd <alex@antaresindustries.com> (Antares Industries) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Joshua Ory <joshua.ory@atlascopco.com> (Atlas Copco Group) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Robert Degler <robert.degler@atlascopco.com> (Atlas Copco Group) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: David Knox <david.knox@atlascopco.com> (Atlas Copco Group) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Kurt Blanz <kurt.blanz@nikkisocryo.com> (NIKKISO CRYO) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Joni Schenk <joni.schenk@nikkisoceig.com> (NIKKISO CRYO) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Agustin Landa <agustin.landa@nikkisocryo.com> (NIKKISO CRYO) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  skipped: {'person_id': 117664, 'name': 'Michael Goodman', 'reason': 'no-email'}
+RESULT: ok - 51 done calls on 2026-10-02..2026-10-07, 27 to-subscribe, 1 skipped -> _reconcile_20261002-20261007.json
+
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\hothawk_subscribe.py --artifact _reconcile_20261002-20261007.json --apply
+  created lead 0f5a577f-a5a5-4b12-b342-d386515c59c1: Cody Perry <cody.perry@conmet.com> (Conmet)
+  created lead b4aa3801-6626-4e28-b34d-bf464943be41: Anthony Lopes <anthony.lopes@conmet.com> (Conmet)
+  created lead 403c4d17-13c8-495f-9a7b-59fa87c96b9a: Rae Norton <rae.norton@conmet.com> (Conmet)
+  created lead 7d0bd726-9ebf-4598-93e2-31635174eee6: Benjamin Powell <ben.powell@conmet.com> (Conmet)
+  created lead 6641b912-b9f9-4b66-93c1-039f39bae104: Kristie Murray <kristie.murray@conmet.com> (Conmet)
+  created lead c215a2ec-bfd6-42ba-8c2f-34c4b6513795: Chris Little <chris.little@conmet.com> (Conmet)
+  bulk-added 6 leads to list 'voicemail-called-franklin' (f7f2a99a-9cba-40a3-97ab-f821d7c7447f)
+  appended list to campaign 1bc2bdb0-689e-4650-9169-93c7b784b605
+  enrolled 6 leads into campaign 1bc2bdb0-689e-4650-9169-93c7b784b605
+  tagged 6 leads 'voicemail'
+  created lead 94ffeabb-cea3-4598-9f71-5ebb95a680f2: David Tetreault <datetrea@bechtel.com> (Bechtel Plant Machinery, Inc. (BPMI))
+  created lead 145d0a07-874e-440e-806c-201c0425d47a: Franklin Salaman <frsalama@bechtel.com> (Bechtel Plant Machinery, Inc. (BPMI))
+  created lead dc6289e7-5506-4e47-8cfc-c74c949fe175: Alex Mudd <alex@antaresindustries.com> (Antares Industries)
+  created lead 10292d4a-4888-4e52-9d5c-bf4f3b985040: Joshua Ory <joshua.ory@atlascopco.com> (Atlas Copco Group)
+  created lead 582cca8d-6a42-4ce9-8812-1bb77fabd888: Robert Degler <robert.degler@atlascopco.com> (Atlas Copco Group)
+  created lead 11690c2f-51a9-4efd-a1aa-c8fbae1bb8a5: David Knox <david.knox@atlascopco.com> (Atlas Copco Group)
+  created lead 4f9eec0f-ecdf-4fd9-9c1c-9fa88a6045fe: Kurt Blanz <kurt.blanz@nikkisocryo.com> (NIKKISO CRYO)
+  created lead a01e8e21-0b1c-440b-a2a7-28db1fcfb6fd: Joni Schenk <joni.schenk@nikkisoceig.com> (NIKKISO CRYO)
+  created lead 8d65b1d8-0379-4d51-ab2a-62672e0d8696: Agustin Landa <agustin.landa@nikkisocryo.com> (NIKKISO CRYO)
+  bulk-added 9 leads to list 'voicemail-called-patriot-forge' (9460d74c-59e5-4184-9243-e8d9937fb60a)
+  appended list to campaign fa1af5bd-8d43-44a0-ac60-d92d642d6d92
+  enrolled 9 leads into campaign fa1af5bd-8d43-44a0-ac60-d92d642d6d92
+  tagged 9 leads 'voicemail'
+  created lead b5ce45b2-07dc-4d83-877f-06fed821c371: Clayton Stich <cstich@astromecha.co> (Astro Mechanica)
+  created lead a0480b79-750d-4695-a961-b873840de5ee: Tyler Sandberg <tyler@astromecha.co> (Astro Mechanica)
+  created lead e8b61ec4-48e3-416a-b2ef-ee7642ef3922: Tj Mason <tjmason@machindustries.com> (Mach Industries)
+  created lead c4179665-e5e6-44d4-80c6-3dd81dd11476: Evan Dawson <evandawson@machindustries.com> (Mach Industries)
+  created lead 7fa88e3e-493b-4a3b-9167-c892f14584c7: Austin Gisi <austingisi@machindustries.com> (Mach Industries)
+  created lead bdf5272b-b662-4eb8-915e-86f37a994a6c: Michael Mason <michael.mason@radianaerospace.com> (Radian Aerospace)
+  created lead 95f64a2e-098b-4b80-868d-660002dc51de: Neil Baleva <n.baleva@portalsystems.space> (Portal Space Systems)
+  found lead d94e4571-9afd-4864-abb0-9169d15ec3e0: Calvin Deng <calvin@castelion.com> (Castelion)
+  created lead 10b2097b-3240-40f3-9e22-eb36ac5823fe: Safy Sherif <safy.sherif@portalsystems.space> (Portal Space Systems)
+  found lead 0cdd2761-4759-4029-a013-a586eebe55a7: Jordan Colson <jordan@castelion.com> (Castelion)
+  created lead c5a99777-5c82-493c-872e-f4f892b3c6c2: Kenneth Doyle <kdoyle@gravitics.com> (Gravitics)
+  created lead 61603a0f-f49d-413b-8c9f-7ec736997141: Justin Bonnell <jbonnell@gravitics.com> (Gravitics)
+  bulk-added 12 leads to list 'voicemail-called-tmx' (f196ef81-f6fe-4d84-9e5e-448f4b3e3fad)
+  appended list to campaign d573850c-19c0-46ff-b5e8-845a173ccea6
+  enrolled 12 leads into campaign d573850c-19c0-46ff-b5e8-845a173ccea6
+  tagged 12 leads 'voicemail'
+RESULT: ok - marked 27 subscribed, 0 sibling activities auto-closed
+RESULT: ok - 27 leads pushed to list/campaign/tag
+
+RESULT: ok - 27 people loaded into HotHawk since 2026-10-02 (_reconcile_20261002-20261007.json)
+=== 2026-10-07T08:20:54.6997628-05:00 call-task-reconcile END (exit 0) ===

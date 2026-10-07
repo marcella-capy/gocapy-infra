@@ -1,0 +1,33 @@
+﻿=== 2026-10-07T08:50:01.4068368-05:00 call-load-audit DAY START ===
+≡ƒô₧ Call ΓåÆ HotHawk Load Audit ΓÇö Daily ΓÇö 2026-10-06
+ΓÜá∩╕Å 1 NOT loaded  ┬╖  30 calls / 30 people  ┬╖  29 loaded, 1 missing
+```
+principal        User          Company Name                          # of Calls
+---------------  ------------  ------------------------------------  ----------
+franklin         Ericka        Conmet                                3
+general-foundry  Ericka        Intuitive Surgical, Inc.              5
+patriot-forge    Ericka        Antares Industries                    1
+patriot-forge    Ericka        Atlas Copco Group                     3
+patriot-forge    Ericka        Bechtel Plant Machinery, Inc. (BPMI)  3
+patriot-forge    Ericka        NIKKISO CRYO                          3
+tmx              Ericka        Astro Mechanica                       2
+tmx              Ericka        Castelion                             2
+tmx              Ericka        Gravitics                             2
+tmx              Ericka        Mach Industries                       3
+tmx              Ericka        Portal Space Systems                  2
+tmx              Ericka        Radian Aerospace                      1
+-                -             -                                     -
+                 TOTAL Ericka                                        30
+```
+ΓÜá∩╕Å NOT LOADED (1) ΓÇö done calls that never reached HotHawk:
+```
+principal      User    Company                               Person           why
+-------------  ------  ------------------------------------  ---------------  --------
+patriot-forge  Ericka  Bechtel Plant Machinery, Inc. (BPMI)  Michael Goodman  no-email
+```
+Fix: activate/enroll the campaign in HotHawk, or re-run the reconcile (`reconcile_done_calls.py --since <date> --apply`) for these people.
+
+discord: posted
+
+RESULT: ok - {"mode": "day", "window": ["2026-10-06", "2026-10-06"], "total_calls": 30, "people": 30, "loaded": 29, "missing": 1, "systemic": false}
+=== 2026-10-07T08:50:16.4523123-05:00 call-load-audit DAY END (exit 0) ===
