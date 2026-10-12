@@ -1,0 +1,31 @@
+﻿=== 2026-10-12T10:22:46.3015080-05:00 call-load-audit DAY START ===
+≡ƒô₧ Call ΓåÆ HotHawk Load Audit ΓÇö Daily ΓÇö 2026-10-09
+ΓÜá∩╕Å 5 NOT loaded  ┬╖  12 calls / 12 people  ┬╖  7 loaded, 5 missing
+```
+principal      User          Company Name                          # of Calls
+-------------  ------------  ------------------------------------  ----------
+franklin       Ericka        Conmet                                5
+franklin       Ericka        MSI Defense Solutions                 1
+patriot-forge  Ericka        Bechtel Plant Machinery, Inc. (BPMI)  3
+patriot-forge  Ericka        M&L PRECISION                         1
+patriot-forge  Ericka        NIKKISO CRYO                          1
+tmx            Ericka        Fortem Technologies                   1
+-              -             -                                     -
+               TOTAL Ericka                                        12
+```
+ΓÜá∩╕Å NOT LOADED (5) ΓÇö done calls that never reached HotHawk:
+```
+principal      User    Company                               Person                                              why
+-------------  ------  ------------------------------------  --------------------------------------------------  ---------------------------------------------
+franklin       Ericka  MSI Defense Solutions                 James Janiczek <jjaniczek@msidefensesolutions.com>  not-enrolled (on list only / draft campaign?)
+patriot-forge  Ericka  Bechtel Plant Machinery, Inc. (BPMI)  Hiroko Kobayashi <hkobayas@bechtel.com>             not-enrolled (on list only / draft campaign?)
+patriot-forge  Ericka  Bechtel Plant Machinery, Inc. (BPMI)  Curtis Fox <crfox@bechtel.com>                      not-enrolled (on list only / draft campaign?)
+patriot-forge  Ericka  Bechtel Plant Machinery, Inc. (BPMI)  Kristina Parfait <klparfai@bechtel.com>             not-enrolled (on list only / draft campaign?)
+patriot-forge  Ericka  NIKKISO CRYO                          John Benjamin <john.benjamin@NikkisoCEIG.com>       not-enrolled (on list only / draft campaign?)
+```
+Fix: activate/enroll the campaign in HotHawk, or re-run the reconcile (`reconcile_done_calls.py --since <date> --apply`) for these people.
+
+discord: posted
+
+RESULT: ok - {"mode": "day", "window": ["2026-10-09", "2026-10-09"], "total_calls": 12, "people": 12, "loaded": 7, "missing": 5, "systemic": false}
+=== 2026-10-12T10:58:11.2456304-05:00 call-load-audit DAY END (exit 0) ===

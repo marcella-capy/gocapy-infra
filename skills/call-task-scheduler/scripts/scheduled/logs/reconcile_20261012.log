@@ -1,0 +1,74 @@
+﻿=== 2026-10-12T10:57:11.6814028-05:00 call-task-reconcile START ===
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\reconcile_done_calls.py --since 2026-10-07
+  to-subscribe: Dj Wuennecke <djwuenne@bechtel.com> (Bechtel Plant Machinery, Inc. (BPMI)) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Gus Wedin <gawedin@bechtel.com> (Bechtel Plant Machinery, Inc. (BPMI)) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Amy Pennock <alpennoc@bechtel.com> (Bechtel Plant Machinery, Inc. (BPMI)) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Rachel Nourse <rlnourse@bechtel.com> (Bechtel Plant Machinery, Inc. (BPMI)) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Trina Howard <tahoward@bechtel.com> (Bechtel Plant Machinery, Inc. (BPMI)) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Hiroko Kobayashi <hkobayas@bechtel.com> (Bechtel Plant Machinery, Inc. (BPMI)) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Curtis Fox <crfox@bechtel.com> (Bechtel Plant Machinery, Inc. (BPMI)) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Kristina Parfait <klparfai@bechtel.com> (Bechtel Plant Machinery, Inc. (BPMI)) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Shane Cunningham <shane@astromecha.co> (Astro Mechanica) -> seq d573850c-19c0-46ff-b5e8-845a173ccea6 [tmx]
+  to-subscribe: Lara Lemley <llemley@astromecha.co> (Astro Mechanica) -> seq d573850c-19c0-46ff-b5e8-845a173ccea6 [tmx]
+  to-subscribe: Behzad Yazdi <byazdi@astromecha.co> (Astro Mechanica) -> seq d573850c-19c0-46ff-b5e8-845a173ccea6 [tmx]
+  to-subscribe: Jordan Fereira <jfereira@astromecha.co> (Astro Mechanica) -> seq d573850c-19c0-46ff-b5e8-845a173ccea6 [tmx]
+  to-subscribe: Teresa Badillo <teresa.badillo@atlascopco.com> (Atlas Copco Group) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Chester Inong <chester.inong@atlascopco.com> (Atlas Copco Group) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Alberto Avila <alberto.avila@atlascopco.com> (Atlas Copco Group) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Sally Gonzalez <sarah.gonzalez@atlascopco.com> (Atlas Copco Group) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Brandon Bonilla <brandon.bonilla@nikkisocryo.com> (NIKKISO CRYO) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Kathleen Kim <kathleen.kim@nikkisocryo.com> (NIKKISO CRYO) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Paul Geldmacher <paul.geldmacher@nikkisocryo.com> (NIKKISO CRYO) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Tim Smith <tim.smith@nikkisocryo.com> (NIKKISO CRYO) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Lidia La Serna <llaserna@nikkisoceig.com> (NIKKISO CRYO) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Vanessa Ordinario <vanessa.ordinario@nikkisoceig.com> (NIKKISO CRYO) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: John Benjamin <john.benjamin@NikkisoCEIG.com> (NIKKISO CRYO) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Alexis Topacio <alexis.topacio@fortemtech.com> (Fortem Technologies) -> seq d573850c-19c0-46ff-b5e8-845a173ccea6 [tmx]
+  to-subscribe: James Janiczek <jjaniczek@msidefensesolutions.com> (MSI Defense Solutions) -> seq 1bc2bdb0-689e-4650-9169-93c7b784b605 [franklin]
+  to-subscribe: John Frederick <johnf@mlprecision.com> (M&L PRECISION) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+RESULT: ok - 36 done calls on 2026-10-07..2026-10-12, 26 to-subscribe, 0 skipped -> _reconcile_20261007-20261012.json
+
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\hothawk_subscribe.py --artifact _reconcile_20261007-20261012.json --apply
+  created lead 28bc777c-113f-4f3d-a47d-828ba7b3f07b: Dj Wuennecke <djwuenne@bechtel.com> (Bechtel Plant Machinery, Inc. (BPMI))
+  created lead 49f02016-0a11-4ee0-8197-ac5abb811da2: Gus Wedin <gawedin@bechtel.com> (Bechtel Plant Machinery, Inc. (BPMI))
+  created lead 0abb5de8-9d39-4866-9bc5-9981164ab0e3: Amy Pennock <alpennoc@bechtel.com> (Bechtel Plant Machinery, Inc. (BPMI))
+  created lead 440a56da-0067-4d64-beeb-80a9a1053bb1: Rachel Nourse <rlnourse@bechtel.com> (Bechtel Plant Machinery, Inc. (BPMI))
+  created lead f83a872f-4cf6-478f-82bf-4b21c244df98: Trina Howard <tahoward@bechtel.com> (Bechtel Plant Machinery, Inc. (BPMI))
+  created lead 15e21979-9f70-4f81-85f8-d0dd0d8a9645: Hiroko Kobayashi <hkobayas@bechtel.com> (Bechtel Plant Machinery, Inc. (BPMI))
+  created lead e6dd35ca-8bc1-440b-adbe-a5faec02f421: Curtis Fox <crfox@bechtel.com> (Bechtel Plant Machinery, Inc. (BPMI))
+  created lead 34108043-a2be-43fa-9156-104402b4893f: Kristina Parfait <klparfai@bechtel.com> (Bechtel Plant Machinery, Inc. (BPMI))
+  created lead 1b6e2c38-5ec3-4da1-b33d-e4e884169c70: Teresa Badillo <teresa.badillo@atlascopco.com> (Atlas Copco Group)
+  created lead a8dd2b75-dbb0-41c0-8bf2-d4cbc077485e: Chester Inong <chester.inong@atlascopco.com> (Atlas Copco Group)
+  created lead 169303f9-6c14-46a6-ae59-683c425242fa: Alberto Avila <alberto.avila@atlascopco.com> (Atlas Copco Group)
+  created lead 65da156a-2d50-455a-a48e-1adbbb67347f: Sally Gonzalez <sarah.gonzalez@atlascopco.com> (Atlas Copco Group)
+  created lead c19b4b9f-dff5-45e6-9e51-9c8c7ba52efb: Brandon Bonilla <brandon.bonilla@nikkisocryo.com> (NIKKISO CRYO)
+  created lead d9ddfbe1-704b-4d92-b826-bc6a4634c475: Kathleen Kim <kathleen.kim@nikkisocryo.com> (NIKKISO CRYO)
+  created lead 55ccfe81-19ac-4e85-a508-08400a929a17: Paul Geldmacher <paul.geldmacher@nikkisocryo.com> (NIKKISO CRYO)
+  created lead d5ab9d14-aadf-4e49-993c-777d0ef6f567: Tim Smith <tim.smith@nikkisocryo.com> (NIKKISO CRYO)
+  created lead 76e9f6be-14cf-4809-aafc-ffb271ef67b5: Lidia La Serna <llaserna@nikkisoceig.com> (NIKKISO CRYO)
+  created lead f705e461-d85d-4914-bb19-6a62fb403c58: Vanessa Ordinario <vanessa.ordinario@nikkisoceig.com> (NIKKISO CRYO)
+  created lead 3a99483d-7cc8-4b98-a977-74cd4c5c6bf1: John Benjamin <john.benjamin@NikkisoCEIG.com> (NIKKISO CRYO)
+  found lead 06d74dda-a345-41df-8503-ad32322a5bd9: John Frederick <johnf@mlprecision.com> (M&L PRECISION)
+  bulk-added 20 leads to list 'voicemail-called-patriot-forge' (9460d74c-59e5-4184-9243-e8d9937fb60a)
+  appended list to campaign fa1af5bd-8d43-44a0-ac60-d92d642d6d92
+  enrolled 20 leads into campaign fa1af5bd-8d43-44a0-ac60-d92d642d6d92
+  tagged 20 leads 'voicemail'
+  created lead 60e4a5ac-a894-4342-811c-13375d76e5c3: Shane Cunningham <shane@astromecha.co> (Astro Mechanica)
+  created lead 839e4c26-2f3d-425d-9d42-f3276ef51434: Lara Lemley <llemley@astromecha.co> (Astro Mechanica)
+  created lead 9f8e627b-edcc-4dd8-8e37-c9726e7cdbd7: Behzad Yazdi <byazdi@astromecha.co> (Astro Mechanica)
+  created lead becfb74f-e6b6-4184-970a-00acf1327bcf: Jordan Fereira <jfereira@astromecha.co> (Astro Mechanica)
+  found lead 630644cf-337e-4542-ab0f-9a37a89270f0: Alexis Topacio <alexis.topacio@fortemtech.com> (Fortem Technologies)
+  bulk-added 5 leads to list 'voicemail-called-tmx' (f196ef81-f6fe-4d84-9e5e-448f4b3e3fad)
+  appended list to campaign d573850c-19c0-46ff-b5e8-845a173ccea6
+  enrolled 5 leads into campaign d573850c-19c0-46ff-b5e8-845a173ccea6
+  tagged 5 leads 'voicemail'
+  created lead 8db71473-6b64-4f01-bac7-6e2eeb6ffa7e: James Janiczek <jjaniczek@msidefensesolutions.com> (MSI Defense Solutions)
+  bulk-added 1 leads to list 'voicemail-called-franklin' (f7f2a99a-9cba-40a3-97ab-f821d7c7447f)
+  appended list to campaign 1bc2bdb0-689e-4650-9169-93c7b784b605
+  enrolled 1 leads into campaign 1bc2bdb0-689e-4650-9169-93c7b784b605
+  tagged 1 leads 'voicemail'
+RESULT: ok - marked 26 subscribed, 0 sibling activities auto-closed
+RESULT: ok - 26 leads pushed to list/campaign/tag
+
+RESULT: ok - 26 people loaded into HotHawk since 2026-10-07 (_reconcile_20261007-20261012.json)
+=== 2026-10-12T11:00:23.0379801-05:00 call-task-reconcile END (exit 0) ===

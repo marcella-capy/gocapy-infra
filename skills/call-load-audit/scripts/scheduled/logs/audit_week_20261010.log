@@ -1,0 +1,19 @@
+﻿=== 2026-10-10T02:23:25.1923049-05:00 call-load-audit WEEK START ===
+python.exe : ERROR: Pipedrive /persons -> connection failed after retries: <urlopen error [Errno 11001] getaddrinfo 
+failed>
+At C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-load-audit\scripts\scheduled\run_weekly.ps1:11 
+char:1
++ & $py "$scripts\audit_call_loads.py" --mode week --discord 2>&1 | Out ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (ERROR: Pipedriv...ddrinfo failed>:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+=== 2026-10-10T02:23:49.3585284-05:00 call-load-audit WEEK END (exit 1) ===
+python.exe : alert post failed (run failure still logged)
+At C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-load-audit\scripts\scheduled\run_weekly.ps1:20 
+char:17
++ ...     $tail | & $py $notify --source CallLoadAudit_Weekly --exit "$exit ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (alert post fail...e still logged):String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
