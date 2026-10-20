@@ -1,0 +1,26 @@
+﻿=== 2026-10-20T09:16:17.5500482-07:00 call-task-reconcile START ===
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\reconcile_done_calls.py --since 2026-10-15
+  to-subscribe: Adam Christianson <amchrist@bechtel.us> (Bechtel Plant Machinery, Inc. (BPMI)) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Ukeme Etuk <uetuk@bechtel.com> (Bechtel Plant Machinery, Inc. (BPMI)) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Bernard Ip <bcip@bechtel.us> (Bechtel Plant Machinery, Inc. (BPMI)) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Mark Dambach <mcdambac@bechtel.com> (Bechtel Plant Machinery, Inc. (BPMI)) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Andrew Ford <andrew.ford@xbowsystems.com> (X-Bow Systems) -> seq 532ff222-9db3-4344-b292-09eaa35eb62f [lnp]
+RESULT: ok - 43 done calls on 2026-10-15..2026-10-20, 5 to-subscribe, 0 skipped -> _reconcile_20261015-20261020.json
+
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\hothawk_subscribe.py --artifact _reconcile_20261015-20261020.json --apply
+  found lead 163e4997-b780-47c2-8286-317a4825f3a9: Adam Christianson <amchrist@bechtel.us> (Bechtel Plant Machinery, Inc. (BPMI))
+  found lead 24744eda-489c-4d95-9ec9-9a0a1f68cd15: Ukeme Etuk <uetuk@bechtel.com> (Bechtel Plant Machinery, Inc. (BPMI))
+  found lead 85769b87-fe88-4633-b398-b5383d133e95: Bernard Ip <bcip@bechtel.us> (Bechtel Plant Machinery, Inc. (BPMI))
+  found lead fffcd634-d593-47e8-ac48-0a4227938f55: Mark Dambach <mcdambac@bechtel.com> (Bechtel Plant Machinery, Inc. (BPMI))
+  bulk-added 4 leads to list 'voicemail-called-patriot-forge' (9460d74c-59e5-4184-9243-e8d9937fb60a)
+  appended list to campaign fa1af5bd-8d43-44a0-ac60-d92d642d6d92
+  ERROR group [patriot-forge]: POST /campaigns/fa1af5bd-8d43-44a0-ac60-d92d642d6d92/leads -> HTTP 422: {"code":"NO_ELIGIBLE_LEADS","message":"All selected leads are already enrolled in other campaigns. Set `allowLeadsInMultiple = true` to enrol overlapping leads anyway.","skippedLeadCount":4,"skippedLeads":[{"leadId":"163e4997-b780-47c2-8286-317a4825f3a9","conflictingCampaignId":"e2384f63-7e9f-41d4-9f6f-da622e700ee2","conflictingCampaignName":"Patriot"},{"leadId":"24744eda-489c-4d95-9ec9-9a0a1f68cd15","conflictingCampaignId":"e2384f63-7e9f-41d4-9f6f-da622e700ee2","conflictingCampaignName":"Patriot"},{"leadId":"85769b87-fe88-4633-b398-b5383d133e95","conflictingCampaignId":"e2384f63-7e9f-41d4-9f6f-da622e700ee2","conflictingCampaignName":"Patriot"},{"leadId":"fffcd634-d593-47e8-ac48-0a4227938f55","conflictingCampaignId":"e2384f63-7e9f-41d4-9f6f-da622e700ee2","conflictingCampaignName":"Patriot"}],"status":422} ΓÇö persons NOT marked
+  found lead 60fd9418-1c52-4cdf-8c9f-5d7c9a40c044: Andrew Ford <andrew.ford@xbowsystems.com> (X-Bow Systems)
+  bulk-added 1 leads to list 'voicemail-called-lnp' (64b8b24a-ec17-4afe-aecf-f4fd6bf774dd)
+  appended list to campaign 532ff222-9db3-4344-b292-09eaa35eb62f
+  ERROR group [lnp]: POST /campaigns/532ff222-9db3-4344-b292-09eaa35eb62f/leads -> HTTP 422: {"code":"NO_ELIGIBLE_LEADS","message":"All selected leads are already enrolled in other campaigns. Set `allowLeadsInMultiple = true` to enrol overlapping leads anyway.","skippedLeadCount":1,"skippedLeads":[{"leadId":"60fd9418-1c52-4cdf-8c9f-5d7c9a40c044","conflictingCampaignId":"a9c888af-3232-4aa8-910f-fb396365c75b","conflictingCampaignName":"LNP"}],"status":422} ΓÇö persons NOT marked
+RESULT: partial - 0 leads pushed to list/campaign/tag; FAILED groups: patriot-forge, lnp
+
+RESULT: error - HotHawk push partial (5 planned) ΓÇö see the failed groups above; those people stay unmarked and retry next run
+=== 2026-10-20T09:35:33.1300087-07:00 call-task-reconcile END (exit 1) ===
+posted run-failure alert to ClickUp task 86ba9zvy5

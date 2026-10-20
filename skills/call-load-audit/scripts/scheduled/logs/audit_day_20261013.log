@@ -1,0 +1,32 @@
+﻿=== 2026-10-13T08:01:03.9792752-07:00 call-load-audit DAY START ===
+≡ƒô₧ Call ΓåÆ HotHawk Load Audit ΓÇö Daily ΓÇö 2026-10-12
+ΓÜá∩╕Å 1 NOT loaded  ┬╖  29 calls / 29 people  ┬╖  28 loaded, 1 missing
+```
+principal      User          Company Name                          # of Calls
+-------------  ------------  ------------------------------------  ----------
+franklin       Ericka        Conmet                                5
+patriot-forge  Ericka        Antares Industries                    1
+patriot-forge  Ericka        Atlas Copco Group                     3
+patriot-forge  Ericka        Bechtel Plant Machinery, Inc. (BPMI)  5
+patriot-forge  Ericka        NIKKISO CRYO                          3
+tmx            Ericka        Astro Mechanica                       2
+tmx            Ericka        Castelion                             2
+tmx            Ericka        Gravitics                             2
+tmx            Ericka        Mach Industries                       3
+tmx            Ericka        Portal Space Systems                  2
+tmx            Ericka        Radian Aerospace                      1
+-              -             -                                     -
+               TOTAL Ericka                                        29
+```
+ΓÜá∩╕Å NOT LOADED (1) ΓÇö done calls that never reached HotHawk:
+```
+principal      User    Company                               Person           why
+-------------  ------  ------------------------------------  ---------------  --------
+patriot-forge  Ericka  Bechtel Plant Machinery, Inc. (BPMI)  Michael Goodman  no-email
+```
+Fix: activate/enroll the campaign in HotHawk, or re-run the reconcile (`reconcile_done_calls.py --since <date> --apply`) for these people.
+
+discord: posted
+
+RESULT: ok - {"mode": "day", "window": ["2026-10-12", "2026-10-12"], "total_calls": 29, "people": 29, "loaded": 28, "missing": 1, "systemic": false}
+=== 2026-10-13T08:10:49.3447072-07:00 call-load-audit DAY END (exit 0) ===

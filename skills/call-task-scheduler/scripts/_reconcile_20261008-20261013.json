@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-08",
+  "date_end": "2026-10-13",
+  "done_calls": 51,
+  "to_subscribe": [
+    {
+      "person_id": 117659,
+      "principal": "patriot-forge",
+      "first_name": "Thomas",
+      "last_name": "Slack",
+      "email": "tmslack@bechtel.com",
+      "company_name": "Bechtel Plant Machinery, Inc. (BPMI)",
+      "phone": "(865) 406-9360",
+      "title": "Senior Purchasing Specialist",
+      "workspace_id": "95997af8-edf7-4a97-8227-cb826bc3e46d",
+      "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+      "done_activity_id": 87233
+    },
+    {
+      "person_id": 117671,
+      "principal": "patriot-forge",
+      "first_name": "Kerry",
+      "last_name": "Curran",
+      "email": "klcurran@bechtel.com",
+      "company_name": "Bechtel Plant Machinery, Inc. (BPMI)",
+      "phone": "+61 455 775 447",
+      "title": "Contracts & Procurement Ai Lead",
+      "workspace_id": "95997af8-edf7-4a97-8227-cb826bc3e46d",
+      "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+      "done_activity_id": 87239
+    }
+  ],
+  "skipped": [
+    {
+      "person_id": 117664,
+      "name": "Michael Goodman",
+      "reason": "no-email"
+    }
+  ]
+}

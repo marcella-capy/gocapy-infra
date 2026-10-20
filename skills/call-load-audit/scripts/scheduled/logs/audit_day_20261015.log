@@ -1,0 +1,26 @@
+﻿=== 2026-10-15T09:39:04.7858380-07:00 call-load-audit DAY START ===
+≡ƒô₧ Call ΓåÆ HotHawk Load Audit ΓÇö Daily ΓÇö 2026-10-14
+Γ£à all loaded  ┬╖  35 calls / 35 people  ┬╖  35 loaded, 0 missing
+```
+principal      User          Company Name                          # of Calls
+-------------  ------------  ------------------------------------  ----------
+franklin       Ericka        Conmet                                3
+patriot-forge  Ericka        Antares Industries                    1
+patriot-forge  Ericka        Atlas Copco Group                     4
+patriot-forge  Ericka        Bechtel Plant Machinery, Inc. (BPMI)  7
+patriot-forge  Ericka        NIKKISO CRYO                          6
+tmx            Ericka        Astro Mechanica                       3
+tmx            Ericka        Castelion                             2
+tmx            Ericka        Gravitics                             2
+tmx            Ericka        Mach Industries                       3
+tmx            Ericka        Portal Space Systems                  2
+tmx            Ericka        Radian Aerospace                      1
+vrc            Ericka        Beretta USA                           1
+-              -             -                                     -
+               TOTAL Ericka                                        35
+```
+
+discord: posted
+
+RESULT: ok - {"mode": "day", "window": ["2026-10-14", "2026-10-14"], "total_calls": 35, "people": 35, "loaded": 35, "missing": 0, "systemic": false}
+=== 2026-10-15T09:49:28.8494667-07:00 call-load-audit DAY END (exit 0) ===

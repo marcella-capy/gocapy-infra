@@ -1,0 +1,19 @@
+﻿=== 2026-10-13T08:01:07.5029482-07:00 call-task-reconcile START ===
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\reconcile_done_calls.py --since 2026-10-08
+  to-subscribe: Thomas Slack <tmslack@bechtel.com> (Bechtel Plant Machinery, Inc. (BPMI)) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Kerry Curran <klcurran@bechtel.com> (Bechtel Plant Machinery, Inc. (BPMI)) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  skipped: {'person_id': 117664, 'name': 'Michael Goodman', 'reason': 'no-email'}
+RESULT: ok - 51 done calls on 2026-10-08..2026-10-13, 2 to-subscribe, 1 skipped -> _reconcile_20261008-20261013.json
+
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\hothawk_subscribe.py --artifact _reconcile_20261008-20261013.json --apply
+  created lead 60cc98fa-2c04-4bf9-96c7-1031d908f2c2: Thomas Slack <tmslack@bechtel.com> (Bechtel Plant Machinery, Inc. (BPMI))
+  created lead ccd53b7d-ee43-4dfa-8dfd-a3d73a306458: Kerry Curran <klcurran@bechtel.com> (Bechtel Plant Machinery, Inc. (BPMI))
+  bulk-added 2 leads to list 'voicemail-called-patriot-forge' (9460d74c-59e5-4184-9243-e8d9937fb60a)
+  appended list to campaign fa1af5bd-8d43-44a0-ac60-d92d642d6d92
+  enrolled 2 leads into campaign fa1af5bd-8d43-44a0-ac60-d92d642d6d92
+  tagged 2 leads 'voicemail'
+RESULT: ok - marked 2 subscribed, 0 sibling activities auto-closed
+RESULT: ok - 2 leads pushed to list/campaign/tag
+
+RESULT: ok - 2 people loaded into HotHawk since 2026-10-08 (_reconcile_20261008-20261013.json)
+=== 2026-10-13T08:10:37.1075399-07:00 call-task-reconcile END (exit 0) ===

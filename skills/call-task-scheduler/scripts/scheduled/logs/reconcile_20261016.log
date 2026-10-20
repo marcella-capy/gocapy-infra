@@ -1,0 +1,21 @@
+﻿=== 2026-10-16T09:01:27.0584888-07:00 call-task-reconcile START ===
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\reconcile_done_calls.py --since 2026-10-13
+  to-subscribe: Adam Christianson <amchrist@bechtel.us> (Bechtel Plant Machinery, Inc. (BPMI)) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Ukeme Etuk <uetuk@bechtel.com> (Bechtel Plant Machinery, Inc. (BPMI)) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Bernard Ip <bcip@bechtel.us> (Bechtel Plant Machinery, Inc. (BPMI)) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Mark Dambach <mcdambac@bechtel.com> (Bechtel Plant Machinery, Inc. (BPMI)) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+RESULT: ok - 79 done calls on 2026-10-13..2026-10-16, 4 to-subscribe, 0 skipped -> _reconcile_20261013-20261016.json
+
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\hothawk_subscribe.py --artifact _reconcile_20261013-20261016.json --apply
+  found lead 163e4997-b780-47c2-8286-317a4825f3a9: Adam Christianson <amchrist@bechtel.us> (Bechtel Plant Machinery, Inc. (BPMI))
+  found lead 24744eda-489c-4d95-9ec9-9a0a1f68cd15: Ukeme Etuk <uetuk@bechtel.com> (Bechtel Plant Machinery, Inc. (BPMI))
+  found lead 85769b87-fe88-4633-b398-b5383d133e95: Bernard Ip <bcip@bechtel.us> (Bechtel Plant Machinery, Inc. (BPMI))
+  found lead fffcd634-d593-47e8-ac48-0a4227938f55: Mark Dambach <mcdambac@bechtel.com> (Bechtel Plant Machinery, Inc. (BPMI))
+  bulk-added 4 leads to list 'voicemail-called-patriot-forge' (9460d74c-59e5-4184-9243-e8d9937fb60a)
+  appended list to campaign fa1af5bd-8d43-44a0-ac60-d92d642d6d92
+  ERROR group [patriot-forge]: POST /campaigns/fa1af5bd-8d43-44a0-ac60-d92d642d6d92/leads -> HTTP 422: {"code":"NO_ELIGIBLE_LEADS","message":"All selected leads are already enrolled in other campaigns. Set `allowLeadsInMultiple = true` to enrol overlapping leads anyway.","skippedLeadCount":4,"skippedLeads":[{"leadId":"163e4997-b780-47c2-8286-317a4825f3a9","conflictingCampaignId":"e2384f63-7e9f-41d4-9f6f-da622e700ee2","conflictingCampaignName":"Patriot"},{"leadId":"24744eda-489c-4d95-9ec9-9a0a1f68cd15","conflictingCampaignId":"e2384f63-7e9f-41d4-9f6f-da622e700ee2","conflictingCampaignName":"Patriot"},{"leadId":"85769b87-fe88-4633-b398-b5383d133e95","conflictingCampaignId":"e2384f63-7e9f-41d4-9f6f-da622e700ee2","conflictingCampaignName":"Patriot"},{"leadId":"fffcd634-d593-47e8-ac48-0a4227938f55","conflictingCampaignId":"e2384f63-7e9f-41d4-9f6f-da622e700ee2","conflictingCampaignName":"Patriot"}],"status":422} ΓÇö persons NOT marked
+RESULT: partial - 0 leads pushed to list/campaign/tag; FAILED groups: patriot-forge
+
+RESULT: error - HotHawk push partial (4 planned) ΓÇö see the failed groups above; those people stay unmarked and retry next run
+=== 2026-10-16T09:09:27.4359260-07:00 call-task-reconcile END (exit 1) ===
+posted run-failure alert to ClickUp task 86ba9zvy5

@@ -4287,5 +4287,15 @@
     "subscribed_at": "2026-10-12T09:00:22",
     "sequence_id": "1bc2bdb0-689e-4650-9169-93c7b784b605",
     "closed_activities": []
+  },
+  "117659": {
+    "subscribed_at": "2026-10-13T08:10:37",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
+  },
+  "117671": {
+    "subscribed_at": "2026-10-13T08:10:37",
+    "sequence_id": "fa1af5bd-8d43-44a0-ac60-d92d642d6d92",
+    "closed_activities": []
   }
 }
