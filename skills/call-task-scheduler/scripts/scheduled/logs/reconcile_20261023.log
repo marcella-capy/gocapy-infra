@@ -1,0 +1,48 @@
+﻿=== 2026-10-23T09:04:54.7287521-07:00 call-task-reconcile START ===
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\reconcile_done_calls.py --since 2026-10-20
+  to-subscribe: Taylor Brown <Taylor.brown@xbowsystems.com> (X-Bow Systems) -> seq 532ff222-9db3-4344-b292-09eaa35eb62f [lnp]
+  to-subscribe: Matthew Lalumia <matthew.lalumia@xbowsystems.com> (X-Bow Systems) -> seq 532ff222-9db3-4344-b292-09eaa35eb62f [lnp]
+  to-subscribe: Tim Peterson <timp@globemachine.com> (Globe Machine Manufacturing) -> seq fa1af5bd-8d43-44a0-ac60-d92d642d6d92 [patriot-forge]
+  to-subscribe: Mauro Aficial <mauro.aficial@masimo.com> (Masimo) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Andres Martinez Pena <adrmartinez@masimo.com> (Masimo) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Kawakami Rumi <kawakami.rumi@soundunited.com> (Masimo) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Lasandas Hester <lasandas.hester@masimo.com> (Masimo) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Oscar Ramirez <oscar.ramirez@masimo.com> (Masimo) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Heve Ramirez <hramirez@masimo.com> (Masimo) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Ivan Lopez <ilopez@araero.com> (Adams Rite Aerospace Inc.) -> seq 945208ec-0193-4b2d-bffa-fd8dbd041dec [harvey-vogel]
+  to-subscribe: Kimtel Chhoeung <kimtel.chhoeung@palomar.com> (Palomar Products) -> seq 945208ec-0193-4b2d-bffa-fd8dbd041dec [harvey-vogel]
+RESULT: ok - 30 done calls on 2026-10-20..2026-10-23, 11 to-subscribe, 0 skipped -> _reconcile_20261020-20261023.json
+
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\hothawk_subscribe.py --artifact _reconcile_20261020-20261023.json --apply
+  created lead ac68ec19-6627-4e4d-8438-479ee25f512e: Taylor Brown <Taylor.brown@xbowsystems.com> (X-Bow Systems)
+  found lead 10018dbf-f951-4051-8aff-f7da5cf4c612: Matthew Lalumia <matthew.lalumia@xbowsystems.com> (X-Bow Systems)
+  bulk-added 2 leads to list 'voicemail-called-lnp' (64b8b24a-ec17-4afe-aecf-f4fd6bf774dd)
+  appended list to campaign 532ff222-9db3-4344-b292-09eaa35eb62f
+  enrolled 2 leads into campaign 532ff222-9db3-4344-b292-09eaa35eb62f
+  tagged 2 leads 'voicemail'
+  created lead a5f56434-4d7b-46bf-8030-0a145228eb90: Tim Peterson <timp@globemachine.com> (Globe Machine Manufacturing)
+  bulk-added 1 leads to list 'voicemail-called-patriot-forge' (9460d74c-59e5-4184-9243-e8d9937fb60a)
+  appended list to campaign fa1af5bd-8d43-44a0-ac60-d92d642d6d92
+  enrolled 1 leads into campaign fa1af5bd-8d43-44a0-ac60-d92d642d6d92
+  tagged 1 leads 'voicemail'
+  found lead 5f9e31a7-536f-410e-bda4-093044cd7e43: Mauro Aficial <mauro.aficial@masimo.com> (Masimo)
+  found lead f6115b34-41dd-40a5-b40f-fd35a69f6d1b: Andres Martinez Pena <adrmartinez@masimo.com> (Masimo)
+  created lead 37039834-b1e0-477f-937b-e4321ac67f41: Kawakami Rumi <kawakami.rumi@soundunited.com> (Masimo)
+  found lead a7a8cae8-6ed4-404c-8566-1d866156e7f9: Lasandas Hester <lasandas.hester@masimo.com> (Masimo)
+  found lead 3eec3660-085b-400a-a5d0-e4907f4d92a7: Oscar Ramirez <oscar.ramirez@masimo.com> (Masimo)
+  created lead 3951888f-57a6-41b7-ac47-2284397038c5: Heve Ramirez <hramirez@masimo.com> (Masimo)
+  bulk-added 6 leads to list 'voicemail-called-general-foundry' (44b0b0e1-9990-447f-a19e-4d497e78f2f5)
+  appended list to campaign 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26
+  enrolled 6 leads into campaign 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26
+  tagged 6 leads 'voicemail'
+  created lead c44558f2-4c40-4e6b-8cb2-eff33b67fa0d: Ivan Lopez <ilopez@araero.com> (Adams Rite Aerospace Inc.)
+  found lead cb61efcd-5022-4ece-92a7-4225c61c53c9: Kimtel Chhoeung <kimtel.chhoeung@palomar.com> (Palomar Products)
+  bulk-added 2 leads to list 'voicemail-called-harvey-vogel' (096a221d-c514-4e72-9d0d-bda2b1404ddf)
+  appended list to campaign 945208ec-0193-4b2d-bffa-fd8dbd041dec
+  enrolled 2 leads into campaign 945208ec-0193-4b2d-bffa-fd8dbd041dec
+  tagged 2 leads 'voicemail'
+RESULT: ok - marked 11 subscribed, 0 sibling activities auto-closed
+RESULT: ok - 11 leads pushed to list/campaign/tag
+
+RESULT: ok - 11 people loaded into HotHawk since 2026-10-20 (_reconcile_20261020-20261023.json)
+=== 2026-10-24T07:32:17.8724928-07:00 call-task-reconcile END (exit 0) ===

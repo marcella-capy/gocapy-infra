@@ -63,7 +63,9 @@ which one owns the job — two owners double-write.
   Clay). Rules mirror `go-capy-outreach/shared-references/client-territories.json` (embedded in
   Code.gs keyed by display name; Python imports `territory_filter.py`): Patriot Forge = US
   WA/OR/CA/AZ/NV only; Tech-Max excl FL/MA/IL/PA/VT; General Foundry excl NV/UT/CO/MA/CT;
-  Harvey Vogel SoCal-only (strict); Megatech US-only. Location from person Contact
+  Harvey Vogel = whole United States for call tasks, unknown location kept (2026-10-22, Marcella;
+  a deliberate divergence - email outreach stays SoCal-only strict, never sync this back;
+  Python: `CALL_US_ONLY`); Megatech US-only. Location from person Contact
   State/City/Country fields, org Company State fallback; unknown location keeps (except strict).
 - **Title tiers + 25-person cap + 45-day rotation** (2026-07-08): tier 1 = functional keyword
   (sourcing/commodity/purchasing/supplier/procurement/supply chain/category) + seniority
@@ -71,6 +73,11 @@ which one owns the job — two owners double-write.
   entry-level, VP, C-level; tier 2 = VP with the same keywords (used only if tier 1 < 25);
   tier 3 = the rest (skipped entirely when org has >100 phoned people). Max 25 people per run;
   the recent-task scan covers OPEN + DONE-within-45-days, so a re-run rotates to the next 25.
+  **Non-buyer titles are called too** (2026-10-22, Marcella): people with ICP = No (or blank)
+  and a valid phone are ordered LAST, after tier 3, under the same territory / duplicate /
+  rotation / 25-cap / >100-phoned rules. No-phone non-buyers get nothing (no note, no Clay).
+  Result line shows `N people (M non-buyer)`. Email validation is NOT a gate anywhere.
+  Known side effect: a done Call 1 on a non-buyer still enrolls them in the voicemail sequence.
 - **Pacing**: 3 Call-1s per company per business day (5 → 3 per rep feedback 2026-07-10;
   priority order); each person's Call 2/3 = +5/+7 business days from their own Call 1.
 - **Phone format gate** (2026-07-10): a person whose every phone fails `phone_format_ok`

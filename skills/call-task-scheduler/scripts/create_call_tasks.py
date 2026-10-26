@@ -75,6 +75,9 @@ CLAY_PEOPLE_MAX = 10      # phone-finder table: tier-1 titles only, max 10 per r
 
 # skill registry slug -> client-territories.json slug (identity when absent)
 TERRITORY_SLUGS = {"lnp": "lnp-machining"}
+# call-task territory override: these principals call anyone in the United States (or with no
+# location), instead of their stricter email-outreach rule (Marcella 2026-10-22)
+CALL_US_ONLY = {"harvey-vogel"}
 # Subject doubles as the machine marker. Current (principal-first, 2026-07-10):
 #   "<Display>: Call <n> - <Last> from <Org>"     group(1) = display, group(2) = n
 SUBJECT_RE = re.compile(r"^(.+?): Call ([123]) - .+ from .+$")
@@ -207,10 +210,12 @@ def tier_of(p: dict) -> int:
     return tier_of_title(p.get(TITLE_KEY) or "", prime=bool(PRIME_ORG_RE.search(org)))
 
 
-def prioritize(people: list, total_with_phone: int) -> "tuple[list, int]":
-    """Order tier1 -> (tier2 if tier1 < 25) -> tier3 (only when org not huge); tier4
-    (generic program managers) never gets call tasks; cap at MAX_PEOPLE_PER_RUN.
+def prioritize(people: list, total_with_phone: int, non_buyers: "list | None" = None) -> "tuple[list, int]":
+    """Order tier1 -> (tier2 if tier1 < 25) -> tier3 (only when org not huge) -> non-buyer
+    titles (ICP not Yes; same not-huge rule, Marcella 2026-10-22); tier4 (generic program
+    managers) never gets call tasks; cap at MAX_PEOPLE_PER_RUN.
     Returns (list, deprioritized_count)."""
+    non_buyers = non_buyers or []
     tiers = {1: [], 2: [], 3: [], 4: []}
     for p in people:
         tiers[tier_of(p)].append(p)
@@ -218,9 +223,9 @@ def prioritize(people: list, total_with_phone: int) -> "tuple[list, int]":
     if len(tiers[1]) < 25:
         ordered += tiers[2]
     if total_with_phone <= TIER3_MAX_WITHPHONE:
-        ordered += tiers[3]
+        ordered += tiers[3] + non_buyers
     capped = ordered[:MAX_PEOPLE_PER_RUN]
-    return capped, len(people) - len(capped)
+    return capped, len(people) + len(non_buyers) - len(capped)
 
 
 # ── ICP job-title classifier (mirrors people-icp-classifier/classify_people_icp.py) ────────────
@@ -419,17 +424,30 @@ def main() -> int:
 
     # territory gate: out-of-territory people skipped ENTIRELY (no tasks, no Clay)
     terr_slug = TERRITORY_SLUGS.get(a.principal, a.principal)
-    out_of_territory = 0
-    kept = []
-    for p in icp_yes:
+
+    def in_territory(p: dict) -> "tuple[bool, str]":
         rel = p.get("org_id")
         oid = rel.get("value") if isinstance(rel, dict) else rel
         org = orgs.get(str(oid), {})
-        ok, reason = territory_filter.keep(terr_slug, {
+        lead = {
             "state": p.get(PERSON_STATE_KEY) or org.get(ORG_STATE_KEY) or "",
             "city": p.get(PERSON_CITY_KEY) or "",
             "country": p.get(PERSON_COUNTRY_KEY) or "",
-        })
+        }
+        if terr_slug in CALL_US_ONLY:
+            # call tasks only: whole United States, unknown location kept (Marcella 2026-10-22);
+            # email outreach keeps the SoCal-only strict rule in client-territories.json
+            _abbr, _is_us, is_canada = territory_filter._norm_state(lead["state"])
+            country = territory_filter._norm_country(lead["country"])
+            if is_canada or (country and country != "United States"):
+                return False, f"country {country or 'Canada'} not US"
+            return True, ""
+        return territory_filter.keep(terr_slug, lead)
+
+    out_of_territory = 0
+    kept = []
+    for p in icp_yes:
+        ok, reason = in_territory(p)
         if ok:
             kept.append(p)
         else:
@@ -442,12 +460,15 @@ def main() -> int:
     # duplicate-record guard: same human twice at one org (same normalized name) -> keep ONE
     # record per human. Preference: already has open tasks (idempotency) > has email > more
     # phones > older id. Losing duplicates are reported so they can be merged later.
+    def human_key(p: dict) -> str:
+        # last name + first initial, so "Reggie West" and "Reginald West" collide too
+        first, last = _split_name(p)
+        return re.sub(r"[^a-z]", "", last.lower()) + "|" + (first[:1].lower() if first else "")
+
     by_human: dict = {}
     dup_pairs = []
     for p in icp_yes:
-        # last name + first initial, so "Reggie West" and "Reginald West" collide too
-        first, last = _split_name(p)
-        key = re.sub(r"[^a-z]", "", last.lower()) + "|" + (first[:1].lower() if first else "")
+        key = human_key(p)
         cur = by_human.get(key)
         if cur is None:
             by_human[key] = p
@@ -486,8 +507,27 @@ def main() -> int:
     fresh = [p for p in with_phone if int(p["id"]) not in already]
     skipped = len(with_phone) - len(fresh)
 
-    # priority order (tier-1 mgmt titles first) + hard cap per run
-    todo, deprioritized = prioritize(fresh, len(with_phone))
+    # non-buyer titles (ICP No or blank) with a valid phone are called too, but only AFTER every
+    # buyer (Marcella 2026-10-22). Same territory / duplicate / phone / rotation gates; no-phone
+    # non-buyers get nothing (no note, no Clay). Tier-4 program managers stay never-called.
+    non_buyer_by_human: dict = {}
+    for p in persons:
+        if str(p.get(ICP_KEY) or "").strip().lower() == "yes" or not _valid_phones(p):
+            continue
+        if tier_of(p) == 4 or not in_territory(p)[0]:
+            continue
+        key = human_key(p)
+        if key in by_human:  # same human already on the buyer list
+            continue
+        cur = non_buyer_by_human.get(key)
+        if cur is None or (int(p["id"]) in already and int(cur["id"]) not in already):
+            non_buyer_by_human[key] = p
+    non_buyers = [p for p in non_buyer_by_human.values() if int(p["id"]) not in already]
+    non_buyer_ids = {int(p["id"]) for p in non_buyers}
+
+    # priority order (tier-1 mgmt titles first, non-buyers last) + hard cap per run
+    todo, deprioritized = prioritize(fresh, len(with_phone), non_buyers)
+    non_buyer_tasked = sum(1 for p in todo if int(p["id"]) in non_buyer_ids)
 
     if a.test:
         if skipped:
@@ -526,7 +566,7 @@ def main() -> int:
         if no_phone:
             print(f"  DRY-RUN note on org(s) for {len(no_phone)} people without phones: "
                   + "; ".join(f"{p.get('name')} ({p.get(TITLE_KEY) or 'no title'})" for p in no_phone))
-        print(f"RESULT: ok - DRY-RUN {len(todo)} persons, {len(plan)} activities planned, "
+        print(f"RESULT: ok - DRY-RUN {len(todo)} persons ({non_buyer_tasked} non-buyer), {len(plan)} activities planned, "
               f"{skipped} skipped-existing, {out_of_territory} out-of-territory, "
               f"{deprioritized} deprioritized (cap {MAX_PEOPLE_PER_RUN}), {len(no_phone)} no-phone")
         return 0
@@ -640,7 +680,7 @@ def main() -> int:
     mode = "TEST " if a.test else ""
     org_tag = ", ".join(f"org {i} ({o.get('name')})" for i, o in orgs.items())
     call1_days = -(-len(todo) // CALLS_PER_DAY) if todo else 0
-    print(f"RESULT: ok - {org_tag}: {mode}{len(todo)} persons, {len(created)} activities created"
+    print(f"RESULT: ok - {org_tag}: {mode}{len(todo)} persons ({non_buyer_tasked} non-buyer), {len(created)} activities created"
           f"{f' (Call 1s over {call1_days} days)' if call1_days > 1 else ''}, "
           f"{skipped} skipped-existing, {out_of_territory} out-of-territory, "
           f"{deprioritized} deprioritized (cap {MAX_PEOPLE_PER_RUN}), "

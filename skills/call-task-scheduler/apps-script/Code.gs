@@ -97,7 +97,9 @@ var TERRITORIES = {
   'patriot forge': { include_countries: ['United States'], include_states: ['WA', 'OR', 'CA', 'AZ', 'NV'], exclude_countries: ['Canada'] },
   'tech-max': { exclude_states: ['FL', 'MA', 'IL', 'PA', 'VT'] },
   'general foundry': { exclude_states: ['NV', 'UT', 'CO', 'MA', 'CT'] },
-  'harvey vogel': { include_states: ['CA'], socal_only: true, strict_unknown: true },
+  // call tasks only: whole United States, unknown location kept (Marcella 2026-10-22). Email
+  // outreach keeps HV's SoCal-only strict rule in client-territories.json - do not mirror back.
+  'harvey vogel': { include_countries: ['United States'], exclude_countries: ['Canada'] },
   'megatech': { include_countries: ['United States'], exclude_countries: ['Canada'] },
 };
 
@@ -245,9 +247,11 @@ function tierOf(p) {
   return 3;
 }
 
-// Order people tier1 -> (tier2 if tier1 phoned < 25) -> tier3 (only when org is not huge),
+// Order people tier1 -> (tier2 if tier1 phoned < 25) -> tier3 (only when org is not huge)
+// -> tier4 = non-buyer titles (ICP not Yes; same not-huge rule, Marcella 2026-10-22),
 // cap at MAX_PEOPLE_PER_RUN. Returns { list, deprioritized }.
-function prioritize(people, totalWithPhone) {
+function prioritize(people, totalWithPhone, nonBuyers) {
+  nonBuyers = nonBuyers || [];
   var t1 = [], t2 = [], t3 = [];
   people.forEach(function (p) {
     var t = tierOf(p);
@@ -255,9 +259,9 @@ function prioritize(people, totalWithPhone) {
   });
   var ordered = t1.slice();
   if (t1.length < 25) ordered = ordered.concat(t2);
-  if (totalWithPhone <= TIER3_MAX_WITHPHONE) ordered = ordered.concat(t3);
+  if (totalWithPhone <= TIER3_MAX_WITHPHONE) ordered = ordered.concat(t3).concat(nonBuyers);
   var list = ordered.slice(0, MAX_PEOPLE_PER_RUN);
-  return { list: list, deprioritized: people.length - list.length };
+  return { list: list, deprioritized: people.length + nonBuyers.length - list.length };
 }
 
 // ── one-time setup ────────────────────────────────────────────────────────────────────────────
@@ -421,11 +425,14 @@ function runWorkflowA(input) {
   // records rarely share an email) -> keep ONE record per human. Preference: a record that
   // already has open tasks (so re-runs stay idempotent) > has email > more phones > older id.
   // The losing duplicates are listed on the org note so they can be merged later.
+  // last name + first initial, so "Reggie West" and "Reginald West" collide too
+  var humanKey = function (p) {
+    return lastName(p).toLowerCase().replace(/[^a-z]/g, '') + '|'
+      + firstName(p).slice(0, 1).toLowerCase();
+  };
   var byHuman = {}, dupPairs = [];
   icpYes.forEach(function (p) {
-    // last name + first initial, so "Reggie West" and "Reginald West" collide too
-    var key = lastName(p).toLowerCase().replace(/[^a-z]/g, '') + '|'
-      + firstName(p).slice(0, 1).toLowerCase();
+    var key = humanKey(p);
     var cur = byHuman[key];
     if (!cur) { byHuman[key] = p; return; }
     var score = function (x) {
@@ -449,10 +456,29 @@ function runWorkflowA(input) {
   var fresh = withPhone.filter(function (p) { return !already[String(p.id)]; });
   var skipped = withPhone.length - fresh.length;
 
-  // priority order (tier 1 mgmt titles first) + hard cap per run
-  var pri = prioritize(fresh, withPhone.length);
+  // non-buyer titles (ICP No or blank) with a valid phone are called too, but only AFTER every
+  // buyer (Marcella 2026-10-22). Same territory / duplicate / phone / rotation gates; no-phone
+  // non-buyers get nothing (no note, no Clay).
+  var nonBuyerByHuman = {};
+  persons.forEach(function (p) {
+    if (String(p[ICP_KEY] || '').trim().toLowerCase() === 'yes') return;
+    if (territoryRule && !keepInTerritory(territoryRule, p, orgState)) return;
+    if (!validPhones(p).length) return;
+    var key = humanKey(p);
+    if (byHuman[key]) return;  // same human already on the buyer list
+    var cur = nonBuyerByHuman[key];
+    if (!cur || (already[String(p.id)] && !already[String(cur.id)])) nonBuyerByHuman[key] = p;
+  });
+  var nonBuyers = Object.keys(nonBuyerByHuman).map(function (k) { return nonBuyerByHuman[k]; })
+    .filter(function (p) { return !already[String(p.id)]; });
+  var nonBuyerIds = {};
+  nonBuyers.forEach(function (p) { nonBuyerIds[String(p.id)] = true; });
+
+  // priority order (tier 1 mgmt titles first, non-buyers last) + hard cap per run
+  var pri = prioritize(fresh, withPhone.length, nonBuyers);
   var todo = pri.list;
   var deprioritized = pri.deprioritized;
+  var nonBuyerTasked = todo.filter(function (p) { return nonBuyerIds[String(p.id)]; }).length;
 
   if (input.test) {
     if (skipped > 0) return 'org ' + org.id + ' (' + org.name + '): TEST skipped: ' + skipped
@@ -526,7 +552,8 @@ function runWorkflowA(input) {
   }
 
   return 'org ' + org.id + ' (' + org.name + '): ' + (input.test ? 'TEST: ' : '')
-    + todo.length + ' people, ' + createdCount + ' tasks'
+    + todo.length + ' people' + (nonBuyerTasked ? ' (' + nonBuyerTasked + ' non-buyer)' : '')
+    + ', ' + createdCount + ' tasks'
     + (call1Days > 1 ? ' (Call 1s over ' + call1Days + ' days)' : '') + ', '
     + skipped + ' skipped, ' + noPhone.length + ' no-phone'
     + (badFormat ? ' (' + badFormat + ' bad-format phone)' : '')

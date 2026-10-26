@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-21",
+  "date_end": "2026-10-26",
+  "done_calls": 29,
+  "to_subscribe": [
+    {
+      "person_id": 49913,
+      "principal": "general-foundry",
+      "first_name": "Davis",
+      "last_name": "Zhou",
+      "email": "davis.zhou@masimo.com",
+      "company_name": "Masimo",
+      "phone": "(949) 297-7236",
+      "title": "Senior NPI Manager, Commodity",
+      "workspace_id": "9e14ce45-dca8-4c46-b30a-c17652222d2d",
+      "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+      "done_activity_id": 94205
+    },
+    {
+      "person_id": 72840,
+      "principal": "general-foundry",
+      "first_name": "Jenny",
+      "last_name": "Wang",
+      "email": "jenny.wang@masimo.com",
+      "company_name": "Masimo",
+      "phone": "9492977857",
+      "title": "Director, Strategic Commodity Management",
+      "workspace_id": "9e14ce45-dca8-4c46-b30a-c17652222d2d",
+      "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+      "done_activity_id": 94208
+    },
+    {
+      "person_id": 72846,
+      "principal": "general-foundry",
+      "first_name": "Kevin",
+      "last_name": "Shu",
+      "email": "kevin.shu@masimo.com",
+      "company_name": "Masimo",
+      "phone": "9492977502",
+      "title": "Senior Manager, Strategic Sourcing",
+      "workspace_id": "9e14ce45-dca8-4c46-b30a-c17652222d2d",
+      "sequence_id": "82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26",
+      "done_activity_id": 94211
+    },
+    {
+      "person_id": 87417,
+      "principal": "harvey-vogel",
+      "first_name": "Ruth",
+      "last_name": "Nolan",
+      "email": "ruth.nolan@palomar.com",
+      "company_name": "Palomar Products",
+      "phone": "(518) 320-0339",
+      "title": "Assistant Supply Chain Manager",
+      "workspace_id": "3a6e3124-c6ab-43e4-aa49-bc4eeb3f21cd",
+      "sequence_id": "945208ec-0193-4b2d-bffa-fd8dbd041dec",
+      "done_activity_id": 95716
+    }
+  ],
+  "skipped": []
+}
