@@ -1,0 +1,45 @@
+﻿=== 2026-10-27T09:12:51.7837649-07:00 call-task-reconcile START ===
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\reconcile_done_calls.py --since 2026-10-22
+Traceback (most recent call last):
+  File "C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\reconcile_done_calls.py", line 233, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\reconcile_done_calls.py", line 176, in main
+    persons_idx = {str(p.get("id")): p for p in pd_cache.get_persons()}
+                                                ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\marce\.claude\plugins\marketplaces\gocapy-claude-plugin\go-capy-outreach\scripts\pd_cache.py", line 547, in get_persons
+    _MEM["persons"] = _apply_overrides(_load("persons", _build_persons).get("persons", []), "persons")
+                                       ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\marce\.claude\plugins\marketplaces\gocapy-claude-plugin\go-capy-outreach\scripts\pd_cache.py", line 524, in _load
+    return builder()
+  File "C:\Users\marce\.claude\plugins\marketplaces\gocapy-claude-plugin\go-capy-outreach\scripts\pd_cache.py", line 340, in _build_persons
+    persons = _paginate("/persons")
+  File "C:\Users\marce\.claude\plugins\marketplaces\gocapy-claude-plugin\go-capy-outreach\scripts\pd_cache.py", line 139, in _paginate
+    result = _pd_get(path, params)
+  File "C:\Users\marce\.claude\plugins\marketplaces\gocapy-claude-plugin\go-capy-outreach\scripts\pd_cache.py", line 117, in _pd_get
+    return json.loads(resp.read().decode("utf-8"))
+                      ~~~~~~~~~^^
+  File "C:\Users\marce\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 478, in read
+    return self._read_chunked(amt)
+           ~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\marce\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 602, in _read_chunked
+    while (chunk_left := self._get_chunk_left()) is not None:
+                         ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\marce\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 584, in _get_chunk_left
+    chunk_left = self._read_next_chunk_size()
+  File "C:\Users\marce\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 544, in _read_next_chunk_size
+    line = self.fp.readline(_MAXLINE + 1)
+  File "C:\Users\marce\AppData\Local\Python\pythoncore-3.14-64\Lib\socket.py", line 725, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\marce\AppData\Local\Python\pythoncore-3.14-64\Lib\ssl.py", line 1304, in recv_into
+    return self.read(nbytes, buffer)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\marce\AppData\Local\Python\pythoncore-3.14-64\Lib\ssl.py", line 1138, in read
+    return self._sslobj.read(len, buffer)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+RESULT: error - reconcile_done_calls.py exited 1
+=== 2026-10-27T10:26:02.3825765-07:00 call-task-reconcile END (exit 1) ===
+posted run-failure alert to ClickUp task 86ba9zvy5

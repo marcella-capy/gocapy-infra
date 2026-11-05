@@ -1,0 +1,53 @@
+﻿=== 2026-10-29T12:49:42.6745699-07:00 call-task-reconcile START ===
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\reconcile_done_calls.py --since 2026-10-26
+  to-subscribe: Michelle Gray <michelle.gray@masimo.com> (Masimo) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Jim Caraway <jim.caraway@masimo.com> (Masimo) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Stephen Lee <stephen.lee@masimo.com> (Masimo) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Josy Garcia <josy.garcia@masimo.com> (Masimo) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Timothy Sowers <timothy.sowers@masimo.com> (Masimo) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Benning Sun <ben.sun@masimo.com> (Masimo) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Sasha Gonzalez <sgonzalez@masimo.com> (Masimo) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Luis Vega <lvega@masimo.com> (Masimo) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Debra Barshofsky <dbarshofsky@masimo.com> (Masimo) -> seq 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26 [general-foundry]
+  to-subscribe: Ruth Nolan <ruth.nolan@palomar.com> (Palomar Products) -> seq 945208ec-0193-4b2d-bffa-fd8dbd041dec [harvey-vogel]
+  to-subscribe: CPM Alan B. LaRue <larue_alan_b@solarturbines.com> (Solar Turbines Incorporated) -> seq 419b4280-a645-42cf-bc88-1e8b255cc202 [atw]
+  to-subscribe: Aaron Perlov <perlov_aaron@solarturbines.com> (Solar Turbines Incorporated) -> seq 419b4280-a645-42cf-bc88-1e8b255cc202 [atw]
+  to-subscribe: Christos Renner <renner_christos_p@solarturbines.com> (Solar Turbines Incorporated) -> seq 419b4280-a645-42cf-bc88-1e8b255cc202 [atw]
+  to-subscribe: Erik Santana <esantana@hartwellcorp.com> (Hartwell Corporation) -> seq 419b4280-a645-42cf-bc88-1e8b255cc202 [atw]
+  to-subscribe: Adriana Alba <aalba@hartwellcorp.com> (Hartwell Corporation) -> seq 419b4280-a645-42cf-bc88-1e8b255cc202 [atw]
+  to-subscribe: Sandra Garcia Rice <sgarciarice@hartwellcorp.com> (Hartwell Corporation) -> seq 419b4280-a645-42cf-bc88-1e8b255cc202 [atw]
+RESULT: ok - 47 done calls on 2026-10-26..2026-10-29, 16 to-subscribe, 0 skipped -> _reconcile_20261026-20261029.json
+
+$ C:\Users\marce\.claude\plugins\marketplaces\gocapy-infra\skills\call-task-scheduler\scripts\hothawk_subscribe.py --artifact _reconcile_20261026-20261029.json --apply
+  found lead 3c7b1393-18f1-4ace-aaca-3d1227366194: Michelle Gray <michelle.gray@masimo.com> (Masimo)
+  found lead 2c7d9012-26d4-4a5c-97e7-22d4be32ed42: Jim Caraway <jim.caraway@masimo.com> (Masimo)
+  found lead e694cfed-4b7c-48b0-8078-995d3c602bd9: Stephen Lee <stephen.lee@masimo.com> (Masimo)
+  found lead c25c0307-14b3-4aa4-aa61-c6b431f473c9: Josy Garcia <josy.garcia@masimo.com> (Masimo)
+  found lead 8bf784ab-a57b-4fdc-8c60-8387a9aa7833: Timothy Sowers <timothy.sowers@masimo.com> (Masimo)
+  found lead 676ff4bf-e44c-4ba8-ad7a-3824c6e1fc6c: Benning Sun <ben.sun@masimo.com> (Masimo)
+  found lead 1ecdabb5-7851-425c-89ef-9fcdc80ac19b: Sasha Gonzalez <sgonzalez@masimo.com> (Masimo)
+  found lead 69c3b96c-e298-45db-8338-655ebaf60550: Luis Vega <lvega@masimo.com> (Masimo)
+  found lead 9f61e29c-ec22-4c68-84ab-591d611702c6: Debra Barshofsky <dbarshofsky@masimo.com> (Masimo)
+  bulk-added 9 leads to list 'voicemail-called-general-foundry' (44b0b0e1-9990-447f-a19e-4d497e78f2f5)
+  appended list to campaign 82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26
+  ERROR group [general-foundry]: POST /campaigns/82ed42d0-f0e8-48fb-aee5-84c3b1b2bc26/leads -> HTTP 422: {"code":"NO_ELIGIBLE_LEADS","message":"All selected leads are already enrolled in other campaigns. Set `allowLeadsInMultiple = true` to enrol overlapping leads anyway.","skippedLeadCount":9,"skippedLeads":[{"leadId":"1ecdabb5-7851-425c-89ef-9fcdc80ac19b","conflictingCampaignId":"2d825f12-08c9-4e26-afe1-f622bcbbb113","conflictingCampaignName":"General Foundry"},{"leadId":"2c7d9012-26d4-4a5c-97e7-22d4be32ed42","conflictingCampaignId":"2d825f12-08c9-4e26-afe1-f622bcbbb113","conflictingCampaignName":"General Foundry"},{"leadId":"3c7b1393-18f1-4ace-aaca-3d1227366194","conflictingCampaignId":"2d825f12-08c9-4e26-afe1-f622bcbbb113","conflictingCampaignName":"General Foundry"},{"leadId":"676ff4bf-e44c-4ba8-ad7a-3824c6e1fc6c","conflictingCampaignId":"2d825f12-08c9-4e26-afe1-f622bcbbb113","conflictingCampaignName":"General Foundry"},{"leadId":"69c3b96c-e298-45db-8338-655ebaf60550","conflictingCampaignId":"2d825f12-08c9-4e26-afe1-f622bcbbb113","conflictingCampaignName":"General Foundry"},{"leadId":"8bf784ab-a57b-4fdc-8c60-8387a9aa7833","conflictingCampaignId":"2d825f12-08c9-4e26-afe1-f622bcbbb113","conflictingCampaignName":"General Foundry"},{"leadId":"9f61e29c-ec22-4c68-84ab-591d611702c6","conflictingCampaignId":"2d825f12-08c9-4e26-afe1-f622bcbbb113","conflictingCampaignName":"General Foundry"},{"leadId":"c25c0307-14b3-4aa4-aa61-c6b431f473c9","conflictingCampaignId":"2d825f12-08c9-4e26-afe1-f622bcbbb113","conflictingCampaignName":"General Foundry"},{"leadId":"e694cfed-4b7c-48b0-8078-995d3c602bd9","conflictingCampaignId":"2d825f12-08c9-4e26-afe1-f622bcbbb113","conflictingCampaignName":"General Foundry"}],"status":422} ΓÇö persons NOT marked
+  found lead 6b3729d6-024e-4185-a39d-ec19489eda28: Ruth Nolan <ruth.nolan@palomar.com> (Palomar Products)
+  bulk-added 1 leads to list 'voicemail-called-harvey-vogel' (096a221d-c514-4e72-9d0d-bda2b1404ddf)
+  appended list to campaign 945208ec-0193-4b2d-bffa-fd8dbd041dec
+  ERROR group [harvey-vogel]: POST /campaigns/945208ec-0193-4b2d-bffa-fd8dbd041dec/leads -> HTTP 422: {"code":"NO_ELIGIBLE_LEADS","message":"All selected leads are already enrolled in other campaigns. Set `allowLeadsInMultiple = true` to enrol overlapping leads anyway.","skippedLeadCount":1,"skippedLeads":[{"leadId":"6b3729d6-024e-4185-a39d-ec19489eda28","conflictingCampaignId":"323d4252-08a7-4795-97c0-1d97856dddc8","conflictingCampaignName":"Harvey Vogel - Supplier ID"}],"status":422} ΓÇö persons NOT marked
+  created lead e91433da-ec28-4426-8cf0-83112899bc12: CPM Alan B. LaRue <larue_alan_b@solarturbines.com> (Solar Turbines Incorporated)
+  found lead e3dcd5a7-df71-45e9-aa5c-580ad8725bb8: Aaron Perlov <perlov_aaron@solarturbines.com> (Solar Turbines Incorporated)
+  found lead e5b61dcc-c344-439e-b042-15e20038b564: Christos Renner <renner_christos_p@solarturbines.com> (Solar Turbines Incorporated)
+  found lead e9fed2d0-7f2e-41d6-9c53-76f63874249d: Erik Santana <esantana@hartwellcorp.com> (Hartwell Corporation)
+  found lead 3045e3e3-acda-411c-b665-5ffa2a7157a8: Adriana Alba <aalba@hartwellcorp.com> (Hartwell Corporation)
+  created lead dd27252a-5856-42ce-a1e0-fdeb83de0515: Sandra Garcia Rice <sgarciarice@hartwellcorp.com> (Hartwell Corporation)
+  bulk-added 6 leads to list 'voicemail-called-atw' (24666fb6-48c9-489f-a371-518388dad796)
+  appended list to campaign 419b4280-a645-42cf-bc88-1e8b255cc202
+  enrolled 6 leads into campaign 419b4280-a645-42cf-bc88-1e8b255cc202
+  tagged 6 leads 'voicemail'
+RESULT: ok - marked 6 subscribed, 0 sibling activities auto-closed
+RESULT: partial - 6 leads pushed to list/campaign/tag; FAILED groups: general-foundry, harvey-vogel
+
+RESULT: error - HotHawk push partial (16 planned) ΓÇö see the failed groups above; those people stay unmarked and retry next run
+=== 2026-10-29T12:58:51.4029470-07:00 call-task-reconcile END (exit 1) ===
+posted run-failure alert to ClickUp task 86ba9zvy5

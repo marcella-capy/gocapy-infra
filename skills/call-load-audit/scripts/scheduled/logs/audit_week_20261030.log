@@ -1,0 +1,21 @@
+﻿=== 2026-10-30T09:17:05.6708148-07:00 call-load-audit WEEK START ===
+≡ƒô₧ Call ΓåÆ HotHawk Load Audit ΓÇö Weekly ΓÇö 2026-10-26 .. 2026-10-29
+Γ£à all loaded  ┬╖  47 calls / 40 people  ┬╖  40 loaded, 0 missing
+```
+principal        User          Company Name                 # of Calls
+---------------  ------------  ---------------------------  ----------
+atw              Ericka        Hartwell Corporation         3
+atw              Ericka        Solar Turbines Incorporated  6
+general-foundry  Ericka        Masimo                       18
+harvey-vogel     Ericka        Bandy Manufacturing          2
+harvey-vogel     Ericka        Palomar Products             1
+lnp              Ericka        X-Bow Systems                14
+patriot-forge    Ericka        Globe Machine Manufacturing  3
+-                -             -                            -
+                 TOTAL Ericka                               47
+```
+
+discord: posted
+
+RESULT: ok - {"mode": "week", "window": ["2026-10-26", "2026-10-29"], "total_calls": 47, "people": 40, "loaded": 40, "missing": 0, "systemic": false}
+=== 2026-10-30T09:26:09.7441660-07:00 call-load-audit WEEK END (exit 0) ===
